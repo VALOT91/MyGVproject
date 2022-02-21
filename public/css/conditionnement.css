@@ -1,0 +1,15 @@
+﻿input[type="radio"].condit {
+    display: none;
+    
+}
+
+    input[type="radio"].condit + label {
+        padding: 0.3rem 0.5rem;
+        border: 1px none #ccc;
+    }
+
+    input[type="radio"].condit:checked + label {
+        border: 1px solid #000;
+    }
+
+ 

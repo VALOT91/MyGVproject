@@ -1,0 +1,76 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+<div class="container my-2">
+    <h1>Utilisateur</h1>
+
+    <table class="table">
+        <tbody>
+             
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            {# <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr> #}
+            <tr>
+                <th>Adresse</th>
+                <td>{{ user.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Code_postal</th>
+                <td>{{ user.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Complement</th>
+                <td>{{ user.complement }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ user.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ user.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ user.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ user.ville }}</td>
+            </tr>
+            <tr>
+                <th>Points_fidelite</th>
+                <td>{{ user.pointsFidelite }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ user.pays }}</td>
+            </tr>
+            <tr>
+                <th>Rang_fidelite</th>
+                <td>{{ user.rangFidelite }}</td>
+            </tr>
+            <tr>
+                <th>Kbis</th>
+                <td>{{ user.kbis }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary href="{{ path('user_index') }}">Rrtou à la liste</a>
+  </div>
+    {# <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+
+    {{ include('aduser/_delete_form.html.twig') }} #}
+{% endblock %}

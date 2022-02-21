@@ -1,0 +1,42 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block title %}détail catégorie{% endblock %}
+
+{% block body %}
+  <div class="container" >
+    <h1>Détail de la catégorie</h1>
+
+    <table class="table">
+        <tbody>
+           
+            <tr>
+                <th>Nom</th>
+                <td>{{ category.nom }}</td>
+            </tr>
+             <tr>
+                <th>Description</th>
+                <td>{{ category.description }}</td>
+            </tr>
+              <tr>
+                <th>image 1</th>
+                <td>{{ category.imagepath1 }}</td>
+            </tr>
+              <tr>
+                <th>image 2</th>
+                <td>{{ category.imagepath2 }}</td>
+            </tr>
+              <tr>
+                <th>image 3</th>
+                <td>{{ category.imagepath3 }}</td>
+            </tr>
+          
+        </tbody>
+    </table>
+
+     <a class="btn btn-primary" href="{{ path('category_index') }}">retour liste</a>
+
+  </div>  
+{% endblock %}
+
+

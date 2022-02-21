@@ -1,0 +1,32 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Tarif{% endblock %}
+
+{% block body %}<div class="container my-2">
+    <h1>Détail du tarif </h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Référence produit</th>
+                <td>{{ tarif.getProduitConditionnement().reference }}</td>
+            </tr>
+            <tr>
+                <th>Désignation produit</th>
+                <td>{{ tarif.getProduitConditionnement().getProduit().designation }}</td>
+            </tr>
+            <tr>
+                <th>Prix unitaire</th>
+                <td>{{ tarif.prixUnitaire }}</td>
+            </tr>
+            <tr>
+                <th>Type prix</th>
+                <td>{{ tarif.typePrix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('tarif_index') }}">retour à la liste</a>
+ 
+</div>
+{% endblock %}

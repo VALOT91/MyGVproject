@@ -1,0 +1,41 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}ProduitConditionnement index{% endblock %}
+
+{% block body %}
+<div class="container my-2">
+    <h1>Stock articles</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reference</th>
+                <th>Image_path</th>
+                <th>QuantiteStock</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit_conditionnement in produit_conditionnements %}
+            <tr>
+                <td>{{ produit_conditionnement.id }}</td>
+                <td>{{ produit_conditionnement.reference }}</td>
+                <td>{{ produit_conditionnement.imagePath }}</td>
+                <td>{{ produit_conditionnement.quantiteStock }}</td>
+                <td>
+                    <a  style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('produit_conditionnement_show', {'id': produit_conditionnement.id}) }}">Détail</a>
+                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('produit_conditionnement_edit', {'id': produit_conditionnement.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a   class="mt-2 btn btn-danger   "  href="{{ path('produit_conditionnement_new') }}">Nouveau</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}category index{% endblock %}
+
+{% block body %}
+ <div class="container" >
+    <h1 class ="ms-4">Liste des catégories</h1>
+
+    <table class="table ">
+        <thead>
+            <tr>
+                 <th>Nom</th>
+               
+                 <th>Image 1</th>
+                 <th>Image 2</th>
+                 <th>Image 3</th>
+                 <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for category in categories %}
+            <tr>
+             
+                <td>{{ category.nom }}</td>
+                
+                
+                 <td><img style="border-radius:7px;display:flex;width:5rem" src="{{ category.imagepath1 }}" alt=""  ></td>
+                 <td><img style="border-radius:7px;display:flex;width:5rem" src="{{ category.imagepath2 }}" alt=""  ></td>
+                 <td><img style="border-radius:7px;display:flex;width:5rem" src="{{ category.imagepath3 }}" alt=""  ></td>
+              
+                <td>
+            
+                    <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('category_show', {'id': category.id}) }}">Détail</a>
+                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('category_edit', {'id': category.id}) }}">modifier</a>
+                </td>
+              </div> 
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a  class="ms-2 btn btn-danger" href="{{ path('category_new') }}">Nouveau</a>
+</div>
+{% endblock %}
+

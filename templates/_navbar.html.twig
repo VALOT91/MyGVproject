@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href=" {{ path('home')}}">Plf Distribution</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+ 
+         {% if app.user %} 
+
+            {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('admin') }}">Administration</a>
+                </li>
+            
+            {% endif %}  
+
+                    
+        {% endif %} 
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('gamme_index') }}">Notre gamme</a>
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="{{ path('metier') }}">Notre métier</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('engagement') }}">Notre engagement</a>
+        </li>
+
+
+     {% if  not app.user %} 
+        
+         <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+          </li>
+    {% else %} 
+
+            {% if app.user.roles[0] is same as "ROLE_CLIENT" %}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('services') }}">Vos services</a>
+                </li>
+            
+            {% endif %}  
+            {% if app.user.roles[0] is same as "ROLE_TRANSIT" %}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('encours') }}">Votre statut</a>
+                </li>
+            
+            {% endif %}  
+             <li class="nav-item">
+              <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+            </li>  
+
+             {% if app.user.roles[0] is not same as "ROLE_TRANSIT" %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('cart_detail') }}">Mon panier</a>
+                </li>
+          {% endif %}  
+     {% endif %} 
+
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+
+<div class="container-flex  ">
+    <h1 class="my-4 text-center" >Notre gamme de {{ category.nom  | lower }}</h1>
+    <h5 class="text-center" >{{ category.description }} </h5>
+    <div class="row d-flex flex-wrap   justify-content-around" >
+            
+        {#  parrcours les articles de la catégorie choisie #}
+        {% for product in articles %}
+            <div class="col-12 col-lg-4 col-md-6 " >
+               
+                    <div class="card text-center my-4 mx-4 px-2  justify-content-around  "    >
+                        <h3 class ="text-center">{{ product.getProduct().designation }}</h3>
+                         <p class="text-center" >{{ product.getProduct().accroche }} </p>
+                        <div style="height:20rem!important;display:flex;justify-content:center">
+                                {# test la présence d'une image #}
+                                {% if product.getProduct().getProduitConditionnement()is not null  %} 
+                                   <img id="img_{{ product.getProduct().id  }}" style="min-width:20rem;objective-fit:cover" src=" {{product.getProduct().getProduitConditionnement().imagePath }}" class="   "  alt="...">
+                                {% endif %} 
+                        </div>
+                        <hr>
+                          <div style="height:7rem!important;display:flex;flex-direction:column;justify-content:start">
+                            <h4>Description</h4>
+                            <p class="my-4">{{ product.getProduct().description }}</p>
+                           
+                         </div>
+                          <a class="" href="{{ path('gamme_show', {'id': product.getProduct().id}) }}">Voir la fiche produit</a>   
+                        <hr>
+                        <h4>Conditionnements disponibles</h4>
+                        <div class="mt-2  " >
+                                
+                                <div class="d-flex flex-row justify-content-around w-100"  >
+                                         {# Boucle sur les conditionnements disponibles #}
+                                        {% for conditionnement in product.conditionnements %}
+                                        <div class="  text-center  "  >
+                                            
+                                                <input type="radio" onclick=choice(this) class="condit" name="{{product.getProduct().id }}" checked="checked" id="{{ conditionnement.id }}" /> 
+                                                <label  for="{{ conditionnement.id }}" >
+                                                    <img style="max-width:3rem;objective-fit:cover" src="{{ conditionnement.getConditionnement().imagepath }}"    alt="logo du conditionnement">
+                                                </label>
+                                                <p class="mt-1" style="font-size:x-small">{{conditionnement.getConditionnement().designation}}</p>
+                                                <h4 style="display:none" id="IM_{{ conditionnement.id }}"> {{ conditionnement.imagePath  }} </h4>
+                                                     {% for tarif in conditionnement.tarifs %}
+
+                                                        {% if tarif.typePrix is same as "PRIX_PUBLIC" %} 
+                                                        <h4 style="display:none" id="PP_{{ conditionnement.id }}">
+                                                            {{  (tarif.prixUnitaire/100)|number_format(2, '.', ',') }}€
+                                                        </h4>
+                                                        {% endif %} 
+                                                    {% if tarif.typePrix is same as "PRIX_PRO" %} 
+                                                        <h4 style="display:none" id="PR_{{ conditionnement.id }}">
+                                                            {% if app.user %}
+                                                                {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
+                                                                        {{  (tarif.prixUnitaire/100)|number_format(2, '.', ',') }}€
+                                                                {% endif %}  
+                                                            {% endif %} 
+                                                        </h4>
+                                                    {% endif %} 
+                                                {% else %}
+                                                        <h4 style="display:none" id="PP_{{ conditionnement.id }}">
+                                                            N.C
+                                                        </h4> 
+                                                        <h4 style="display:none" id="PR_{{ conditionnement.id }}">
+                                                            N.C
+                                                        </h4>
+                                                {% endfor %}
+
+                                        </div>   
+
+                                        {% else %}
+                                                
+                                                <td colspan="15">Pas de conditionnement</td>
+                                            
+                                        {% endfor %}
+                                        
+                                </div>  
+                                        
+                            </div>
+                             <hr>
+                            
+                        {% if app.user %} 
+                            {# <div style="display:flex;flex-direction:row">
+                                <h4> Prix public TTC : </H4>
+                                <h4 id="sel_{{ product.getProduct().id  }}"></H4>
+                            </div> #}
+                               
+                         
+                               {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
+                                      <h3>Tarif pros et public</h3>
+                                      <p> (Prix public TTC à titre indicatif dont tva 5.5%)</p>
+                                    <div class="mt-1" style="display:flex;flex-direction:row;justify-content:space-around;align-items:center ">
+                                          <div class="m-2" style="display:flex;flex-direction:column;algn-items:center;line-height:1px ">
+                                            <h2  style="font-family:Segoe UI Semibold;font-weight:800;font-size:3rem"   id="selp_{{ product.getProduct().id  }}"></h2>
+                                            <p style="font-size:small">Votre prix unitaire pro H.T*</p>
+                                           </div>
+                                            <div class="m-2 text-secondary" style="display:flex;flex-direction:column;algn-items:center;line-height:0.51px ">
+                                            <h2  style="font-family:Segoe UI Semibold;font-weight:800;font-size:2rem"   id="sel_{{ product.getProduct().id  }}"></h2>
+                                            <p style="font-size:x-small">Prix indicatif public TTC</p>
+                                           </div>
+                                          
+                                    </div>
+                                     <p class="mt-4 mb-0" style="font-size:small">* Frais de port gratuits à partir de 200€ H.T en colissimo ou Mondial relay <a href="#"> (Voir Conditions) </a></p>
+                                    <hr>
+                                {% elseif  app.user.roles[0] is same as "ROLE_TRANSIT" %}
+                                        
+                                      <h4>Tarif public T.T.C (Tva 5.5%)</h4>
+                                      
+                                    <div class="mt-1" style="display:flex;flex-direction:row;justify-content:space-around;align-items:center ">
+                                            <div class="m-2 text-dark" style="display:flex;flex-direction:column;algn-items:center;line-height:0.51px ">
+                                            <h2  style="font-family:Segoe UI Semibold;font-weight:800;font-size:3rem"   id="sel_{{ product.getProduct().id  }}"></h2>
+                                            <p style="font-size:small">Prix public TTC hors frais de port </p>
+                                           </div>
+                                            <div style="display:none;flex-direction:row">
+                                            <h4> Votre tarif PRO HT : </H4> #}
+                                            <h4 id="selp_{{ product.getProduct().id  }}"></H4>
+                                        </div>  
+                                    </div>
+                                  
+                                    <hr>
+                                {% else %}  
+                                          <div style="display:none;flex-direction:row">
+                                            <h4> Votre tarif PRO HT : </H4> #}
+                                            <h4 id="selp_{{ product.getProduct().id  }}"></H4>
+                                        </div>  
+                                {% endif %}  
+                                {# bouton du panier #}
+                                <div class="mb-2" style="display:flex;flex-direction:row;justify-content:center">
+                                            <a   id="pan_{{ product.getProduct().id  }}" href="{{ path('cart_add',{'id': product.getProduct().id }) }}" class="mb-2 btn btn-dark w-75">Ajouter au panier</a>
+                                </div>
+                        {% else %}   
+                                <div class="text-center">
+                                    <a class="nav-link" href="{{ path('app_login') }}">Connectez-vous pour voir les tarifs</a>
+                                </div>
+                        {% endif %}  
+                </div>
+           </div>
+             {% else %}
+            <p>
+                <td colspan="15">no records found</td>
+            </p>
+     
+        {% endfor %}
+     </div>
+{% endblock %}

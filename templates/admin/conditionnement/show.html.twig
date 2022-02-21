@@ -1,0 +1,34 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Conditionnement{% endblock %}
+
+{% block body %}
+<div class="container my-2">
+    <h1>Conditionnement</h1>
+
+    <table class="table">
+        <tbody>
+             
+            <tr>
+                <th>Reference</th>
+                <td>{{ conditionnement.reference }}</td>
+            </tr>
+            <tr>
+                <th>Designation</th>
+                <td>{{ conditionnement.designation }}</td>
+            </tr>
+            <tr>
+                <th>Poids</th>
+                <td>{{ conditionnement.poids }}</td>
+            </tr>
+         
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('conditionnement_index') }}">Retour liste</a>
+
+    </div>
+{% endblock %}
+
+
+ 

@@ -1,0 +1,24 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Nouveau Tarif{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+  <div class="row">
+        <div class="col-12 mb-3">
+              <a class="btn btn-primary" href="{{ path('tarif_index') }}">Retour à la liste</a>
+        </div>
+         <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Création d'un nouveau tarif</h1>
+                    </div>
+                    <div class="card-body">
+                            {{ include('admin/tarif/_form.html.twig') }}
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+   
+{% endblock %}

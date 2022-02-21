@@ -1,0 +1,43 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Tarif index{% endblock %}
+
+{% block body %}
+  <div class="container my-2">
+    <h1>Tarifs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Référence produit</th>
+                <th>Désignation produit</th>  
+                <th>Poids</th>
+                 <th>Prix_unitaire</th>
+                <th>Type de prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tarif in tarifs %}
+            <tr>
+                <td>{{ tarif.getProduitConditionnement().reference }}</td>
+                <td>{{ tarif.getProduitConditionnement().getProduit().designation }}</td>
+                <td>{{ tarif.getProduitConditionnement().getConditionnement().poids }}g</td>
+                <td>{{ tarif.prixUnitaire }}</td>
+                <td>{{ tarif.typePrix }}</td>
+                
+                <td>
+                    <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('tarif_show', {'id': tarif.id}) }}">Detail</a>
+                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('tarif_edit', {'id': tarif.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a  class="ms-2 btn btn-danger" href="{{ path('tarif_new') }}">Nouveau</a>
+{% endblock %}
