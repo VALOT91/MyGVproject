@@ -23,15 +23,23 @@
                 <td><strong>{{ user.email }}</strong><br> {{ user.prenom }} {{ user.nom }} {{ user.codePostal }} {{ user.ville }}</td>
                 
                 <td> 
-                 {{ user.roles ? user.roles|json_encode : '' }} 
-                 {% if user.roles|json_encode is "ROLE_TRANSIT"   %}
-                    En attente de validation
-                {# {% elseif  {{ user.roles}} == ["ROLE_CLIENT"]  %}
-                    Validé #}
-                 {# {% endif   %} #}
 
-              
-                
+
+                        {% if  user.roles[0] ==   "ROLE_TRANSIT"    %}
+                            En attente de validation
+                        {% elseif    user.roles[0] == "ROLE_CLIENT"  %}
+                            Validé
+                        {% endif   %}
+                </td>
+                 <td> 
+                        {% if  user.roles[0] ==   "ROLE_TRANSIT"    %}
+                            <a style="max-width:5rem" class="mt-2 btn btn-success w-100 " href="{{ path('user_valid', {'id': user.id}) }}">Valider</a>
+                            {# <a style="max-width:5rem" class="mt-2 btn btn-danger w-100 " href="{{ path('user_refute', {'id': user.id}) }}">Refuser</a> #}
+                        {% elseif    user.roles[0] == "ROLE_CLIENT"  %}
+                            
+                             {# <a style="max-width:5rem" class="mt-2 btn btn-danger w-100 " href="{{ path('user_show', {'id': user.id}) }}">Bloquer</a> #}
+                             <a style="max-width:5rem" class="mt-2 btn btn-warning w-100 " href="{{ path('user_decline', {'id': user.id}) }}">Attente</a>
+                        {% endif   %}
                 </td>
                 
                 <td>

@@ -83,10 +83,7 @@
                              <hr>
                             
                         {% if app.user %} 
-                            {# <div style="display:flex;flex-direction:row">
-                                <h4> Prix public TTC : </H4>
-                                <h4 id="sel_{{ product.getProduct().id  }}"></H4>
-                            </div> #}
+                            
                                
                          
                                {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}

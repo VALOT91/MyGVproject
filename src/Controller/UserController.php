@@ -75,6 +75,42 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/valider', name: 'user_valid', methods: ['GET', 'POST'])]
+    public function validate(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $entity =  $userRepository->find($id);
+        $entity->setRoles(["ROLE_CLIENT"]);
+        $entityManager->flush();
+    
+        return $this->render('admin/user/index.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/{id}/refute', name: 'user_refute', methods: ['GET', 'POST'])]
+    public function refute(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $entity =  $userRepository->find($id);
+        $entity->setRoles([""]);
+        $entityManager->flush();
+    
+        return $this->render('admin/user/index.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/{id}/decline', name: 'user_decline', methods: ['GET', 'POST'])]
+    public function decline(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $entity =  $userRepository->find($id);
+        $entity->setRoles(["ROLE_TRANSIT"]);
+        $entityManager->flush();
+    
+        return $this->render('admin/user/index.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+    }
+
     #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -86,3 +122,4 @@ class UserController extends AbstractController
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+

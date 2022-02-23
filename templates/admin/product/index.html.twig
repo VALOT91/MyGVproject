@@ -10,42 +10,22 @@
     <table class="table">
         <thead>
             <tr>
-                {# <th>Id</th> #}
+               
                 <th>Designation</th>
                 <th>Description</th>
                 <th>Categorie</th>
-                {# <th>Accroche</th>
-                <th>Composition</th>
-                <th>Dosage</th>
-                <th>Usage</th>
-                <th>Durée d'infusion</th>
-                <th>Chemin vidéo</th>
-                <th>BIO</th>
-                <th>Origine</th>
-                <th>Role</th> #}
-                {# <th>Resumé</th> #}
-                {# <th>Parent</th> #}
+               
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for product in products %}
             <tr>
-                {# <td>{{ product.id }}</td> #}
+              
                 <td>{{ product.designation }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.getCategory().nom }}</td>
-                {# <td>{{ product.accroche }}</td>
-                <td>{{ product.composition }}</td>
-                <td>{{ product.recoDose }}</td>
-                <td>{{ product.recoUsage }}</td>
-                <td>{{ product.recoDuree }}</td>
-                <td>{{ product.videoPath }}</td>
-                <td>{{ product.isBio ? 'Yes' : 'No' }}</td>
-                <td>{{ product.origine }}</td>
-                <td>{{ product.role }}</td>
-                <td>{{ product.resume }}</td> #}
-                {# <td>{{ product.parent ? 'Yes' : 'No' }}</td> #}
+                 
                 <td>
                     <a style="max-width:5rem" class="mt-1 btn btn-primary w-100 " href="{{ path('product_show', {'id': product.id}) }}">Détails</a>
                     <a style="max-width:5rem" class="mt-1 btn btn-warning w-100 " href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>

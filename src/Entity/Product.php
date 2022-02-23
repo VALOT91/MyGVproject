@@ -64,6 +64,9 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Recette::class)]
     private $recette;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $reco_Temp;
+
     public function __construct()
     {
         $this->recette = new ArrayCollection();
@@ -294,6 +297,18 @@ class Product
                 $recette->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRecoTemp(): ?string
+    {
+        return $this->reco_Temp;
+    }
+
+    public function setRecoTemp(string $reco_Temp): self
+    {
+        $this->reco_Temp = $reco_Temp;
 
         return $this;
     }

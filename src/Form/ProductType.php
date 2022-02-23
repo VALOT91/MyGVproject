@@ -78,7 +78,18 @@ class ProductType extends AbstractType
                 ]),
             ],
         ])
-
+        ->add('reco_temp',TextType::class,[
+            'required' => false,
+            'label' => 'Température recommandée',
+            'attr' => [
+                'placeholder' => 'Entrez la température recommandée'
+            ],
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Le champs température est requis',
+                ]),
+            ],
+        ])
         ->add('reco_duree',TextType::class,[
             'required' => false,
             'label' => 'Durée d\'infusion recommandée',
