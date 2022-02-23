@@ -117,6 +117,7 @@ class ProductType extends AbstractType
             ],
         ])
         ->add('is_bio',CheckboxType::class,[
+            'required' => false,
             'label' => 'Le produit est-il BIO ?',
             'attr' => [
                 'placeholder' => 'Le produit est bio'

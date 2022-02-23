@@ -1,0 +1,41 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}Recette index{% endblock %}
+
+{% block body %}
+    <div class="container my-2">
+        <h1>Recette index</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>produit</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for recette in recettes %}
+                <tr>
+                    <td>{{ recette.id }}</td>
+                    <td>{{ recette.nom }}</td>
+                    <td>{{ recette.description }}</td>
+                    <td>{{ recette.getProduct().designation }}</td>
+                       <td>
+                    <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('recette_show', {'id': recette.id}) }}">Détail</a>
+                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
+                </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+          <a class="btn btn-danger" href="{{ path('recette_new') }}">Nouveau</a>
+     </div>    
+{% endblock %}

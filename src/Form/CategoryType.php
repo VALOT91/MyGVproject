@@ -4,11 +4,13 @@ namespace App\Form;
 
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 class CategoryType extends AbstractType
@@ -36,38 +38,50 @@ class CategoryType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('imagepath1', TextType::class, [
-                'label' => 'Image 1',
-                'required'=> false,
-                'attr' => [ 'placeholder' => 'Entrez le chemin. . .'] ,
+            ->add('imagepath1',FileType::class,[
+                'mapped' => false,
+                'label' => 'Image',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs Image 1 est requis',
+                        'message' => 'Vous devez ajouter une image'
                     ]),
-                ],
+                    new File([
+                        'maxSize' => '1m',
+                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+                    ])
+                ]
             ])
-            ->add('imagepath2', TextType::class, [
-                'label' => 'Image 2',
-                'required'=> false,
-                'attr' => [ 'placeholder' => 'Entrez le chemin. . .'] ,
+            ->add('imagepath2',FileType::class,[
+                'mapped' => false,
+                'label' => 'Image',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs Image 2 est requis',
+                        'message' => 'Vous devez ajouter une image'
                     ]),
-                ],
+                    new File([
+                        'maxSize' => '1m',
+                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+                    ])
+                ]
             ])
-            ->add('imagepath3', TextType::class, [
-                'label' => 'Image 3',
-                'required'=> false,
-                'attr' => [ 'placeholder' => 'Entrez le chemin. . .'] ,
+            ->add('imagepath3',FileType::class,[
+                'mapped' => false,
+                'label' => 'Image',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs Image 3 est requis',
+                        'message' => 'Vous devez ajouter une image'
                     ]),
-                ],
+                    new File([
+                        'maxSize' => '1m',
+                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+                    ])
+                ]
             ])
-
-        ;
+          
+         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

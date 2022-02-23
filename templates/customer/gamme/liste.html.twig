@@ -18,7 +18,7 @@
                          <p class="text-center" >{{ product.getProduct().accroche }} </p>
                         <div style="height:20rem!important;display:flex;justify-content:center">
                                 {# test la présence d'une image #}
-                                {% if product.getProduct().getProduitConditionnement()is not null  %} 
+                                {% if product.getProduct().getProduitConditionnement() is not null  %} 
                                    <img id="img_{{ product.getProduct().id  }}" style="min-width:20rem;objective-fit:cover" src=" {{product.getProduct().getProduitConditionnement().imagePath }}" class="   "  alt="...">
                                 {% endif %} 
                         </div>

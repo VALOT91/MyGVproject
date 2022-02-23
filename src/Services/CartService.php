@@ -64,6 +64,8 @@ class CartService extends AbstractController
     {
         //j'initialise un tableau vide
         $detailCart = [];
+        $detail = [];
+        $total=0;
 
         // récupére le rôle en cours du user pour définir le tarif à ajouter (pro ou public)
         $role = $this->getUser()->getRoles()[0];
@@ -91,7 +93,7 @@ class CartService extends AbstractController
             {
                 continue;
             }
-            $total=0;
+         
             $cartRealProduct = new CartRealProduct();
             $cartRealProduct->setProduct($produitConditionnement);
             $cartRealProduct->setQty($item->getQty());
@@ -110,7 +112,8 @@ class CartService extends AbstractController
             $detailCart[] = $cartRealProduct;
         }
     
-        return $detailCart;
+         $detail = ["detailCart" => $detailCart,"sousTotal"=>$total];
+         return $detail;
     }
 
     public function getTotal()

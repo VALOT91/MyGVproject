@@ -35,9 +35,12 @@ class ProduitConditionnement
     #[ORM\Column(type: 'integer', nullable: true)]
     private $quantiteStock;
 
+  
     public function __construct()
     {
         $this->tarifs = new ArrayCollection();
+        // $this->recettes = new ArrayCollection();
+       
     }
 
     public function getId(): ?int
@@ -134,4 +137,10 @@ class ProduitConditionnement
 
         return $this;
     }
+ 
+    
+
+    
+
+    
 }

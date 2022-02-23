@@ -9,48 +9,31 @@
     <table class="table">
         <thead>
             <tr>
-                {# <th>Id</th> #}
-                <th>Client</th>
-                {# <th>Nom</th>
-                <th>Prenom</th> #}
-                {# <th>Code_postal</th> #}
-                {# <th>Ville</th>
-                <th>Roles</th> #}
-
-                {# <th>Password</th> #}
-                {# <th>Adresse</th> #}
-               
-               
               
-                {# <th>Telephone</th>
+                <th>Client</th>
+                <th>Statut</th>  
+ 
                
-                <th>Points_fidelite</th>
-                <th>Pays</th>
-                <th>Rang_fidelite</th>
-                <th>Kbis</th> #}
-                <th> </th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                {# <td>{{ user.id }}</td> #}
-                <td><strong>{{ user.email }}</strong><br> {{ user.prenom }} {{ user.nom }} {{ user.codePostal }} {{ user.ville }}</td>
-                {# <td></td>
-                <td></td> #}
                 
-                {# <td>{{ user.password }}</td> #}
-                {# <td>{{ user.adresse }}</td> #}
-                {# <td>{{ user.codePostal }}</td> #}
-                {# <td>{{ user.complement }}</td> #}
+                <td><strong>{{ user.email }}</strong><br> {{ user.prenom }} {{ user.nom }} {{ user.codePostal }} {{ user.ville }}</td>
+                
+                <td> 
+                 {{ user.roles ? user.roles|json_encode : '' }} 
+                 {% if user.roles|json_encode is "ROLE_TRANSIT"   %}
+                    En attente de validation
+                {# {% elseif  {{ user.roles}} == ["ROLE_CLIENT"]  %}
+                    Validé #}
+                 {# {% endif   %} #}
+
               
-                {# <td>{{ user.telephone }}</td> #}
-                {# <td></td> #}
-                {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
-                {# <td>{{ user.pointsFidelite }}</td>
-                <td>{{ user.pays }}</td>
-                <td>{{ user.rangFidelite }}</td>
-                <td>{{ user.kbis }}</td> #}
+                
+                </td>
+                
                 <td>
                     <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('user_show', {'id': user.id}) }}">Détail</a>
                     <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('user_edit', {'id': user.id}) }}">modifier</a>

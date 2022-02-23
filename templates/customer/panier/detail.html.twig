@@ -31,7 +31,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for item in cart %}
+                                    {% for item in cart["detailCart"] %}
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
@@ -55,7 +55,7 @@
                                     <tr>
                                         <th colspan="2"></th>
                                         <th><strong>Sous Total</strong></th>
-                                        <th><strong>{{ totalCart | euroPrice }}</strong></th>
+                                        <th><strong>{{ cart['sousTotal'] | euroPrice }}</strong></th>
                                     </tr>
                                 </tbody>
                             </table>

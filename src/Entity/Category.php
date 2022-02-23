@@ -109,4 +109,18 @@ class Category
 
         return $this;
     }
+
+    // public function getImagePath(): ?string
+    // {
+    //     return $this->image_path_3;
+    // }
+
+    // public function setImagePath(?string $image_path_3): self
+    // {
+    //     $this->image_path_3 = $image_path_3;
+
+    //     return $this;
+    // }
+
+
 }

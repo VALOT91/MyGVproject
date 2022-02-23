@@ -5,8 +5,10 @@ namespace App\Form;
 use App\Entity\ProduitConditionnement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
- 
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProduitConditionnementType extends AbstractType
@@ -15,11 +17,21 @@ class ProduitConditionnementType extends AbstractType
     {
         $builder
             ->add('reference')
-            ->add('image_path')
+            ->add('image_path',FileType::class,[
+                'mapped' => false,
+                'label' => 'Upload une image',
+                'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Vous devez ajouter une image'
+                    ]),
+                    new File([
+                        'maxSize' => '1m',
+                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+                    ])
+                ]
+            ])
             ->add('quantiteStock')
-            // ->add('conditionnement')
-            // ->add('produit')
-
             ->add('produit', ChoiceType::class, [
                 'label' => 'Produit',
                 'choices'  =>  $options['product'],
@@ -32,8 +44,6 @@ class ProduitConditionnementType extends AbstractType
                 'multiple'=>false,
                 'choice_label' => 'designation',
             ])
-            
-
         ;
     }
 

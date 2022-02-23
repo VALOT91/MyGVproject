@@ -4,28 +4,50 @@
 
 {% block body %}
 <div class="container my-2">
-    <h1>Conditionnement</h1>
-
-    <table class="table">
-        <tbody>
-             
-            <tr>
-                <th>Reference</th>
-                <td>{{ conditionnement.reference }}</td>
-            </tr>
-            <tr>
-                <th>Designation</th>
-                <td>{{ conditionnement.designation }}</td>
-            </tr>
-            <tr>
-                <th>Poids</th>
-                <td>{{ conditionnement.poids }}</td>
-            </tr>
-         
-        </tbody>
-    </table>
-
-    <a class="btn btn-primary" href="{{ path('conditionnement_index') }}">Retour liste</a>
-
+ 
+    <div class="row d-flex flex-wrap justify-content-around" >
+        <div  class="col-12 col-lg-6 col-md-6 d-flex flex-column align-items-center" style="border-right-style:solid; border-right-color:light-gray; border-right-width:thin">
+                <h1> {{ product.designation }} </h1>
+                <h6>{{ product.accroche }} </h6>
+                {% if product.getProduitConditionnement() is not null  %} 
+                    <img  style="width:25rem;objective-fit:cover" src=" {{product.getProduitConditionnement().imagePath }}" class="   "  alt="...">
+                {% endif %} 
+        </div>
+       
+        <div  class=" mb-4 pb-2 col-12 col-lg-6 col-md-6 d-flex flex-column align-items-center" >
+            <div  class="w-100 d-flex flex-column align-items-center" style="border-bottom-style:solid; border-bottom-color:light-gray; border-bottom-width:thin">
+                 <h3 class="">Description </h3>
+                 <p>{{ product.description }} </p>
+            </div>
+           
+            <h3 class="my-3">Conditionnement disponibles </h3>
+            <div class="d-flex flex-row justify-content-around w-100" style="border-bottom-style:solid; border-bottom-color:light-gray; border-bottom-width:thin"  >
+                
+                 {% for conditionnement in conditionnements %}
+                 <div class="  text-center  "  >
+                   <img  style="width:3rem;objective-fit:cover" src=" {{conditionnement.getConditionnement().imagepath }}" class="   "  alt="...">
+                   <p class="mt-1" style="font-size:x-small">{{conditionnement.getConditionnement().designation}}</p>
+                                             
+                 </div>
+            
+                 {% else %}
+                       Aucun conditionnement pour ce produit
+                {% endfor %}
+            </div>
+            <div  class="w-100 my-3 d-flex flex-column align-items-center" style="border-bottom-style:solid; border-bottom-color:light-gray; border-bottom-width:thin" >
+          
+                 <h3 class="mt-1">Composition </h3>
+                 <p>{{ product.composition }} </p>
+            </div>
     </div>
+     <hr>
+     
+            
+  
+
+ 
+    </div>
+
+</div>
+
 {% endblock %}

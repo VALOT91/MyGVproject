@@ -64,16 +64,11 @@
                 <th>Resumé</th>
                 <td>{{ product.resume }}</td>
             </tr>
-            {# <tr>
-                <th>Parent</th>
-                <td>{{ product.parent ? 'Yes' : 'No' }}</td>
-            </tr> #}
+         
         </tbody>
     </table>
 
     <a class="btn btn-primary" href="{{ path('product_index') }}">retour liste</a>
 </div>
-    {# <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
-
-    {{ include('admin/product/_delete_form.html.twig') }} #}
+  
 {% endblock %}

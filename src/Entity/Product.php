@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -58,6 +60,22 @@ class Product
 
     #[ORM\OneToOne(mappedBy: 'produit', targetEntity: ProduitConditionnement::class, cascade: ['persist', 'remove'])]
     private $produitConditionnement;
+
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Recette::class)]
+    private $recette;
+
+    public function __construct()
+    {
+        $this->recette = new ArrayCollection();
+    }
+
+    // #[ORM\OneToMany(mappedBy: 'product', targetEntity: Recette::class)]
+    // private $recettes;
+
+    // public function __construct()
+    // {
+    //     $this->recettes = new ArrayCollection();
+    // }
 
     public function getId(): ?int
     {
@@ -249,6 +267,35 @@ class Product
         return $this;
     }
 
-     
+   
+    /**
+     * @return Collection|Recette[]
+     */
+    public function getRecette(): Collection
+    {
+        return $this->recette;
+    }
+
+    public function addRecette(Recette $recette): self
+    {
+        if (!$this->recette->contains($recette)) {
+            $this->recette[] = $recette;
+            $recette->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecette(Recette $recette): self
+    {
+        if ($this->recette->removeElement($recette)) {
+            // set the owning side to null (unless already changed)
+            if ($recette->getProduct() === $this) {
+                $recette->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

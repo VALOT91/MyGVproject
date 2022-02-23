@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Form\ProductType;
+use App\Entity\Conditionnement;
 use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,7 +20,7 @@ class ProductController extends AbstractController
     #[Route('admin/product', name: 'product_index', methods: ['GET'])]
     public function index(ProductRepository $productRepository,CategoryRepository $categoryRepository,EntityManagerInterface $em): Response
     {
-            
+        
          
         return $this->render('admin/product/index.html.twig', [
             'products' => $productRepository->findAll(),

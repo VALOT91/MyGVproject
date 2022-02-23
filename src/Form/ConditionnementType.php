@@ -2,13 +2,17 @@
 
 namespace App\Form;
 
+use App\Services\HandleImage;
 use App\Entity\Conditionnement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ConditionnementType extends AbstractType
 {
@@ -51,6 +55,20 @@ class ConditionnementType extends AbstractType
                         'message' => 'Le champs poids est requis',
                     ]),
                 ],
+            ])
+            ->add('image_path',FileType::class,[
+                'mapped' => false,
+                'label' => 'Image',
+                'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Vous devez ajouter une image'
+                    ]),
+                    new File([
+                        'maxSize' => '1m',
+                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+                    ])
+                ]
             ])
             
         ;

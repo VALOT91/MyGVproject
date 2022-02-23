@@ -53,23 +53,23 @@ class GammeController extends AbstractController
     {
         $articles = [] ; 
     
-        $products = $productRepository->findBy(array('category' => $id));
+        $product = $productRepository->find($id);
+       // dd($product);
+        // foreach( $products as $item  )
+        // {
+        //      $article = new Article();
 
-        foreach( $products as $item  )
-        {
-             $article = new Article();
-
-             $article->product = $item;
-             $article->conditionnements = $produitConditionnementRepository->findBy(array('produit' => $item->getId()));
-             $articles[] = $article;
-        }
+        //      $article->product = $item;
+        //      $article->conditionnements = $produitConditionnementRepository->findBy(array('produit' => $item->getId()));
+        //      $articles[] = $article;
+        // }
        
-
-      
+       $conditionnement=$produitConditionnementRepository->findBy(array('produit' =>$id));
+       
        //dd($articles[0]->getConditionnements()[0]->getTarifs()[1]);
-        
+ 
         return $this->render('customer/gamme/show.html.twig', [
-            'articles' => $articles,'category'=> $CategoryRepository->find($id)
+            'product' => $product,'conditionnements'=>$conditionnement
             
         ]);
     } 

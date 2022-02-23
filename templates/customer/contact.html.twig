@@ -1,0 +1,31 @@
+{% extends "/base.html.twig" %}
+
+{% block body %}
+<div class="container py-5">
+
+    <div class="row">
+        {% include "_messages_flash.html.twig" %}
+         <div class="col-12">
+            <div class="card" >
+                <div class="card-header">
+                    <h5>Nous contacter</h5>
+                </div>
+            
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div  class="d-flex flex-row justify-content-between">
+                        <button class="btn btn-primary mt-3">Envoyer</button>
+                    
+                     
+                        <a href="{{ path('home')}}" class="btn btn-secondary mt-3">Abandonner</a>  
+                     {{ form_end(form) }} 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
