@@ -67,9 +67,13 @@ class Product
     #[ORM\Column(type: 'string', length: 255)]
     private $reco_Temp;
 
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: CommandShopLine::class)]
+    private $commandShopLines;
+
     public function __construct()
     {
         $this->recette = new ArrayCollection();
+        $this->commandShopLines = new ArrayCollection();
     }
 
     // #[ORM\OneToMany(mappedBy: 'product', targetEntity: Recette::class)]
@@ -309,6 +313,36 @@ class Product
     public function setRecoTemp(string $reco_Temp): self
     {
         $this->reco_Temp = $reco_Temp;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandShopLine[]
+     */
+    public function getCommandShopLines(): Collection
+    {
+        return $this->commandShopLines;
+    }
+
+    public function addCommandShopLine(CommandShopLine $commandShopLine): self
+    {
+        if (!$this->commandShopLines->contains($commandShopLine)) {
+            $this->commandShopLines[] = $commandShopLine;
+            $commandShopLine->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandShopLine(CommandShopLine $commandShopLine): self
+    {
+        if ($this->commandShopLines->removeElement($commandShopLine)) {
+            // set the owning side to null (unless already changed)
+            if ($commandShopLine->getProduit() === $this) {
+                $commandShopLine->setProduit(null);
+            }
+        }
 
         return $this;
     }

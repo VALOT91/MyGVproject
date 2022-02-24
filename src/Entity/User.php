@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -60,6 +62,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $kbis;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: CommandShop::class)]
+    private $commandShops;
+
+    public function __construct()
+    {
+        $this->commandShops = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -278,6 +288,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setKbis(?string $kbis): self
     {
         $this->kbis = $kbis;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandShop[]
+     */
+    public function getCommandShops(): Collection
+    {
+        return $this->commandShops;
+    }
+
+    public function addCommandShop(CommandShop $commandShop): self
+    {
+        if (!$this->commandShops->contains($commandShop)) {
+            $this->commandShops[] = $commandShop;
+            $commandShop->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandShop(CommandShop $commandShop): self
+    {
+        if ($this->commandShops->removeElement($commandShop)) {
+            // set the owning side to null (unless already changed)
+            if ($commandShop->getUser() === $this) {
+                $commandShop->setUser(null);
+            }
+        }
 
         return $this;
     }
