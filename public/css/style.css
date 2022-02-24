@@ -1,10 +1,14 @@
-body{
- 
- background-image: url(/images/fond.jpg)!important;
+
+/* Image de fond la fiche gamme (fiche produit) */
+.fnd{
+  
+  background-image: url(/images/fond.jpg)!important;  
  background-repeat: no-repeat;
  background-size: cover ;
 }
+/* Couleur de la fiche de la gamme et opacité  */
 .cont {
     opacity:0.95!important;
     background-color: white!important;
 }
+

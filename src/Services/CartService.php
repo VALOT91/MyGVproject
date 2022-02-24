@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Services\CartItem;
 use App\Services\CartRealProduct;
+use App\Repository\ConditionnementRepository;
 use App\Repository\ProduitConditionnementRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,8 +14,7 @@ class CartService extends AbstractController
 {
     private $session;
     private $produitConditionnementRepository;
-    
-     
+         
     public function __construct(SessionInterface $session,ProduitConditionnementRepository $produitConditionnementRepository)
     {
         $this->session = $session;   
@@ -83,22 +83,28 @@ class CartService extends AbstractController
         {
              $typePrice="PRIX_PUBLIC";
         }
-         
+     
         //Je boucle sur mon panier
         foreach($cart as $item)
         {
-            $produitConditionnement = $this->produitConditionnementRepository->find($item->getId());
-
+             //recherche le produitConditionnement avec l'id stocké dans le panier pour avoir access aux tarifs et conditionnement du produit
+             $produitConditionnement = $this->produitConditionnementRepository->find($item->getId());
+            // lit le conditionnement lié
+             $conditionnementRepository = $produitConditionnement->getConditionnement(); 
+             
             if(!$produitConditionnement)
             {
                 continue;
             }
          
             $cartRealProduct = new CartRealProduct();
-            $cartRealProduct->setProduct($produitConditionnement);
-            $cartRealProduct->setQty($item->getQty());
+            $cartRealProduct->setProduct($produitConditionnement);                                  // données globale de la reference produit
+            $cartRealProduct->setQty($item->getQty());                                              // quantité 
+            $cartRealProduct->setConditionnement($conditionnementRepository->getDesignation());     // libellé du conditionnement
+            
+           
 
-            // recherche le tarif actuel (pro ou public)           
+            // recherche le tarif actuel (pro ou public) en parcourant les tarifs liés à cette reference  comparaison sur le type de tarif.          
             foreach( $produitConditionnement->GetTarifs() as $tarif  )
             {
                 if($tarif->getTypePrix() === $typePrice)

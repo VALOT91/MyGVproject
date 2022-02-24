@@ -13,6 +13,8 @@ class CartRealProduct
 
     private $price;
 
+    private $conditionnement;
+
     public function getProduct()
     {
         return $this->product;
@@ -63,5 +65,16 @@ class CartRealProduct
         return  $this->price * $this->qty;;
     }
 
-   
+    public function getConditionnement()
+    {
+        return $this->conditionnement;
+    }
+
+    public function setConditionnement($conditionnement)
+    {
+        $this->conditionnement =$conditionnement;
+        return $this;
+    }
+
+
 }
