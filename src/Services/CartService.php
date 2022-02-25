@@ -117,9 +117,9 @@ class CartService extends AbstractController
             
             $detailCart[] = $cartRealProduct;
         }
-    
-         $detail = ["detailCart" => $detailCart,"sousTotal"=>$total];
-         return $detail;
+          
+         $detail = ["detailCart" => $detailCart,"sousTotal"=>$total  ];
+         return $detail; 
     }
 
     public function getTotal()

@@ -19,30 +19,30 @@ class StripeController extends AbstractController
         $domain = 'https://localhost:8000';
 
         /** @var CartRealProduct[] $detailCart */
-        $detailCart = $cartService->detail();
-
+        $Cart = $cartService->detail();
+   
         $productForStripe = [];
 
         /** @var User $user */
         $user = $this->getUser();
 
-        foreach($detailCart as $item)
-        {
+        foreach($Cart["detailCart"] as $item)
+         {
             $productForStripe[] = [
                 'price_data' => [
                     'currency' => 'eur',
-                    'unit_amount' => $item->getProduct()->getPrice(),
+                    'unit_amount' => $item->getPrice(),
                     'product_data' => [
-                        'name' => $item->getProduct()->getName(),
+                        'name' => $item->getProduct()->getProduit()->getDesignation(),
                         'images' => [
-                            $domain . $item->getProduct()->getImage()
+                           // $domain . $item.product.imagePath 
                         ]
                     ]
                 ],
                 'quantity' => $item->getQty()
             ];
         }
-
+        
         $checkout_session = Session::create([
             'customer_email' => $user->getEmail(),
             'payment_method_types' => [

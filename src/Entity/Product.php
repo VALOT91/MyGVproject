@@ -67,8 +67,10 @@ class Product
     #[ORM\Column(type: 'string', length: 255)]
     private $reco_Temp;
 
-    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: CommandShopLine::class)]
-    private $commandShopLines;
+    // #[ORM\OneToMany(mappedBy: 'produit', targetEntity: CommandShopLine::class)]
+    // private $commandShopLines;
+    // #[ORM\OneToOne(mappedBy: 'produit', targetEntity: CommandShopLine::class)]
+    // private $commandShopLines;
 
     public function __construct()
     {
@@ -325,26 +327,26 @@ class Product
         return $this->commandShopLines;
     }
 
-    public function addCommandShopLine(CommandShopLine $commandShopLine): self
-    {
-        if (!$this->commandShopLines->contains($commandShopLine)) {
-            $this->commandShopLines[] = $commandShopLine;
-            $commandShopLine->setProduit($this);
-        }
+    // public function addCommandShopLine(CommandShopLine $commandShopLine): self
+    // {
+    //     if (!$this->commandShopLines->contains($commandShopLine)) {
+    //         $this->commandShopLines[] = $commandShopLine;
+    //         $commandShopLine->setProduit($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCommandShopLine(CommandShopLine $commandShopLine): self
-    {
-        if ($this->commandShopLines->removeElement($commandShopLine)) {
-            // set the owning side to null (unless already changed)
-            if ($commandShopLine->getProduit() === $this) {
-                $commandShopLine->setProduit(null);
-            }
-        }
+    // public function removeCommandShopLine(CommandShopLine $commandShopLine): self
+    // {
+    //     if ($this->commandShopLines->removeElement($commandShopLine)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($commandShopLine->getProduit() === $this) {
+    //             $commandShopLine->setProduit(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
 }

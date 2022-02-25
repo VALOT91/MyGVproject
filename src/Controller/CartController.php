@@ -33,12 +33,8 @@ class CartController extends AbstractController
 
         $this->addFlash("success","Le produit a bien été ajouté au panier");
        
-        // if($request->query->get('returnToCart'))
-        // {
             return $this->redirectToRoute("cart_detail");
-        // }
-
-        // return $this->redirectToRoute("home");
+       
     }
 
     #[Route('/panier/supprimer/{id}', name: 'cart_remove')]
@@ -64,7 +60,6 @@ class CartController extends AbstractController
         $cart = $this->cartService->detail();
  
         $totalCart = $this->cartService->getTotal();
-
         
         return $this->render("customer/panier/detail.html.twig",[
             'cart' => $cart,

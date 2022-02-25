@@ -15,23 +15,29 @@ class CommandShop
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'datetime')]
-    private $createdAt;
-
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $isPayed;
-
-    #[ORM\Column(type: 'integer')]
-    private $totalPrice;
-
-    #[ORM\OneToOne(targetEntity: DeliveryAddress::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private $deliveryAddress;
-
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'commandShops')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $isPayed = false;
+
+    #[ORM\Column(type: 'integer')]
+    private $totalPrice;
+
+    // #[ORM\OneToOne(targetEntity: DeliveryAddress::class, cascade: ['persist', 'remove'])]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private $deliveryAddress;
+
+    // private $deliveryAdressId;
+
+    #[ORM\OneToOne(mappedBy: 'commandShop', targetEntity: DeliveryAddress::class, cascade: ['persist', 'remove'])]
+    private $deliveryAddress;
+
+   
     #[ORM\OneToMany(mappedBy: 'commandShop', targetEntity: CommandShopLine::class)]
     private $commandShopLines;
 
@@ -92,6 +98,18 @@ class CommandShop
 
         return $this;
     }
+
+    // public function getDeliveryAddressId(): ?Int
+    // {
+    //     return $this->deliveryAdressId;
+    // }
+
+    // public function setDeliveryAddressId(int $deliveryAdressId): self
+    // {
+    //     $this->deliveryAdressId = $deliveryAdressId;
+
+    //     return $this;
+    // }
 
     public function getUser(): ?User
     {

@@ -13,6 +13,10 @@ class DeliveryAddress
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[ORM\OneToOne(inversedBy: 'deliveryAddress', targetEntity: CommandShop::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $commandShop;
+
     #[ORM\Column(type: 'string', length: 255)]
     private $country;
 
@@ -31,12 +35,16 @@ class DeliveryAddress
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $commentary;
 
-    private $commandShop;
+    // #[ORM\OneToOne(inversedBy: 'deliveryAddress', targetEntity: CommandShop::class, cascade: ['persist', 'remove'])]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private $commandShop;
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    
 
     public function getCountry(): ?string
     {

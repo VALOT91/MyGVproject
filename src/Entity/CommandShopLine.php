@@ -16,14 +16,18 @@ class CommandShopLine
     #[ORM\Column(type: 'integer', nullable: true)]
     private $quantity;
 
-    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'commandShopLines')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $produit;
+    // #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'commandShopLines')]
+    // #[ORM\OneToOne(targetEntity: Product::class, inversedBy: 'commandShopLines')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private $produit_id;
 
     #[ORM\ManyToOne(targetEntity: CommandShop::class, inversedBy: 'commandShopLines')]
     private $commandShop;
 
     private $product;
+
+    #[ORM\Column(type: 'integer')]
+    private $produit_id;
 
 
     public function getId(): ?int
@@ -43,18 +47,6 @@ class CommandShopLine
         return $this;
     }
 
-    public function getProduit(): ?Product
-    {
-        return $this->produit;
-    }
-
-    public function setProduit(?Product $produit): self
-    {
-        $this->produit = $produit;
-
-        return $this;
-    }
-
     public function getCommandShop(): ?CommandShop
     {
         return $this->commandShop;
@@ -67,14 +59,38 @@ class CommandShopLine
         return $this;
     }
 
-    public function getProduct(): ?Product
-    {
+    public function getProduct(): ?Product  
+      {
         return $this->product;
     }
 
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getProductId(): ?int
+    {
+        return $this->product_id;
+    }
+
+    public function setProductId(int $product_id): self
+    {
+        $this->product_id = $product_id;
+
+        return $this;
+    }
+
+    public function getProduitId(): ?int
+    {
+        return $this->produit_id;
+    }
+
+    public function setProduitId(int $produit_id): self
+    {
+        $this->produit_id = $produit_id;
 
         return $this;
     }
