@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+ 
 
 class ProduitConditionnementType extends AbstractType
 {
@@ -19,18 +20,21 @@ class ProduitConditionnementType extends AbstractType
             ->add('reference')
             ->add('image_path',FileType::class,[
                 'mapped' => false,
-                'label' => 'Upload une image',
-                'required' => false,
+                'label' => false,
+                'required' => is_null($builder->getData()->getId()),
+                'data_class' => null,
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Vous devez ajouter une image'
-                    ]),
+                    // new NotBlank([
+                    //     'message' => 'Vous devez ajouter une image'
+                    // ]),
                     new File([
                         'maxSize' => '1m',
-                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.',
+                       
+                      
                     ])
                 ]
-            ])
+            ]) 
             ->add('quantiteStock')
             ->add('produit', ChoiceType::class, [
                 'label' => 'Produit',

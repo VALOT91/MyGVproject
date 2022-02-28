@@ -58,12 +58,12 @@ class ConditionnementType extends AbstractType
             ])
             ->add('image_path',FileType::class,[
                 'mapped' => false,
-                'label' => 'Image',
-                'required' => false,
+                'label' => false,
+                'required' => is_null($builder->getData()->getId()),
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Vous devez ajouter une image'
-                    ]),
+                    // new NotBlank([
+                    //     'message' => 'Vous devez ajouter une image'
+                    // ]),
                     new File([
                         'maxSize' => '1m',
                         'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'

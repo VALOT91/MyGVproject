@@ -19,6 +19,12 @@ class HandleImage
         $this->parameterBag = $parameterBag;
     }
 
+    public function getImage(string $oldImage)
+    {
+          return  $this->parameterBag->get('app_images_directory') . '/../..' . $oldImage;
+
+    }
+
     public function save(UploadedFile $file)
     {
          //Je recupere le nom du fichier

@@ -29,6 +29,9 @@ class CommandShopLine
     #[ORM\Column(type: 'integer')]
     private $produit_id;
 
+    #[ORM\Column(type: 'integer')]
+    private $unitPrice;
+
 
     public function getId(): ?int
     {
@@ -71,17 +74,17 @@ class CommandShopLine
         return $this;
     }
 
-    public function getProductId(): ?int
-    {
-        return $this->product_id;
-    }
+    // public function getProductId(): ?int
+    // {
+    //     return $this->product_id;
+    // }
 
-    public function setProductId(int $product_id): self
-    {
-        $this->product_id = $product_id;
+    // public function setProductId(int $product_id): self
+    // {
+    //     $this->product_id = $product_id;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getProduitId(): ?int
     {
@@ -91,6 +94,18 @@ class CommandShopLine
     public function setProduitId(int $produit_id): self
     {
         $this->produit_id = $produit_id;
+
+        return $this;
+    }
+
+    public function getUnitPrice(): ?int
+    {
+        return $this->unitPrice;
+    }
+
+    public function setUnitPrice(int $unitPrice): self
+    {
+        $this->unitPrice = $unitPrice;
 
         return $this;
     }

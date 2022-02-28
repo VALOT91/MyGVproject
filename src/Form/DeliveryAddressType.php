@@ -13,6 +13,10 @@ class DeliveryAddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('raison_soc',TextType::class,[
+                'label' => 'Raison sociale',
+                'required' => false
+            ])
             ->add('country',TextType::class,[
                 'label' => 'Pays de livraison',
                 'required' => false

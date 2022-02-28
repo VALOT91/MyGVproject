@@ -40,8 +40,14 @@ function choice(m)
     Item.click();
   });
     
-
-
+  
 });
 
-         
+// let tst  =  document.getElementById("produit_conditionnement_image_path");  
+
+//   tst.addEventListener("change", function(e){
+  
+//     alert(e.innerHTML);
+
+
+//   });

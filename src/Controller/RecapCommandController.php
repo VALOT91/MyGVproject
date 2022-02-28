@@ -28,8 +28,8 @@ class RecapCommandController extends AbstractController
 
         $cart = $cartService->detail();
 
-        $totalCart = $cartService->getTotal();
-
+        $totalCart = $cart["sousTotal"]; //$cartService->getTotal();
+        
         /** @var User $user */
         $user = $this->getUser();
 
@@ -50,7 +50,7 @@ class RecapCommandController extends AbstractController
             $em->persist($deliveryAddress);
             $em->flush();                 
                 
-        //    dd(item.product.getProduit().designation);
+   
        
 
             //2eme etape : Creer les lignes de la commande 
@@ -61,6 +61,7 @@ class RecapCommandController extends AbstractController
                 $commandShopLine->setCommandShop($commandShop);
                 $commandShopLine->setProduct($item->getProduct()->getProduit());
                 $commandShopLine->setQuantity($item->getQty());
+                $commandShopLine->setUnitPrice($item->getPrice());
                 $commandShopLine->setProduitId($item->getProduct()->getProduit()->getId());     
                 
                 $em->persist($commandShopLine);

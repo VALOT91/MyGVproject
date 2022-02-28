@@ -11,10 +11,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ConditionnementRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\ParameterBag;
 use App\Repository\ProduitConditionnementRepository;
+use DateTime;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 #[Route('admin/produit/conditionnement')]
 class ProduitConditionnementController extends AbstractController
@@ -39,6 +43,9 @@ class ProduitConditionnementController extends AbstractController
             //Recuperer le fichier 
             /** @var UploadedFile $file */
             $file = $form->get('image_path')->getData();
+
+          
+
             //Verifier que il y a bien un fichier
             if($file)
             {
@@ -70,19 +77,36 @@ class ProduitConditionnementController extends AbstractController
     {
      $oldImage = $produitConditionnement->getImagePath();
 
-        $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll()]);
-        $form->handleRequest($request);
+         $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll()]);
+         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        //   $file = new File($handleImage->getImage((string)$oldImage));
+      
+            // $file = $request->files->get('image_path');
+            // if(!empty($file))
+            // {
+            //     dd($file);
+            // }
+          
+         if ($form->isSubmitted() && $form->isValid()) {
 
              //Recuperer le fichier 
             /** @var UploadedFile $file */
             $file = $form->get('image_path')->getData();
+             
             //Verifier que il y a bien un fichier
             if($file)
             {
+               
                 $produitConditionnement->setImagepath($handleImage->save($file));
                 $handleImage->edit($file,(string)$oldImage);
+    
+            }
+            else
+            {
+               
+                $produitConditionnement->setImagepath($oldImage);
+
             }
 
             $entityManager->flush();

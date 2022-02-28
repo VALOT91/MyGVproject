@@ -30,12 +30,19 @@ class RecetteController extends AbstractController
         $form = $this->createForm(RecetteType::class, $recette,['prod' => $productRepository->findAll()]);
         
         $form->handleRequest($request);
+        $oldImage = $recette->getImagePath();
        
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($recette);
             $entityManager->flush();
 
             return $this->redirectToRoute('recette_index', [], Response::HTTP_SEE_OTHER);
+        }
+        else
+        {
+           
+            $recette->setImagepath($oldImage);
+
         }
 
         return $this->renderForm('admin/recette/new.html.twig', [

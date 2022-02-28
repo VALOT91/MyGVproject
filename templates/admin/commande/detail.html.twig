@@ -1,4 +1,4 @@
-{% extends "customer/base.html.twig" %}
+{% extends "admin/base_admin.html.twig" %}
 
 {% block body %}
 
@@ -9,7 +9,7 @@
         </div>
         <div class="col-12">
             <h3 class="text-center">
-                Commande #{{ commandShop.id }}
+                Commande N°{{ commandShop.id }}
             </h3>
         </div>
 
@@ -34,27 +34,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for item in commandShop.commandShopLines %}
+                                    {% for item in products %}    
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                    <img src=" {{ item.product.image }}" alt="{{ item.product.name }}" class="imageProductCart">
+                                                    {# <img src=" {{ item.product.image }}" alt="{{ item.product.name }}" class="imageProductCart"> #}
                                                     <div class="d-flex flex-column align-items-center justify-content-center">
-                                                        <p>{{ item.product.name }}</p>
+                                                         <p>{{ item.getProduct().designation  }}</p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>{{ item.product.price | euroPrice }}</td>
-                                            <td>
+                                            <td>{{ item.getUnitPrice | euroPrice }}</td>
+                                            <td>{{ item.getQte() }}</td>
+                                            <td>{{ item.getTotal | euroPrice }}</td> 
+                                            {# <td>
                                                 <button class="btn btn-light">{{ item.quantity }}</button>
                                             </td>
-                                            <td>{{ item.total | euroPrice }}</td>
+                                              #}
                                         </tr>
                                     {% endfor%}
                                     <tr>
                                         <th colspan="2"></th>
                                         <th><strong>Sous Total</strong></th>
-                                        <th><strong>{{ commandShop.totalPrice | euroPrice }}</strong></th>
+                                        {# <th><strong>{{ commandShop.totalPrice | euroPrice }}</strong></th> #}
                                     </tr>
                                 </tbody>
                             </table>
@@ -63,11 +65,11 @@
     
                 </div>
                 <div class="card-footer">
-                     {% if commandShop.isPayed is same as false %}
+                     {# {% if commandShop.isPayed is same as false %}
                         <span class="text-secondary">Non payée</span>
                     {% else %}
                             <span class="text-success">Payée</span>
-                    {% endif %}
+                    {% endif %} #}
                 </div>
               
             </div>
@@ -79,11 +81,11 @@
                     <h3>Adresse de livraison</h3>
                 </div>
                 <div class="card-body">
-                    <p>Pays : {{ commandShop.deliveryAddress.country }}</p>
-                     <p>Ville : {{ commandShop.deliveryAddress.city }}</p>
+                    <p>Pays : {{ commandShop.getDeliveryAddress().getCountry() }}</p>
+                     {# <p>Ville : {{ commandShop.deliveryAddress.city }}</p>
                       <p>Code Postal : {{ commandShop.deliveryAddress.postalCode }}</p>
                        <p>Rue  : {{ commandShop.deliveryAddress.street }}</p>
-                        <p>Commentaire : {{ commandShop.deliveryAddress.commentary }}</p>
+                        <p>Commentaire : {{ commandShop.deliveryAddress.commentary }}</p> #}
 
                 </div>
             </div>

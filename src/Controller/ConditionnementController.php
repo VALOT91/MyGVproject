@@ -41,6 +41,7 @@ class ConditionnementController extends AbstractController
             {
               $conditionnement->setImagepath($handleImage->save($file));
             }
+           
 
             $entityManager->persist($conditionnement);
             $entityManager->flush();
@@ -79,6 +80,10 @@ class ConditionnementController extends AbstractController
                // $handleImage->edit($file,$conditionnement,$oldImage);
                $conditionnement->setImagepath($handleImage->save($file));
                $handleImage->edit($file,(string)$oldImage);
+            }
+            else
+            {
+                $conditionnement->setImagepath($oldImage);
             }
 
 

@@ -1,4 +1,4 @@
-{% extends "customer/base.html.twig" %}
+{% extends "admin/base_admin.html.twig" %}
 
 {% block body %}
 
@@ -6,7 +6,7 @@
     <div class="row ">
         <div class="col-12">
             <h3 class="text-center">
-                Mes commandes
+                Commandes
             </h3>
         </div>
 
@@ -19,25 +19,29 @@
             <div class="card">
                 <div class="card-body">
                 
+              
 
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#numero</th>
-                                        <th scope="col">date</th>
-                                        <th scope="col">Payée ?</th>
+                                        <th scope="col">N°Commande</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Raison sociale</th>
+                                        <th scope="col">Paiement</th>
+                                        <th scope="col">Livraison</th>
                                         <th scope="col">Total</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody>   
                                     {% for item in commandShop %}
                                         <tr>
                                             <td>
                                                 {{ item.id }}
                                             </td>
                                             <td>{{ item.createdAt | date('d-M-Y') }}</td>
+                                              <td>{{item.getDeliveryAddress().getRaisonSoc()   }}</td>   
                                             <td>
                                                 {% if item.isPayed is same as false %}
                                                     <span class="text-secondary">Non payée</span>
@@ -45,7 +49,9 @@
                                                      <span class="text-success">Payée</span>
                                                 {% endif %}
                                             </td>
+                                            <td></td>
                                             <td>{{ item.totalPrice | euroPrice }}</td>
+                                           
                                               <td>
                                                 <a href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
                                                     Consulter

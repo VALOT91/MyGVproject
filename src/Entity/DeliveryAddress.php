@@ -35,6 +35,9 @@ class DeliveryAddress
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $commentary;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $raisonSoc;
+
     // #[ORM\OneToOne(inversedBy: 'deliveryAddress', targetEntity: CommandShop::class, cascade: ['persist', 'remove'])]
     // #[ORM\JoinColumn(nullable: false)]
     // private $commandShop;
@@ -94,24 +97,24 @@ class DeliveryAddress
         return $this;
     }
 
-    public function getComplement(): ?string
+    public function getComplement(): string
     {
         return $this->complement;
     }
 
-    public function setComplement(?string $complement): self
+    public function setComplement(string $complement): self
     {
         $this->complement = $complement;
 
         return $this;
     }
 
-    public function getCommentary(): ?string
+    public function getCommentary(): string
     {
         return $this->commentary;
     }
 
-    public function setCommentary(?string $commentary): self
+    public function setCommentary(string $commentary): self
     {
         $this->commentary = $commentary;
 
@@ -126,6 +129,18 @@ class DeliveryAddress
     public function setCommandShop(CommandShop $commandShop): self
     {
         $this->commandShop = $commandShop;
+
+        return $this;
+    }
+
+    public function getRaisonSoc(): ?string
+    {
+        return $this->raisonSoc;
+    }
+
+    public function setRaisonSoc(string $raisonSoc): self
+    {
+        $this->raisonSoc = $raisonSoc;
 
         return $this;
     }

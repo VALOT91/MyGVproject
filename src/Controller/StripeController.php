@@ -52,10 +52,10 @@ class StripeController extends AbstractController
                 $productForStripe
             ],
             'mode' => 'payment',
-              'success_url' => $domain . '/paiementreussi',
-              'cancel_url' => $domain . '/paiementechoue',
+              'success_url' => $domain.'/paiementReussi.html.twig',  
+              'cancel_url' =>   $domain.'/stripe_cancel_payment',
           ]);
-
+     
           return $this->redirect($checkout_session->url);
     }
 }

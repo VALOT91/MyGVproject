@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ProduitConditionnementRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\ProduitConditionnementRepository;
 
 #[ORM\Entity(repositoryClass: ProduitConditionnementRepository::class)]
 class ProduitConditionnement
@@ -18,7 +19,7 @@ class ProduitConditionnement
     #[ORM\Column(type: 'string', length: 50)]
     private $reference;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 50)]
     private $image_path;
 
     #[ORM\ManyToOne(inversedBy: 'produit', targetEntity: Conditionnement::class, cascade: ['persist', 'remove'])]
@@ -139,7 +140,6 @@ class ProduitConditionnement
     }
  
     
-
     
 
     

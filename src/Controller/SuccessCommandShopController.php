@@ -26,7 +26,7 @@ class SuccessCommandShopController extends AbstractController
 
         $em->flush();
 
-        return $this->redirectToRoute("thank_you_page");
+        return $this->redirectToRoute("/customer/Paiement/thank_you_page");
     }
 
     #[Route('/paiementechoue', name: 'stripe_cancel_payment')]
