@@ -97,7 +97,7 @@ class DeliveryAddress
         return $this;
     }
 
-    public function getComplement(): string
+    public function getComplement(): ?string
     {
         return $this->complement;
     }
@@ -109,7 +109,7 @@ class DeliveryAddress
         return $this;
     }
 
-    public function getCommentary(): string
+    public function getCommentary(): ?string
     {
         return $this->commentary;
     }

@@ -11,11 +11,11 @@ use App\Entity\Product;
 
 class CommandService extends AbstractController
 {
-    private $session;
-    private $produitConditionnementRepository;
+   
     private $product;
     private $qte;
     private $unitPrice;
+    private $conditionnement;
          
     public function getProduct(): Product
     {
@@ -52,7 +52,17 @@ class CommandService extends AbstractController
 
         return $this;
     }
-    
+    public function getConditionnement(): string
+    {
+        return $this->conditionnement;
+    }
+
+    public function setConditionnement(string $conditionnement): self
+    {
+        $this->conditionnement = $conditionnement;
+
+        return $this;
+    }
     public function getTotal(): int
     {
         return $this->unitPrice* $this->qte;

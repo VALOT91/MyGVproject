@@ -32,7 +32,8 @@ class RecapCommandController extends AbstractController
         
         /** @var User $user */
         $user = $this->getUser();
-
+        
+       
         if($form->isSubmitted() && $form->isValid())
         {
             //1ere etape : Creer la commande
@@ -51,7 +52,7 @@ class RecapCommandController extends AbstractController
             $em->flush();                 
                 
    
-       
+          
 
             //2eme etape : Creer les lignes de la commande 
              foreach($cart["detailCart"] as $item)
@@ -62,7 +63,8 @@ class RecapCommandController extends AbstractController
                 $commandShopLine->setProduct($item->getProduct()->getProduit());
                 $commandShopLine->setQuantity($item->getQty());
                 $commandShopLine->setUnitPrice($item->getPrice());
-                $commandShopLine->setProduitId($item->getProduct()->getProduit()->getId());     
+                $commandShopLine->setProduitId($item->getProduct()->getProduit()->getId());   
+                $commandShopLine->setConditionnement($item->getConditionnement());     
                 
                 $em->persist($commandShopLine);
             }     

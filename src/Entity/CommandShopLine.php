@@ -32,6 +32,9 @@ class CommandShopLine
     #[ORM\Column(type: 'integer')]
     private $unitPrice;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $conditionnement;
+
 
     public function getId(): ?int
     {
@@ -106,6 +109,18 @@ class CommandShopLine
     public function setUnitPrice(int $unitPrice): self
     {
         $this->unitPrice = $unitPrice;
+
+        return $this;
+    }
+
+    public function getConditionnement(): ?string
+    {
+        return $this->conditionnement;
+    }
+
+    public function setConditionnement(string $conditionnement): self
+    {
+        $this->conditionnement = $conditionnement;
 
         return $this;
     }

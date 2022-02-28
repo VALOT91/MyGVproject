@@ -2,32 +2,28 @@
 
 namespace App\Controller;
 
-use App\Services\CommandService;
 use App\Entity\User;
-use App\Repository\CommandShopRepository;
+use App\Services\CommandService;
 use App\Repository\ProductRepository;
+use App\Repository\CommandShopRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommandShopController extends AbstractController
 {
     #[Route('/admin/commande/liste', name: 'command_shop_list')]
-    public function commandShopList(CommandShopRepository $commandShopRepository)
+    public function commandShopList(CommandShopRepository $commandShopRepository,  PaginatorInterface $paginator,  Request $request)
     {
         /** @var User $user */
         $user = $this->getUser();
 
-        // $commandShop = $commandShopRepository->findBy([
-        //     'user' => $user
-        // ],
-        // [
-        //     'createdAt' => 'DESC'
-        // ]);
-
-        $commandShop = $commandShopRepository->findAll( 
+      
+        $commandShop = $paginator->paginate($commandShopRepository->findAll( 
         [
             'createdAt' => 'DESC'
-        ]);
+        ]), $request->query->getInt('page', 1), 7 );
         
         return $this->render("admin/commande/list.html.twig",[
             'commandShop' => $commandShop
@@ -51,6 +47,7 @@ class CommandShopController extends AbstractController
             $commandService->setProduct( $product);
             $commandService->setQte($item->getQuantity());
             $commandService->setUnitPrice($item->getUnitPrice());
+            $commandService->setConditionnement($item->getConditionnement());
            
               $products [] =  $commandService;
         }

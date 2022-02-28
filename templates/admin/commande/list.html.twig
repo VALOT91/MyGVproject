@@ -25,36 +25,41 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">N°Commande</th>
+                                        <th scope="col">Cde.</th>
                                         <th scope="col">Date</th>
-                                        <th scope="col">Raison sociale</th>
-                                        <th scope="col">Paiement</th>
-                                        <th scope="col">Livraison</th>
+                                        <th scope="col">Société</th>
+                                        {# <th scope="col">Paiement</th> #}
+                                       
                                         <th scope="col">Total</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>   
+                                    {# {{ knp_pagination_render(commandShop) }} #}
+                                    {{ knp_pagination_render(commandShop, '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
                                     {% for item in commandShop %}
                                         <tr>
                                             <td>
-                                                {{ item.id }}
+                                             <a href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
+                                                    #{{ item.id }}
+                                                </a>
+                                                
                                             </td>
-                                            <td>{{ item.createdAt | date('d-M-Y') }}</td>
+                                            <td>{{ item.createdAt | date('d-m-y') }}</td>
                                               <td>{{item.getDeliveryAddress().getRaisonSoc()   }}</td>   
-                                            <td>
+                                            {# <td>
                                                 {% if item.isPayed is same as false %}
                                                     <span class="text-secondary">Non payée</span>
                                                 {% else %}
                                                      <span class="text-success">Payée</span>
                                                 {% endif %}
-                                            </td>
-                                            <td></td>
+                                            </td> #}
+                                          
                                             <td>{{ item.totalPrice | euroPrice }}</td>
                                            
                                               <td>
                                                 <a href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
-                                                    Consulter
+                                                    <img src="/images/eye.svg" />
                                                 </a>
                                               </td>
                                         </tr>

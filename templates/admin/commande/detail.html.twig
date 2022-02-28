@@ -5,7 +5,7 @@
 <div class="container py-5">
     <div class="row ">
         <div class="col-12 mb-3">
-            <a href="{{ path('command_shop_list') }}" class="btn btn-dark">Revenir aux commandes</a>
+            <a href="{{ path('command_shop_list') }}" class="btn btn-dark">Revenir à la liste</a>
         </div>
         <div class="col-12">
             <h3 class="text-center">
@@ -28,7 +28,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Produit</th>
-                                        <th scope="col">P.U</th>
+                                        <th scope="col">Condit.</th>
+                                        <th scope="col">Prix.Unit</th>
                                         <th scope="col" >Qté</th>
                                         <th scope="col">Total</th>
                                     </tr>
@@ -44,32 +45,26 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                              <td>{{ item.getConditionnement() }}</td>
                                             <td>{{ item.getUnitPrice | euroPrice }}</td>
+                                          
                                             <td>{{ item.getQte() }}</td>
                                             <td>{{ item.getTotal | euroPrice }}</td> 
-                                            {# <td>
-                                                <button class="btn btn-light">{{ item.quantity }}</button>
-                                            </td>
-                                              #}
+                                           
                                         </tr>
                                     {% endfor%}
-                                    <tr>
-                                        <th colspan="2"></th>
-                                        <th><strong>Sous Total</strong></th>
-                                        {# <th><strong>{{ commandShop.totalPrice | euroPrice }}</strong></th> #}
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
+                            <div  class="text-end h5">
+                                <strong>Sous-total: {{ commandShop.totalPrice | euroPrice }}</strong>
+                            </div>
                         </div>
 
     
                 </div>
                 <div class="card-footer">
-                     {# {% if commandShop.isPayed is same as false %}
-                        <span class="text-secondary">Non payée</span>
-                    {% else %}
-                            <span class="text-success">Payée</span>
-                    {% endif %} #}
+                 
                 </div>
               
             </div>
@@ -80,12 +75,16 @@
                 <div class="card-header">
                     <h3>Adresse de livraison</h3>
                 </div>
-                <div class="card-body">
-                    <p>Pays : {{ commandShop.getDeliveryAddress().getCountry() }}</p>
-                     {# <p>Ville : {{ commandShop.deliveryAddress.city }}</p>
-                      <p>Code Postal : {{ commandShop.deliveryAddress.postalCode }}</p>
-                       <p>Rue  : {{ commandShop.deliveryAddress.street }}</p>
-                        <p>Commentaire : {{ commandShop.deliveryAddress.commentary }}</p> #}
+                <div class="card-body" style="line-height:12px">
+                    <p><b>{{ commandShop.getDeliveryAddress().getRaisonSoc() | upper }}</b></p>
+                    <p>{{ commandShop.deliveryAddress.street }}
+                        {% if commandShop.deliveryAddress.complement is not null     %}
+                            - {{ commandShop.deliveryAddress.complement }}
+                        {% endif %}
+                     </p>  
+                    <p>{{ commandShop.deliveryAddress.postalCode }}  {{ commandShop.getDeliveryAddress.city | upper}} ({{ commandShop.getDeliveryAddress().getCountry() | upper }})</p> 
+                    <hr>                  
+                    <p><b>Commentaire :</b> {{ commandShop.deliveryAddress.commentary }}</p>  
 
                 </div>
             </div>
