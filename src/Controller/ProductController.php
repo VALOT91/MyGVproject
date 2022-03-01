@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use App\Entity\Category;
 use App\Form\ProductType;
-use App\Entity\Conditionnement;
+use App\Form\SearchProductType;
+use App\Search\SearchProduct;
 use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,12 +18,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductController extends AbstractController
 {
     #[Route('admin/product', name: 'product_index', methods: ['GET'])]
-    public function index(ProductRepository $productRepository,CategoryRepository $categoryRepository,EntityManagerInterface $em): Response
+    public function index(Request $request,ProductRepository $productRepository): Response
     {
-        
+        $search = new SearchProduct();
+
+        $form = $this->createForm(SearchProductType::class,$search);
+
+        $form->handleRequest($request);
+
+        $products = $productRepository->findByFilter($search);
          
         return $this->render('admin/product/index.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $products,'form' => $form->createView()
            
         ]);
     }

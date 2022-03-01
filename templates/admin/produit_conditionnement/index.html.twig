@@ -5,7 +5,13 @@
 {% block body %}
 <div class="container my-2">
     <h1>Stock articles</h1>
-
+            <div class="">
+                {{form_start(form)}}
+                {{form_widget(form)}}
+                <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
+                <a href={{ path('produit_conditionnement_index') }} class="btn btn-secondary mt-3">Réinitialiser</a>
+                {{form_end(form)}}
+            </div>
     <table class="table">
         <thead>
             <tr>

@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
- 
+use App\Form\SearchProductConditionnementType;
+use App\Search\SearchProductConditionnement;
 use App\Services\HandleImage;
 use App\Repository\ProductRepository;
 use App\Entity\ProduitConditionnement;
@@ -24,10 +25,20 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class ProduitConditionnementController extends AbstractController
 {
     #[Route('admin/produit/conditionnement', name: 'produit_conditionnement_index', methods: ['GET'])]
-    public function index(ProduitConditionnementRepository $produitConditionnementRepository): Response
+    public function index(Request $request,ProduitConditionnementRepository $produitConditionnementRepository): Response
     {
+
+        $search = new SearchProductConditionnement();
+
+        $form = $this->createForm(SearchProductConditionnementType::class,$search);
+
+        $form->handleRequest($request);
+
+        $produitConditionnement = $produitConditionnementRepository->findByFilter($search);
+
         return $this->render('admin/produit_conditionnement/index.html.twig', [
-            'produit_conditionnements' => $produitConditionnementRepository->findAll(),
+            'produit_conditionnements' => $produitConditionnement,'form' => $form->createView()
+           
         ]);
     }
 

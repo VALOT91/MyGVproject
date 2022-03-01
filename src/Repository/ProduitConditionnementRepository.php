@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\ProduitConditionnement;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Search\SearchProductConditionnement;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method ProduitConditionnement|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,6 +21,33 @@ class ProduitConditionnementRepository extends ServiceEntityRepository
         parent::__construct($registry, ProduitConditionnement::class);
     }
 
+   
+    public function findByFilter(SearchProductConditionnement $search)
+    {
+        $query = $this->findAllQuery();
+
+        if($search->getFilterByReference())
+        {
+            $query = $query->andWhere('p.reference LIKE :reference');
+            $query->setParameter('reference','%' . $search->getFilterByreference() . '%');
+        }
+
+        if($search->getFilterByProduct())
+        {
+            $query = $query->andWhere('p.produit = :produit');
+            $query->setParameter('produit', $search->getFilterByProduct()->getId());
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAllQuery(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p');
+    }
     // /**
     //  * @return ProduitConditionnement[] Returns an array of ProduitConditionnement objects
     //  */

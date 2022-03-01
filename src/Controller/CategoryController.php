@@ -12,14 +12,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
  
 
 #[Route('admin/category')]
 class CategoryController extends AbstractController
 {
     #[Route('admin/category', name: 'category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository ): Response
     {
+
+       
+
         return $this->render('admin/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
@@ -102,6 +106,12 @@ class CategoryController extends AbstractController
                 $category->setImagepath1($handleImage->save($file));
                 $handleImage->edit($file,(string)$oldImage1);
             }
+            else
+            {
+               
+                $category->setImagepath1($oldImage1);
+
+            }
 
             //Recuperer le fichier 
             /** @var UploadedFile $file */
@@ -112,6 +122,12 @@ class CategoryController extends AbstractController
                 $category->setImagepath2($handleImage->save($file));
                 $handleImage->edit($file,(string)$oldImage2);
             }
+            else
+            {
+               
+                $category->setImagepath2($oldImage2);
+
+            }
 
             //Recuperer le fichier 
             /** @var UploadedFile $file */
@@ -121,6 +137,12 @@ class CategoryController extends AbstractController
             {
                 $category->setImagepath3($handleImage->save($file));
                 $handleImage->edit($file,(string)$oldImage3);
+            }
+            else
+            {
+               
+                $category->setImagepath3($oldImage3);
+
             }
 
             $entityManager->flush();

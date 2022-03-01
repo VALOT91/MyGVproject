@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Search\SearchProduct;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,7 +20,32 @@ class ProductRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Product::class);
     }
+    public function findByFilter(SearchProduct $search)
+    {
+        $query = $this->findAllQuery();
 
+        if($search->getFilterByName())
+        {
+            $query = $query->andWhere('p.designation LIKE :designation');
+            $query->setParameter('designation','%' . $search->getFilterByName() . '%');
+        }
+
+        if($search->getFilterByCategory())
+        {
+            $query = $query->andWhere('p.category = :category');
+            $query->setParameter('category', $search->getFilterByCategory()->getId());
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAllQuery(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p');
+    }
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

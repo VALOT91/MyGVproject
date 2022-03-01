@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\SearchTarifType;
+use App\Search\SearchTarif;
 use App\Entity\Tarif;
 use App\Form\TarifType;
 use App\Repository\TarifRepository;
@@ -16,10 +18,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TarifController extends AbstractController
 {
     #[Route('/', name: 'tarif_index', methods: ['GET'])]
-    public function index(TarifRepository $tarifRepository): Response
+    public function index(Request $request,TarifRepository $tarifRepository): Response
     {
+        $search = new SearchTarif();
+
+        $form = $this->createForm(SearchTarifType::class,$search);
+
+        $form->handleRequest($request);
+
+        $tarif = $tarifRepository->findByFilter($search);
+
+
         return $this->render('admin/tarif/index.html.twig', [
-            'tarifs' => $tarifRepository->findAll(),
+            'tarifs' => $tarif,'form' => $form->createView()
         ]);
     }
 
