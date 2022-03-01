@@ -22,12 +22,12 @@ class ProduitConditionnement
     #[ORM\Column(type: 'string', length: 50)]
     private $image_path;
 
-    #[ORM\ManyToOne(inversedBy: 'produit', targetEntity: Conditionnement::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'produit', targetEntity: Conditionnement::class)]
+    #[ORM\JoinColumn(nullable: true)]
     private $conditionnement;
 
-    #[ORM\OneToOne(inversedBy: 'produitConditionnement', targetEntity: Product::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\OneToOne(inversedBy: 'produitConditionnement', targetEntity: Product::class, cascade: ['remove'])]
+    #[ORM\JoinColumn(nullable: false )]
     private $produit;
 
     #[ORM\OneToMany(mappedBy: 'produit_conditionnement', targetEntity: Tarif::class)]

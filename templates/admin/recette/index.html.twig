@@ -4,24 +4,33 @@
 
 {% block body %}
     <div class="container my-2">
-        <h1>Recette index</h1>
-
+        <h1>Recettes</h1>
+            <div class="">
+                {{form_start(form)}}
+                {{form_widget(form)}}
+                <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
+                <a href={{ path('recette_index') }} class="btn btn-secondary mt-3">Réinitialiser</a>
+                {{form_end(form)}}
+            </div>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    
                     <th>Nom</th>
                     <th>Description</th>
+                    <th>Icône</th>
                     <th>produit</th>
-                    <th>actions</th>
+                    <th> </th>
                 </tr>
             </thead>
             <tbody>
             {% for recette in recettes %}
                 <tr>
-                    <td>{{ recette.id }}</td>
+               
                     <td>{{ recette.nom }}</td>
                     <td>{{ recette.description }}</td>
+                    <td><img style="border-radius:7px;display:flex;width:2rem" src="{{ recette.imagepath}}" alt=""  ></td>
+             
                     <td>{{ recette.getProduct().designation }}</td>
                        <td>
                     <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('recette_show', {'id': recette.id}) }}">Détail</a>

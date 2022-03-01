@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\SearchRecetteType;
+use App\Search\SearchRecette;
 use App\Entity\Recette;
 use App\Form\RecetteType;
 use App\Repository\ProductRepository;
@@ -15,12 +17,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('admin/recette')]
 class RecetteController extends AbstractController
 {
+    
     #[Route('admin/recette/', name: 'recette_index', methods: ['GET'])]
-    public function index(RecetteRepository $recetteRepository): Response
+    public function index(Request $request,RecetteRepository $recetteRepository): Response
     {
+        $search = new SearchRecette();
+
+        $form = $this->createForm(SearchRecetteType::class,$search);
+
+        $form->handleRequest($request);
+
+        $redette = $recetteRepository->findByFilter($search);
+
         return $this->render('admin/recette/index.html.twig', [
-            'recettes' => $recetteRepository->findAll(),
+            'recettes' => $redette ,'form' => $form->createView()
         ]);
+        
     }
 
     #[Route('/new', name: 'recette_new', methods: ['GET', 'POST'])]
@@ -38,12 +50,12 @@ class RecetteController extends AbstractController
 
             return $this->redirectToRoute('recette_index', [], Response::HTTP_SEE_OTHER);
         }
-        else
-        {
+        // else
+        // {
            
-            $recette->setImagepath($oldImage);
+        //     $recette->setImagepath($oldImage);
 
-        }
+        // }
 
         return $this->renderForm('admin/recette/new.html.twig', [
             'recette' => $recette,

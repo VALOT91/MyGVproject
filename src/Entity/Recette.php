@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\RecetteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,9 +15,11 @@ class Recette
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message: 'Le nom est requis.')]
     private $nom;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message: 'La description est requise.')]
     private $description;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -47,7 +50,7 @@ class Recette
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -59,7 +62,7 @@ class Recette
         return $this->image_path;
     }
 
-    public function setImagePath(string $image_path): self
+    public function setImagePath(?string $image_path): self
     {
         $this->image_path = $image_path;
 
