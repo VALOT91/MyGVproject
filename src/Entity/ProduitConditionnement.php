@@ -23,7 +23,7 @@ class ProduitConditionnement
     #[ORM\Column(type: 'string', length: 50)]
     private $reference;
 
-    #[ORM\Column(type: 'string', length: 50)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $image_path;
 
     #[ORM\ManyToOne(inversedBy: 'produit', targetEntity: Conditionnement::class)]

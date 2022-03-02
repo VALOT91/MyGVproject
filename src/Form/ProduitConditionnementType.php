@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Product;
+use App\Entity\Conditionnement;
 use App\Entity\ProduitConditionnement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -40,13 +42,18 @@ class ProduitConditionnementType extends AbstractType
                 'label' => 'Produit',
                 'choices'  =>  $options['product'],
                 'multiple'=>false,
-                'choice_label' => 'designation',
+                'choice_label' =>  function (Product $prd) {
+                    return $prd->getReference() . ' - ' .$prd->getDesignation() ;},
+                
+               
             ])
             ->add('conditionnement', ChoiceType::class, [
                 'label' => 'Conditionnement',
                 'choices'  =>  $options['conditionnement'],
                 'multiple'=>false,
-                'choice_label' => 'designation',
+                // 'choice_label' => 'designation',
+                'choice_label' =>  function (Conditionnement $prd) {
+                    return $prd->getReference() . ' - ' .$prd->getDesignation() ;},
             ])
         ;
     }

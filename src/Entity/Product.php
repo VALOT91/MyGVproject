@@ -66,6 +66,9 @@ class Product
 
     #[ORM\Column(type: 'string', length: 255)]
     private $reco_Temp;
+
+    #[ORM\Column(type: 'string', length: 10)]
+    private $reference;
  
     public function __construct()
     {
@@ -336,5 +339,17 @@ class Product
 
     //     return $this;
     // }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
 
 }

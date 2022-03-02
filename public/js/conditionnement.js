@@ -43,11 +43,22 @@ function choice(m)
   
 });
 
-// let tst  =  document.getElementById("produit_conditionnement_image_path");  
+let prodId =  document.getElementById("produit_conditionnement_produit"); 
+let condId =  document.getElementById("produit_conditionnement_conditionnement");  
+let reference = document.getElementById("produit_conditionnement_reference");
 
-//   tst.addEventListener("change", function(e){
+  prodId.addEventListener("change", function(e){
   
-//     alert(e.innerHTML);
+    let produit = this.options[this.selectedIndex].text.split(" - ");
+    let conditionnement = condId.options[condId.selectedIndex].text.split(" - ");
+  //  alert(produit[0] + " " + conditionnement[0]);
+    reference.value=produit[0] + conditionnement[0]
+  },false);
 
-
-//   });
+  condId.addEventListener("change", function(e){
+  
+    let conditionnement = this.options[this.selectedIndex].text.split(" - ");
+    let produit = prodId.options[prodId.selectedIndex].text.split(" - ");
+   
+    reference.value=produit[0] + conditionnement[0]
+  },false);

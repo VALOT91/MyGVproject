@@ -51,7 +51,7 @@ class GammeController extends AbstractController
                         if(count($conditionnement->getTarifs()) >0)
                                      $tarifCount++;
                    }
-
+                   
                    if( $tarifCount)
                       $articles[] = $article;
                }
