@@ -2,21 +2,22 @@
 
 namespace App\Controller;
 
-use App\Form\SearchProductConditionnementType;
-use App\Search\SearchProductConditionnement;
+use DateTime;
 use App\Services\HandleImage;
 use App\Repository\ProductRepository;
+use App\Repository\RecetteRepository;
 use App\Entity\ProduitConditionnement;
 use App\Form\ProduitConditionnementType;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Search\SearchProductConditionnement;
 use App\Repository\ConditionnementRepository;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\SearchProductConditionnementType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use App\Repository\ProduitConditionnementRepository;
-use DateTime;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -132,9 +133,16 @@ class ProduitConditionnementController extends AbstractController
     }
 
     #[Route('/{id}', name: 'produit_conditionnement_delete', methods: ['POST'])]
-    public function delete(Request $request, ProduitConditionnement $produitConditionnement, EntityManagerInterface $entityManager): Response
+    public function delete(int $id,Request $request,RecetteRepository $recetteRepository,ProduitConditionnementRepository $productConditionnementRepository, ProduitConditionnement $produitConditionnement, EntityManagerInterface $entityManager): Response
     {
+
+        // //$entity =  $productConditionnementRepository->find($id)->getProduit()->getDesignation();
+        //   $entity =  $recetteRepository->findBy('product'->);
+        // dd($entity);
         if ($this->isCsrfTokenValid('delete'.$produitConditionnement->getId(), $request->request->get('_token'))) {
+
+           
+
             $entityManager->remove($produitConditionnement);
             $entityManager->flush();
         }

@@ -58,34 +58,22 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    #[ORM\OneToOne(mappedBy: 'produit', targetEntity: ProduitConditionnement::class, cascade: ['persist', 'remove'])]
-    private $produitConditionnement;
+     #[ORM\OneToOne(mappedBy: 'produit', targetEntity: ProduitConditionnement::class, cascade: [ 'remove'])]
+     private $produitConditionnement;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Recette::class)]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Recette::class, cascade: [ 'remove'])]
     private $recette;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $reco_Temp;
-
-    // #[ORM\OneToMany(mappedBy: 'produit', targetEntity: CommandShopLine::class)]
-    // private $commandShopLines;
-    // #[ORM\OneToOne(mappedBy: 'produit', targetEntity: CommandShopLine::class)]
-    // private $commandShopLines;
-
+ 
     public function __construct()
     {
         $this->recette = new ArrayCollection();
         $this->commandShopLines = new ArrayCollection();
     }
 
-    // #[ORM\OneToMany(mappedBy: 'product', targetEntity: Recette::class)]
-    // private $recettes;
-
-    // public function __construct()
-    // {
-    //     $this->recettes = new ArrayCollection();
-    // }
-
+    
     public function getId(): ?int
     {
         return $this->id;

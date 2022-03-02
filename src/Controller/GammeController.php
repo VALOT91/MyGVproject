@@ -38,8 +38,24 @@ class GammeController extends AbstractController
              $article = new Article();
 
              $article->product = $item;
-             $article->conditionnements = $produitConditionnementRepository->findBy(array('produit' => $item->getId()));
-             $articles[] = $article;
+             $conditionnements = $produitConditionnementRepository->findBy(array('produit' => $item->getId()));
+             $article->conditionnements =  $conditionnements;
+            
+              // n'affiche pas les produits sans conditionnement
+              if(count($article->conditionnements)> 0)
+               {   
+                   $tarifCount=0;
+                   foreach( $article->conditionnements as $conditionnement  )
+                   {
+                        // n'affiche pas les conditionnements sans tarifs
+                        if(count($conditionnement->getTarifs()) >0)
+                                     $tarifCount++;
+                   }
+
+                   if( $tarifCount)
+                      $articles[] = $article;
+               }
+                
         }
 
 

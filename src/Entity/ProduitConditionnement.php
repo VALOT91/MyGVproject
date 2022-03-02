@@ -7,7 +7,11 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Repository\ProduitConditionnementRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+/**
+ * @UniqueEntity(fields={"reference"}, message="Il y a déja une reference identique")
+ */
 #[ORM\Entity(repositoryClass: ProduitConditionnementRepository::class)]
 class ProduitConditionnement
 {
@@ -26,11 +30,12 @@ class ProduitConditionnement
     #[ORM\JoinColumn(nullable: true)]
     private $conditionnement;
 
-    #[ORM\OneToOne(inversedBy: 'produitConditionnement', targetEntity: Product::class, cascade: ['remove'])]
+    // #[ORM\OneToOne(inversedBy: 'produitConditionnement', targetEntity: Product::class, cascade: ['remove'])]
+    #[ORM\OneToOne(inversedBy: 'produitConditionnement', targetEntity: Product::class )]
     #[ORM\JoinColumn(nullable: false )]
     private $produit;
 
-    #[ORM\OneToMany(mappedBy: 'produit_conditionnement', targetEntity: Tarif::class)]
+    #[ORM\OneToMany(mappedBy: 'produit_conditionnement', targetEntity: Tarif::class, cascade: ['remove'])]
     private $tarifs;
 
     #[ORM\Column(type: 'integer', nullable: true)]
