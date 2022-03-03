@@ -51,7 +51,7 @@ let reference = document.getElementById("produit_conditionnement_reference");
   
     let produit = this.options[this.selectedIndex].text.split(" - ");
     let conditionnement = condId.options[condId.selectedIndex].text.split(" - ");
-  //  alert(produit[0] + " " + conditionnement[0]);
+
     reference.value=produit[0] + conditionnement[0]
   },false);
 

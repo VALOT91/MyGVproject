@@ -1,6 +1,11 @@
-{% extends 'customer/base.html.twig' %}
+{% extends 'base.html.twig' %}
 {% block body %}
+      <div style="margin: 200px auto ">
+        <div class="container d-flex flex-column align-items-center text-center my-3 ">
+            <h1>Merci pour votre commande.</h1>
+            <p>Vouss allez recevoir prochainement un email de confirmation</p>
+            <a href="{{path('gamme_index')}}" class="btn btn-secondary w-35">Continuer mes achats</a>
+        </div>
+      </div>
 
-
-<h1>Merci</h1>
 {% endblock %}

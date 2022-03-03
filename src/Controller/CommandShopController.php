@@ -19,11 +19,10 @@ class CommandShopController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
-      
-        $commandShop = $paginator->paginate($commandShopRepository->findAll( 
+        $commandShop = $paginator->paginate($commandShopRepository->findBy( array(),
         [
-            'createdAt' => 'DESC'
-        ]), $request->query->getInt('page', 1), 7 );
+            'id' => 'desc'
+        ]), $request->query->getInt('page', 1), 8 );
         
         return $this->render("admin/commande/list.html.twig",[
             'commandShop' => $commandShop

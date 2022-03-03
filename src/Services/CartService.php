@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Services\CartItem;
 use App\Services\CartRealProduct;
-use App\Repository\ConditionnementRepository;
 use App\Repository\ProduitConditionnementRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

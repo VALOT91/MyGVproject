@@ -38,6 +38,9 @@ class DeliveryAddress
     #[ORM\Column(type: 'string', length: 255)]
     private $raisonSoc;
 
+   
+    private $CGV;
+
     // #[ORM\OneToOne(inversedBy: 'deliveryAddress', targetEntity: CommandShop::class, cascade: ['persist', 'remove'])]
     // #[ORM\JoinColumn(nullable: false)]
     // private $commandShop;
@@ -47,7 +50,19 @@ class DeliveryAddress
         return $this->id;
     }
 
-    
+    // public function getCGV(): ?string
+    // {
+    //     return $this->CGV;
+    // }
+
+    // public function setCGV(?string $CGV): self
+    // {
+    //     $this->CGV = $CGV;
+
+    //     return $this;
+    // }
+
+
 
     public function getCountry(): ?string
     {
