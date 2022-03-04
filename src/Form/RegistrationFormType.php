@@ -14,6 +14,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -119,27 +121,56 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'Entrez votre kbis'
                 ],
             ])
-            // ->add('agreeTerms', CheckboxType::class, [
-            //     'mapped' => false,
-            //     'constraints' => [
-            //         new IsTrue([
-            //             'message' => 'You should agree to our terms.',
-            //         ]),
-            //     ],
-            // ])
-            ->add('plainPassword', PasswordType::class, [
+         
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe doivent correspondre.',
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
-                'label' => 'Mot de passe',
-                'required'=> false,
                 'mapped' => false,
+                'required' => false,
                 'attr' => ['autocomplete' => 'new-password'],
+                'first_options'  => [
+                    'label' => 'Mot de passe',
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Le mot de passe est requis',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Le mot de passe doit faire au moins {{ limit }} caractères.',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 4096,
+                        ]),
+                    ],
+                ],
+                'second_options' => [
+                    'label' => 'Confirmer votre mot de passe',
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'La confirmation du mot de passe est requise',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Le mot de passe doit faire au moins {{ limit }} caractères.',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 4096,
+                        ]),
+                    ],
+                ],
+               
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'label' => 'Accepter les CGUV',
+                'required' => false,
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Le champs mot de passe est requis',
+                    new IsTrue([
+                        'message' => 'Vous devez accepter les CGU.',
                     ]),
                 ],
             ])
+          
         ;
     }
 

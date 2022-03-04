@@ -25,13 +25,15 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Cde.</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Société</th>
+                                        <th class ="text-center" scope="col">Cde.</th>
+                                        <th class ="text-center" scope="col">Date</th>
+                                        <th class ="text-center" scope="col">Société</th>
+                                        <th class ="text-center" scope="col">Livraison</th>
+                                        <th class ="text-center" scope="col">Action</th>
                                         {# <th scope="col">Paiement</th> #}
                                        
-                                        <th scope="col">Total</th>
-                                        <th scope="col"></th>
+                                        <th class ="text-center"  scope="col">Total</th>
+                                        <th class ="text-center"  scope="col">Détail</th>
                                     </tr>
                                 </thead>
                                 <tbody>   
@@ -39,14 +41,27 @@
                                    {{ knp_pagination_render(commandShop,'@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
                                     {% for item in commandShop %}
                                         <tr>
-                                            <td>
-                                             <a href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
+                                            <td class ="text-center" >
+                                             <a title="Voir le détail de la commande" href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
                                                     #{{ item.id }}
                                                 </a>
                                                 
                                             </td>
-                                            <td>{{ item.createdAt | date('d-m-y') }}</td>
-                                              <td>{{item.getDeliveryAddress().getRaisonSoc()   }}</td>   
+                                            <td class ="text-center"  >{{ item.createdAt | date('d-m-y') }}</td>
+                                              <td class ="text-center" >{{item.getDeliveryAddress().getRaisonSoc()   }}</td>  
+                                              <td class ="text-center" >{% if ( item.getIsShipped() ) %}
+                                                   <b><p class="text-success">OK</p></b>
+                                                 {% else   %}
+                                                   <b><p class="text-warning">NON</p></b>
+                                                 {% endif %}
+                                               </td>  
+                                              <td class ="text-center" >
+                                                <a class="d-flex justify-content-center" href="{{ path('command_livraison', {'id': item.id}) }}">
+                                                       <div style="border-radius:7px%;height:2rem;width:2.5rem " id="box" >
+                                                             <img style=";width:1.5rem;height:1.5rem" title="Bacule en statut Expédié/Non expédié" src="/images/cardboard-box.png" />
+                                                       </div>
+                                                </a> 
+                                              </td>
                                             {# <td>
                                                 {% if item.isPayed is same as false %}
                                                     <span class="text-secondary">Non payée</span>
@@ -55,12 +70,16 @@
                                                 {% endif %}
                                             </td> #}
                                           
-                                            <td>{{ item.totalPrice | euroPrice }}</td>
+                                            <td class ="text-center" >{{ item.totalPrice | euroPrice }}</td>
                                            
-                                              <td>
-                                                <a href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
-                                                    <img src="/images/eye.svg" />
-                                                </a>
+                                              <td class ="text-center" >
+                                               
+                                                    <a class="d-flex justify-content-center" href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
+                                                        <div style="height:2rem;width:2rem " id="eye" >
+                                                             <img title="Voir le détail de la commande" src="/images/eye.svg" /> 
+                                                        </div>
+                                                    </a>
+                                                   
                                               </td>
                                         </tr>
                                     {% endfor %}

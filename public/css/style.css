@@ -11,5 +11,34 @@
     opacity:0.95!important;
     background-color: white!important;
 }
+#box:hover {
 
+  background-color:aqua!important;  
+  border-radius:60%!important;  ;
+  }
+  #eye:hover {
+    background-color:aqua!important;  
+    border-radius:50%!important;  ;
+    
+    }
  
+  #imcart:hover {
+      
+    background-color:cadetblue!important;  
+    border-radius:7px!important;
+      
+  }
+  .clCompte
+  {
+   text-decoration: none!important;
+   Color:black;
+   font-size:small;
+   
+  }
+  .clCompte:hover{
+
+    color:white;
+   
+   
+  }
+   

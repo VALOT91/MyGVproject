@@ -1,3 +1,23 @@
+ {% if app.user %} 
+  <div style="height:2.5rem;display:flex; ;align-items:center;justify-content:space-between" class="bg-secondary text-white">
+            <ul  style="list-style:none;margin-top:1.8rem;display:flex;flex-direction:row;justify-content:space-between">
+              <li>
+                  <p>Bienvenue {{app.user.prenom}} {{app.user.nom}}</p>  
+                 
+              </li>
+              <li> <a class="ms-4 clCompte  " href="{{ path('edit_password') }}">Mon Compte  </a><li>
+            
+            </ul>
+            <div style= "width:2.6rem;height:2rem;display:flex;align-items:center;margin-right:1rem;text-align:center" id="imcart">
+                 
+                        <a  href="{{ path('cart_detail') }}">
+                            <img  style="height:2.5rem;width:2.5rem;margil-left:0.5rem"  src="/images/cart-icon-transparent-18.jpg" />
+                        </a>   
+                 
+            </div>
+  </div>
+  {% endif %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href=" {{ path('home')}}">Plf Distribution</a>
@@ -52,7 +72,7 @@
             
             {% endif %}  
             {% if app.user.roles[0] is same as "ROLE_TRANSIT" %}
-
+ 
                 <li class="nav-item">
                   <a class="nav-link" href="{{ path('encours') }}">Votre statut</a>
                 </li>
@@ -62,16 +82,20 @@
               <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
             </li>  
 
-             {% if app.user.roles[0] is not same as "ROLE_TRANSIT" %}
+             {# {% if app.user.roles[0] is not same as "ROLE_TRANSIT" %} #}
                 <li class="nav-item">
                   <a class="nav-link" href="{{ path('cart_detail') }}">Mon panier</a>
                 </li>
-          {% endif %}  
+           
      {% endif %} 
        <li class="nav-item">
           <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-        </li
+        </li>
+       
+           
+      
       </ul>
-    </div>
+       
+    </div> 
   </div>
 </nav>

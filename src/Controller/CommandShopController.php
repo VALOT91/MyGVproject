@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Services\CommandService;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CommandShopRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -28,6 +30,16 @@ class CommandShopController extends AbstractController
             'commandShop' => $commandShop
         ]);
     } 
+
+    #[Route('/{id}/Exp', name: 'command_livraison', methods: ['GET', 'POST'])]
+    public function validate(int $id,CommandShopRepository $commandShopRepository, EntityManagerInterface $entityManager): Response
+    {
+        $entity = $commandShopRepository->find($id);
+        $entity->setIsshipped(!$entity->getIsshipped());
+        $entityManager->flush();
+    
+        return $this->redirectToRoute("command_shop_list");
+    }
 
     #[Route('admin/commande/detail/{id}', name: 'command_shop_detail')]
     public function commandShopDetail($id,CommandShopRepository $commandShopRepository,ProductRepository $productRepository)

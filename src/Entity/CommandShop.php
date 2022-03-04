@@ -41,6 +41,9 @@ class CommandShop
     #[ORM\OneToMany(mappedBy: 'commandShop', targetEntity: CommandShopLine::class)]
     private $commandShopLines;
 
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $is_shipped;
+
     public function __construct()
     {
         $this->commandShopLines = new ArrayCollection();
@@ -149,6 +152,18 @@ class CommandShop
                 $commandShopLine->setCommandShop(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsShipped(): ?bool
+    {
+        return $this->is_shipped;
+    }
+
+    public function setIsShipped(?bool $is_shipped): self
+    {
+        $this->is_shipped = $is_shipped;
 
         return $this;
     }

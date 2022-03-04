@@ -30,15 +30,18 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {   
+        if ($form->isSubmitted() && $form->isValid()) { 
+            
+           
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
-                        $user,
+                      $user,
                         $form->get('plainPassword')->getData()
                     )
                 );
             $entityManager->persist($user);
             $entityManager->flush();
+
 
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -76,7 +79,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/valider', name: 'user_valid', methods: ['GET', 'POST'])]
-    public function validate(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function validate(int $id,UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
         $entity =  $userRepository->find($id);
         $entity->setRoles(["ROLE_CLIENT"]);
@@ -121,5 +124,8 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
+    
+
+
 }
 
