@@ -23,6 +23,7 @@ class Recette
     private $description;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message: 'L\'image est requise.')]
     private $image_path;
 
     #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'recette')]
@@ -38,7 +39,7 @@ class Recette
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 

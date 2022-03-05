@@ -4,7 +4,13 @@ namespace App\Entity;
 
 use App\Repository\TarifRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+
+
+/**
+ * @UniqueEntity(fields={"produit_conditionnement","type_prix"}, message="Il y a déja un tarif (reference/type prix) identique")
+ */
 #[ORM\Entity(repositoryClass: TarifRepository::class)]
 class Tarif
 {

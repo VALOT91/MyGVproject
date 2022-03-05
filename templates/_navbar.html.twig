@@ -5,8 +5,13 @@
                   <p>Bienvenue {{app.user.prenom}} {{app.user.nom}}</p>  
                  
               </li>
-              <li> <a class="ms-4 clCompte  " href="{{ path('edit_password') }}">Mon Compte  </a><li>
-            
+                {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+                         <li> <a class="ms-4 clCompte  " href="{{ path('show_account_roleA') }}">Mon Compte  </a><li>
+                  {% elseif app.user.roles[0] is same as "ROLE_TRANSIT" %}
+                          <li> <a class="ms-4 clCompte  " href="{{ path('show_account_roleT') }}">Mon Compte  </a><li>
+                    {% elseif app.user.roles[0] is same as "ROLE_CLIENT" %} 
+                          <li> <a class="ms-4 clCompte  " href="{{ path('show_account_roleC') }}">Mon Compte  </a><li>
+                    {% endif %} 
             </ul>
             <div style= "width:2.6rem;height:2rem;display:flex;align-items:center;margin-right:1rem;text-align:center" id="imcart">
                  

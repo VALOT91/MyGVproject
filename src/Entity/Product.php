@@ -6,6 +6,11 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * @UniqueEntity(fields={"reference"}, message="Il y a déja une reference identique")
+ */
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -345,7 +350,7 @@ class Product
         return $this->reference;
     }
 
-    public function setReference(string $reference): self
+    public function setReference(?string $reference): self
     {
         $this->reference = $reference;
 

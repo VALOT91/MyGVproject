@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('documents_delete', {'id': file.getRelativePathName }) }}" onsubmit="return confirm('Voulez-vous vraiement supprimer ce fichier?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ file.getRelativePathName) }}">
+    <button class=" ms-2 btn btn-warning">Supprimer</button>
+</form>

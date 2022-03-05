@@ -4,6 +4,11 @@ namespace App\Entity;
 
 use App\Repository\ConditionnementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+/**
+ * @UniqueEntity(fields={"reference"}, message="Il y a déja une reference identique")
+ */
 
 #[ORM\Entity(repositoryClass: ConditionnementRepository::class)]
 class Conditionnement
@@ -39,7 +44,7 @@ class Conditionnement
         return $this->reference;
     }
 
-    public function setReference(string $reference): self
+    public function setReference(?string $reference): self
     {
         $this->reference = $reference;
 
@@ -51,7 +56,7 @@ class Conditionnement
         return $this->designation;
     }
 
-    public function setDesignation(string $designation): self
+    public function setDesignation(?string $designation): self
     {
         $this->designation = $designation;
 
@@ -63,7 +68,7 @@ class Conditionnement
         return $this->poids;
     }
 
-    public function setPoids(int $poids): self
+    public function setPoids(?int $poids): self
     {
         $this->poids = $poids;
 

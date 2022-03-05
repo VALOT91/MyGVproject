@@ -1,0 +1,52 @@
+
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}doc index{% endblock %}
+
+{% block body %}
+ <div class="container" >
+    <h1 class ="my-2 ">Gestion des images </h1>
+        <div style ="margin: 2rem 0 1rem 0 ">
+
+            {{ form_start(form) }}
+             <div  class="d-flex flex-row ">
+                {{ form_row(form.image_path) }}
+                <button style="height:2.4rem" class=" ms-2 btn btn-primary ">{{ button_label|default('Ajouter') }}</button> 
+             </div>
+            {{ form_end(form) }}
+
+        </div>
+    <table class="table ">
+        <thead>
+            <tr>
+                 <th>Chemin de l'image</th>
+                 <th>Visualisation</th>
+                 <th class="text-center"> Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                        
+        {{ knp_pagination_render(files,'@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
+         {% for file in files %}
+            <tr>
+             
+                <td>{{ file.getRelativePathName }}</td>
+                <td><img style="border-radius:8px;display:flex;width:5rem" src=" \uploads\{{ file.getRelativePathName }}" alt="fichier image"  ></td>
+                <td class="text-center">
+                   {{ include('admin/documents/_delete_form.html.twig') }}
+                </td>
+              </div> 
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a  class="ms-2 btn btn-danger" href="{{ path('category_new') }}">Nouveau</a> #}
+</div>
+{% endblock %}
+

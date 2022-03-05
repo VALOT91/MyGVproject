@@ -87,7 +87,7 @@ class UserType extends AbstractType
                 'multiple'=>false
                 
             ])
-            
+                
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'required'=> false,
