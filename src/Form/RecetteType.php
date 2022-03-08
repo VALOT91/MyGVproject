@@ -17,7 +17,9 @@ class RecetteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            
+            ->add('image_path', TextType::class, [
+                'label' => 'Image',
+            ])
             ->add('nom',TextType::class,[
                 'required' => false,
                 'label' => 'Nom',
@@ -34,20 +36,14 @@ class RecetteType extends AbstractType
                 ],
                 
             ])
-            ->add('image_path',TextType::class,[
-                'required' => false,
-                'label' => 'chemin de l\'image',
-                'attr' => [
-                    'placeholder' => 'Entrez le chemin de l\'image'
-                ],
-                
-            ])
+           
             ->add('product', ChoiceType::class, [
                 'label' => 'Produit',
                 'choices'  =>  $options['prod'],
                 'multiple'=>false,
                 'choice_label' => 'designation',
             ])
+           
         ;
     }
 

@@ -42,7 +42,7 @@
                                             
                                                 <input type="radio" onclick=choice(this) class="condit" name="{{product.getProduct().id }}" checked="checked" id="{{ conditionnement.id }}" /> 
                                                 <label  for="{{ conditionnement.id }}" >
-                                                    <img style="max-width:3rem;objective-fit:cover" src="{{ conditionnement.getConditionnement().imagepath }}"    alt="logo du conditionnement">
+                                                    <img style="max-width:3rem;objective-fit:cover" src="\{{ conditionnement.getConditionnement().imagepath }}"    alt="logo du conditionnement">
                                                 </label>
                                                 <p class="mt-1" style="font-size:x-small">{{conditionnement.getConditionnement().designation}}</p>
                                                 <h4 style="display:none" id="IM_{{ conditionnement.id }}"> {{ conditionnement.imagePath  }} </h4>

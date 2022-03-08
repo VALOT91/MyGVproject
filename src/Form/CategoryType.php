@@ -38,48 +38,44 @@ class CategoryType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('imagepath1',FileType::class,[
-                'mapped' => false,
+            ->add('imagepath1', TextType::class, [
                 'label' => 'Image',
-                'required' => is_null($builder->getData()->getId()),
-                'constraints' => [
-                    // new NotBlank([
-                    //     'message' => 'Vous devez ajouter une image'
-                    // ]),
-                    new File([
-                        'maxSize' => '1m',
-                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
-                    ])
-                ]
             ])
-            ->add('imagepath2',FileType::class,[
-                'mapped' => false,
+            ->add('imagepath2', TextType::class, [
                 'label' => 'Image',
-                'required' =>  is_null($builder->getData()->getId()),
-                'constraints' => [
-                    // new NotBlank([
-                    //     'message' => 'Vous devez ajouter une image'
-                    // ]),
-                    new File([
-                        'maxSize' => '1m',
-                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
-                    ])
-                ]
             ])
-            ->add('imagepath3',FileType::class,[
-                'mapped' => false,
+            ->add('imagepath3', TextType::class, [
                 'label' => 'Image',
-                'required' =>  is_null($builder->getData()->getId()),
-                'constraints' => [
-                    // new NotBlank([
-                    //     'message' => 'Vous devez ajouter une image'
-                    // ]),
-                    new File([
-                        'maxSize' => '1m',
-                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
-                    ])
-                ]
             ])
+          
+            // ->add('imagepath2',FileType::class,[
+            //     'mapped' => false,
+            //     'label' => 'Image',
+            //     'required' =>  is_null($builder->getData()->getId()),
+            //     'constraints' => [
+            //         // new NotBlank([
+            //         //     'message' => 'Vous devez ajouter une image'
+            //         // ]),
+            //         new File([
+            //             'maxSize' => '1m',
+            //             'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+            //         ])
+            //     ]
+            // ])
+            // ->add('imagepath3',FileType::class,[
+            //     'mapped' => false,
+            //     'label' => 'Image',
+            //     'required' =>  is_null($builder->getData()->getId()),
+            //     'constraints' => [
+            //         // new NotBlank([
+            //         //     'message' => 'Vous devez ajouter une image'
+            //         // ]),
+            //         new File([
+            //             'maxSize' => '1m',
+            //             'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.'
+            //         ])
+            //     ]
+            // ])
           
          ;
     }

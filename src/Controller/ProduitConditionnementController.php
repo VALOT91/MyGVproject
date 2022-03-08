@@ -14,13 +14,14 @@ use App\Repository\ConditionnementRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\SearchProductConditionnementType;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\File;
+// use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use App\Repository\ProduitConditionnementRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\services\ImageFinder;
 
 #[Route('admin/produit/conditionnement')]
 class ProduitConditionnementController extends AbstractController
@@ -46,23 +47,16 @@ class ProduitConditionnementController extends AbstractController
     #[Route('/new', name: 'produit_conditionnement_new', methods: ['GET', 'POST'])]
     public function new( HandleImage $handleImage,Request $request, EntityManagerInterface $entityManager,ProductRepository $productRepository,ConditionnementRepository $conditionnementRepository): Response
     {
+        $finder = new ImageFinder();
+        $filesTab = $finder->GetUploadDirectory();
+ 
         $produitConditionnement = new ProduitConditionnement();
-        $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll()] );
+        $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll() ] );
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
-
-            //Recuperer le fichier 
-            /** @var UploadedFile $file */
-            $file = $form->get('image_path')->getData();
-
-          
-
-            //Verifier que il y a bien un fichier
-            if($file)
-            {
-                $produitConditionnement->setImagepath($handleImage->save($file));
-            }
+ 
 
             $entityManager->persist($produitConditionnement);
             $entityManager->flush();
@@ -71,7 +65,7 @@ class ProduitConditionnementController extends AbstractController
         }
 
         return $this->renderForm('admin/produit_conditionnement/new.html.twig', [
-            'produit_conditionnement' => $produitConditionnement,
+            'produit_conditionnement' => $produitConditionnement,'file'=>$filesTab,
             'form' => $form,
         ]);
     }
@@ -87,31 +81,28 @@ class ProduitConditionnementController extends AbstractController
     #[Route('/{id}/edit', name: 'produit_conditionnement_edit', methods: ['GET', 'POST'])]
     public function edit(HandleImage $handleImage,Request $request, ProduitConditionnement $produitConditionnement, EntityManagerInterface $entityManager,ProductRepository $productRepository,ConditionnementRepository $conditionnementRepository): Response
     {
+
+     $finder = new ImageFinder();
+     $filesTab = $finder->GetUploadDirectory();
      $oldImage = $produitConditionnement->getImagePath();
 
-         $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll()]);
+         $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll() ]);
          $form->handleRequest($request);
 
-        //   $file = new File($handleImage->getImage((string)$oldImage));
-      
-            // $file = $request->files->get('image_path');
-            // if(!empty($file))
-            // {
-            //     dd($file);
-            // }
+        //  dd($filesTab);
           
          if ($form->isSubmitted() && $form->isValid()) {
 
-             //Recuperer le fichier 
-            /** @var UploadedFile $file */
+            //  //Recuperer le fichier 
+            // /** @var UploadedFile $file */
             $file = $form->get('image_path')->getData();
              
             //Verifier que il y a bien un fichier
             if($file)
             {
                
-                $produitConditionnement->setImagepath($handleImage->save($file));
-                $handleImage->edit($file,(string)$oldImage);
+                $produitConditionnement->setImagepath($file);
+                // $handleImage->edit($file,(string)$oldImage);
     
             }
             else
@@ -127,7 +118,7 @@ class ProduitConditionnementController extends AbstractController
         }
 
         return $this->renderForm('admin/produit_conditionnement/edit.html.twig', [
-            'produit_conditionnement' => $produitConditionnement,
+            'produit_conditionnement' => $produitConditionnement,'file'=>$filesTab,
             'form' => $form,
         ]);
     }

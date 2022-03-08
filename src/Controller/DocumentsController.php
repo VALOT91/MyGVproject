@@ -2,11 +2,9 @@
 
 namespace App\Controller;
 
- 
-use LimitIterator;
+use App\services\ImageFinder;
 use App\Form\DocumentType;
 use App\Services\HandleImage;
-use Symfony\Component\Finder\Finder;
 use App\Repository\CommandShopRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +24,7 @@ class DocumentsController extends AbstractController
         // j'utilise le csrf pour renforcer la sécurité 
          if ($this->isCsrfTokenValid('delete'.$id, $request->request->get('_token'))) {
           
-            $file_path = 'uploads\\' . $id;
+            $file_path = $id;
             if(file_exists($file_path)) unlink($file_path);           
         }
         return $this->redirectToRoute('documents_index', [], Response::HTTP_SEE_OTHER);
@@ -35,30 +33,10 @@ class DocumentsController extends AbstractController
     #[Route('admin/liste/documents', name: 'documents_index',  methods: ['GET', 'POST'])] 
     public function index(CommandShopRepository $commandShopRepository, PaginatorInterface $paginator, HandleImage $handleImage,Request $request ): Response
     {
-        $finder = new Finder();
+        $finder = new ImageFinder();
+        $filesTab = $finder->GetUploadDirectory();
         
-        $filesRep = $finder
-            ->files()
-            ->in("uploads")
-            ->sortByChangedTime()
-            ->getIterator()
-        ;
-         $filesTab = [];
-          
-        //  foreach (new LimitIterator($filesRep, 0, 5) as $file) {
-        //     $filesTab[] = $file;
-        // }
-
-         foreach($filesRep  as $item )
-         {
-            $filesTab[] = $item;
-         }
-       
-       
         $files =  $paginator->paginate($filesTab,$request->query->getInt('page', 1),6);
-
-        
-       
 
         $form = $this->createForm(DocumentType::class );
         $form->handleRequest($request);

@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\services\ImageFinder;
 
 #[Route('admin/recette')]
 class RecetteController extends AbstractController
@@ -38,6 +39,10 @@ class RecetteController extends AbstractController
     #[Route('/new', name: 'recette_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager,ProductRepository $productRepository): Response
     {  
+
+        $finder = new ImageFinder();
+        $filesTab = $finder->GetUploadDirectory();
+
         $recette = new Recette();
         $form = $this->createForm(RecetteType::class, $recette,['prod' => $productRepository->findAll()]);
         
@@ -58,7 +63,7 @@ class RecetteController extends AbstractController
         // }
 
         return $this->renderForm('admin/recette/new.html.twig', [
-            'recette' => $recette,
+            'recette' => $recette,'file'=>$filesTab,
             'form' => $form,
         ]);
     }
@@ -74,6 +79,9 @@ class RecetteController extends AbstractController
     #[Route('/{id}/edit', name: 'recette_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Recette $recette, EntityManagerInterface $entityManager,ProductRepository $productRepository): Response
     {
+        $finder = new ImageFinder();
+        $filesTab = $finder->GetUploadDirectory();
+
         $form = $this->createForm(RecetteType::class, $recette,['prod' => $productRepository->findAll()]);
         $form->handleRequest($request);
 
@@ -84,7 +92,7 @@ class RecetteController extends AbstractController
         }
 
         return $this->renderForm('admin/recette/edit.html.twig', [
-            'recette' => $recette,
+            'recette' => $recette,'file'=>$filesTab,
             'form' => $form,
         ]);
     }

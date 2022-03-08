@@ -27,23 +27,9 @@ class ProduitConditionnementType extends AbstractType
                 ])
               ]
             ])
-            ->add('image_path',FileType::class,[
-                'mapped' => false,
-                'label' => false,
-                'required' => is_null($builder->getData()->getId()),
-                'data_class' => null,
-                'constraints' => [
-                    // new NotBlank([
-                    //     'message' => 'Vous devez ajouter une image'
-                    // ]),
-                    new File([
-                        'maxSize' => '1m',
-                        'maxSizeMessage' => 'Le poids ne peut dépasser 1mo. Votre fichier est trop lourd.',
-                       
-                      
-                    ])
-                ]
-            ]) 
+               ->add('image_path', TextType::class, [
+                'label' => 'Image',
+            ])
             ->add('quantiteStock')
             ->add('produit', ChoiceType::class, [
                 'label' => 'Produit',
@@ -58,7 +44,6 @@ class ProduitConditionnementType extends AbstractType
                 'label' => 'Conditionnement',
                 'choices'  =>  $options['conditionnement'],
                 'multiple'=>false,
-                // 'choice_label' => 'designation',
                 'choice_label' =>  function (Conditionnement $prd) {
                     return $prd->getReference() . ' - ' .$prd->getDesignation() ;},
             ])
@@ -71,6 +56,7 @@ class ProduitConditionnementType extends AbstractType
             'data_class' => ProduitConditionnement::class,
             'product'=>null,
             'conditionnement'=>null,
+            'file'=>null,
         ]);
     }
 }

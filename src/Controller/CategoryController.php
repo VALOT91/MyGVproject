@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use App\services\ImageFinder;
  
 
 #[Route('admin/category')]
@@ -30,38 +30,41 @@ class CategoryController extends AbstractController
     }
 
     #[Route('admin/category/new', name: 'category_new', methods: ['GET', 'POST'])]
-    public function new( HandleImage $handleImage,Request $request, EntityManagerInterface $entityManager): Response
+    public function new( Request $request, EntityManagerInterface $entityManager): Response
     {
+        $finder = new ImageFinder();
+        $filesTab = $finder->GetUploadDirectory();
+
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //Recuperer le fichier 
-            /** @var UploadedFile $file */
+            // //Recuperer le fichier 
+            // /** @var UploadedFile $file */
             $file = $form->get('imagepath3')->getData();
             //Verifier que il y a bien un fichier
             if($file)
             {          
-                $category->setImagePath3($handleImage->save($file));
+                $category->setImagePath3($file);
             }
-            //Recuperer le fichier 
-            /** @var UploadedFile $file */
+            // //Recuperer le fichier 
+            // /** @var UploadedFile $file */
             $file = $form->get('imagepath2')->getData();
             //Verifier que il y a bien un fichier
             if($file)
             {          
-                $category->setImagepath2($handleImage->save($file));
+                $category->setImagepath2($file);
             }
 
-             //Recuperer le fichier 
-            /** @var UploadedFile $file */
+            //  //Recuperer le fichier 
+            // /** @var UploadedFile $file */
             $file = $form->get('imagepath1')->getData();
             //Verifier que il y a bien un fichier
             if($file)
             {          
-                $category->setImagepath1($handleImage->save($file));
+                $category->setImagepath1($file);
             }
 
             $entityManager->persist($category);
@@ -71,7 +74,7 @@ class CategoryController extends AbstractController
         }
 
         return $this->renderForm('admin/category/new.html.twig', [
-            'category' => $category,
+            'category' => $category,'file'=>$filesTab,
             'form' => $form,
         ]);
     }
@@ -91,6 +94,9 @@ class CategoryController extends AbstractController
         $oldImage2 = $category->getImagePath2();
         $oldImage3 = $category->getImagePath3();
 
+        $finder = new ImageFinder();
+        $filesTab = $finder->GetUploadDirectory();
+
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
@@ -103,8 +109,8 @@ class CategoryController extends AbstractController
             //Verifier que il y a bien un fichier
             if($file)
             {
-                $category->setImagepath1($handleImage->save($file));
-                $handleImage->edit($file,(string)$oldImage1);
+                $category->setImagepath1( $file);
+                // $handleImage->edit($file,(string)$oldImage1);
             }
             else
             {
@@ -119,8 +125,8 @@ class CategoryController extends AbstractController
             //Verifier que il y a bien un fichier
             if($file)
             {
-                $category->setImagepath2($handleImage->save($file));
-                $handleImage->edit($file,(string)$oldImage2);
+                $category->setImagepath2( $file);
+                // $handleImage->edit($file,(string)$oldImage2);
             }
             else
             {
@@ -135,8 +141,8 @@ class CategoryController extends AbstractController
             //Verifier que il y a bien un fichier
             if($file)
             {
-                $category->setImagepath3($handleImage->save($file));
-                $handleImage->edit($file,(string)$oldImage3);
+                $category->setImagepath3( $file);
+                // $handleImage->edit($file,(string)$oldImage3);
             }
             else
             {
@@ -151,7 +157,7 @@ class CategoryController extends AbstractController
         }
         
         return $this->renderForm('admin/category/edit.html.twig', [
-            'category' => $category,
+            'category' => $category,'file'=>$filesTab,
             'form' => $form,
         ]);
     }
