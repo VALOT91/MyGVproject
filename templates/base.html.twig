@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{{ asset('css/navbar.css')}}" />
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
+         <link rel="stylesheet" href="{{ asset('css/footer.css')}}" />
        
   
   
@@ -30,6 +31,42 @@
         <script type="text/javascript" src="/js/conditionnement.js" >
 
     </body>
-
+     <foot>
+    
+      <div class="container text-center " >
+   
+          <div class="card-body blkheader" style="border-radius:7px;">
+            <div class="row d-flex align-items-center">
+                <div class="col-12 col-md-4 col-lg-4 d-flex justify-content-center">
+                
+               <img class ="imgFooter" src="/images/menu/logo-fond2.svg " alt="logo de la société"  >
+                            
+                
+                </div>
+                
+                    <div class="col-12 col-md-4 col-lg-4 d-flex justify-content-center" >
+                        <div class="footer">
+                           <a href="{{ path('ConditionsVente')}}">Conditions générales  de vente</a>
+                             <a href="{{ path('MentionsLegales')}}">Mentions légales</a>   
+                            <a href="{{ path('engagement')}}">Notre engagement</a>    
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-4 d-flex justify-content-center my-2">
+                        <div class="footer" >
+                             <a href="{{ path('Confidentialite') }}">Politique de confidentialité</a>
+                             <a href="{{ path('contact')}}">Contactez-nous</a>
+                             <a href="{{ path('Apropos')}}">A propos de nous</a>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="card-footer  my-2">
+                Copyright gilles VALOT - PLF (2022)
+            </div>
+        </div>
+        
+</div>  
+    
+    </foot>
 
 </html>

@@ -1,16 +1,23 @@
 
+ body {background-color:white!important;}
+
 /* Image de fond la fiche gamme (fiche produit) */
 .fnd{
   
   background-image: url(/images/fond.jpg)!important;  
- background-repeat: no-repeat;
- background-size: cover ;
+  background-repeat: no-repeat;
+  background-size: cover ;
 }
 /* Couleur de la fiche de la gamme et opacité  */
 .cont {
-    opacity:0.95!important;
+    opacity:0.7!important;
     background-color: white!important;
 }
+ 
+.fondcgv {
+  background-color:rgb(238, 247, 237);
+}
+
 #box:hover {
 
   background-color:aqua!important;  
@@ -79,6 +86,13 @@
       height: 55rem;
     }
   
+    .cont2 {
+      opacity:0.9!important;
+      background-color: white!important;
+      border-radius:7px;
+      margin:5rem 10rem 5rem 10rem!important;
+    }
+
     #fond h1 {
       font-size: 5rem;
       font-weight: bold;
@@ -118,6 +132,15 @@
       height: 30rem;
     }
   
+    
+    .cont2 {
+      opacity:0.9!important;
+      background-color: white!important;
+      border-radius:7px;
+      
+    }
+
+
     #fond h1 {
       font-size: 2rem;
       font-weight: bold;
@@ -143,8 +166,9 @@
     }
   
     .accroche {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: lighter;
+      color:rgb(3, 51, 51)!important;
     }
   
     #fond .logoFond {

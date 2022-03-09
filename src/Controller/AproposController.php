@@ -6,12 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class EngagementController extends AbstractController
+class AproposController extends AbstractController
 {
-    #[Route('/engagement', name: 'engagement')]
+    #[Route('/apropos', name: 'Apropos')]
     public function index(): Response
     {
-        return $this->render('customer/engagement/index.html.twig');
-       
+        return $this->render('customer/Confidentialite/index.html.twig');
     }
 }
