@@ -59,6 +59,21 @@
      color:red;
   }
 
+  
+.politiqueLien a {
+  text-decoration: none;
+  color:darkslategray;
+  font-weight: bold;
+  font-size: small;
+}
+.politiqueLien a:hover {
+  color: lightseagreen;
+  font-weight: bold;
+}
+.politiqueLien a:visited {
+  color: lightblue;
+}
+
   /* ------------------------------------------ */
 
   #fondInfos {

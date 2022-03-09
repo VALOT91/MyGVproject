@@ -11,6 +11,6 @@ class AproposController extends AbstractController
     #[Route('/apropos', name: 'Apropos')]
     public function index(): Response
     {
-        return $this->render('customer/Confidentialite/index.html.twig');
+        return $this->render('customer/Apropos/index.html.twig');
     }
 }
