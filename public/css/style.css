@@ -213,4 +213,45 @@
       color: black !important;
     }
   }
+
+  /* ------------Liste des categories---------------------------- */
+
+  .categoryBlock {
+
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+  }
+  .categoryText {
+    width:90%;
+    display:flex; 
+    justify-content:start;
+    flex-direction:column;  
+  }
+  .categoryImage{
+    object-fit:cover;
+    border-radius:60%;
+    height:12rem;
+    width:12rem;
+  }
+  .categoryImage:hover{
+      border-color:chartreuse;
+      border-style:solid;
+      border-width:thick;
+  }
+  .categoryDescription, .categoryTitre {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+  }
+
+  .categoryMainImage
+  {
+   border-radius:8px;
+    
+  }
+
+  
+
+  
   
