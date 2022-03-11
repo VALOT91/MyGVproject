@@ -4,8 +4,8 @@
 
 {% block body %}
 
-<div class="container-flex  ">
-    <h1 class="my-4 text-center" >Notre gamme de {{ category.nom  | lower }}</h1>
+<div class="container  ">
+    <h1 class="my-4 text-center text-success" >Notre gamme de {{ category.nom  | lower }}</h1>
     <h5 class="  text-center" >{{ category.description }} </h5>
     <div style="margin-top:3rem;display:flex;justify-content:center"> {{ knp_pagination_render(articles, '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}  </div>
     <div class="row d-flex flex-wrap   justify-content-around" >
@@ -16,24 +16,29 @@
             <div class="col-12 col-lg-4 col-md-6 " >
                
                     <div class="card text-center my-4 mx-4 px-2  justify-content-around  "    >
+                       <div class="mt-2" style="height:6rem!important;">
                         <h3 class ="text-center">{{ product.getProduct().designation }}</h3>
                          <p class="text-center" >{{ product.getProduct().accroche }} </p>
+                       </div>
+                       
                         <div style="height:20rem!important;display:flex;justify-content:center">
                                 {# test la présence d'une image #}
+                               
                                 {% if product.getProduct().getProduitConditionnement() is not null  %} 
-                                   <img id="img_{{ product.getProduct().id  }}" style="min-width:20rem;objective-fit:cover" src=" {{product.getProduct().getProduitConditionnement().imagePath }}" class="   "  alt="...">
+                                 <a href="#"> 
+                                   <img id="img_{{ product.getProduct().id  }}" style="width:20rem;objective-fit:cover" src="{{product.getProduct().getProduitConditionnement().imagePath }}" class="   "  alt="...">
+                                 </a>
                                 {% endif %} 
+                               
+                     
                         </div>
-                        <hr>
-                          <div style="height:7rem!important;display:flex;flex-direction:column;justify-content:start">
-                            <h4>Description</h4>
-                            <p class="my-4">{{ product.getProduct().description }}</p>
-                           
-                         </div>
-                          <a class="" href="{{ path('gamme_show', {'id': product.getProduct().id}) }}">Voir la fiche produit</a>   
+                              <div class="d-flex flex-row align-items-center justify-content-center">
+                               <img style="margin-top:2rem;width:2rem;" src="/images/ic_info.png" class="   "  alt="icone info">
+                               <a class="gammeDetail" href="{{ path('gamme_show', {'id': product.getProduct().id}) }}">En savoir plus </a>   
+                              </div>
                         <hr>
                         <h4>Conditionnements disponibles</h4>
-                        <div class="mt-2  " >
+                        <div class="mt-2  " > 
                                 
                                 <div class="d-flex flex-row justify-content-around w-100"  >
                                          {# Boucle sur les conditionnements disponibles #}
@@ -42,7 +47,7 @@
                                             
                                                 <input type="radio" onclick=choice(this) class="condit" name="{{product.getProduct().id }}" checked="checked" id="{{ conditionnement.id }}" /> 
                                                 <label  for="{{ conditionnement.id }}" >
-                                                    <img style="max-width:3rem;objective-fit:cover" src="\{{ conditionnement.getConditionnement().imagepath }}"    alt="logo du conditionnement">
+                                                    <img style="max-width:3rem;objective-fit:cover" src="{{ conditionnement.getConditionnement().imagepath }}"    alt="logo du conditionnement">
                                                 </label>
                                                 <p class="mt-1" style="font-size:x-small">{{conditionnement.getConditionnement().designation}}</p>
                                                 <h4 style="display:none" id="IM_{{ conditionnement.id }}"> {{ conditionnement.imagePath  }} </h4>
@@ -83,11 +88,15 @@
                                         
                             </div>
                              <hr>
+                             <div class="mb-2" style=" height:12rem!important;display:flex;flex-direction:column;justify-content:start">
+                            <h4>Description</h4>
+                            <p class="my-1">{{ product.getProduct().description }}</p>
+                           
+                          </div>
+                          <hr>
                             
                         {% if app.user %} 
                             
-                               
-                         
                                {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
                                       <h3>Tarif pros et public</h3>
                                       <p> (Prix public TTC à titre indicatif dont tva 5.5%)</p>

@@ -77,7 +77,7 @@
                         id = "#linkIm" + th.id.split("Im")[1];
                         path = document.querySelector(id).innerHTML;
                         document.querySelector("#ConditionnementIm").setAttribute("src","\\uploads\\images\\" + path);
-                        document.querySelector("#conditionnement_image_path").value = "uploads\\images\\" + path;
+                        document.querySelector("#conditionnement_image_path").value = "\\uploads\\images\\" + path;
                         $('#dialog').dialog("close");
 
                     }
@@ -87,7 +87,7 @@
                         id = "#linkIm" + th.id.split("Im")[1];
                         path = document.querySelector(id).innerHTML;
                         document.querySelector("#produitConditionnementIm").setAttribute("src","\\uploads\\images\\" + path);
-                        document.querySelector("#produit_conditionnement_image_path").value = "uploads\\images\\" + path;
+                        document.querySelector("#produit_conditionnement_image_path").value = "\\uploads\\images\\" + path;
                         $('#dialog').dialog("close");
 
                     }
