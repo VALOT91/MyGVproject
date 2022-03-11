@@ -28,29 +28,43 @@
                                     <div class="col-2"> 
                                         <img  style="width:4rem;objective-fit:cover" src=" \{{item.imagePath }}" class=""  alt="image de la recette">
                                     </div>
-                                    <div class="col-10 mt-3" style="line-height:3px;"> 
-                                        <strong><p style="font-size:medium" class="text-dark">{{ item.nom }} </p></strong>
-                                        <p style="font-size:small;line-height:12px" class="">{{ item.description }} </p>
+                                    <div class="col-10 mt-4" style="line-height:3px;"> 
+                                        <strong><p style="font-size:medium" class="text-dark ms-2">{{ item.nom }} </p></strong>
+                                        <p style="font-size:small;line-height:12px" class="ms-2">{{ item.description }} </p>
                                     </div>
                                 </div>
                             {% endfor %}
+                             {% if product.isBio  %} 
+                                    <div class="row w-100 d-flex align-items-center my-4">
+                                        <div class="col-2"> 
+                                            <img src="/images/bio.png" style="width:3rem" class="ms-2"  alt="label bio">
+                                        </div>
+                                        <div class="col-10 mt-3" style="line-height:3px;"> 
+                                            <strong><p class="ms-2 text-dark"> Certifié AB.</p></strong>
+                                        </div>
+                                    </div>
+                            {% endif %} 
                     </div>
                 </div>
+               
             </aside>
             {# bloc droit #}
             <aside  class="detailGammedroite px-2 mb-4 pb-2 col-12 col-lg-6 col-md-6 d-flex flex-column align-items-center" >
-                <div  class="detailGammeDescr w-100 d-flex flex-column align-items-center text-center" >
+                <div  class="detailGammeSepBasse detailGammeSepDescr w-100 d-flex flex-column align-items-center text-center pt-2" >
                     <h3 class="">Description </h3>
                     <p>{{ product.description }} </p>
                 </div>
-                <h3 class="my-3">Conditionnement disponibles </h3>
-                <aside class="mt-2 d-flex flex-row justify-content-around w-100" >
-                <div class="detailGammeSepBasse mb-3 d-flex flex-row justify-content-around w-100">
+               
+                <h3 class="my-2">Conditionnement disponibles </h3>
+                <aside class="container  mt-2 d-flex flex-row justify-content-around w-100" >
+                <button onclick="sdb()" class=" mx-1  slideBt" type="button"><</button> 
+                <div id="containerSC" class=" scoll-pane  mb-0 d-flex flex-row justify-content-around w-100">
+                   
                     {# Boucle sur les conditionnements disponibles #}
                     {% for conditionnement in conditionnements %}
-                    <div class="  text-center  "  >
+                    <div class="text-center  "  >
                         
-                            <input type="radio" onclick=choice(this) class="condit" name="{{product.id }}" checked="checked" id="{{ conditionnement.id }}" /> 
+                            <input type="radio" onclick=choice(this) class="ulSc condit" name="{{product.id }}" checked="checked" id="{{ conditionnement.id }}" /> 
                             <label  for="{{ conditionnement.id }}" >
                                 <img style="max-width:3rem;objective-fit:cover" src="{{ conditionnement.getConditionnement().imagepath }}"    alt="logo du conditionnement">
                             </label>
@@ -87,11 +101,13 @@
                             <td colspan="15">Pas de conditionnement</td>
                         
                     {% endfor %}
-                        
+               
+                    
                 </div>  
+                <button  onclick="sdf()"  class="mx-1 slideBt" type="button">></button>  
             </aside>
             {# tarifs #}
-            <section class="text-center">       
+            <section class="pt-2 detailGammeSepHaute text-center">       
                 {% if app.user %} 
                     {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
                             <h3>Tarif pros et public</h3>
@@ -106,7 +122,7 @@
                                     <p style="font-size:x-small">Prix indicatif public TTC</p>
                                 </div>
                             </div>
-                            <p class="mt-4 mb-0" style="font-size:small">* Frais de port gratuits à partir de 200€ H.T en colissimo ou Mondial relay <a href="#"> (Voir Conditions) </a></p>
+                            <p class="mt-4 mb-0" style="font-size:small">* Frais de port gratuits à partir de 200€ H.T en colissimo ou Mondial relay <a href="{{ path('ConditionsVente') }}"> (Voir Conditions) </a></p>
                             <br>
                     {% elseif  app.user.roles[0] is same as "ROLE_TRANSIT" %}
                             <h4>Tarif public T.T.C (Tva 5.5%)</h4>

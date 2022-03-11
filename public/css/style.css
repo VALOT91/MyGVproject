@@ -222,6 +222,14 @@
       font-weight: 300px;
       color: black !important;
     }
+
+    .detailGammeSepDescr {
+      border-top-style:solid; 
+      border-top-color:light-gray;
+      border-top-width:thin;  
+   }
+
+
   }
 
   /* ------------Liste des categories---------------------------- */
@@ -309,7 +317,7 @@
 }
 
 .detailGammeImg {
-  min-width:20rem;
+  width:20rem;
   object-fit:cover;
 }
 

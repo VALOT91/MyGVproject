@@ -1,0 +1,33 @@
+.scoll-pane {
+    width: 1550%;
+    height: auto;
+    overflow: auto;
+    outline: none;
+    overflow-y: hidden;
+    /* padding-bottom: 55px; */
+    -ms-overflow-style: scroll;  
+    scrollbar-width: none;  
+}
+
+/* .ulSc {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+} */
+
+.imgSc {
+    width: 400px;
+    height: 180px;
+}
+
+  .scoll-pane::-webkit-scrollbar { 
+  display: none; 
+  }
+
+  .slideBt {
+      height:60px;
+      margin-top:0rem;     
+      background-color:none;
+      border:none;
+  }
