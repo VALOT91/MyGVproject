@@ -137,6 +137,14 @@
     #fondInfos .logoFond2 {
       width: 50rem !important;
     }
+    
+    .detailGammeSepDroite {
+      border-right-style:solid; 
+      border-right-color:light-gray;
+      border-right-width:thin
+   }
+
+
   }
   @media only screen and (max-width: 768px) {
     #fond {
@@ -154,6 +162,8 @@
       border-radius:7px;
       
     }
+
+
 
 
     #fond h1 {
@@ -264,4 +274,43 @@
    
    font-weight: bolder;
  }
+
+ /* -------------- detail produit de gamme -------------------- */
+
+ .detailColor
+ {
+   background-color:ghostwhite;
+ }  
   
+
+ .detailGammeSepBasse {
+   border-bottom-style:solid; 
+   border-bottom-color:light-gray; 
+   border-bottom-width:thin;
+ }
+
+ .detailGammeSepHaute {
+   border-top-style:solid; 
+   border-top-color:light-gray;
+   border-top-width:thin;
+}
+
+.detailGammeReco { 
+  display:flex;
+  flex-direction:row;
+  justify-content:space-around;
+  align-items:center;
+  
+}
+.detailGammeinterligneReco
+{
+  line-height:3px!important;
+  margin-top:2rem;
+}
+
+.detailGammeImg {
+  min-width:20rem;
+  object-fit:cover;
+}
+
+ 
