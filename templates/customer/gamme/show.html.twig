@@ -56,10 +56,13 @@
                 </div>
                
                 <h3 class="my-2">Conditionnement disponibles </h3>
-                <aside class="container  mt-2 d-flex flex-row justify-content-around w-100" >
-                <button onclick="sdb()" class=" mx-1  slideBt" type="button"><</button> 
-                <div id="containerSC" class=" scoll-pane  mb-0 d-flex flex-row justify-content-around w-100">
-                   
+                <aside class="container   mt-2 d-flex flex-row justify-content-center w-100" >
+                 {% if conditionnements |length < 4  %}
+                   <div  class="  scoll-pane d-flex flex-row justify-content-between ">
+                {% else %}  
+                        <button onclick="sdb()"  class="  slideBt" type="button"><</button> 
+                        <div id="containerSC" class="  scoll-pane d-flex flex-row justify-content-between ">
+                {% endif  %}
                     {# Boucle sur les conditionnements disponibles #}
                     {% for conditionnement in conditionnements %}
                     <div class="text-center  "  >
@@ -104,7 +107,9 @@
                
                     
                 </div>  
-                <button  onclick="sdf()"  class="mx-1 slideBt" type="button">></button>  
+                  {% if conditionnements |length > 3  %}
+                   <button  onclick="sdf()"  class=" slideBt" type="button">></button> 
+                 {% endif  %} 
             </aside>
             {# tarifs #}
             <section class="pt-2 detailGammeSepHaute text-center">       

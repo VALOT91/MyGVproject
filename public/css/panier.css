@@ -1,0 +1,122 @@
+@media only screen and (max-width: 360px) {
+  .imageDetailPanier {
+    height: 3rem !important;
+    object-fit: contain !important;
+  }
+
+  .panierDesi {
+    width: 15rem;
+    font-weight: bold;
+    margin-left: 1rem !important;
+    font-size: medium;
+  }
+
+  .panierPrice {
+    width: 4rem;
+    font-size: small;
+    margin-left: -1.5rem;
+  }
+}
+
+@media only screen and (min-width: 361px) {
+  .imageDetailPanier {
+    height: 3rem !important;
+    object-fit: contain !important;
+  }
+  .panierDesi {
+    width: 18rem;
+    font-weight: bold;
+    margin-left: 5rem !important;
+    font-size: medium;
+    margin-top:1rem;
+  }
+  .panierPrice {
+    width: 5rem;
+    font-size: medium;
+    font-weight: bold;
+  }
+}
+
+/* tous */
+.panier {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inc:hover {
+  background-color: rgb(238, 230, 225) !important;
+}
+
+.panierTrashImg {
+  height: 1rem !important;
+}
+
+#panierQte {
+ 
+  width: 3rem;
+  text-align: center;
+  padding: 0.5rem;
+
+  background-color: whitesmoke;
+}
+.panierTot {
+  font-size: large;
+  font-weight: bold;
+}
+.panierSousTot {
+  font-size: large;
+  font-weight: bold;
+}
+
+.pointRelay {
+  background-color: darkcyan !important;
+  color: white;
+  height: 2rem !important;
+  padding: 0.2rem;
+}
+.pointRelay:hover {
+  background-color: black !important;
+  color: white;
+}
+.btPanier
+{
+  width:9.3rem;
+  height:2.3rem;
+  background-color:black;
+  border-radius:7px;
+  border-width:thin;
+  color:white;
+  text-decoration:none;
+  font-weight: normal;
+
+}
+
+.btPanier:hover {
+
+  background-color:darkcyan;
+  color:white;
+
+}
+.btPanierFinal
+{
+  
+  width:5.3rem;
+  height:2.3rem;
+  /* border-style:solid;
+  border-color:green; */
+  border-radius:7px;
+  border-width:thin;
+  background-color: red;
+  text-decoration:none;
+  color:white;
+  font-weight: normal;
+
+}
+
+.btPanierFinal:hover {
+
+  background-color:darkcyan;
+  color:white;
+
+}

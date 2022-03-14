@@ -1,5 +1,5 @@
 .scoll-pane {
-    width: 1550%;
+    width: 100%;
     height: auto;
     overflow: auto;
     outline: none;
@@ -7,27 +7,45 @@
     /* padding-bottom: 55px; */
     -ms-overflow-style: scroll;  
     scrollbar-width: none;  
+    margin-left:0.0rem;
+    margin-right:0.2rem;
+   
+    min-width:200px!important;
+    
 }
 
-/* .ulSc {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-} */
+.scoll-pane-d {
+    width: 150%;
+    height: auto;
+    overflow: auto;
+    outline: none;
+    overflow-y: hidden;
+    /* padding-bottom: 55px; */
+    -ms-overflow-style: scroll;  
+    scrollbar-width: none;  
+    margin-left:0.4rem;
+    margin-right:0.4rem;
+   
+    width:200px!important;
+    
+}
+@media only screen and (min-width: 769px) {
 
-.imgSc {
-    width: 400px;
-    height: 180px;
+    .scoll-pane {
+       
+       min-width:285px!important;
+    }
+
 }
 
-  .scoll-pane::-webkit-scrollbar { 
+   .scoll-pane::-webkit-scrollbar { 
   display: none; 
   }
 
   .slideBt {
       height:60px;
-      margin-top:0rem;     
-      background-color:none;
+      width:2rem;   
+      background-color:rgb(241, 253, 240);
       border:none;
+
   }

@@ -64,17 +64,13 @@ let reference = document.getElementById("produit_conditionnement_reference");
     reference.value=produit[0] + conditionnement[0]
   },false);
 
-//  ----------------------
+//  ---------------------- scroll
 
-function tst()
- {
-    alert("dddddd");
-
- }
+ 
  var button = document.getElementById('slide');
  
   function sdf() {
-     var container = document.getElementById('containerSC');
+     var container =  document.getElementById('containerSC');
      sideScroll(container,'right',25,100,10);
  };
 
@@ -87,7 +83,21 @@ function tst()
      
  };
 
+ function sdfl(th) {   ;
+  var container =   document.getElementById('containerSC'+th.id.split("btr_")[1]);
    
+  sideScroll(container,'right',25,200,5);
+};
+
+var back = document.getElementById('slideBack');
+function sdbl(th) {  
+
+  var container =  document.getElementById('containerSC'+th.id.split("btl_")[1]);
+  sideScroll(container,'left',25,200,5);
+
+  
+};
+
 
  function sideScroll(element,direction,speed,distance,step){
      scrollAmount = 0; 

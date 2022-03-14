@@ -26,21 +26,29 @@
                                
                                 {% if product.getProduct().getProduitConditionnement() is not null  %} 
                                  <a href="#"> 
-                                   <img id="img_{{ product.getProduct().id  }}" style="width:20rem;objective-fit:cover" src="{{product.getProduct().getProduitConditionnement().imagePath }}" class="   "  alt="...">
+                                   <img id="img_{{ product.getProduct().id  }}" style="width:15rem;objective-fit:cover" src="{{product.getProduct().getProduitConditionnement().imagePath }}" class="imgsm   "  alt="...">
                                  </a>
                                 {% endif %} 
                                
                      
                         </div>
                               <div class="d-flex flex-row align-items-center justify-content-center">
-                               <img style="margin-top:2rem;width:2rem;" src="/images/ic_info.png" class="   "  alt="icone info">
+                               <img style="margin-top:2rem;width:2rem;" src="/images/ic_info.png" class=""  alt="icone info">
                                <a class="gammeDetail" href="{{ path('gamme_show', {'id': product.getProduct().id}) }}">En savoir plus </a>   
                               </div>
                         <hr>
                         <h4>Conditionnements disponibles</h4>
                         <div class="mt-2  " > 
-                                
-                                <div class="d-flex flex-row justify-content-around w-100"  >
+                            <aside class="container mt-2 d-flex flex-row justify-content-center w-100" >
+                                {% if product.conditionnements |length < 4  %}
+                                   <div id="containerSC{{product.getProduct().id}}" class="scoll-pane-d d-flex flex-row justify-content-around "  >
+                                {% else %}    
+                                   
+                                        <button onclick="sdbl(this)" id="btl_{{product.getProduct().id}}"  class="slideBt" type="button"><</button> 
+                                        <div id="containerSC{{product.getProduct().id}}" class="scoll-pane d-flex flex-row justify-content-around "  >
+                                          
+                                {% endif  %}
+
                                          {# Boucle sur les conditionnements disponibles #}
                                         {% for conditionnement in product.conditionnements %}
                                         <div class="  text-center  "  >
@@ -83,9 +91,10 @@
                                                 <td colspan="15">Pas de conditionnement</td>
                                             
                                         {% endfor %}
-                                        
                                 </div>  
-                                        
+                                {% if product.conditionnements |length > 3  %}
+                                   <button id="btr_{{product.getProduct().id}}"   onclick="sdfl(this)"  class=" slideBt" type="button">></button> 
+                                {% endif  %} 
                             </div>
                              <hr>
                              <div class="mb-2" style=" height:12rem!important;display:flex;flex-direction:column;justify-content:start">
@@ -95,7 +104,7 @@
                           </div>
                           <hr>
                             
-                        {% if app.user %} 
+                         {% if app.user %} 
                             
                                {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
                                       <h3>Tarif pros et public</h3>
@@ -152,5 +161,6 @@
             </p>
      
         {% endfor %}
+     </div>
      </div>
 {% endblock %}

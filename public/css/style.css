@@ -154,6 +154,10 @@
   
       height: 30rem;
     }
+    .imgsm{
+      min-width:20rem;
+
+    }
   
     
     .cont2 {
@@ -320,5 +324,45 @@
   width:20rem;
   object-fit:cover;
 }
+/* ----------------- panier --------------- */
+.btPanier
+{
+  width:8.3rem;
+  height:2.3rem;
+  background-color:black;
+  border-radius:7px;
+  border-width:thin;
+  color:white;
+  text-decoration:none;
 
+}
+
+.btPanier:hover {
+
+  background-color:darkcyan;
+  color:white;
+
+}
+.btPanierFinal
+{
+  
+  width:5.3rem;
+  height:2.3rem;
+  /* border-style:solid;
+  border-color:green; */
+  border-radius:7px;
+  border-width:thin;
+  background-color: red;
+  text-decoration:none;
+  color:white;
+
+}
+
+.btPanierFinal:hover {
+
+  background-color:darkcyan;
+  color:white;
+
+}
+ 
  
