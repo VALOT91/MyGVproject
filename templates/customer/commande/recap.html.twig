@@ -9,62 +9,40 @@
                 Récapitulatif Commande
             </h3>
         </div>
-
-        
         {% include "_messages_flash.html.twig" %}
-      
-
-        <div class="col-sm-12 col-md-6 mt-3">
-
-            <div class="card">
-                <div class="card-body">
-                
-
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Produit</th>
-                                        <th scope="col">P.U</th>
-                                        <th scope="col" >Qté</th>
-                                        <th scope="col">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {# {% for item in cart %} #}
-                                    {% for item in cart["detailCart"] %}
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <img style="border-radius:7px;objective-fit:cover;width:4rem" src=" {{ item.product.imagePath }}" alt="{{ item.product.getProduit().designation }}" class="imageProductCart">
-                                                    <div class="d-flex flex-column align-items-center justify-content-center">
-                                                        <p class="ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>  {{ item.getPrice() | euroPrice }}</td>
-                                            <td>
-                                                <button class="btn btn-light">{{ item.qty }}</button>
-                                            </td>
-                                            <td>{{ item.total | euroPrice }}</td>
-                                        </tr>
-                                    {% endfor%}
-                                    <tr>
-                                        <th colspan="2"></th>
-                                        <th><strong>Sous Total</strong></th>
-                                       
-                                         <th><strong>{{ cart['sousTotal'] | euroPrice }}</strong></th>                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-    
+       
+     <div class="col-sm-12 col-md-6 mt-3">
+        <div class="card">
+            <div class="card-body">       
+                {% for item in cart["detailCart"] %}
+                    <div class="mt-1 " >
+                    
+                        <div class="recap " >
+                            <div style="width:5rem">
+                                <img src=" {{ item.product.imagePath }}" alt="Image {{ item.product.getProduit().designation }}" class="imageRecapPanier"/>
+                            </div>
+                            <div style="width:20rem">
+                                <span class="recapDesi"> <p class="ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
+                            </div>    
+                            
+                        </div>   
+                        <div class="d-flex flex-row justify-content-around">
+                                                <p  title="Prix unitaire TTC sans les frais de port" class ="recapPrice" > P.U. : {{ item.getPrice() | euroPrice }} </p> 
+                                                <p class= "recapQte"> Qté:&nbsp <b>{{ item.qty }}</b> </p>
+                                                <p class=" ms-4 recapTot"> {{ item.total | euroPrice }} </p> 
+                        </div> 
+                    </div>
+                    <hr>
+                {% endfor %}
+                <div class="d-flex flex-column align-items-center justify-content-center flex-wrap">
+                <div>
+                    <p class="panierSousTot"><strong>Total T.T.C: </strong><label title="Prix total sans les frais de port" class="ms-4 panierPrice"><strong class="panierSousTot">{{ cart['sousTotal'] | euroPrice }}</label></strong></p> 
+                    <p class=""> ( Hors frais de port ) </p>
                 </div>
-                <div class="card-footer">
-                    <a href="{{ path('cart_detail') }}" class="btn btn-secondary">Retour au panier</a>
                 </div>
-            </div>
-
+             </div>
+        </div>
+            {# --------- #}
         </div>
         <div class="col-sm-12 col-md-6 mt-3">
             <div class="card">

@@ -1,5 +1,12 @@
-@media only screen and (max-width: 360px) {
+ 
+ 
+ 
+ @media only screen and (max-width: 768px) {
   .imageDetailPanier {
+    height: 3rem !important;
+    object-fit: contain !important;
+  }
+  .imageRecapPanier {
     height: 3rem !important;
     object-fit: contain !important;
   }
@@ -9,21 +16,68 @@
     font-weight: bold;
     margin-left: 1rem !important;
     font-size: medium;
+    
   }
 
   .panierPrice {
-    width: 4rem;
-    font-size: small;
-    margin-left: -1.5rem;
+    width: 6rem;
+    font-size: large;
+    margin-left:0.5rem;
+    font-weight: bold;
   }
+
+  .recap {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
+  }
+
+  .recapDesi {
+    width: 18rem;
+    font-weight: bold;
+    margin-left: 2rem !important;
+    font-size: medium;
+    margin-top:1rem;
+  }
+
+  .recapPrice{
+    width: 8rem;
+    font-size: large;
+    font-weight: bold;
+    margin-left:0rem;
+   
+    }
+    .panier {
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      flex-wrap: wrap;
+ 
+     }
+
+  .recapQte{
+    width: 4rem;
+    font-size: medium;
+     
+    font-weight:normal;
+    margin-left:3rem;
+    display:flex;
+    flex-direction:row;
+    }
+
 }
 
-@media only screen and (min-width: 361px) {
+@media only screen and (min-width: 769px) {
   .imageDetailPanier {
     height: 3rem !important;
+    object-fit: contain !important; 
+  }
+  .imageRecapPanier {
+    height: 4rem !important;
     object-fit: contain !important;
   }
-  .panierDesi {
+  .panierDesi, .recapDesi {
     width: 18rem;
     font-weight: bold;
     margin-left: 5rem !important;
@@ -34,14 +88,49 @@
     width: 5rem;
     font-size: medium;
     font-weight: bold;
+  
   }
+  .recapQte{
+    width: 4rem;
+    font-size: large;
+    margin-top: .6rem;
+    color:darkgreen;
+    font-weight:normal;
+    margin-left:3rem;
+    display:flex;
+    flex-direction:row;
+    }
+  .recapPrice{
+    width:10rem;
+    font-size: x-large;
+    color:darkgreen;
+  
+    margin-left:5rem;
+    margin-top: .3rem;
+    }
+    .recapTot {
+      font-size: x-large;
+      font-weight: bold;
+     
+    }
+  .recap {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
+    
+  }
+  
+
 }
 
 /* tous */
-.panier {
+  .panier {
   display: flex;
   align-items: center;
+  justify-content:center;
   flex-wrap: wrap;
+  
 }
 
 .inc:hover {
@@ -60,10 +149,7 @@
 
   background-color: whitesmoke;
 }
-.panierTot {
-  font-size: large;
-  font-weight: bold;
-}
+
 .panierSousTot {
   font-size: large;
   font-weight: bold;
@@ -81,7 +167,7 @@
 }
 .btPanier
 {
-  width:9.3rem;
+  width:10.3rem;
   height:2.3rem;
   background-color:black;
   border-radius:7px;
@@ -101,13 +187,11 @@
 .btPanierFinal
 {
   
-  width:5.3rem;
+  width:12rem;
   height:2.3rem;
-  /* border-style:solid;
-  border-color:green; */
+  
   border-radius:7px;
   border-width:thin;
-  background-color: red;
   text-decoration:none;
   color:white;
   font-weight: normal;
@@ -115,8 +199,26 @@
 }
 
 .btPanierFinal:hover {
-
   background-color:darkcyan;
   color:white;
+}   
+
+.ctIm {
+  width:92%;
+  opacity:90%;
+  border-radius:7px
+}
+
+.btRg {
+  border-radius:7px;
+  margin-top:-1rem!important;
+  margin-left:1rem!important;
+  margin-right:1rem!important;
+}
+
+.trash {
+ width:1.4rem;
+  margin-top:-1.2rem;
 
 }
+

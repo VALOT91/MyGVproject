@@ -1,157 +1,62 @@
-{# {% extends "base.html.twig" %}
-
-{% block body %}
-
-<div class="container-flex py-5">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-12">
-            <h3 class="text-center">
-                Mon panier
-            </h3>
-        </div>
-
-        <div class="col-sm-12 col-md-10 col-lg-8 mt-3">
-        {% include "_messages_flash.html.twig" %}
-            <div class="card">
-                <div class="card-body">
-                    {% if cart | length > 0 %}
-
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Produit</th>
-                                        <th scope="col">P.U</th>
-                                        <th scope="col" >Qté</th>
-                                        <th scope="col">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for item in cart["detailCart"] %}
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <img style="border-radius:7px;objective-fit:cover;width:4rem" src=" {{ item.product.imagePath }}" alt="Image {{ item.product.getProduit().designation }}" class="imageProductCart">
-                                                    <div class="pt-2">
-                                                        <p class="ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> 
-                                                        
-                                                    
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                            <div>
-                                                    {{ item.getPrice() | euroPrice }}</td>
-                                            </div>
-                                            <td>
-                                                <a  style="border-radius:7px; " class="btn btn-success" href="{{ path('cart_decrement',{'id': item.product.id}) }}"><strong>-</strong></a>
-                                                <button class="btn btn-light">{{ item.qty }}</button>
-                                                <a style="border-radius:7px"  class="btn btn-success" href="{{ path('cart_add',{'id': item.product.id}) }}?returnToCart=true"><strong>+</strong></a>
-                                            </td>
-                                            <td>{{ item.total | euroPrice }}</td>
-                                            <td>
-                                                <a class="btn btn-link text-danger btn-sm" href="{{ path('cart_remove',{'id' : item.product.id }) }}"></i> 
-                                                        <img  src="/images/trash.png"  style="width:1.4rem"  />
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                    <tr>
-                                        <th colspan="2"></th>
-                                        <th><strong>Sous Total</strong></th>
-                                        <th><strong>{{ cart['sousTotal'] | euroPrice }}</strong></th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="d-flex justify-content-between">
-                           <div class="d-flex flex-column align-items-center justify-content-center text-center">
-                                <a    class="py-1 btPanier" href="{{ path('gamme_index') }}">
-                                   Retour shopping
-                                </a>
-                                <p style="font-size:small" ></p> 
-                            </div>
-                            <a href="{{ path('command_recap') }}" class="py-1 btPanierFinal text-center">
-                                    Finaliser votre commande
-                                
-                            </a>
-                        </div>
-
-                    {% else %}
-                        <p>Le panier est vide.</p>
-                        <br/>
-                      
-                    {% endif  %}
-                    
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-{% endblock %} #}
-
 {% extends "base.html.twig" %}
 
 {% block body %}
 
-<div class="container py-5">
-      <h1 class="text-center ">Mon panier</h1>
+<div class="container" > 
+ <div class="fnd d-flex flex-column align-items-center m" >
+ 
+   <div class="my-4 bg-white ctIm   d-flex flex-column justify-content-center">
+ 
+     <h1 class="text-center mt-1">Mon panier</h1>
+    {# <div class="block"> #}
          {% for item in cart["detailCart"] %}
-            <div class="panier mt-4" >
-                <div class="panier" >
-                    <img src=" {{ item.product.imagePath }}" alt="Image {{ item.product.getProduit().designation }}" class="imageDetailPanier"/>
-                    <span class="panierDesi"> <p class="ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
-                     
-                    <div class="mx-4">
-                        <div style="display:flex;flex-direction:row ;align-items:center">
-                                
-                                
-                                   <p  title="Prix unitaire TTC sans les frais de port" class ="panierPrice" >  {{ item.getPrice() | euroPrice }} </p>
-                                   <a  style="border-radius:7px;margin-top:-1rem " class="btn btn-success" href="{{ path('cart_decrement',{'id': item.product.id}) }}"><strong>-</strong></a>
-                                   <p id= "panierQte">{{ item.qty }} </p>
-                                   <a style="border-radius:7px;margin-top:-1rem"  class="btn btn-success" href="{{ path('cart_add',{'id': item.product.id}) }}?returnToCart=true"><strong>+</strong></a>
+            <div class="mt-1 " >
+              
+                <div class="panier " >
+                    <div style="width:5rem">
+                        <img src=" {{ item.product.imagePath }}" alt="Image {{ item.product.getProduit().designation }}" class="imageDetailPanier"/>
+                    </div>
+                    <div style="width:20rem">
+                        <span class="panierDesi"> <p class="ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
+                    </div>    
+                    <div class="" style="">
+                            <div class="panier">
+                             
+                                    <p  title="Prix unitaire TTC sans les frais de port" class ="panierPrice" >  {{ item.getPrice() | euroPrice }} </p>
                                
-                                                                
-                               <a class="btn btn-link text-danger btn-sm" href="{{ path('cart_remove',{'id' : item.product.id }) }}"></i> 
-                                                        <img  src="/images/trash.png"  style="width:1.4rem; margin-top:-1.2rem"  />
-                               </a>   
-                        </div>
-                       
-                    </div>  
-                </div> 
-                 <p class="panierTot"> {{ item.total | euroPrice }} </p> 
-                <hr> 
+                                    <a class="btRg btn btn-success" href="{{ path('cart_decrement',{'id': item.product.id}) }}"><strong>-</strong></a>
+                                    <p id= "panierQte">{{ item.qty }} </p>
+                                    <a class="btRg btn btn-success " href="{{ path('cart_add',{'id': item.product.id}) }}?returnToCart=true"><strong>+</strong></a>
+                                    <a class="btn btn-link text-danger btn-sm" href="{{ path('cart_remove',{'id' : item.product.id }) }}"></i> 
+                                       <img class="trash" src="/images/trash.png"    />
+                                    </a>  
+                                    <p class=" ms-4 panierTot"> {{ item.total | euroPrice }} </p> 
+                            </div>
+                     </div>  
+                </div>   
+              
             </div>
             <hr>
-
-            
-
         {% endfor %}
-     
-        <p class="panierSousTot"><strong>Sous Total T.T.C: <strong><label title="Prix total sans les frais de port" class="ms-4 panierPrice"><strong class="panierSousTot">{{ cart['sousTotal'] | euroPrice }}</label></strong></p> 
-        <p> ( Hors frais de port ) </p>
-       
-        <hr><br>
-        {# <div class="d-flex justify-content-center">
-            <a href="panier-parcours-vente.php" class ="btn btn-primary">Régler votre commande</a>
-            <button class =" ms-5 btn btn-info">Continuer vos achats</button>
-        </div> #}
-        <div class="d-flex justify-content-between">
-                           <div class="d-flex flex-column align-items-center justify-content-center text-center">
-                                <a    class="py-1 btPanier" href="{{ path('gamme_index') }}">
-                                   Retour shopping
-                                </a>
-                                <p style="font-size:small" ></p> 
-                            </div>
-                            <a href="{{ path('command_recap') }}" class="py-1 btPanierFinal text-center">
-                                    Finaliser  
-                                
-                            </a>
-                        </div>
-   
+       <div class="d-flex flex-column align-items-center justify-content-center flex-wrap">
+           <div>
+            <p class="panierSousTot"><strong>Sous Total T.T.C: </strong><label title="Prix total sans les frais de port" class="ms-4 panierPrice"><strong class="panierSousTot">{{ cart['sousTotal'] | euroPrice }}</label></strong></p> 
+            <p class=""> ( Hors frais de port ) </p>
+           </div>
         </div>
-
+        <hr><br>
+           <div class="d-flex justify-content-around">
+                    <a    class="py-1 btPanier text-center" href="{{ path('gamme_index') }}">
+                        Retour au shopping
+                    </a>
+                    <p style="font-size:small" ></p> 
+                 
+                <a href="{{ path('command_recap') }}" class="bg-success ms-2 py-1 btPanierFinal text-center">
+                        Régler votre commande 
+                </a>
+            </div>
+            <br>
+    </div>
+  </div>
+</div>
 {% endblock %}

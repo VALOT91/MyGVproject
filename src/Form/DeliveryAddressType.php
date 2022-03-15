@@ -65,7 +65,7 @@ class DeliveryAddressType extends AbstractType
                 ]
             ])
             ->add('commentary',TextType::class,[
-                'label' => 'Consignes au livreur)',
+                'label' => 'Consignes au livreur',
                 'required' => false
             ])
             ->add('CGV',CheckboxType::class,[
