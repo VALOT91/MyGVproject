@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use App\services\ImageFinder;
+use App\Services\ImageFinder;
 
 #[Route('admin/conditionnement')]
 class ConditionnementController extends AbstractController

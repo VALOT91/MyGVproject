@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\services\ImageFinder;
+use App\Services\ImageFinder;
 use App\Form\DocumentType;
 use App\Services\HandleImage;
 use App\Repository\CommandShopRepository;

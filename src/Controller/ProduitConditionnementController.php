@@ -21,7 +21,7 @@ use App\Repository\ProduitConditionnementRepository;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use App\services\ImageFinder;
+use App\Services\ImageFinder;
 
 #[Route('admin/produit/conditionnement')]
 class ProduitConditionnementController extends AbstractController

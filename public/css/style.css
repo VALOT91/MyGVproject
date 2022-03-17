@@ -1,5 +1,4 @@
-
- body {background-color:white!important;}
+body {background-color:white!important;}
 
 /* Image de fond la fiche gamme (fiche produit) */
 .fnd{
@@ -101,6 +100,17 @@
       height: 55rem;
     }
   
+
+    #fndM{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url(/images/business/gerant.jpg)!important;  
+      background-repeat: no-repeat;
+      background-size: cover ;
+      height: 55rem;
+    }
+
     .cont2 {
       opacity:0.9!important;
       background-color: white!important;
@@ -108,12 +118,12 @@
       margin:5rem 10rem 5rem 10rem!important;
     }
 
-    #fond h1 {
+    #fond h1, #fndM h1 {
       font-size: 5rem;
       font-weight: bold;
       color: white;
     }
-    #fond h3 {
+    #fond h3, #fndM h3 {
       font-size: 3.1rem;
       font-weight: lighter;
       color: white;
@@ -130,7 +140,17 @@
       padding-top: 0.6rem;
       padding-bottom: 0.8rem;
     }
-    #fond .logoFond {
+    .titre3 {
+      color: white;
+      font-size: 2.7rem;
+      background-color: black;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.8rem;
+    }
+
+    #fond .logoFond,#fndM .logoFond {
       width: 30rem !important;
     }
   
@@ -158,6 +178,14 @@
       min-width:20rem;
 
     }
+
+    #fndM {
+      background-image: url(/images/business/gerant.jpg)!important;  
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 30rem;
+      text-align:center;
+    }
   
     
     .cont2 {
@@ -167,10 +195,23 @@
       
     }
 
+    #fndM h1  {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      text-align:center;
+      padding-top:1rem;
+    }
+    #fndM h3 {
+      font-weight: lighter;
+      color: white;
+      font-size: 1.2rem;
+      margin-top: -1rem;
+      text-decoration: underline;
+      text-align:center;
+    }
 
-
-
-    #fond h1 {
+    #fond h1  {
       font-size: 2rem;
       font-weight: bold;
       color: white;
@@ -193,7 +234,16 @@
       padding-top: 0.2rem;
       padding-bottom: 0.4rem;
     }
-  
+    .titre3 {
+      color: white;
+      font-size: 1rem;
+      background-color: black;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.8rem;
+      margin:0.5rem;
+    }
     .accroche {
       font-size: 1.2rem;
       font-weight: lighter;
@@ -203,6 +253,11 @@
     #fond .logoFond {
       width: 17rem !important;
     }
+
+    #fndM .logoFond {
+      width: 17rem !important;
+      }
+
   
     /* .blkInfo {
       width: 40%;
@@ -364,5 +419,3 @@
   color:white;
 
 }
- 
- 

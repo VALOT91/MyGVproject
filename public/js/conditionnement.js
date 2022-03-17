@@ -86,14 +86,14 @@ let reference = document.getElementById("produit_conditionnement_reference");
  function sdfl(th) {   ;
   var container =   document.getElementById('containerSC'+th.id.split("btr_")[1]);
    
-  sideScroll(container,'right',25,200,5);
+  sideScroll(container,'right',25,100,5);
 };
 
 var back = document.getElementById('slideBack');
 function sdbl(th) {  
 
   var container =  document.getElementById('containerSC'+th.id.split("btl_")[1]);
-  sideScroll(container,'left',25,200,5);
+  sideScroll(container,'left',25,100,5);
 
   
 };
