@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @UniqueEntity(fields={"email"}, message="Il y a déja un compte avec cet email")
@@ -20,13 +21,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-
+    
+    #[Assert\NotBlank(message:'Vous devez ajouter un email.')]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
+    #[Assert\NotBlank(message:'Vous devez ajouter un mot de passe.')]
     #[ORM\Column(type: 'string')]
     private $password;
 
@@ -65,6 +68,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: CommandShop::class)]
     private $commandShops;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $tokenConfirmationEmail;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $isConfirmed;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $tokenPasswordLost;
 
     public function __construct()
     {
@@ -133,7 +145,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
@@ -318,6 +330,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $commandShop->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTokenConfirmationEmail(): ?string
+    {
+        return $this->tokenConfirmationEmail;
+    }
+
+    public function setTokenConfirmationEmail(?string $tokenConfirmationEmail): self
+    {
+        $this->tokenConfirmationEmail = $tokenConfirmationEmail;
+
+        return $this;
+    }
+
+    public function getIsConfirmed(): ?bool
+    {
+        return $this->isConfirmed;
+    }
+
+    public function setIsConfirmed(?bool $isConfirmed): self
+    {
+        $this->isConfirmed = $isConfirmed;
+
+        return $this;
+    }
+
+    public function getTokenPasswordLost(): ?string
+    {
+        return $this->tokenPasswordLost;
+    }
+
+    public function setTokenPasswordLost(?string $tokenPasswordLost): self
+    {
+        $this->tokenPasswordLost = $tokenPasswordLost;
 
         return $this;
     }

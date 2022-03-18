@@ -5,9 +5,8 @@ namespace App\Services;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 
-class MailerService 
+class MailerService
 {
-
     private $mailer;
 
     public function __construct(MailerInterface $mailer)
@@ -15,22 +14,6 @@ class MailerService
         $this->mailer = $mailer;
     }
 
-    public function sendContactMail($emailCustomer,$content)
-    {
-        $email = (new TemplatedEmail())
-            ->from('contact@monsite.fr')
-            ->to($emailCustomer)
-            ->subject('Message de contact de client')
-            ->htmlTemplate('email/contact.html.twig')
-            ->context([
-                'content' => $content,
-                'emailCustomer' => $emailCustomer
-            ])
-        ;
-        
-        $this->mailer->send($email);
-
-    } 
     public function sendConfirmationEmail($user)
     {
         $email = (new TemplatedEmail())
