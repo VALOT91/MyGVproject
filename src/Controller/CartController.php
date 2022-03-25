@@ -68,11 +68,12 @@ class CartController extends AbstractController
     }
 
     #[Route('/panier/decrementer/{id}', name: 'cart_decrement')]
-    public function decrementProduct(int $id,ProductRepository $productRepository)
+    public function decrementProduct(int $id,ProduitConditionnementRepository $produitConditionnementRepository)
     {
-        $product = $productRepository->find($id);
-
-        if(!$product)
+        // $product = $productRepository->find($id);
+        $produitConditionnementRepository = $produitConditionnementRepository->find($id);
+        
+        if(!$produitConditionnementRepository)
         {
              $this->addFlash("danger","Le produit est introuvable.");
              return $this->redirectToRoute("cart_detail");

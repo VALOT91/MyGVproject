@@ -21,7 +21,7 @@ class CategoryController extends AbstractController
     #[Route('admin/category', name: 'category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository ): Response
     {
-
+        
        
 
         return $this->render('admin/category/index.html.twig', [
@@ -93,18 +93,18 @@ class CategoryController extends AbstractController
         $oldImage1 = $category->getImagePath1();
         $oldImage2 = $category->getImagePath2();
         $oldImage3 = $category->getImagePath3();
-
+        
         $finder = new ImageFinder();
         $filesTab = $finder->GetUploadDirectory();
 
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
+          
         if ($form->isSubmitted() && $form->isValid()) {
 
            
             //Recuperer le fichier 
-            /** @var UploadedFile $file */
+            // /** @var UploadedFile $file */
             $file = $form->get('imagepath1')->getData();
             //Verifier que il y a bien un fichier
             if($file)
@@ -120,7 +120,7 @@ class CategoryController extends AbstractController
             }
 
             //Recuperer le fichier 
-            /** @var UploadedFile $file */
+            // /** @var UploadedFile $file */
             $file = $form->get('imagepath2')->getData();
             //Verifier que il y a bien un fichier
             if($file)
@@ -136,7 +136,7 @@ class CategoryController extends AbstractController
             }
 
             //Recuperer le fichier 
-            /** @var UploadedFile $file */
+            // /** @var UploadedFile $file */
             $file = $form->get('imagepath3')->getData();
             //Verifier que il y a bien un fichier
             if($file)

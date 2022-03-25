@@ -1,17 +1,17 @@
- <div class="container">
+ <div class="container-flex">
  {% if app.user %} 
-  <div style="height:2.5rem;display:flex; ;align-items:center;justify-content:space-between" class="bg-secondary text-white">
+  <div id="accBar" style="height:2.5rem;display:flex; ;align-items:center;justify-content:space-between" class="text-white">
             <ul  style="list-style:none;margin-top:1.8rem;display:flex;flex-direction:row;justify-content:space-between">
               <li>
                   <p>Bienvenue {{app.user.prenom}} {{app.user.nom}}</p>  
-                 
               </li>
+             
                 {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-                         <li> <a class="ms-4 clCompte  " href="{{ path('show_account_roleA') }}">Mon Compte  </a><li>
+                         <li> <a class="ms-4 clCompte text-secondary " href="{{ path('show_account_roleA') }}">Mon Compte  </a><li>
                   {% elseif app.user.roles[0] is same as "ROLE_TRANSIT" %}
-                          <li> <a class="ms-4 clCompte  " href="{{ path('show_account_roleT') }}">Mon Compte  </a><li>
+                          <li> <a class="ms-4 clCompte text-secondary " href="{{ path('show_account_roleT') }}">Mon Compte  </a><li>
                     {% elseif app.user.roles[0] is same as "ROLE_CLIENT" %} 
-                          <li> <a class="ms-4 clCompte  " href="{{ path('show_account_roleC') }}">Mon Compte  </a><li>
+                          <li> <a class="ms-4 clCompte text-secondary " href="{{ path('show_account_roleC') }}">Mon Compte  </a><li>
                     {% endif %} 
             </ul>
             <div style= "width:2.6rem;height:2rem;display:flex;align-items:center;margin-right:1rem;text-align:center" id="imcart">
@@ -26,26 +26,25 @@
 <div class="bg-black" >
   <nav class=" navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid  " >
-      <span class="navbar-logo ">
+      <span>
                     <a href="{{ path('home') }}">
-                        <img src="/images/menu/logofondnoir.png   " alt="logo de la société" style="height: 3.8rem;">
+                        <img id="imgNav" src="/images/menu/logofondnoir.png   " alt="logo de la société">
                     </a>
-            </span>
-           
-            <button  class="  navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span   class="navbar-toggler-icon"></span>
-                  
+      </span>
+            <button  class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span   id="hamburgerBt" class="navbar-toggler-icon"></span>
             </button>
+             
        
       <div class="collapse navbar-collapse  " id="navbarSupportedContent"   >
-        <ul  class="text-white  navbar-nav me-auto mb-2 mb-lg-0 " >
+        <ul  class="text-white navbar-nav me-auto mb-2 mb-lg-0 " >
   
           {% if app.user %} 
 
               {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
 
-                  <li  class="nav-item">
-                    <a class="nav-link text-white" href="{{ path('admin') }}">Administration</a>
+                  <li  class="nav-item text-warning">
+                    <a class="nav-link MenuSm" href="{{ path('admin') }}">Administration</a>
                   </li>
               
               {% endif %}  
@@ -54,74 +53,94 @@
           {% endif %} 
 
           <li class="nav-item">
-              <a class="nav-link text-white" href="{{ path('gamme_index') }}">Notre gamme</a>
+              <a class="MenuSm nav-link" href="{{ path('gamme_index') }}">Notre gamme</a>
           </li>
 
           <li class="nav-item">
-              <a class="nav-link text-white" href="{{ path('metier') }}">Notre métier</a>
+              <a class="nav-link MenuSm" href="{{ path('metier') }}">Notre métier</a>
           </li>
 
           <li class="nav-item">
-              <a class="nav-link text-white" href="{{ path('engagement') }}">Notre engagement</a>
+              <a class="nav-link MenuSm" href="{{ path('engagement') }}">Notre engagement</a>
           </li>
 
 
-      {% if  not app.user %} 
+     {# {% if  not app.user %} 
           
-          <li class="nav-item">
-              <a class="nav-link text-white" href="{{ path('app_login') }}">Se connecter</a>
+            <li class="nav-item">
+              <a class="nav-link MenuSm" href="{{ path('app_login') }}">Se connecter</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+              <a class="nav-link MenuSm" href="{{ path('app_register') }}">S'inscrire</a>
             </li>
-      {% else %} 
-
+      {% endif %}  #}
+      {% if app.user %} 
               {% if app.user.roles[0] is same as "ROLE_CLIENT" %}
 
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ path('services') }}">Vos services</a>
+                    <a class="nav-link MenuSm" href="{{ path('services') }}">Vos services</a>
                   </li>
               
               {% endif %}  
               {% if app.user.roles[0] is same as "ROLE_TRANSIT" %}
   
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ path('encours') }}">Votre statut</a>
+                    <a class="nav-link MenuSm" href="{{ path('encours') }}">Votre statut</a>
                   </li>
               
               {% endif %}  
               <li class="nav-item">
-                <a class="nav-link text-white" href="{{ path('app_logout') }}">Se déconnecter</a>
+                <a class="nav-link MenuSm" href="{{ path('app_logout') }}">Se déconnecter</a>
               </li>  
 
            
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ path('cart_detail') }}">Mon panier</a>
+                    <a class="nav-link MenuSm" href="{{ path('cart_detail') }}">Mon panier</a>
                   </li>
             
       {% endif %} 
         <li class="nav-item">
-            <a class="nav-link text-white" href="{{ path('contact') }}">Contact</a>
+            <a class="nav-link MenuSm" href="{{ path('contact') }}">Contact</a>
           </li>
         
             
         
         </ul>
+        <ul id="connectPanel"style="list-style:none;margin-top:1rem; display:flex;flex-direction:row;align-items:center;justify-content:space-between">
+                    <li>
+                        <a style="color:#769643" href="{{ path('app_login') }}" >
+                                <img width="25" id="imgNav" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
+                                
+                        </a>
+                    </li>
+         </ul>
    
       </div> 
      
     </div>
   
   </nav>
-  
-  {# <div class="connexion  bg-black" >
-                <a class=" " href="{{ path('app_login') }}">
-                    <img class="mt-3" src="/images/menu/utilisateur-vert.png" style=" max-width:2rem; height: 2rem;" alt="logo de la société" >
-                </a>
-                <p>Connexion</p>
-  </div> #}
-            
-       
- </div>
+    {% if  not app.user %} 
+      <div class="pt-4 bg-white" style="font-size:x-large;height:8rem;background-color:white; display:none;flex-direction:row;justify-content:space-around;align-items:center" id="barAcc">
+                            
+                               <a style="text-align: center;color:#769643;text-decoration:none" href="{{ path('app_login') }}" >
+                                      <img width="50" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
+                                      <p>Se connecter</p>
+                               </a>
+                        
+                               <a style="text-align: center;color:#769643;text-decoration:none" href="{{ path('app_register') }}" >
+                                      <img   width="50" src="/images/menu/reg.svg   " alt="logo connexion" >
+                                      <p>S'inscrire</p>
+                               </a>
+                          
+          
+      </div>
+    {% endif %} 
+  <div class="bg-black" >
+    
+  </div>
+      
+ 
 </div>
+ 

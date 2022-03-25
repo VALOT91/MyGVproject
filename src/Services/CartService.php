@@ -162,7 +162,7 @@ class CartService extends AbstractController
     {
         //Je vais chercher mon panier
         $cart = $this->getCart();
-
+         
         //Je boucle dessus
         foreach($cart as $key => $item)
         {

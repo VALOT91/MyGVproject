@@ -1,38 +1,54 @@
- 
-@media only screen and (max-width: 768px) {
 
+@media only screen and (max-device-width: 770px) {
+
+
+  /* #accBar{
+    background-color:rgba(58, 55, 55, 0.466)!important;
+    color:darkcyan;
+  } */
   
-/* 
-    .connexion {
-      color: #769643;
-      font-size: xx-small;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-right: 2rem;
-      background-color: black;
-    } */
+
+
+  #connectPanel {
+    display:none!important;
+  }
+  .MenuSm{
+    background-color:white!important;
+    font-size:5rem!important;
+    text-align:center!important;
+    border-style:solid;
+    color:#769643!important;
+    border-radius:7px;
+  }
+  #imgNav {
+     object-fit:cover!important;
+     min-height:6.2rem!important;
+     min-width:4.7rem!important;
+  }
+ 
+  .navbar-toggler .navbar-toggler-icon{
+    width:8rem!important;
+    height:8.5rem!important;
+  }
+  #barAcc, #barAccu {
+      display:flex!important;
+  }
+
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-device-width: 771px)  {
 
- 
-
-    /* .connexion {
-      color: #769643;
-      font-size: xx-small;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      align-items: center;
-      margin-right: 2rem;
-      background-color: black;
-    } */
-
+  #imgNav {
+       max-height: 2.5rem;
+     }
+     #accBar{
+      background-color:rgba(58, 55, 55, 0.466)!important;
+      color:darkcyan;
+   
+    }
+    #barAcc,#barAccu {
+      display:none!important;
+  }
+  
 }
 
- 
-/* .navbar-default .navbar-toggle .icon-bar {
-  background-color: #fff !important;;
-} */
