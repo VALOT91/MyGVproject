@@ -1,25 +1,39 @@
  <div class="container-flex">
  {% if app.user %} 
-  <div id="accBar" style="height:2.5rem;display:flex; ;align-items:center;justify-content:space-between" class="text-white">
-            <ul  style="list-style:none;margin-top:1.8rem;display:flex;flex-direction:row;justify-content:space-between">
-              <li>
-                  <p>Bienvenue {{app.user.prenom}} {{app.user.nom}}</p>  
-              </li>
+  <div id="accBar"  class="text-black px-2">
+            
+            <div id="divDeconnect" class="DeconnectButtonSM" style= "margin-left:2rem;width:2.6rem;height:2rem;display:flex;align-items:center;margin-right:2rem;text-align:center">
+                  <div style="line-height:25px;display:flex;flex-direction:column;align-items:center;text-align:center">
+                        <a class="DeconnectButtonSM" style="color:#000" href="{{ path('app_logout') }}" >
+                                        <img  style= " margin-top:1rem;min-height:5.2rem!important;min-width:5.2rem!important;object-fit:cover!important " src="/images/menu/deconnexion.png   " alt="logo déconnexion" >
+                        </a>
+                        Déconnexion
+                  </div>
+            </div>
+            <ul id="ConnectedBar" >
+            
+                <li>
+                  <a class="ms-4 clCompte text-secondary" id="shAccount"
+
+                         href="{{ path('show_account_roleA') }}"  >
+                        <img  height="40" src="/images/menu/utilisateur.png " alt="logo compte" >
+                  </a>    
+                 
+                <li>
+                  <a class="text-black" href="{{ path('show_account_roleA') }}"  ><b>Bienvenue  {{app.user.prenom}} {{app.user.nom}}</b></a>  
+                </li>
+
              
-                {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-                         <li> <a class="ms-4 clCompte text-secondary " href="{{ path('show_account_roleA') }}">Mon Compte  </a><li>
-                  {% elseif app.user.roles[0] is same as "ROLE_TRANSIT" %}
-                          <li> <a class="ms-4 clCompte text-secondary " href="{{ path('show_account_roleT') }}">Mon Compte  </a><li>
-                    {% elseif app.user.roles[0] is same as "ROLE_CLIENT" %} 
-                          <li> <a class="ms-4 clCompte text-secondary " href="{{ path('show_account_roleC') }}">Mon Compte  </a><li>
-                    {% endif %} 
+
             </ul>
-            <div style= "width:2.6rem;height:2rem;display:flex;align-items:center;margin-right:1rem;text-align:center" id="imcart">
-                 
+            
+            <div id="divCart">
+                  <div style="line-height:2px">
                         <a  href="{{ path('cart_detail') }}">
-                            <img  style="height:2.5rem;width:2.5rem;margil-left:0.5rem"  src="/images/cart-icon-transparent-18.jpg" />
-                        </a>   
-                 
+                            <img id=imcrt src="/images/cart.svg" />
+                        </a> 
+                       panier  
+                 </div>
             </div>
   </div>
   {% endif %}
@@ -63,18 +77,7 @@
           <li class="nav-item">
               <a class="nav-link MenuSm" href="{{ path('engagement') }}">Notre engagement</a>
           </li>
-
-
-     {# {% if  not app.user %} 
-          
-            <li class="nav-item">
-              <a class="nav-link MenuSm" href="{{ path('app_login') }}">Se connecter</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link MenuSm" href="{{ path('app_register') }}">S'inscrire</a>
-            </li>
-      {% endif %}  #}
+     
       {% if app.user %} 
               {% if app.user.roles[0] is same as "ROLE_CLIENT" %}
 
@@ -90,10 +93,6 @@
                   </li>
               
               {% endif %}  
-              <li class="nav-item">
-                <a class="nav-link MenuSm" href="{{ path('app_logout') }}">Se déconnecter</a>
-              </li>  
-
            
                   <li class="nav-item">
                     <a class="nav-link MenuSm" href="{{ path('cart_detail') }}">Mon panier</a>
@@ -107,12 +106,18 @@
             
         
         </ul>
-        <ul id="connectPanel"style="list-style:none;margin-top:1rem; display:flex;flex-direction:row;align-items:center;justify-content:space-between">
+       
+        <ul id="connectPanel" style="list-style:none;margin-top:1rem; display:flex;flex-direction:row;align-items:center;justify-content:space-between">
                     <li>
+                      {% if not app.user %} 
                         <a style="color:#769643" href="{{ path('app_login') }}" >
-                                <img width="25" id="imgNav" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
-                                
+                             <img width="25" id="imgNav" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
                         </a>
+                      {% else %}
+                        <a title="déconnexion" style="color:#769643" href="{{ path('app_logout') }}" >
+                             <img width="25" id="imgNav" src="/images/menu/deconnexion_b.png   " alt="logo déconnexion" >
+                        </a>
+                      {% endif %} 
                     </li>
          </ul>
    

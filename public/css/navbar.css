@@ -1,54 +1,163 @@
 
+a {text-decoration:none}
+
 @media only screen and (max-device-width: 770px) {
-
-
-  /* #accBar{
-    background-color:rgba(58, 55, 55, 0.466)!important;
-    color:darkcyan;
-  } */
   
+  /* barre grise largeur */
+  #accBar {
+    height:11rem!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    background-color: #769643!important;
+  }
 
+  #ConnectedBar {
+    list-style:none!important;
+    display:flex!important;
+    flex-direction:row!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+
+  }
+  #divDeconnect {
+   font-size:x-large;
+
+  }
+   
+
+  #ConnectedBar li{
+    list-style:none;
+    margin-top:1.8rem;
+    display:flex!important;
+    flex-direction:row!important;
+    font-size:xx-large!important;
+    justify-content:space-around!important;
+    
+  }
+  
+  #shAccount {
+    text-decoration: none!important;
+    Color:black!important;
+    font-size:xx-large!important;
+    display:flex; 
+    align-items:center;
+    justify-content:left;
+  }
+ 
 
   #connectPanel {
     display:none!important;
   }
-  .MenuSm{
-    background-color:white!important;
-    font-size:5rem!important;
-    text-align:center!important;
-    border-style:solid;
-    color:#769643!important;
-    border-radius:7px;
-  }
-  #imgNav {
-     object-fit:cover!important;
-     min-height:6.2rem!important;
-     min-width:4.7rem!important;
-  }
- 
-  .navbar-toggler .navbar-toggler-icon{
-    width:8rem!important;
-    height:8.5rem!important;
-  }
-  #barAcc, #barAccu {
-      display:flex!important;
+  .DeconnectButtonSM
+  {
+    display:flex!important;
   }
 
+    .MenuSm{
+      background-color:white!important;
+      font-size:5rem!important;
+      text-align:center!important;
+      border-style:solid;
+      color:#769643!important;
+      border-radius:7px;
+    }
+    #imgNav {
+      object-fit:cover!important;
+      min-height:6.2rem!important;
+      min-width:4.7rem!important;
+    }
+  
+    .navbar-toggler .navbar-toggler-icon{
+      width:8rem!important;
+      height:8.5rem!important;
+    }
+    #barAcc, #barAccu {
+        display:flex!important;
+    }
+    #imcrt {
+      height: 7.2rem;
+      width:7.2rem; 
+    }
+
+    #divCart {
+
+      width:3.5rem;
+      height:3.5rem;
+      display:flex;
+      align-items:center;
+      margin-right:4.3rem;
+      text-align:center;
+      font-size:x-large;
+      margin-bottom:1rem;
+
+    }
 }
-
 @media only screen and (min-device-width: 771px)  {
 
   #imgNav {
        max-height: 2.5rem;
      }
+
      #accBar{
-      background-color:rgba(58, 55, 55, 0.466)!important;
-      color:darkcyan;
-   
+           
+      height:3.5rem!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:space-between!important;
+      background-color: #769643!important;
+     
+
     }
+
+    #accBar ul { 
+      list-style:none;  
+      display:flex!important;
+      flex-direction:row!important;
+      align-items:center!important;
+      margin-top:1rem;
+    }
+
     #barAcc,#barAccu {
       display:none!important;
   }
-  
-}
+ 
 
+  .clCompte
+  {
+   text-decoration: none!important;
+   Color:black;
+   font-size:small;
+   
+  }
+  .clCompte:hover{
+    color:white!important;
+  }
+
+  .DeconnectButtonSM
+  {
+    display:none!important;
+  }
+  /* #divDeconnect { background-color:red;display:none!important;} */
+
+  #imcrt {
+
+    height:2.2rem;
+    width:2.2rem; 
+
+  }
+  #divCart {
+
+    width:2.6rem;
+    height:2rem;
+    display:flex;
+    align-items:center;
+    margin-right:4.5rem;
+    margin-bottom:0.4rem;
+    text-align:center;
+
+  }
+
+
+}
+ 

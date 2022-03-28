@@ -1,5 +1,9 @@
 body {background-color:white!important;}
 
+.card1 img {
+  border-radius:7px;
+}
+
 /* Image de fond la fiche gamme (fiche produit) */
 .fnd{
   
@@ -41,18 +45,7 @@ body {background-color:white!important;}
     font-size:medium;
   }
 
-  .clCompte
-  {
-   text-decoration: none!important;
-   Color:black;
-   font-size:small;
-   
-  }
-  .clCompte:hover{
-
-    color:white;
-   
-  }
+ 
 
   .ui-dialog-titlebar {
      color:red;
@@ -167,6 +160,10 @@ body {background-color:white!important;}
 
   }
   @media only screen and (max-width: 768px) {
+
+    
+   
+
     #fond {
       background-image: url("/images/fond.jpg");
       background-repeat: no-repeat;
@@ -287,7 +284,7 @@ body {background-color:white!important;}
       border-top-color:light-gray;
       border-top-width:thin;  
    }
-
+    
 
   }
 
@@ -419,3 +416,31 @@ body {background-color:white!important;}
   color:white;
 
 }
+
+@media only screen and (max-device-width: 768px) {
+
+    .textArt {
+    font-size:xx-large!important;
+
+  }
+  .ttre {
+    font-size:5rem!important;
+    
+
+  }
+  .accroche {
+    font-size:2rem!important;
+  }
+
+
+}
+    @media only screen and (min-device-width: 769px) {
+      
+    .ttre {
+      font-size:5rem!important;
+      
+    }
+   
+    }
+
+
