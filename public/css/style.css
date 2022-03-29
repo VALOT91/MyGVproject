@@ -3,6 +3,9 @@ body {background-color:white!important;}
 .card1 img {
   border-radius:7px;
 }
+.gif {width:35px;}
+
+
 
 /* Image de fond la fiche gamme (fiche produit) */
 .fnd{
@@ -324,7 +327,7 @@ body {background-color:white!important;}
    border-radius:8px;
     
   }
-
+ 
  /* ------------Liste gamme---------------------------- */ 
 
  .gammeDetail {
@@ -419,18 +422,37 @@ body {background-color:white!important;}
 
 @media only screen and (max-device-width: 768px) {
 
-    .textArt {
+  .textArt {
     font-size:xx-large!important;
-
   }
+
   .ttre {
     font-size:5rem!important;
-    
-
   }
+
+  .ttreT {
+    font-size:3rem!important;
+  }
+
   .accroche {
     font-size:2rem!important;
   }
+
+  .gif {width:65px!important;}
+
+  .categoryImage {
+
+     width:25rem!important;  
+     height:25rem!important;  
+  }
+
+  .divImgCat{
+    height: 26rem!important;
+    width:26rem!important;
+    display:flex!important; 
+    justify-content:center!important;
+  
+ }
 
 
 }
