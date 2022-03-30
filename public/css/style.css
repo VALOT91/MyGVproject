@@ -5,6 +5,10 @@ body {background-color:white!important;}
 }
 .gif {width:35px;}
 
+.detailImgSm {
+ width:2rem!important;
+}
+
 
 
 /* Image de fond la fiche gamme (fiche produit) */
@@ -160,12 +164,21 @@ body {background-color:white!important;}
       border-right-width:thin
    }
 
+   .LprixHT { font-size:small;}
+   .LprixTTC { font-size:x-small;}
+   .prixHT {
+     font-family:Segoe UI Semibold;
+     font-weight:800;
+     font-size:3rem;  
+   }
+   .prixTTC { 
+     font-family:Segoe UI Semibold;
+     font-weight:800;
+     font-size:2rem;
+   }
 
   }
   @media only screen and (max-width: 768px) {
-
-    
-   
 
     #fond {
       background-image: url("/images/fond.jpg");
@@ -179,6 +192,24 @@ body {background-color:white!important;}
 
     }
 
+    .detailSm {
+
+      margin-top:2rem!important;
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      margin-bottom:2rem!important;
+    }
+    .detailImgSm {
+      width:2rem!important;
+     }
+     
+     .detailImgSm {
+       width:2rem!important;
+       margin-top:2rem;
+     }
+     
+
     #fndM {
       background-image: url(/images/business/gerant.jpg)!important;  
       background-repeat: no-repeat;
@@ -186,8 +217,7 @@ body {background-color:white!important;}
       height: 30rem;
       text-align:center;
     }
-  
-    
+      
     .cont2 {
       opacity:0.9!important;
       background-color: white!important;
@@ -258,11 +288,6 @@ body {background-color:white!important;}
       width: 17rem !important;
       }
 
-  
-    /* .blkInfo {
-      width: 40%;
-      height: 40%;
-    }*/
     .blkInfo img {
       width: 5rem !important;
       object-fit: cover;
@@ -288,6 +313,18 @@ body {background-color:white!important;}
       border-top-width:thin;  
    }
     
+    .LprixHT { font-size:small;}
+    .LprixTTC { font-size:x-small;}
+    .prixHT {
+      font-family:Segoe UI Semibold;
+      font-weight:800;
+      font-size:3rem;  
+    }
+    .prixTTC { 
+      font-family:Segoe UI Semibold;
+      font-weight:800;
+      font-size:2rem;
+    }
 
   }
 
@@ -422,47 +459,116 @@ body {background-color:white!important;}
 
 @media only screen and (max-device-width: 768px) {
 
-  .textArt {
-    font-size:xx-large!important;
-  }
+    .textArt {
+      font-size:xx-large!important;
+    }
 
-  .ttre {
-    font-size:5rem!important;
-  }
-
-  .ttreT {
-    font-size:3rem!important;
-  }
-
-  .accroche {
-    font-size:2rem!important;
-  }
-
-  .gif {width:65px!important;}
-
-  .categoryImage {
-
-     width:25rem!important;  
-     height:25rem!important;  
-  }
-
-  .divImgCat{
-    height: 26rem!important;
-    width:26rem!important;
-    display:flex!important; 
-    justify-content:center!important;
-  
- }
-
-
-}
-    @media only screen and (min-device-width: 769px) {
-      
     .ttre {
       font-size:5rem!important;
-      
     }
+
+    .ttreT {
+      font-size:3rem!important;
+    }
+
+    .accroche {
+      font-size:2rem!important;
+    }
+
+    .gif {width:65px!important;}
+
+    .categoryImage {
+
+      width:25rem!important;  
+      height:25rem!important;  
+    }
+
+    .divImgCat{
+      height: 26rem!important;
+      width:26rem!important;
+      display:flex!important; 
+      justify-content:center!important;
+    
+  }
+
+  /* image de la liste des thé par categorie */
+  .imgsm{
+    min-width:35rem!important;
+  }
+  /* bouton detail pour smartphone */
+  .detailSm {
+
+    margin-top:7rem!important;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin-bottom:2rem!important;
+  }
+
+  .detailImgSm {
+    width:6rem!important;
+    margin-top:2.5rem;
+  }
+
+  .gammeDetail {
+    text-decoration:none!important;
+    color:dodgerblue!important;
+    font-size:3rem!important;
+  } 
+
+  .conditTxtSM {
+    font-size:2.5rem;
+  }
+  .conditImgSM
+  {
+     min-width:5rem;
+  }
+  .stextArt {
+    font-size:1.2rem!important;
+
+  }
+  .LprixHT { 
+    font-size:large;
+     
+  }
+  .LprixTTC { 
+    font-size:small;
+  }
+  .prixHT {
+    
+    font-size:6rem!important;
+    font-family:Segoe UI Semibold;
+    font-weight:800;
    
-    }
+  }
+  .prixTTC {
+    font-family:Segoe UI Semibold;
+    font-weight:800;
+    font-size:5rem!important;
+    
+  }
+   
+
+}
+
+@media only screen and (min-device-width: 769px) {     
+  .ttre {
+    font-size:5rem!important; 
+  }  
+
+  .LprixHT { font-size:small;}
+  .LprixTTC { font-size:x-small;}
+  .prixHT {
+    font-family:Segoe UI Semibold;
+    font-weight:800;
+    font-size:3rem;  
+  }
+  .prixTTC { 
+    font-family:Segoe UI Semibold;
+    font-weight:800;
+    font-size:2rem;
+  }
+
+}
 
 

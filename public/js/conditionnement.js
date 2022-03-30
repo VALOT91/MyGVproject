@@ -71,27 +71,27 @@ let reference = document.getElementById("produit_conditionnement_reference");
  
   function sdf() {
      var container =  document.getElementById('containerSC');
-     sideScroll(container,'right',25,100,10);
+       sideScroll(container,'right',25,100,10);
  };
 
  var back = document.getElementById('slideBack');
  function sdb() {
  
      var container = document.getElementById('containerSC');
-     sideScroll(container,'left',25,100,10);
+      sideScroll(container,'left',25,100,10);
 
      
  };
 
- function sdfl(th) {   ;
+ function sdfl(th) {   
   var container =   document.getElementById('containerSC'+th.id.split("btr_")[1]);
    
-  sideScroll(container,'right',25,100,5);
+    sideScroll(container,'right',25,100,5);
 };
 
 var back = document.getElementById('slideBack');
 function sdbl(th) {  
-
+ 
   var container =  document.getElementById('containerSC'+th.id.split("btl_")[1]);
   sideScroll(container,'left',25,100,5);
 
@@ -101,13 +101,13 @@ function sdbl(th) {
 
  function sideScroll(element,direction,speed,distance,step){
      scrollAmount = 0; 
-     var slideTimer = setInterval(function(){
+       var slideTimer = setInterval(function(){
          if(direction == 'left'){
              element.scrollLeft -= step;
          } else {
              element.scrollLeft += step;
          }
-         scrollAmount += step;
+         scrollAmount += step;  
          if(scrollAmount >= distance){
              window.clearInterval(slideTimer);
          }
