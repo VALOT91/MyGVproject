@@ -46,8 +46,8 @@
                                       <div class=" scoll-pane-d d-flex flex-row justify-content-around "  >      
                                 {% else %}    
                                        <button onclick="sdbl(this)" id="btl_{{product.getProduct().id}}"  class="slideBt" type="button"><</button>   
-                                       <div  id="containerSC{{product.getProduct().id}}" style="width:500px; overflow-y: hidden; overflow-x: scroll;" class=" d-flex flex-row justify-content-center">
-                                           <div class="scoll-pane d-flex flex-row justify-content-around "  > 
+                                       <div  id="containerSC{{product.getProduct().id}}"  class="scroll scoll-pane d-flex flex-row justify-content-center">
+                                           <div class=" d-flex flex-row justify-content-around "  > 
                                     
                                 {% endif  %}  
  
@@ -58,7 +58,7 @@
                                         <label  for="{{ conditionnement.id }}" >
                                         <img src="{{ conditionnement.getConditionnement().imagepath }}" class="conditImgSM"   alt="logo du conditionnement">
                                         </label>
-                                        <p class="mt-1" style="font-size:x-small">{{conditionnement.getConditionnement().designation}}</p>
+                                        <div class="mt-1" condTitre>{{conditionnement.getConditionnement().designation}}</div>
                                         <h4 style="display:none;" id="IM_{{ conditionnement.id }}"> {{ conditionnement.imagePath  }} </h4>
                                         {% for tarif in conditionnement.tarifs %}
 
@@ -113,11 +113,11 @@
                                     <div class="mt-1" style="display:flex;flex-direction:row;justify-content:space-around;align-items:center ">
                                         <div class="m-2" style="display:flex;flex-direction:column;algn-items:center;line-height:1px ">
                                             <h2 class="prixHT" id="selp_{{ product.getProduct().id  }}"></h2>
-                                            <p class="LprixHT" >Votre prix unitaire pro H.T*</p>
+                                            <p class="LprixHT" >Prix PRO H.T*</p>
                                         </div>
                                         <div class="m-2 ">
                                             <div class="prixTTC"  id="sel_{{ product.getProduct().id  }}">0</div>
-                                            <div class="LprixTTC">Prix indicatif public TTC </div>
+                                            <div class="LprixTTC">Prix public TTC </div>
                                         </div>
                                     </div>
                                      <p class="mt-4 mb-0" style="font-size:small">* Frais de port gratuits à partir de 200€ H.T en colissimo ou Mondial relay <a href="#"> (Voir Conditions) </a></p>
@@ -130,24 +130,26 @@
                                         <div class="LprixTTC">Prix public TTC hors frais de port </div>
                                     </div>
                                     <div style="display:none;flex-direction:row">
-                                        <h4> Votre tarif PRO HT : </H4>  
-                                        <h4 id="selp_{{ product.getProduct().id  }}"></H4>
+                                        <h4 class="LprixHT"> Prix PRO HT : </H4>  
+                                        <h4 class="prixHT" id="selp_{{ product.getProduct().id  }}"></H4>
                                     </div>  
                                 </div>
                                 <hr>
                             {% else %}  
                                     <div style="display:none;flex-direction:row">
-                                        <h4> Votre tarif PRO HT : </H4>  
-                                        <h4 id="selp_{{ product.getProduct().id  }}"></H4>
+                                        <h4 class="LprixHT"> Prix PRO HT : </H4>  
+                                        <h4 class="prixHT" id="selp_{{ product.getProduct().id  }}"></H4>
                                     </div>  
                             {% endif %}  
                                 {# bouton du panier #}
-                                <div class="mb-2" style="display:flex;flex-direction:row;justify-content:center">
-                                            <a   id="pan_{{ product.getProduct().id  }}" href="{{ path('cart_add',{'id': product.getProduct().id }) }}" class="mb-2 btn btn-dark w-75">Ajouter au panier</a>
+                                <div class="mb-4" style="display:flex;flex-direction:row;justify-content:center">
+                                 <a id="pan_{{ product.getProduct().id  }}" href="{{ path('cart_add',{'id': product.getProduct().id }) }}" 
+                                     class="  btPanier  ">Ajouter au panier
+                                 </a>
                                 </div>
                             {% else %}   
                                     <div class="text-center">
-                                        <a class="nav-link" href="{{ path('app_login') }}">Connectez-vous pour voir les tarifs</a>
+                                        <a class="nav-link connectNotif" href="{{ path('app_login') }}">Connectez-vous pour voir les tarifs</a>
                                     </div>
                             {% endif %}  
                         </div>

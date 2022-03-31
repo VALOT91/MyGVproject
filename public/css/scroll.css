@@ -1,36 +1,44 @@
  
- 
-.scoll-pane { 
-
-
-}
-  
+ .scroll {
+    width:500px;
+    -ms-overflow-style: scroll!important;
+    outline:none!important;
+    overflow:auto!important;
+    scrollbar-width:none!important;
+    overflow-y:hidden!important;  
+ }
+ .scoll-pane::-webkit-scrollbar { 
+    display:none!important; 
+    }
+   
 
   @media only screen and (max-device-width: 769px) {
     .slideBt {
-        height:120px!important;
+        height:240px!important;
         width:6rem!important;   
         background-color:rgb(241, 253, 240);
         border:none;
         font-size:xx-large;
+        font-weight: bolder;
+      
     }
 
     .scoll-pane {
      
-        padding-left:190px!important;
-        width:800px;
+        padding-left:395px!important;
+        width:900px;
+        font-size:x-large;
         
     }
-
+    
     .scoll-pane-d {
       
         width: 100%!important;
         height: auto;
         width:800px!important; 
-        overflow-x: scroll;
-        overflow-y: hidden;
-   
+        font-size:xx-large;
   }
+
 }
 
 
@@ -43,22 +51,17 @@
         font-size:large;
     }
 
-    .scoll-pane {
-     
-        
-        width:800px;
-       
+    .scoll-pane {    
+         width:800px;     
+        font-size:0.9rem!important;
     }
 
-    .scoll-pane-d {
-      
+    .scoll-pane-d {    
         width: 100%!important;
         height: auto;
         width:800px!important; 
-        overflow-x: scroll;
-        overflow-y: hidden;
-   
   }
+  
 }
 
 @media only screen and (min-device-width: 973px)  {
@@ -71,21 +74,25 @@
     }
 
     .scoll-pane {
-     
         padding-left:150px!important;
-        /* padding-right:150px!important; */
         width:400px!important;
-       
+        -ms-overflow-style: scroll;  
+        scrollbar-width: none;  
+        font-size:x-small!important;
     }
 
     .scoll-pane-d {
-     
         width: 100%!important;
         height: auto;
         width:400px!important; 
         overflow-x: scroll;
         overflow-y: hidden;
-   
+        -ms-overflow-style: scroll;  
+        scrollbar-width: none;
+        font-size:x-small!important;  
+  }
+  .condTitre {
+    font-size:x-small;
   }
 }
 @media only screen and (min-device-width:1410px)  {
@@ -100,20 +107,22 @@
     .scoll-pane {
      
         padding-left:150px!important;
-         padding-right:150px!important;  
+          padding-right:15px!important;    
         width:400px!important;
-     
+        font-size:x-small!important;
     }
 
     .scoll-pane-d {
-     
         width: 100%!important;
         height: auto;
-        width:400px!important; 
-        overflow-x: scroll;
-        overflow-y: hidden;
-   
+        width:400px!important;
+        overflow: auto;
+        overflow-y: hidden!important;
+        -ms-overflow-style: scroll!important; 
+        scrollbar-width: none; 
+        font-size:x-small!important;    
   }
+   
 }
 
 

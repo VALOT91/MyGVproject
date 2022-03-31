@@ -9,8 +9,26 @@ body {background-color:white!important;}
  width:2rem!important;
 }
 
+.imRecetteSM {
+   width:4rem;object-fit:cover;
+}
+.receTitre {
+   font-size:medium; 
 
+}
+.rectext {
+  font-size:small;line-height:12px;
+}
+.BioSM {
+  width:3rem; 
+ }
+ .imRecoSM {
+  width:3rem;object-fit:cover;
+}
 
+.textReco {
+  font-size:medium;
+}
 /* Image de fond la fiche gamme (fiche produit) */
 .fnd{
   
@@ -450,6 +468,15 @@ body {background-color:white!important;}
 
 }
 
+.btPanier {
+   
+  color:white!important;
+  height:3rem!important;
+  padding:0.5em!important;
+  width:75%!important;
+   
+}
+
 .btPanierFinal:hover {
 
   background-color:darkcyan;
@@ -521,18 +548,18 @@ body {background-color:white!important;}
   }
   .conditImgSM
   {
-     min-width:5rem;
+     min-width:8rem;
   }
   .stextArt {
     font-size:1.2rem!important;
 
   }
   .LprixHT { 
-    font-size:large;
+    font-size:x-large;
      
   }
   .LprixTTC { 
-    font-size:small;
+    font-size:x-large;
   }
   .prixHT {
     
@@ -547,8 +574,55 @@ body {background-color:white!important;}
     font-size:5rem!important;
     
   }
-   
+  .connectNotif {
+    font-size:xx-large;
+    padding-bottom:1rem;
 
+  }
+  .btPanier {
+   
+    color:white!important;
+    height:5rem!important;
+    padding:1rem!important;
+    width:75%!important;
+    font-size:xx-large;
+  }
+
+  .imRecetteSM {
+
+    width:7rem!important;
+    
+  }
+
+  .imABSM {
+
+    width:4rem!important;
+    
+  }
+  .receTitre {
+   font-size:2rem;
+   font-weight: bolder;
+  }
+  .recText {
+    font-size:x-large; 
+    max-width: 35rem;
+  }
+  .BioSM {
+    height:7rem!important; 
+    width:7rem!important; 
+  }
+  .BioTitre {
+    font-size:2rem;
+    font-weight: bolder;
+  }
+  .imRecoSM {
+    width:6rem;
+    height:6rem; 
+    object-fit:cover;
+  }
+  .textReco {
+    font-size:x-large;
+  }
 }
 
 @media only screen and (min-device-width: 769px) {     
@@ -568,6 +642,17 @@ body {background-color:white!important;}
     font-weight:800;
     font-size:2rem;
   }
+
+  .btPanier {
+   
+    color:white!important;
+    height:3rem!important;
+    padding:0.5em!important;
+    width:75%!important;
+     
+  }
+  
+
 
 }
 
