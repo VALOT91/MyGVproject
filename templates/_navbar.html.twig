@@ -110,15 +110,28 @@
         <ul id="connectPanel" style="list-style:none;margin-top:1rem; display:flex;flex-direction:row;align-items:center;justify-content:space-between">
                     <li>
                       {% if not app.user %} 
-                        <a style="color:#769643" href="{{ path('app_login') }}" >
-                             <img width="25" id="imgNav" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
-                        </a>
+                      <div class="d-flex flex-row ">
+                        <div class="d-flex flex-column text-center">
+                              <a title="Connexion" style="color:#769643" href="{{ path('app_login') }}" >
+                                  <img width="25" id="imgNav" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
+                              </a>
+                              <p style="color:#769643;font-size:x-small" class=" "> Connexion</p> 
+                        </div>
+                       <div class="d-flex flex-column text-center ms-4">
+                              <a class="" title="Inscription"   href="{{ path('app_register') }}" >
+                                            <img   width="25" src="/images/menu/reg.svg   " alt="logo connexion" >
+                             </a>
+                              <p style="color:#769643;font-size:x-small" class=" "> Inscription</p> 
+                        </div>
+                      </div>  
                       {% else %}
-                        <a title="déconnexion" style="color:#769643" href="{{ path('app_logout') }}" >
-                             <img width="25" id="imgNav" src="/images/menu/deconnexion_b.png   " alt="logo déconnexion" >
-                        </a>
+                     
+                            <a title="déconnexion" style="color:#769643" href="{{ path('app_logout') }}" >
+                                <img width="25" id="imgNav" src="/images/menu/deconnexion_b.png   " alt="logo déconnexion" >
+                            </a>
+                      
                       {% endif %} 
-                    </li>
+                   </li>
          </ul>
    
       </div> 

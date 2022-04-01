@@ -39,7 +39,8 @@ class AccountController extends AbstractController
 
             $this->addFlash("success","Votre mot de passe a bien été modifié.");
 
-            return $this->redirectToRoute($request->get('_route'));
+            // return $this->redirectToRoute($request->get('_route'));
+            return $this->redirectToRoute("home");
         }
 
         return $this->render('customer/user/edit_password.html.twig', [

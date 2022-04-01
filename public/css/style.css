@@ -111,6 +111,19 @@ body {background-color:white!important;}
   }
 
   @media only screen and (min-width: 769px) {
+
+     /* formulaires  */
+     .formStyle {
+       display:flex;
+       flex-direction:row;
+       justify-content:center;
+     }
+     .formSize {
+      width:50%;
+
+     }
+
+    /* Pages presentation */
     #fond {
       background-image: url("/images/fond.jpg");
       background-repeat: no-repeat;
@@ -197,7 +210,8 @@ body {background-color:white!important;}
 
   }
   @media only screen and (max-width: 768px) {
-
+    
+    /* Pages presentation */
     #fond {
       background-image: url("/images/fond.jpg");
       background-repeat: no-repeat;
@@ -240,7 +254,7 @@ body {background-color:white!important;}
       opacity:0.9!important;
       background-color: white!important;
       border-radius:7px;
-      
+          
     }
 
     #fndM h1  {
@@ -486,8 +500,56 @@ body {background-color:white!important;}
 
 @media only screen and (max-device-width: 768px) {
 
+     /* formulaires  */
+     .formStyle {
+      display:flex;
+      flex-direction:row;
+      justify-content:center;
+    }
+    .formSize {
+     width:100%;
+
+    }
+    .inputStyle {
+       height:4rem;
+       font-size:2.5rem;
+    }
+    .form-label{
+      height:4rem;
+      font-size:2rem;
+    }
+    .form-control{
+      height:4rem;
+      font-size:2rem;
+    }
+   
+    .inputStyle2 {
+      height:4rem;
+      width:4rem;
+      font-size:2.5rem;
+      margin-left:-1.2rem!important;
+     
+      
+   }
+    .buttonStyle
+    {
+      height:4.5rem;
+      width : 18rem;
+      font-size:2.5rem;
+      padding:0.1rem;
+    }
+    .formLink {
+      font-size:1.8rem;
+    }
+
+     /* ******************* */
     .textArt {
       font-size:xx-large!important;
+    }
+    .textArt2 {
+      font-size:xx-large!important;
+      margin-left:2rem!important;
+      margin-top:1rem!important;
     }
 
     .ttre {

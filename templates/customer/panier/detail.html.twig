@@ -2,23 +2,25 @@
 
 {% block body %}
 
-<div class="container" > 
+<div class="container-flex" > 
  <div class="fnd d-flex flex-column align-items-center m" >
  
    <div class="my-4 bg-white ctIm   d-flex flex-column justify-content-center">
  
-     <h1 class="text-center mt-1">Mon panier</h1>
+     <h1 class="ttreT text-center mt-2">Mon panier</h1>
     {# <div class="block"> #}
          {% for item in cart["detailCart"] %}
             <div class="mt-1 " >
               
                 <div class="panier " >
+               
                     <div style="width:5rem">
                         <img src=" {{ item.product.imagePath }}" alt="Image {{ item.product.getProduit().designation }}" class="imageDetailPanier"/>
                     </div>
-                    <div style="width:20rem">
-                        <span class="panierDesi"> <p class="ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
-                    </div>    
+                    <div >
+                        <span> <p class="panierDesi ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
+                    </div>   
+                 
                     <div class="" style="">
                             <div class="panier">
                              
@@ -41,20 +43,19 @@
        <div class="d-flex flex-column align-items-center justify-content-center flex-wrap">
            <div>
             <p class="panierSousTot"><strong>Sous Total T.T.C: </strong><label title="Prix total sans les frais de port" class="ms-4 panierPrice"><strong class="panierSousTot">{{ cart['sousTotal'] | euroPrice }}</label></strong></p> 
-            <p class=""> ( Hors frais de port ) </p>
+            <p class="notPort"> ( Hors frais de port ) </p>
            </div>
         </div>
         <hr><br>
-           <div class="d-flex justify-content-around">
-                    <a    class="py-1 btPanier text-center" href="{{ path('gamme_index') }}">
-                        Retour au shopping
-                    </a>
-                    <p style="font-size:small" ></p> 
-                 
-                <a href="{{ path('command_recap') }}" class="bg-success ms-2 py-1 btPanierFinal text-center">
-                        Régler votre commande 
+           
+          <div class="d-flex flex-row justify-content-around ">
+                <a class="buttonStyle btn btn-success mt-2 mb-4  w-40 " href="{{ path('gamme_index') }}"    >
+                    Retour achats
                 </a>
-            </div>
+                    <a type="button" href="{{ path('command_recap') }}" class="buttonStyle btn btn-dark mt-2 mb-4 w-40">
+                     Paiement
+                </a>  
+           </div>
             <br>
     </div>
   </div>

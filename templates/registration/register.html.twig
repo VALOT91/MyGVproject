@@ -1,31 +1,54 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <div class="container py-5">
-        <div class="row">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Formulaire d'inscription</h3>
-                </div>
-                <div class="card-body">
-                    {{ form_start(registrationForm)  }}
-                    
-                    {{ form_widget(registrationForm) }}
-
-                    <button type="submit" class="btn btn-danger mt-3">
-                        Valider
-                    </button>
-
-                      <a type="button" href="{{ path("home")}}" class="btn btn-primary mt-3">
-                        Annuler
-                      </a>
-
-                    {{ form_end(registrationForm) }}
-                </div>
+    <div class=" container-flex py-5 px-2"> 
+       
+       <div class="formStyle " >
+           <div class="container-fluid">
+              <div class="bg-white" style="border-radius:7px;">
+                    <div class="text-center my-2 ">
+                        <br>
+                        <h1 class="ttreT my-2">Formulaire d'inscription</h1>
+                        <p class="mx-4 textArt">Saisissez vos données dans ce formulaire.<br>
+                         La validation du kbis est requise pour devenir client pro.</p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center ">
+                        <div class="mx-4 w-75 mt-4  ">
+                            {{form_start(registrationForm)}}
+                            {{ form_row(registrationForm.email, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.nom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.prenom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.adresse, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.complement, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.code_postal, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.ville, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.telephone, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.Kbis, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.plainPassword, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(registrationForm.agreeTerms, {'label_attr': {'class': 'textArt2'},'attr': {'class': 'inputStyle2'} }) }}
+                             <br>
+                            <div class="d-flex flex-row justify-content-around ">
+                                    <button class="buttonStyle   btn btn-success mt-4 mb-1  w-40 " type="submit">
+                                        Enregistrer
+                                    </button>
+                                        <a type="button" href="{{ path("home")}}" class="buttonStyle btn btn-dark mt-4 mb-1 w-40">
+                                        Annuler
+                                    </a>  
+                            </div>
+                            
+                            {{form_end(registrationForm)}}
+                        </div>
+                    </div>
+               </div>
             </div>
         </div>
     </div>
+
+
 {% endblock %}
+
+
 

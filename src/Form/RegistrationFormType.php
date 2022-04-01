@@ -25,9 +25,6 @@ class RegistrationFormType extends AbstractType
             ->add('email',EmailType::class,[
                 'required' => false,
                 'label' => 'Email',
-                'attr' => [
-                    'placeholder' => 'example@example.com'
-                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champs email est requis',
@@ -38,9 +35,6 @@ class RegistrationFormType extends AbstractType
             ->add('nom',TextType::class,[
                 'required' => false,
                 'label' => 'Nom',
-                'attr' => [
-                    'placeholder' => 'Entrez votre non de famille'
-                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champs nom est requis',
@@ -50,9 +44,6 @@ class RegistrationFormType extends AbstractType
             ->add('prenom',TextType::class,[
                 'required' => false,
                 'label' => 'prénom',
-                'attr' => [
-                    'placeholder' => 'Entrez votre prénom'
-                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champs nom est requis',
@@ -62,9 +53,6 @@ class RegistrationFormType extends AbstractType
             ->add('adresse',TextType::class,[
                 'required' => false,
                 'label' => 'Adresse',
-                'attr' => [
-                    'placeholder' => 'Entrez votre adresse'
-                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champs adresse est requis',
@@ -73,17 +61,11 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('complement',TextType::class,[
                 'required' => false,
-                'label' => 'Complement',
-                'attr' => [
-                    'placeholder' => 'Complément ( Batiment, étage . . .'
-                ] 
+                'label' => 'Complement'
             ])
             ->add('code_postal',IntegerType::class,[
                 'required' => false,
                 'label' => 'Code postal',
-                'attr' => [
-                    'placeholder' => 'Entrez votre code postal'
-                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champs email est requis',
@@ -93,10 +75,7 @@ class RegistrationFormType extends AbstractType
             ->add('ville',TextType::class,[
                 'required' => false,
                 'label' => 'Ville',
-                'attr' => [
-                    'placeholder' => 'Entrez votre ville'
-                ],
-                'constraints' => [
+                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champs email est requis',
                     ]),
@@ -105,9 +84,6 @@ class RegistrationFormType extends AbstractType
             ->add('telephone',TextType::class,[
                 'required' => false,
                 'label' => 'Téléphone',
-                'attr' => [
-                    'placeholder' => 'Entrez votre N° de téléphone'
-                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le champs email est requis',
@@ -117,9 +93,7 @@ class RegistrationFormType extends AbstractType
             ->add('Kbis',TextType::class,[
                 'required' => false,
                 'label' => 'N° Kbis requis pour devenir client',
-                'attr' => [
-                    'placeholder' => 'Entrez votre kbis'
-                ],
+                
             ])
          
             ->add('plainPassword', RepeatedType::class, [

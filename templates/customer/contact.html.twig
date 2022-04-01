@@ -1,31 +1,40 @@
-{% extends "/base.html.twig" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-<div class="container py-5">
-
-    <div class="row">
-        {% include "_messages_flash.html.twig" %}
-         <div class="col-12">
-            <div class="card" >
-                <div class="card-header">
-                    <h5>Nous contacter</h5>
-                </div>
-            
-                <div class="card-body">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <div  class="d-flex flex-row justify-content-between">
-                        <button class="btn btn-primary mt-3">Envoyer</button>
-                    
-                     
-                        <a href="{{ path('home')}}" class="btn btn-secondary mt-3">Abandonner</a>  
-                     {{ form_end(form) }} 
+    <div class="fnd container-flex py-5 px-2"> 
+       
+       <div class="formStyle " >
+           <div class="container-fluid">
+              <div class="bg-white" style="border-radius:7px;">
+                    <div class="text-center my-2 ">
+                        <br>
+                        <h1 class="ttreT mt-2 mb-2">Nous contacter</h1>
                     </div>
-                </div>
+                    <div class="d-flex flex-row justify-content-center mb-2 ">
+                        <div class="mx-4 w-100 mb-2  ">
+                            {{form_start(form)}}
+                            {{ form_row(form.titre, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(form.content, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                            {{ form_row(form.email_customer, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                                                         <br>
+                            <div class="d-flex flex-row justify-content-around ">
+                                    <button class="buttonStyle btn btn-success mt-1 mb-2  w-40 " type="submit">
+                                        Envoyer
+                                    </button>
+                                        <a type="button" href="{{ path("home")}}" class="buttonStyle btn btn-dark mt-2 mb-2 w-40">
+                                        Annuler
+                                    </a>  
+                            </div>
+                            
+                            {{form_end(form)}}
+                        </div>
+                    </div>
+               </div>
             </div>
         </div>
-
     </div>
-</div>
+
 
 {% endblock %}

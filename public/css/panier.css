@@ -1,27 +1,123 @@
  
- 
- 
- @media only screen and (max-width: 768px) {
+ @media only screen and (max-device-width: 768px) {
   .imageDetailPanier {
-    height: 3rem !important;
-    object-fit: contain !important;
+    height: 8rem !important;
+    object-fit: contain !important; 
   }
   .imageRecapPanier {
+    height: 6rem !important;
+    object-fit: contain !important;
+  }
+  .panierDesi, .recapDesi {
+    width: 30rem;
+    font-weight: bold;
+    margin-left: 5rem !important;
+    font-size: xx-large;
+    margin-top:1rem;
+     
+     
+  }
+  .panierPrice, .panierTot, #panierQte {
+    width: 8rem;
+    font-size: xx-large;
+    font-weight: bold;
+  
+  }
+
+  .panierSousTot {
+    font-size: 2rem!important;
+    font-weight: bold;
+  }
+  .notPort{font-size:x-large; }
+
+  .recapQte{
+    width: 4rem;
+    font-size: large;
+    margin-top: .6rem;
+    color:darkgreen;
+    font-weight:normal;
+    margin-left:3rem;
+    display:flex;
+    flex-direction:row;
+    }
+  .recapPrice{
+    width:10rem;
+    font-size: x-large;
+    color:darkgreen;
+  
+    margin-left:5rem;
+    margin-top: .3rem;
+    }
+    .recapTot {
+      font-size: x-large;
+      font-weight: bold;
+     
+    }
+  .recap {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
+    
+  }
+  .panier {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex-wrap: wrap;
+   }
+
+   .btRg {
+    border-radius:7px;
+    margin-top:1rem!important;
+    margin-left:1rem!important;
+    margin-right:1rem!important;
+    width:4rem;
+    height:4rem;
+    padding:0.5rem;
+    font-size:xx-large;
+
+  }
+   
+  .trash {
+    width:2.4rem!important;
+     margin-top:-1.2rem;
+   
+   }
+   
+
+}
+
+ 
+ /* @media only screen and (max-device-width: 768px) {
+  .imageDetailPanier {
+    height: 6rem !important;
+    object-fit: contain !important;
+  }
+   .imageRecapPanier {
     height: 3rem !important;
     object-fit: contain !important;
   }
 
   .panierDesi {
-    width: 15rem;
+    width: 25rem!important;
     font-weight: bold;
-    margin-left: 1rem !important;
-    font-size: medium;
+    margin-left: 2rem !important;
+    font-size: x-large;
+    color:red!important;
     
   }
 
+  .panier {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
+     }
+
   .panierPrice {
     width: 6rem;
-    font-size: large;
+    font-size: x-large;
     margin-left:0.5rem;
     font-weight: bold;
   }
@@ -48,8 +144,18 @@
     margin-left:0rem;
    
     }
+
+  .panSM {
+
+      display: flex;
+      flex-direction:row;
+     
+       
+  }
+
     .panier {
       display: flex;
+     
       align-items: center;
       justify-content:center;
       flex-wrap: wrap;
@@ -64,11 +170,11 @@
     margin-left:3rem;
     display:flex;
     flex-direction:row;
-    }
+    }  
 
-}
+} */
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-device-width: 769px) {
   .imageDetailPanier {
     height: 3rem !important;
     object-fit: contain !important; 
@@ -83,6 +189,7 @@
     margin-left: 5rem !important;
     font-size: medium;
     margin-top:1rem;
+     
   }
   .panierPrice {
     width: 5rem;
@@ -121,17 +228,25 @@
     
   }
   
+ 
+
+   .panier {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex-wrap: wrap;
+   }
 
 }
 
 /* tous */
-  .panier {
+  /* .panier {
   display: flex;
   align-items: center;
   justify-content:center;
   flex-wrap: wrap;
   
-}
+} */
 
 .inc:hover {
   background-color: rgb(238, 230, 225) !important;
@@ -187,7 +302,7 @@
 .btPanierFinal
 {
   
-  width:12rem;
+  width:10rem;
   height:2.3rem;
   
   border-radius:7px;
