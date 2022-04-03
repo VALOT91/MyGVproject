@@ -13,17 +13,17 @@
             <div class="mt-1 " >
               
                 <div class="panier " >
-               
-                    <div style="width:5rem">
+                  
+                    <div style="width:5rem;">
                         <img src=" {{ item.product.imagePath }}" alt="Image {{ item.product.getProduit().designation }}" class="imageDetailPanier"/>
                     </div>
                     <div >
                         <span> <p class="panierDesi ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
                     </div>   
                  
-                    <div class="" style="">
-                            <div class="panier">
-                             
+                    <div   style="display:flex;flex-direction:row;justify-content:start">
+                            <div class="panier panierDroit">
+                                 
                                     <p  title="Prix unitaire TTC sans les frais de port" class ="panierPrice" >  {{ item.getPrice() | euroPrice }} </p>
                                
                                     <a class="btRg btn btn-success" href="{{ path('cart_decrement',{'id': item.product.id}) }}?returnToCart=true"><strong>-</strong></a>
