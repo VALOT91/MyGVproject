@@ -2,28 +2,49 @@
  @media only screen and (max-device-width: 768px) {
   .imageDetailPanier {
     height: 10rem !important;
-    object-fit: contain !important; 
+    object-fit: cover!important; 
   }
   .imageRecapPanier {
-    height: 8rem!important;
+    height: 10rem!important;
     object-fit: cover !important;
+   
     
   }
-  .panierDesi, .recapDesi {
+  .panierDesi {
     width: 30rem;
     font-weight: bold;
     margin-left: 11rem!important;
     font-size: xx-large;
     margin-top:1rem;
-     
-     
   }
+
+  .recapDesi {
+    width: 30rem;
+    font-weight: bold;
+    margin-left: 11rem!important;
+    font-size: xx-large;
+    margin-top:1rem;
+    
+  }
+
+
   .panierPrice, .panierTot, #panierQte {
     width: 12rem;
     font-size: 2.8rem;
     font-weight: bold;
     margin:.5rem;
   }
+
+  .recapPrice{
+    width:20rem;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color:darkgreen;
+     
+  
+    margin-left:5rem;
+    margin-top: .3rem;
+    }
 
   .panierSousTot {
     font-size: 3rem!important;
@@ -33,33 +54,32 @@
   .notPort{font-size:x-large; }
 
   .recapQte{
-    width: 4rem;
-    font-size: large;
-    margin-top: .6rem;
+    width: 8rem;
+    margin-top:0.5rem;
+    font-size: 2.5rem;
+    
     color:darkgreen;
     font-weight:normal;
     margin-left:3rem;
     display:flex;
     flex-direction:row;
     }
-  .recapPrice{
-    width:10rem;
-    font-size: x-large;
-    color:darkgreen;
   
-    margin-left:5rem;
-    margin-top: .3rem;
-    }
     .recapTot {
-      font-size: x-large;
+      font-size:2.8rem;
       font-weight: bold;
+      margin-left:8rem;
+
      
     }
   .recap {
     display: flex;
+    flex-direction:row;
     align-items: center;
-    justify-content:center;
+    justify-content:start!important;
     flex-wrap: wrap;
+    margin-left:2rem;
+  
     
   }
   .panier {
@@ -121,12 +141,13 @@
   
   }
   .recapQte{
-    width: 4rem;
-    font-size: large;
-    margin-top: .6rem;
+    width: 5rem!important;
+    font-size: x-large;
+     
+     
     color:darkgreen;
     font-weight:normal;
-    margin-left:3rem;
+    /* margin-left:3rem; */
     display:flex;
     flex-direction:row;
     }
@@ -136,11 +157,12 @@
     color:darkgreen;
   
     margin-left:5rem;
-    margin-top: .3rem;
+    /* margin-top: .3rem; */
     }
     .recapTot {
       font-size: x-large;
       font-weight: bold;
+       margin-left: 2rem;
      
     }
   .recap {
@@ -260,5 +282,13 @@
  width:1.4rem;
   margin-top:-1.2rem;
 
+}
+
+.buttonStyleRecap
+{
+  height:5.5rem;
+  width : 18rem;
+  font-size:2.5rem;
+  padding:0.1rem;
 }
 

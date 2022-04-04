@@ -2,58 +2,68 @@
 
 {% block body %}
 
-<div class="container py-5">
+<div class="container-flex mx-2 py-5">
     <div class="row ">
         <div class="col-12">
-            <h3 class="text-center">
+            <h3 class="text-center ttreT">
                 Récapitulatif Commande
             </h3>
         </div>
-        {% include "_messages_flash.html.twig" %}
+        {# {% include "_messages_flash.html.twig" %} #}
        
-     <div class="col-sm-12 col-md-6 mt-3">
+     <div class="col-sm-12 col-md-12 col-lg-6 mt-3">
         <div class="card">
             <div class="card-body">       
                 {% for item in cart["detailCart"] %}
                     <div class="mt-1 " >
                     
-                        <div class="recap " >
+                        <div  class="recap " >
                             <div style="width:5rem">
                                 <img src=" {{ item.product.imagePath }}" alt="Image {{ item.product.getProduit().designation }}" class="imageRecapPanier"/>
                             </div>
-                            <div style="width:20rem">
-                                <span class="recapDesi"> <p class="ms-4"><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
+                            <div class="recapDesi">
+                                <span>  <p class=""><b>{{ item.product.getProduit().designation }} {{ item.getConditionnement() }}</b> <br> <i>  Réf. {{ item.product.reference }} </i> </p> </span>  
                             </div>    
                             
-                        </div>   
-                        <div class="d-flex flex-row justify-content-around">
-                                                <p  title="Prix unitaire TTC sans les frais de port" class ="recapPrice" > P.U. : {{ item.getPrice() | euroPrice }} </p> 
-                                                <p class= "recapQte"> Qté:&nbsp <b>{{ item.qty }}</b> </p>
-                                                <p class=" ms-4 recapTot"> {{ item.total | euroPrice }} </p> 
-                        </div> 
+                         
+                            <div class="d-flex flex-row justify-content-around">
+                                                    <p  title="Prix unitaire TTC sans les frais de port" class ="recapPrice" > P.U. : {{ item.getPrice() | euroPrice }} </p> 
+                                                    <p class= "recapQte  "> Qté:  {{ item.qty }}  </p>
+                                                    <p class="  recapTot  "> {{ item.total | euroPrice }} </p> 
+                            </div> 
+                        </div>  
                     </div>
                     <hr>
                 {% endfor %}
                 <div class="d-flex flex-column align-items-center justify-content-center flex-wrap">
                 <div>
                     <p class="panierSousTot"><strong>Total T.T.C: </strong><label title="Prix total sans les frais de port" class="ms-4 panierPrice"><strong class="panierSousTot">{{ cart['sousTotal'] | euroPrice }}</label></strong></p> 
-                    <p class=""> ( Hors frais de port ) </p>
+                    <p class="notPort"> ( Hors frais de port ) </p>
                 </div>
                 </div>
              </div>
         </div>
             {# --------- #}
         </div>
-        <div class="col-sm-12 col-md-6 mt-3">
-            <div class="card">
+        <div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+            <div class="card me-2 ">
                 <div class="card-header">
-                    <h3>Adresse de livraison</h3>
+                    <h3 class="ttreT">Adresse de livraison</h3>
                 </div>
                 <div class="card-body">
                     {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <button type="submit" class="btn btn-success mt-3 w-100" id="buttonSubmit">Payer la commande</button>
-                    <button class="btn btn-success mt-3 w-100" type="button" disabled id="buttonSpinner" style="display:none;">
+                    {{ form_row(form.raison_soc, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                    {{ form_row(form.country, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                    {{ form_row(form.street, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                    {{ form_row(form.complement, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                    {{ form_row(form.postalCode, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                    {{ form_row(form.city, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                    {{ form_row(form.commentary, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                    {{ form_row(form.CGV, {'label_attr': {'class': 'textArt2'},'attr': {'class': 'inputStyle2'} }) }}
+
+                     {# {{ form_widget(form) }} #}
+                    <button type="submit" class="btn buttonStyleRecap btn-success mt-3 w-100" id="buttonSubmit">Payer la commande</button>
+                    <button class="btn btn-success  mt-3 w-100" type="button" disabled id="buttonSpinner" style="display:none;">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Redirection vers stripe en cours...
                     </button>
