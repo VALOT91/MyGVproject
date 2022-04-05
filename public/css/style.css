@@ -181,6 +181,15 @@ body {background-color:white!important;}
       padding-bottom: 0.8rem;
     }
 
+    .imgEng1 {
+
+      width:30rem!important;
+      height:10rem!important;
+      margin-top:2rem;
+
+    }
+
+
     #fond .logoFond,#fndM .logoFond {
       width: 30rem !important;
     }
@@ -223,6 +232,16 @@ body {background-color:white!important;}
       min-width:20rem;
 
     }
+
+    .imgEng1 {
+
+      width:30rem!important;
+      height:10rem!important;
+      margin-top:2rem;
+
+    }
+
+   
 
     .detailSm {
 
@@ -506,6 +525,29 @@ body {background-color:white!important;}
       flex-direction:row;
       justify-content:center;
     }
+
+    .imgEng {
+
+      width:10rem!important;
+      height:10rem!important;
+    }
+    .imgEng1 {
+
+      width:22rem!important;
+      height:7rem!important;
+
+    }
+
+    .imgEng2 {
+
+      width:10rem!important;
+      height:7rem!important;
+      margin-top:2rem;
+    }
+
+    .accroche2 {font-size:1.6em!important;}
+    .textArt1 {font-size:1.5em!important;}
+
     .formSize {
      width:100%;
 
@@ -704,6 +746,15 @@ body {background-color:white!important;}
     font-weight:800;
     font-size:2rem;
   }
+
+
+  .imgEng {
+
+    width:5rem!important;
+    height:5rem!important;
+
+  }
+
 
   .btPanier {
    

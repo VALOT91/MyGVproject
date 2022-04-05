@@ -108,7 +108,13 @@
      margin-top:-1.2rem;
    
    }
-   
+   .buttonStyleRecap
+{
+  height:5.5rem;
+  width : 18rem;
+  font-size:2.5rem;
+  padding:0.1rem;
+}
 
 }
 
@@ -284,11 +290,5 @@
 
 }
 
-.buttonStyleRecap
-{
-  height:5.5rem;
-  width : 18rem;
-  font-size:2.5rem;
-  padding:0.1rem;
-}
+
 

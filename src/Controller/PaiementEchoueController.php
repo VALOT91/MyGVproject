@@ -19,7 +19,7 @@ class PaiementEchoueController extends AbstractController
     #[Route('/', name: 'paiementEchoue', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('customer/Paiement/paiementEchoue.html.twig') ;
+        return $this->render('customer/paiement/paiementEchoue.html.twig') ;
     }
 
 }
