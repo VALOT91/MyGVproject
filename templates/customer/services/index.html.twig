@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+    <div class="container-flex  py-1" >  
+        <h3 class="text-center my-4 ttreT text-success"> Services et fournitures  </h3>
+        <div style="height:5px; "class="W-25 bg-success mx-2 my-4"></div>    
+         <div class="ms-4 categoryBlock" >
+                <p class="textArt mx-4">C'est ici que vous pouvez souscrire à des services tels que l'accompagnement dans la création de votre entreprise,
+                   ou bien commander des emballages, cartonnage d'expédition entre autres. Cliquez sur le service de votre choix pour accéder au descriptif. </p>      
+
+          </div> 
+                   
+                  
+        </div>
+          
+                <div class="mt-4 d-flex flex-column justify-content-center">
+                      
+                        <div class="container-flex d-flex justify-content-center row mt-5">
+                                {% for category in categories %}
+                                    <div class="col-sm-12 col-md-12 col-lg-4 d-flex flex-column align-items-center">
+                                        <h5 class=" my-2 text-center ttreT" >{{category.nom}}</h5>
+                                        <div class="mt-2 divImgCat" >
+                                                
+                                                <a title="Voir la gamme" href="{{ path('gamme_liste',{ 'id' : category.id } ) }}">
+                                                    <img 
+                                                        src="/{{ category.imagepath1 }}" 
+                                                        class="categoryImage"  
+                                                        alt="image de la catégorie de thé"
+                                                    >
+                                                </a>
+                                        </div>
+                                        <div class=" pb-4 mt-2 categoryDescription"   >
+                                            <div class="w-75 text-center">
+                                                <span><p class="textArt">{{ category.description[:100] ~ '. . .' }}
+                                                <a href="{{ path('gamme_liste',{ 'id' : category.id } ) }}"  > Suite.
+                                                </a> </p>  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                        </div>
+                </div> 
+            </div>
+{% endblock %}
+
+

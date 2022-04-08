@@ -130,7 +130,7 @@ body {background-color:white!important;}
       background-size: cover;
       height: 55rem;
     }
-  
+    .imgServices {width:4.5rem;}
 
     #fndM{
       display: flex;
@@ -232,7 +232,8 @@ body {background-color:white!important;}
       min-width:20rem;
 
     }
-
+    .imgServices {width:6.5rem;}
+   
     .imgEng1 {
 
       width:30rem!important;

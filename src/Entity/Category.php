@@ -54,6 +54,9 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $image_path_3;
 
+    #[ORM\Column(type: 'string', length: 2)]
+    private $gamme;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -126,6 +129,18 @@ class Category
 
     //     return $this;
     // }
+
+    public function getGamme(): ?string
+    {
+        return $this->gamme;
+    }
+
+    public function setGamme(string $gamme): self
+    {
+        $this->gamme = $gamme;
+
+        return $this;
+    }
 
 
 }

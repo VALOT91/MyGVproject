@@ -126,14 +126,23 @@
             <section class="pt-2 detailGammeSepHaute text-center">       
                 {% if app.user %} 
                     {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
-                            <h3 class="conditTxtSM">Tarif pros et public</h3>
-                            <p class="stextArt"> (Prix public TTC à titre indicatif dont tva 5.5%)</p>
+                           {% if product.getCategory().Gamme is same as "TH" %}  
+                             <h3 class="conditTxtSM">Tarif pro et public</h3>
+                             <p class="stextArt"> (Prix public TTC à titre indicatif dont tva 5.5%)</p>
+                            {% else %}
+                             <h3 class="conditTxtSM">Tarif pro </h3>
+                            {% endif  %} 
                             <div class="mt-1" style="display:flex;flex-direction:row;justify-content:space-around;align-items:center ">
                                 <div class="m-2" style="display:flex;flex-direction:column;algn-items:center;line-height:1px ">
                                     <h2 class="prixHT"  id="selp_{{ product.id  }}"></h2>
                                     <p class="LprixHT">Prix PRO H.T*</p>
                                 </div>
-                                <div class="m-2 text-secondary" style="display:flex;flex-direction:column;algn-items:center;line-height:0.51px ">
+                                <div 
+                                   {% if product.getCategory().Gamme is same as "TH" %}  
+                                       class="m-2 text-secondary" style="display:flex;flex-direction:column;algn-items:center;line-height:0.51px ">
+                                    {% else %}
+                                       class="m-2 text-secondary" style="display:none ">
+                                    {% endif  %} 
                                     <h2 class="prixTTC"   id="sel_{{ product.id  }}"></h2>
                                     <p  class="LprixTTC" >Prix public TTC</p>
                                 </div>
@@ -169,16 +178,24 @@
                 {% endif %}                 
             </section>   
             {# Composition    #}
-            <section  class="detailGammeSepHaute w-100 my-3 d-flex flex-column align-items-center"  >
-                <h3 class="mt-3 conditTxtSM">Composition </h3>
-                <p class="textArt">{{ product.composition }} </p>
+            <section 
+              {% if product.getCategory().Gamme is same as "TH" %}
+                   class="detailGammeSepHaute w-100 my-3 d-flex flex-column align-items-center"  >
+               {% else %} 
+                    style="display:none" >
+                {% endif  %} 
+                 <h3 class="mt-3 conditTxtSM">Composition </h3>
+                 <p class="textArt">{{ product.composition }} </p>
+               
             </section>
         </div>
         <div  class="mx-2 ">
             <hr>
         </div>
         {# recommandations #}
+        {% if product.getCategory().Gamme is same as "TH" %}
         <div class="detailGammeReco w-100  mt-3" >
+            
                             <div class="text-center">
                                 <div> 
                                     <img   src="/images/recomandations/balance.png" class="imRecoSM"  alt="image de la recette">
@@ -214,8 +231,10 @@
                                     
                                 </div>
                             </div>
-        </div>
+                    
+             </div>
+        {% endif  %} 
     </div>
-  {# </div> #}
+ 
 </div>
 {% endblock %}

@@ -14,7 +14,7 @@
         {#  parrcours les articles de la catégorie choisie #}
        
         {% for product in articles %}
-            <div class="col-12 col-lg-6 col-md-12 " >
+            <div class="col-12 col-lg-4 col-md-12 " >
                
                 <div class="card text-center my-4 mx-4 px-2  justify-content-around  "    >
                        <div class="mt-2" style="height:6rem!important;">
@@ -108,17 +108,33 @@
                 {% if app.user %} 
                             
                             {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
-                                    <h3 class="conditTxtSM">Tarif pros et public</h3>
-                                    <p class="stextArt"> (Prix public TTC à titre indicatif dont tva 5.5%)</p>
+                                   
+                                   {% if product.Getproduct().getCategory().Gamme is same as "TH" %}
+                                        <h3 class="conditTxtSM">Tarif pro et public</h3>
+                                        <p class="stextArt"> (Prix public TTC à titre indicatif dont tva 5.5%)</p>
+                                    {% else %}
+                                     <h3 class="conditTxtSM">Tarif pro </h3>
+                                        
+                                     {% endif  %} 
+
                                     <div class="mt-1" style="display:flex;flex-direction:row;justify-content:space-around;align-items:center ">
                                         <div class="m-2" style="display:flex;flex-direction:column;algn-items:center;line-height:1px ">
                                             <h2 class="prixHT" id="selp_{{ product.getProduct().id  }}"></h2>
                                             <p class="LprixHT" >Prix PRO H.T*</p>
                                         </div>
-                                        <div class="m-2 ">
-                                            <div class="prixTTC"  id="sel_{{ product.getProduct().id  }}">0</div>
-                                            <div class="LprixTTC">Prix public TTC </div>
-                                        </div>
+                                        
+                                            <div 
+                                               {% if product.Getproduct().getCategory().Gamme is same as "TH" %}
+                                                        style= class="m-2" >
+                                                 {% else %}
+                                                        style="display:none" class="m-2">
+                                                 {% endif  %} 
+                                         
+                                                <div class="prixTTC"  id="sel_{{ product.getProduct().id  }}">0</div>
+                                                <div class="LprixTTC">Prix public TTC </div>
+                                           
+                                            </div>
+                                      
                                     </div>
                                      <p class="mt-4 mb-0" style="font-size:small">* Frais de port gratuits à partir de 200€ H.T en colissimo ou Mondial relay <a href="#"> (Voir Conditions) </a></p>
                                     <hr>

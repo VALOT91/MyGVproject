@@ -18,8 +18,8 @@ class MailerService
     public function sendContactMail($emailCustomer,$content)
     {
         $email = (new TemplatedEmail())
-            ->from('contact@monsite.fr')
-            ->to($emailCustomer)
+            ->from($emailCustomer)
+            ->to('contact_plt@gvalot.fr')
             ->subject('Message de contact de client')
             ->htmlTemplate('email/contact.html.twig')
             ->context([
@@ -47,6 +47,7 @@ class MailerService
 
     public function sendLostPasswordEmail($user)
     {
+     
         $email = (new TemplatedEmail())
             ->from('noreply@monsite.fr')
             ->to($user->getEmail())

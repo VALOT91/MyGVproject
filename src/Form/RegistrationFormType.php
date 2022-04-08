@@ -46,7 +46,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'prénom',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs nom est requis',
+                        'message' => 'Le champs prénom est requis',
                     ]),
                 ],
             ])
@@ -68,7 +68,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Code postal',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs email est requis',
+                        'message' => 'Le champs complément est requis',
                     ]),
                 ],
             ])
@@ -77,7 +77,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Ville',
                  'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs email est requis',
+                        'message' => 'Le champs ville est requis',
                     ]),
                 ],
             ])
@@ -86,7 +86,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Téléphone',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs email est requis',
+                        'message' => 'Le champs téléphone est requis',
                     ]),
                 ],
             ])

@@ -20,7 +20,14 @@
                   </a>    
                  
                 <li>
-                  <a class="text-black" href="{{ path('show_account_roleA') }}"  ><b>Bienvenue  {{app.user.prenom}} {{app.user.nom}}</b></a>  
+                  {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+                         <a class="text-black" href="{{ path('show_account_roleA') }}"><b>Bienvenue  {{app.user.prenom}} {{app.user.nom}}</b></a>
+                  {% elseif app.user.roles[0] is same as "ROLE_CLIENT" %}
+                         <a class="text-black" href="{{ path('show_account_roleC') }}"  ><b>Bienvenue  {{app.user.prenom}} {{app.user.nom}}</b></a>   
+                  {% else %}
+                         <a class="text-black" href="{{ path('show_account_roleT') }}"  ><b>Bienvenue  {{app.user.prenom}} {{app.user.nom}}</b></a>    
+                  {% endif %} 
+                  
                 </li>
 
              

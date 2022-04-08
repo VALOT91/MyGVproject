@@ -19,10 +19,10 @@ class GammeController extends AbstractController
     public function index(CategoryRepository $categoryRepository): Response
     {
 
-      
+        $Categories = $categoryRepository->findBy(array('gamme' => 'TH'));
 
         return $this->render('customer/gamme/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+            'categories' =>  $Categories,
         ]);
     }
 
@@ -57,7 +57,7 @@ class GammeController extends AbstractController
                }
                 
         }
-
+ 
 
          $articles = $paginator->paginate($articles, $request->query->getInt('page', 1), 3);
             // dd($articles);
