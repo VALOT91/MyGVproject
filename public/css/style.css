@@ -132,6 +132,15 @@ body {background-color:white!important;}
     }
     .imgServices {width:4.5rem;}
 
+    #fndO{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url(/images/pousse.jpg)!important;  
+      background-repeat: no-repeat;
+      background-size: cover ;
+      height: 55rem;
+    }
     #fndM{
       display: flex;
       flex-direction: column;
@@ -140,8 +149,8 @@ body {background-color:white!important;}
       background-repeat: no-repeat;
       background-size: cover ;
       height: 55rem;
+     
     }
-
     .cont2 {
       opacity:0.9!important;
       background-color: white!important;
@@ -149,12 +158,12 @@ body {background-color:white!important;}
       margin:5rem 10rem 5rem 10rem!important;
     }
 
-    #fond h1, #fndM h1 {
+    #fond h1, #fndM h1,#fndO h1 {
       font-size: 5rem;
       font-weight: bold;
       color: white;
     }
-    #fond h3, #fndM h3 {
+    #fond h3, #fndM h3, #fndO h3 {
       font-size: 3.1rem;
       font-weight: lighter;
       color: white;
@@ -191,6 +200,10 @@ body {background-color:white!important;}
 
 
     #fond .logoFond,#fndM .logoFond {
+      width: 30rem !important;
+    }
+
+    #fond .logoFond,#fndO .logoFond {
       width: 30rem !important;
     }
   
@@ -269,6 +282,14 @@ body {background-color:white!important;}
       height: 30rem;
       text-align:center;
     }
+
+    #fndO {
+      background-image: url(/images/pousse.jpg)!important;  
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 30rem;
+      text-align:center;
+    }
       
     .cont2 {
       opacity:0.9!important;
@@ -277,14 +298,15 @@ body {background-color:white!important;}
           
     }
 
-    #fndM h1  {
+    #fndM h1, #fndO h1  {
       font-size: 2rem;
       font-weight: bold;
       color: white;
       text-align:center;
       padding-top:1rem;
+      
     }
-    #fndM h3 {
+    #fndM h3,#fndO h3 {
       font-weight: lighter;
       color: white;
       font-size: 1.2rem;
@@ -336,7 +358,7 @@ body {background-color:white!important;}
       width: 17rem !important;
     }
 
-    #fndM .logoFond {
+    #fndM .logoFond,#fndO .logoFond {
       width: 17rem !important;
       }
 
