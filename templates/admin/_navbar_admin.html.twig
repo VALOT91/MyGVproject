@@ -1,54 +1,3 @@
-
-{# <div class="bg-black" >
- <nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container-fluid">
-  <span class="navbar-logo ">
-                    <a href="{{ path('home') }}">
-                        <img src="/images/menu/logofondnoir.png   " alt="logo de la société" style="height: 3.8rem;">
-                    </a>
-  </span>
-    <a class="navbar-brand">Administration</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('command_shop_list') }}">Commandes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('category_index') }}">Catégories</a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" href="{{ path('conditionnement_index') }}">Conditionnement</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('product_index') }}">Produits</a>
-            </li>
-            
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('produit_conditionnement_index') }}">Stock</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('tarif_index') }}">Tarifs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('user_index') }}">Users</a>
-            </li>
-             <li class="nav-item">
-                <a class="nav-link" href="{{ path('recette_index') }}">Recettes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('documents_index') }}">Documents</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('home') }}">retour accueil</a>
-            </li>
-      </ul>
-    </div>
-  </div>
- </nav>
-</div> #}
  <div class="container-flex">
  {% if app.user %} 
   <div id="accBar"  class="text-black px-2">
@@ -127,62 +76,12 @@
             <li class="nav-item">
                 <a class="nav-link MenuSm" href="{{ path('documents_index') }}">Documents</a>
             </li>
+             <li class="nav-item">
+                <a class="nav-link MenuSm" href="{{ path('articles_index') }}">News</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link MenuSm" href="{{ path('home') }}">retour accueil</a>
             </li>
-
-          {# {% if app.user %} 
-
-              {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
-
-                  <li  class="nav-item text-warning">
-                    <a class="nav-link MenuSm" href="{{ path('admin') }}">Administration</a>
-                  </li>
-              
-              {% endif %}  
-
-                      
-          {% endif %}  #}
-
-          {# <li class="nav-item">
-              <a class="MenuSm nav-link" href="{{ path('gamme_index') }}">Notre gamme</a>
-          </li>
-
-          <li class="nav-item">
-              <a class="nav-link MenuSm" href="{{ path('metier') }}">Notre métier</a>
-          </li>
-
-          <li class="nav-item">
-              <a class="nav-link MenuSm" href="{{ path('engagement') }}">Notre engagement</a>
-          </li> #}
-     
-      {# {% if app.user %} 
-              {% if app.user.roles[0] is same as "ROLE_CLIENT" %}
-
-                  <li class="nav-item">
-                    <a class="nav-link MenuSm" href="{{ path('services') }}">Vos services</a>
-                  </li>
-              
-              {% endif %}  
-              {% if app.user.roles[0] is same as "ROLE_TRANSIT" %}
-  
-                  <li class="nav-item">
-                    <a class="nav-link MenuSm" href="{{ path('encours') }}">Votre statut</a>
-                  </li>
-              
-              {% endif %}  
-           
-                  <li class="nav-item">
-                    <a class="nav-link MenuSm" href="{{ path('cart_detail') }}">Mon panier</a>
-                  </li>
-            
-      {% endif %}  #}
-        {# <li class="nav-item">
-            <a class="nav-link MenuSm" href="{{ path('contact') }}">Contact</a>
-          </li>
-         #}
-            
-        
         </ul>
        
         <ul id="connectPanel" style="list-style:none;margin-top:1rem; display:flex;flex-direction:row;align-items:center;justify-content:space-between">
@@ -195,12 +94,7 @@
                               </a>
                               <p style="color:#769643;font-size:x-small" class=" "> Connexion</p> 
                         </div>
-                       {# <div class="d-flex flex-column text-center ms-4">
-                              <a class="" title="Inscription"   href="{{ path('app_register') }}" >
-                                            <img   width="25" src="/images/menu/reg.svg   " alt="logo connexion" >
-                             </a>
-                              <p style="color:#769643;font-size:x-small" class=" "> Inscription</p> 
-                        </div> #}
+                       
                       </div>  
                       {% else %}
                      

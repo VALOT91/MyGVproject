@@ -1,0 +1,45 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+  <div class="container my-2">
+    <h1>News & Articles</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                {# <th>Contenu</th> #}
+                <th>DateCreation</th>
+                <th>DateFin</th>
+                <th>Categorie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.titre }}</td>
+                {# <td>{{ article.contenu }}</td> #}
+                <td>{{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }}</td>
+                <td>{{ article.dateFin ? article.dateFin|date('d-m-Y') : '' }}</td>
+                <td>{{ article.categorie }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('articles_show', {'id': article.id}) }}">Détail</a>
+                    <a class="btn btn-warning" href="{{ path('articles_edit', {'id': article.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-danger"  href="{{ path('articles_new') }}">Nouveau</a>
+ </div>
+{% endblock %}

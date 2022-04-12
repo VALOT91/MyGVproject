@@ -151,6 +151,33 @@ body {background-color:white!important;}
       height: 55rem;
      
     }
+
+     
+    #fondA {
+      background-image: url("/images/business/tea-etalage.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 8rem;
+     
+    }
+
+    #fondA h1, #fndM h1 {
+      font-size: 5rem;
+      font-weight: bold;
+      color: white;
+      
+    }
+
+    #fondA div h2  {
+      font-size: 2.1rem;
+      font-weight: lighter;
+      color: white;
+      margin-top:1rem;
+      background-color:black;
+      border-radius:7px;
+    }
+
+
     .cont2 {
       opacity:0.9!important;
       background-color: white!important;

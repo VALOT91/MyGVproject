@@ -88,6 +88,9 @@
           <li class="nav-item">
               <a class="nav-link MenuSm" href="{{ path('offresPro') }}">Nos offres PRO</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link MenuSm" href="{{ path('infosNews_liste') }}">Infos News</a>
+          </li>
      
       {% if app.user %} 
               {% if app.user.roles[0] is same as "ROLE_CLIENT" %}

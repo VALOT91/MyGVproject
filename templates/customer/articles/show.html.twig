@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+<div class="container my-2">
+    <div class="row align-items-center">
+            <table class="">
+                <tbody>
+                    <tr>
+                        <td><b>Titre de l'article: </b> {{ article.titre }} </td>
+                        <td> <td><b>Date de création : </b>  {{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }}</td></td>
+                        <td><b>Categorie : </b>{{ article.categorie }}</td>
+                  
+                        <td>
+                             <a class="  btn btn-secondary" href="{{ path('infosNews_liste') }}">retour à la liste</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+     </div> 
+     
+    
+    
+
+</div>
+ <div style="height:5px!important" class="W-25 bg-secondary mx-2"></div>  
+<div class="container my-2">
+    <div class="row align-items-center">
+            {{ article.contenu | raw }}
+    </div>
+</div>
+ 
+{% endblock %}
