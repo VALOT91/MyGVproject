@@ -33,8 +33,8 @@
                 <td>{{ product.getCategory().nom }}</td>
                  
                 <td>
-                    <a style="max-width:5rem" class="mt-1 btn btn-primary w-100 " href="{{ path('product_show', {'id': product.id}) }}">Détails</a>
-                    <a style="max-width:5rem" class="mt-1 btn btn-warning w-100 " href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>
+                    <a class="maxWidth5 mt-1 btn btn-primary w-100 " href="{{ path('product_show', {'id': product.id}) }}">Détails</a>
+                    <a class="maxWidth5 mt-1 btn btn-warning w-100 " href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

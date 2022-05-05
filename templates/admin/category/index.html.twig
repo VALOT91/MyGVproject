@@ -23,12 +23,9 @@
             <tr>
              
                 <td>{{ category.nom }}</td>
-                
-                
-                 <td><img style="border-radius:7px;display:flex;width:5rem" src="\{{ category.imagepath1 }}" alt=""  ></td>
-                 <td><img style="border-radius:7px;display:flex;width:5rem" src="\{{ category.imagepath2 }}" alt=""  ></td>
-                 <td><img style="border-radius:7px;display:flex;width:5rem" src="\{{ category.imagepath3 }}" alt=""  ></td>
-              
+                <td><img class="listeImg" src="\{{ category.imagepath1 }}" alt=""  ></td>
+                <td><img class="listeImg" src="\{{ category.imagepath2 }}" alt=""  ></td>
+                <td><img class="listeImg"  src="\{{ category.imagepath3 }}" alt=""  ></td>
                 <td>
             
                     <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('category_show', {'id': category.id}) }}">Détail</a>

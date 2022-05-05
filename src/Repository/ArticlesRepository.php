@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Articles;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Search\SearchArticles;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Articles|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,27 @@ class ArticlesRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Articles::class);
+    }
+    public function findByKeyWords(SearchArticles $search)
+    {
+        $query = $this->findAllQuery();
+
+        if($search->getFilterByKeyWords())
+        {
+            
+            $query = $query->andWhere('p.titre LIKE :keyw');
+            $query->setParameter('keyw','%' . $search->getFilterByKeyWords() . '%');
+        }
+      
+        return $query->getQuery()->getResult();
+    }
+
+ /**
+     * @return QueryBuilder
+     */
+    public function findAllQuery(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p');
     }
 
     // /**

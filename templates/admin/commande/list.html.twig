@@ -2,77 +2,60 @@
 
 {% block body %}
 
-<div class="container py-5">
+<div class="container-flex py-5 px-2">
     <div class="row ">
         <div class="col-12">
-            <h3 class="text-center">
+            <h3 class="ttreT2 text-center">
                 Commandes
             </h3>
         </div>
-
-        
         {% include "_messages_flash.html.twig" %}
-      
-
+        <div class="my-4 d-flex justify-content-center">
+           {{ knp_pagination_render(commandShop,'@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
+        </div>                       
         <div class="col-12 mt-3">
-
             <div class="card">
                 <div class="card-body">
-                
-              
-
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th class ="text-center" scope="col">Cde.</th>
-                                        <th class ="text-center" scope="col">Date</th>
-                                        <th class ="text-center" scope="col">Société</th>
-                                        <th class ="text-center" scope="col">Livraison</th>
-                                        <th class ="text-center" scope="col">Action</th>
-                                        {# <th scope="col">Paiement</th> #}
-                                       
-                                        <th class ="text-center"  scope="col">Total</th>
-                                        <th class ="text-center"  scope="col">Détail</th>
+                                        <th class ="textArt text-center" scope="col">Cde.</th>
+                                        <th class ="textArt text-center" scope="col">Date</th>
+                                        <th class ="textArt text-center" scope="col">Société</th>
+                                        <th class ="textArt text-center" scope="col">Livraison</th>
+                                        <th class ="textArt text-center" scope="col">Action</th>
+                                        <th class ="textArt text-center" scope="col">Total</th>
+                                        {# <th class ="textArt text-center" scope="col">Détail</th> #}
                                     </tr>
                                 </thead>
-                                <tbody>   
-                                   
-                                   {{ knp_pagination_render(commandShop,'@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
+                                <tbody>  
+                                       
                                     {% for item in commandShop %}
                                         <tr>
-                                            <td class ="text-center" >
-                                             <a title="Voir le détail de la commande" href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
+                                            <td class ="textArt text-center" >
+                                             <a title="Voir le détail de la commande" href="{{ path('command_shop_detail',{'id': item.id }) }}" class="textArt btn btn-link">
                                                     #{{ item.id }}
-                                                </a>
-                                                
+                                             </a>                          
                                             </td>
-                                            <td class ="text-center"  >{{ item.createdAt | date('d-m-y') }}</td>
-                                              <td class ="text-center" >{{item.getDeliveryAddress().getRaisonSoc()   }}</td>  
-                                              <td class ="text-center" >{% if ( item.getIsShipped() ) %}
+                                            <td class ="textArt text-center"  >{{ item.createdAt | date('d-m-y') }}</td>
+                                            <td class ="textArt text-center" >{{item.getDeliveryAddress().getRaisonSoc()   }}</td>  
+                                            <td class ="textArt text-center" >{% if ( item.getIsShipped() ) %}
                                                    <b><p class="text-success">OK</p></b>
                                                  {% else   %}
                                                    <b><p class="text-warning">NON</p></b>
                                                  {% endif %}
-                                               </td>  
-                                              <td class ="text-center" >
-                                                <a class="d-flex justify-content-center" href="{{ path('command_livraison', {'id': item.id}) }}">
+                                            </td>  
+                                            <td class ="text-center" >
+                                                <a class="d-flex justify-content-center textArt" href="{{ path('command_livraison', {'id': item.id}) }}">
                                                        <div style="border-radius:7px%;height:2rem;width:2.5rem " id="box" >
                                                              <img style=";width:1.5rem;height:1.5rem" title="Bacule en statut Expédié/Non expédié" src="/images/cardboard-box.png" />
                                                        </div>
                                                 </a> 
-                                              </td>
-                                            {# <td>
-                                                {% if item.isPayed is same as false %}
-                                                    <span class="text-secondary">Non payée</span>
-                                                {% else %}
-                                                     <span class="text-success">Payée</span>
-                                                {% endif %}
-                                            </td> #}
-                                          
-                                            <td class ="text-center" >{{ item.totalPrice | euroPrice }}</td>
+                                            </td>
+                                            <td class ="textArt text-center" >{{ item.totalPrice | euroPrice }}</td>
                                            
-                                              <td class ="text-center" >
+                                            {# <td class ="text-center" >
                                                
                                                     <a class="d-flex justify-content-center" href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
                                                         <div style="height:2rem;width:2rem " id="eye" >
@@ -80,20 +63,15 @@
                                                         </div>
                                                     </a>
                                                    
-                                              </td>
+                                            </td> #}
                                         </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
-
-    
                 </div>
-              
             </div>
-
         </div>
-        
     </div>
 </div>
 

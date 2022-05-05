@@ -9,32 +9,48 @@
                 <h2 class="mt-4 p-3 ">Retrouvez ici articles et infos, recettes, tendances sur le thé. </h2>
         </div>
      </section>
-      
-      <section class="mt-4 d-flex flex-row justify-content-around"> 
-       
-        <div class="row  d-flex justify-content-center flex-wrap  align-items-start" >
-     
-        {% for article in articles %}
-              <div class="col-12 col-sm-12 col-md-6 col-lg-3 m-2  "  > 
+       <div class=" d-flex flex-row align-items-center justify-content-around mt-2" >
+          
+                {{form_start(form)}}
                  
-                    <img class="mt-2 card-img-top" src="{{ article.img }}" style="height:20rem;object-fit:cover" alt="Card image cap">
-                    <div class="card-body" >
-                        <h5 class="card-title"><a   class="textArt1 btn-link"  href="{{ path('infosNews_show', {'id': article.id}) }}" > {{ article.titre }} </a></h5>
-                        <p  class="card-text textArt1"> Editée le {{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }} ({{ article.categorie }})</p>
+                <div class="d-flex flex-row ">
+                     {{form_row(form,{'attr': {'class':'SearchField'}  })  }} 
+                     <button type="submit" "  class="mt-3 searchButton" > 
+                        <img  class="searchImg" src="/images/loupe.png" >
+                     </button>
+                </div>
+                {{form_end(form)}} 
+        </div>
+
+     <div class="  d-flex flex-column justify-content-center">
                         
-                    </div>
-               
-
-             </div>
-            
-        {% else %}
-            <div>
-                <p colspan="7">no records found</p>
+                        <div class="container-flex d-flex justify-content-center row mt-2">
+                                {% for article in articles %}
+                                    <div class="col-sm-12 col-md-12 col-lg-4 d-flex flex-column align-items-center">
+                                        <h5 class=" my-2 text-center ttreT" >{{article.titre}}</h5>
+                                        <div class="mt-2 divImgCat" >
+                                                
+                                                <a title="Voir"  href="{{ path('infosNews_show', {'id': article.id}) }}">
+                                                    <img 
+                                                        src="{{ article.img }}" 
+                                                        class="articlesImage"  
+                                                        alt="image  article"
+                                                    >
+                                                </a>
+                                        </div>
+                                        <div class="w-75 pb-4 mt-2  categoryDescription "   >
+                                            <div class=" text-center ArticleDescription">
+                                                <span><p class="textArt">{{ article.description[:100] ~ '. . .' }}
+                                                <a href="{{ path('infosNews_show',{ 'id' : article.id } ) }}"  > Suite.
+                                                </a> </p>  </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                        </div>
+                </div> 
             </div>
-        {% endfor %}
-      </div>
-    </section>
 
-    {# <a class="btn btn-danger"  href="{{ path('articles_new') }}">Nouveau</a> #}
+   
  </div>
 {% endblock %}

@@ -3,39 +3,39 @@
 {% block title %}Conditionnement index{% endblock %}
 
 {% block body %}
-<div class="container my-2">
-    <h1>Conditionnement</h1>
+    <div class="container my-2">
+        <h1>Conditionnement</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-               
-                <th>Reference</th>
-                <th>Designation</th>
-                <th>Poids (gr)</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for conditionnement in conditionnements %}
-            <tr>
-              
-                <td>{{ conditionnement.reference }}</td>
-                <td>{{ conditionnement.designation }}</td>
-                <td>{{ conditionnement.poids }}</td>
-                <td>
-                    <a style="max-width:5rem" class="mt-1 btn btn-primary w-100 " href="{{ path('conditionnement_show', {'id': conditionnement.id}) }}">Détail</a>
-                    <a style="max-width:5rem" class="mt-1 btn btn-warning w-100 " href="{{ path('conditionnement_edit', {'id': conditionnement.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                
+                    <th>Reference</th>
+                    <th>Designation</th>
+                    <th>Poids (gr)</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for conditionnement in conditionnements %}
+                <tr>
+                
+                    <td>{{ conditionnement.reference }}</td>
+                    <td>{{ conditionnement.designation }}</td>
+                    <td>{{ conditionnement.poids }}</td>
+                    <td>
+                        <a   class="maxWidth5 mt-1 btn btn-primary w-100 " href="{{ path('conditionnement_show', {'id': conditionnement.id}) }}">Détail</a>
+                        <a   class="maxWidth5 mt-1 btn btn-warning w-100 " href="{{ path('conditionnement_edit', {'id': conditionnement.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a class="btn btn-danger" href="{{ path('conditionnement_new') }}">Nouveau</a>
+        <a class="btn btn-danger" href="{{ path('conditionnement_new') }}">Nouveau</a>
     </div>
 {% endblock %}
