@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Accueil{% endblock %}
+
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Découvrez notre métier de grossiste en thés et infusions'|trans}}" />
+{% endblock %} 
 
 {% block body %}
 <div class="container-flex" >

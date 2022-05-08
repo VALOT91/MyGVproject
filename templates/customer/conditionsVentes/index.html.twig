@@ -3,6 +3,11 @@
 
 {% block title 'Conditions générales de vente' %}
   
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Conditions générales de vente détaillées '|trans}}" />
+{% endblock %} 
    
 
 {% block body %}

@@ -4,33 +4,35 @@
 {% block title %}category index{% endblock %}
 
 {% block body %}
- <div class="container" >
-    <h1 class ="ms-4">Liste des catégories</h1>
+ <div class="container-flex mx-2" >
+    <h1 class ="ms-4 text-center ttreT">Liste des catégories</h1>
 
     <table class="table ">
         <thead>
             <tr>
-                 <th>Nom</th>
+                 <th class="textArt">Nom</th>
                
-                 <th>Image 1</th>
-                 <th>Image 2</th>
-                 <th>Image 3</th>
-                 <th>actions</th>
+                 <th colspan=3 class="textArt text-center">Images</th>
+                 <th class="textArt"> </th>
+                 <th class="textArt"> </th>
+                 <th colspan=2 class="text-center textArt"></th>
+                 <th class="textArt"> </th>
             </tr>
         </thead>
         <tbody>
          {% for category in categories %}
             <tr>
-             
-                <td>{{ category.nom }}</td>
-                <td><img class="listeImg" src="\{{ category.imagepath1 }}" alt=""  ></td>
-                <td><img class="listeImg" src="\{{ category.imagepath2 }}" alt=""  ></td>
-                <td><img class="listeImg"  src="\{{ category.imagepath3 }}" alt=""  ></td>
-                <td>
-            
-                    <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('category_show', {'id': category.id}) }}">Détail</a>
-                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('category_edit', {'id': category.id}) }}">modifier</a>
-                </td>
+               <div style="" >
+                    <td   class="textArt  ">{{ category.nom }}</td>
+                    <td  ><img colspan=3 class="listeImg" src="\{{ category.imagepath1 }}" alt=""  ></td>
+                    <td  ><img  class="listeImg" src="\{{ category.imagepath2 }}" alt=""  ></td>
+                    <td  ><img class="listeImg"  src="\{{ category.imagepath3 }}" alt=""  ></td>
+                    <td colspan=2 >
+                        <a style="  max-width: 12rem !important;" class="buttonStyleC px-4 mt-2 btn btn-primary w-100 " href="{{ path('category_show', {'id': category.id}) }}">Détail</a>
+                    </td>
+                    <td>
+                      <a style="max-width: 12rem !important;"  class="buttonStyleC px-4 mt-2 btn btn-warning w-100" href="{{ path('category_edit', {'id': category.id}) }}">modifier</a>
+                    </td>
               </div> 
             </tr>
         {% else %}
@@ -41,7 +43,11 @@
         </tbody>
     </table>
 
-    <a  class="ms-2 btn btn-danger" href="{{ path('category_new') }}">Nouveau</a>
+    {# <a  class="ms-2 btn btn-danger" href="{{ path('category_new') }}">Nouveau</a> #}
+    <div class="text-center col-12 mb-3 my-4">
+            <a href="{{ path('category_new') }}" class="buttonStyleC btn btn-danger">Nouveau</a>
+    </div>
+
 </div>
 {% endblock %}
 

@@ -2,6 +2,12 @@
 
 {% block title %}detail{% endblock %}
 
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Découvrez les caractéristiques gustatives de ce thé'|trans}}" />
+{% endblock %} 
+
 {% block body %}
 <div class="container-flex d-flex  fnd justify-content-center">
     {# <div class="container-flex bg-white pt-2 pb-4" > #}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  
 <html>
-
+ {% block head %}
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -16,7 +16,7 @@
          <link rel="stylesheet" href="{{ asset('css/panier.css')}}" />
     
     </head>
-
+ {% endblock %}
     <body>
         {% include "_navbar.html.twig" %}
       

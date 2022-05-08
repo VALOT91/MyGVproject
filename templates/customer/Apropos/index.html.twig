@@ -2,7 +2,12 @@
 
 
 {% block title 'A propos' %}
-  
+
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{' Coordonnées de l\'entreprise avec raison sociale, adresse et dirigant '|trans}}" />
+{% endblock %}  
    
 
 {% block body %}

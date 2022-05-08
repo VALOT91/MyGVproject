@@ -2,7 +2,12 @@
 
 
 {% block title 'Nos engagements' %}
-  
+
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Communication sur nos engagements éthiques et écologiques'|trans}}" />
+{% endblock %}  
    
 
 {% block body %}

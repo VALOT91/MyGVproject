@@ -4,38 +4,38 @@
 {% block title %}détail catégorie{% endblock %}
 
 {% block body %}
-  <div class="container" >
-    <h1>Détail de la catégorie</h1>
+  <div class="container-flex mx-2" >
+    <h1 class="ttreT text-center my-4">Détail de la catégorie</h1>
 
     <table class="table">
         <tbody>
            
             <tr>
-                <th>Nom</th>
-                <td>{{ category.nom }}</td>
+                <th class ="textArt">Nom</th>
+                <td class ="textArt">{{ category.nom }}</td>
             </tr>
              <tr>
-                <th>Description</th>
-                <td>{{ category.description }}</td>
+                <th class ="textArt">Description</th>
+                <td class ="textArt">{{ category.description }}</td>
             </tr>
               <tr>
-                <th>image 1</th>
-                <td>{{ category.imagepath1 }}</td>
+                <th class ="textArt">image 1</th>
+                <td class ="textArt">{{ category.imagepath1 }}</td>
             </tr>
               <tr>
-                <th>image 2</th>
-                <td>{{ category.imagepath2 }}</td>
+                <th class ="textArt">image 2</th>
+                <td class ="textArt">{{ category.imagepath2 }}</td>
             </tr>
               <tr>
-                <th>image 3</th>
-                <td>{{ category.imagepath3 }}</td>
+                <th class ="textArt">image 3</th>
+                <td class ="textArt">{{ category.imagepath3 }}</td>
             </tr>
           
         </tbody>
     </table>
-
-     <a class="btn btn-primary" href="{{ path('category_index') }}">retour liste</a>
-
+     <div class="text-center col-12 mb-3 my-4">
+      <a class="btn btn-primary  buttonStyleC" href="{{ path('category_index') }}">retour liste</a>
+     </div> 
   </div>  
 {% endblock %}
 

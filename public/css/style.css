@@ -670,6 +670,13 @@ body {background-color:white!important;}
       height:7rem!important;
 
     }
+    .listeImg{
+
+      border-radius:7px;
+      display:flex;
+      width:3rem!important;
+
+    }
 
     .imgEng2 {
 
@@ -713,6 +720,21 @@ body {background-color:white!important;}
       font-size:2.5rem;
       padding:0.1rem;
     }
+
+    .buttonStyleC
+    {
+      height:4.5rem;
+      width : 18rem;
+      font-size:2.5rem;
+      padding:0.1rem;
+         
+    }
+
+    .lineh {
+      line-height: 15px !important;;
+     }
+
+
     .formLink {
       font-size:1.8rem;
     }
@@ -981,12 +1003,13 @@ body {background-color:white!important;}
   border-radius:7px;
   display:flex;
   width:5rem;
+ 
 }
 
 .condImg {
   border-radius:8px;
   display:flex;
-  width:5rem;
+  width:5rem!;
 
 }
 .formRef {
@@ -994,4 +1017,8 @@ body {background-color:white!important;}
   display:flex;
   flex-direction:row;
   align-items:center;
+}
+
+.lineh {
+   line-height:8px;
 }

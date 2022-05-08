@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Services{% endblock %}
+{% block title %}Services Pros{% endblock %}
+
+ {# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'découvrez tous les services disponibles pour nos clients tels que la founriture de matériel ou l\'assistance professionnelle '|trans}}" />
+{% endblock %} 
+
 
 {% block body %}
     <div class="container-flex  py-1" >  

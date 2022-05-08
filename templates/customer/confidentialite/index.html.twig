@@ -3,7 +3,11 @@
 
 {% block title 'Politique de confidentialité' %}
   
-   
+ {# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Informations sur la politique de confidentialité et le traitement des données personnelles  '|trans}}" />
+{% endblock %}   
 
 {% block body %}
 <div class="container-flex"  >

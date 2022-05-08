@@ -2,6 +2,12 @@
 
 {% block title %}Offres PRO{% endblock %}
 
+ {# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Découvrez toutes les offres pro et avantages pour nos clients '|trans}}" />
+{% endblock %} 
+
 {% block body %}
 <div class="container-flex" >
         <section  id ="fndM">

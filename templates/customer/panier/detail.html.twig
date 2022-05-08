@@ -1,5 +1,13 @@
 {% extends "base.html.twig" %}
 
+{% block title 'Panier' %}
+
+ {# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Affichage du panier'|trans}}" />
+{% endblock %} 
+
 {% block body %}
 
 <div class="container-flex" > 
@@ -40,7 +48,7 @@
             </div>
             <hr>
         {% endfor %}
-       <div class="d-flex flex-column align-items-center justify-content-center flex-wrap">
+       <div class="d-flex flex-column align-items-center justify-content-centerC">
            <div>
             <p class="panierSousTot"><strong>Sous Total T.T.C: </strong><label title="Prix total sans les frais de port" class="ms-4 panierPrice"><strong class="panierSousTot">{{ cart['sousTotal'] | euroPrice }}</label></strong></p> 
             <p class="notPort"> ( Hors frais de port ) </p>

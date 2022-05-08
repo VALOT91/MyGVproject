@@ -55,12 +55,7 @@ class RecetteController extends AbstractController
 
             return $this->redirectToRoute('recette_index', [], Response::HTTP_SEE_OTHER);
         }
-        // else
-        // {
-           
-        //     $recette->setImagepath($oldImage);
-
-        // }
+       
 
         return $this->renderForm('admin/recette/new.html.twig', [
             'recette' => $recette,'file'=>$filesTab,

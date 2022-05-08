@@ -2,13 +2,11 @@
 
 {% block body %}
 
-<div class="container py-5">
+<div class="container-flex mx-2 py-5">
     <div class="row ">
-        <div class="col-12 mb-3">
-            <a href="{{ path('command_shop_list') }}" class="btn btn-dark">Revenir à la liste</a>
-        </div>
+       
         <div class="col-12">
-            <h3 class="text-center">
+            <h3 class="ttreT2 text-center">
                 Commande N°{{ commandShop.id }}
             </h3>
         </div>
@@ -17,7 +15,7 @@
         {% include "_messages_flash.html.twig" %}
       
 
-        <div class="col-sm-12 col-md-6 mt-3">
+        <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
 
             <div class="card">
                 <div class="card-body">
@@ -27,11 +25,11 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Produit</th>
-                                        <th scope="col">Condit.</th>
-                                        <th scope="col">Prix.Unit</th>
-                                        <th scope="col" >Qté</th>
-                                        <th scope="col">Total</th>
+                                        <th class ="textArt" scope="col">Produit</th>
+                                        <th class ="textArt" scope="col">Condit.</th>
+                                        <th class ="textArt" scope="col">Prix.Unit</th>
+                                        <th class ="textArt" scope="col" >Qté</th>
+                                        <th class ="textArt" scope="col">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,22 +38,22 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="d-flex flex-column align-items-center justify-content-center">
-                                                         <p>{{ item.getProduct().designation  }}</p>
+                                                         <p class ="textArt" >{{ item.getProduct().designation  }}</p>
                                                     </div>
                                                 </div>
                                             </td>
-                                              <td>{{ item.getConditionnement() }}</td>
-                                            <td>{{ item.getUnitPrice | euroPrice }}</td>
+                                              <td class ="textArt">{{ item.getConditionnement() }}</td>
+                                            <td class ="textArt">{{ item.getUnitPrice | euroPrice }}</td>
                                           
-                                            <td>{{ item.getQte() }}</td>
-                                            <td>{{ item.getTotal | euroPrice }}</td> 
+                                            <td class ="textArt">{{ item.getQte() }}</td>
+                                            <td class ="textArt" >{{ item.getTotal | euroPrice }}</td> 
                                         </tr>
                                     {% endfor%}
                                     
                                 </tbody>
                             </table>
                             <div  class="text-end h5">
-                                <strong>Sous-total: {{ commandShop.totalPrice | euroPrice }}</strong>
+                                <strong class ="textArt" >Sous-total: {{ commandShop.totalPrice | euroPrice }}</strong>
                             </div>
                         </div>
                 </div>
@@ -63,26 +61,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 mt-3">
+        <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
             <div class="card">
                 <div class="card-header">
-                    <h3>Adresse de livraison</h3>
+                    <h3 class ="textArt">Adresse de livraison</h3>
                 </div>
-                <div class="card-body" style="line-height:12px">
-                    <p><b>{{ commandShop.getDeliveryAddress().getRaisonSoc() | upper }}</b></p>
-                    <p>{{ commandShop.deliveryAddress.street }}
+                <div class="card-body lineh" >
+                    <p class ="textArt"><b>{{ commandShop.getDeliveryAddress().getRaisonSoc() | upper }}</b></p>
+                    <p class ="textArt">{{ commandShop.deliveryAddress.street }}
                         {% if commandShop.deliveryAddress.complement is not null     %}
                             - {{ commandShop.deliveryAddress.complement }}
                         {% endif %}
                      </p>  
-                    <p>{{ commandShop.deliveryAddress.postalCode }}  {{ commandShop.getDeliveryAddress.city | upper}} ({{ commandShop.getDeliveryAddress().getCountry() | upper }})</p> 
+                    <p class ="textArt">{{ commandShop.deliveryAddress.postalCode }}  {{ commandShop.getDeliveryAddress.city | upper}} ({{ commandShop.getDeliveryAddress().getCountry() | upper }})</p> 
                     <hr>                  
-                    <p><b>Commentaire :</b> {{ commandShop.deliveryAddress.commentary }}</p>  
+                    <p class ="textArt"><b>Commentaire :</b> {{ commandShop.deliveryAddress.commentary }}</p>  
 
                 </div>
             </div>
             
         </div>
     </div>
+     <div class="text-center col-12 mb-3 my-4">
+            <a href="{{ path('command_shop_list') }}" class="buttonStyleC btn btn-dark">Retour à la liste</a>
+     </div>
 </div>
 {% endblock %}

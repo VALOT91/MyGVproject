@@ -2,6 +2,14 @@
 
 {% block title %}Contact{% endblock %}
 
+ 
+
+ {# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'page formulaire de contact'|trans}}" />
+{% endblock %} 
+
 {% block body %}
     <div class="fnd container-flex py-5 px-2"> 
        

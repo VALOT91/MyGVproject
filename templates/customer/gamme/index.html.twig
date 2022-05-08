@@ -2,6 +2,12 @@
 
 {% block title %}Gamme de thés{% endblock %}
 
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'une large gamme de thé et rooibos venant du monde entier'|trans}}" />
+{% endblock %}  
+
 {% block body %}
     <div class="container-flex  py-1" >  
         <h3 class="text-center my-4 ttreT"> Notre gamme de thés en quelques clics </h3>

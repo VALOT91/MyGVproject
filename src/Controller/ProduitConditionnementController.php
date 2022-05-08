@@ -127,9 +127,7 @@ class ProduitConditionnementController extends AbstractController
     public function delete(int $id,Request $request,RecetteRepository $recetteRepository,ProduitConditionnementRepository $productConditionnementRepository, ProduitConditionnement $produitConditionnement, EntityManagerInterface $entityManager): Response
     {
 
-        // //$entity =  $productConditionnementRepository->find($id)->getProduit()->getDesignation();
-        //   $entity =  $recetteRepository->findBy('product'->);
-        // dd($entity);
+      
         if ($this->isCsrfTokenValid('delete'.$produitConditionnement->getId(), $request->request->get('_token'))) {
 
            

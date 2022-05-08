@@ -2,6 +2,12 @@
 
 {% block title %}Mot de passe oublié{% endblock %}
 
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Recréer un nouveau mot de passe'|trans}}" />
+{% endblock %} 
+
 {% block body %}
    <div class="fnd container-flex py-5 px-5"> 
        

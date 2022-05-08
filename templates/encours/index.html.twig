@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EncoursController!{% endblock %}
+{% block title %}Statut{% endblock %}
+
+ {# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'votre statut'|trans}}" />
+{% endblock %} 
 
 {% block body %}
  <div class="container">

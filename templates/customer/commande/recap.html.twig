@@ -1,5 +1,13 @@
 {% extends "base.html.twig" %}
 
+{% block title %}Récapitulatif panier{% endblock %}
+
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'récapitulatif des commandes dans le panier'|trans}}" />
+{% endblock %} 
+
 {% block body %}
 
 <div class="container-flex mx-2 py-5">

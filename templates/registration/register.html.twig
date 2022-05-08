@@ -3,6 +3,14 @@
 
 {% block title %}Inscription{% endblock %}
 
+{% block title %}Connexion à PLF Distribution{% endblock %}
+
+{# traitement de la meta description pour le référencement #}
+{% block head %}
+  {{ parent() }}
+  <meta name="description" content="{{'Créez votre compte PLF'|trans}}" />
+{% endblock %} 
+
 {% block body %}
     <div class=" container-flex py-5 px-2"> 
        
