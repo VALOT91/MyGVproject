@@ -724,10 +724,38 @@ body {background-color:white!important;}
     .buttonStyleC
     {
       height:4.5rem;
-      width : 18rem;
+      width : 19rem;
       font-size:2.5rem;
       padding:0.1rem;
-         
+      width:100%!important;
+    }
+    .pos-button
+    {
+      text-align:center!important;
+      
+    }
+    
+    .formTemplate {
+      width:4rem!important;
+      height:4rem!important;
+      margin-top:3.5rem!important;
+      margin-left:1rem;
+      background-color:#AD5359;
+      
+     }
+
+     .formtemplateImg {
+      margin-top:-1rem;
+      margin-right:2rem;
+      width:3rem;
+      height:3rem;
+      object-fit:cover;
+    }
+
+    .formtemplateA{
+     height:max;
+     text-decoration:none;
+     font-size:x-large!important;
     }
 
     .lineh {
@@ -963,13 +991,13 @@ body {background-color:white!important;}
     width:75%!important;
   }
   
-
 }
 
 .formTemplate {
   width:3rem;
   margin-top:1rem;
   margin-left:1rem;
+  background-color:#AD5359;
  }
 .formtemplateImg {
   margin-top:-1rem;
@@ -998,6 +1026,9 @@ body {background-color:white!important;}
 .maxWidth5 {
   max-width:5rem;
 }
+.maxWidth12 {
+  max-width:12rem;
+}
 .listeImg
 {
   border-radius:7px;
@@ -1021,4 +1052,11 @@ body {background-color:white!important;}
 
 .lineh {
    line-height:8px;
+}
+
+.btnBackMod {
+  background-color: #AD5359!important ;
+}
+.btnBackEnr {
+  background-color:peru!important ;
 }

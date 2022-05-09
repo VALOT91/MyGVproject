@@ -1,5 +1,21 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    
-    <button class="btn btn-warning">{{ button_label|default('Enregistrer') }}</button>
+    {# {{ form_widget(form) }} #}
+     {{ form_row(form.reference, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.designation, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.description, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.accroche, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }} 
+     {{ form_row(form.composition, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.reco_dose, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.reco_temp, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }} 
+     {{ form_row(form.reco_duree, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.reco_usage, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.video_path, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.is_bio, {'label_attr': {'class': 'textArt2'},'attr': {'class': 'inputStyle2'} }) }}
+     {{ form_row(form.origine, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.category, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.role, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.resume, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    <div class="pos-button my-4 ">
+      <button class="btn text-white buttonStyleC btnBackMod" btn ">{{ button_label|default('Enregistrer') }}</button>
+    </div>
 {{ form_end(form) }}

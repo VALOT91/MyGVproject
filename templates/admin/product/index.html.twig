@@ -4,47 +4,48 @@
 
 {% block body %}
 
-<div class="container my-2">
-    <h1  class="my-4">Liste des produits</h1>
-            <div class="">
-                {{form_start(form)}}
-                {{form_widget(form)}}
-                <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
-                <a href={{ path('product_index') }} class="btn btn-secondary mt-3">Réinitialiser</a>
+ <div class="container-flex my-2 mx-3">
+    <h1  class="text-center ttreT my-4">Liste des produits</h1>
+            <div class="ms-2">
+                {{form_start(form) }}
+                {# {{form_widget(form, {'attr': {'class': 'textArt'} })}} #}
+                {{ form_row(form.filterByName, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+               {{ form_row(form.filterByCategory, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                <button type="submit" class="buttonStyleC btn btn-primary mt-3">Rechercher</button>
+                <a href={{ path('product_index') }} class="buttonStyleC btn btn-secondary mt-3">Réinitialiser</a>
                 {{form_end(form)}}
             </div>
-    <table class="my-4 table">
+    <table class="my-4 mx-2 table">
         <thead>
             <tr>
+                <th class="textArt">Designation</th>
+                <th class="textArt">Description</th>
+                <th class="textArt">Categorie</th>
                
-                <th>Designation</th>
-                <th>Description</th>
-                <th>Categorie</th>
-               
-                <th>actions</th>
+                <th class="textArt"></th>
             </tr>
         </thead>
         <tbody>
         {% for product in products %}
             <tr>
-              
-                <td>{{ product.designation }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.getCategory().nom }}</td>
-                 
+             
+                <td class="textArt">{{ product.designation }}</td>
+                <td class="textArt">{{ product.description }}</td>
+                <td class="textArt">{{ product.getCategory().nom }}</td>
+                
                 <td>
-                    <a class="maxWidth5 mt-1 btn btn-primary w-100 " href="{{ path('product_show', {'id': product.id}) }}">Détails</a>
-                    <a class="maxWidth5 mt-1 btn btn-warning w-100 " href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>
+                    <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-success w-100 " href="{{ path('product_show', {'id': product.id}) }}">Détails</a>
+                    <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btnBackMod w-100 " href="{{ path('product_edit', {'id': product.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="15">no records found</td>
+                <td class="textArt" colspan="15">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a class="btn btn-danger" href="{{ path('product_new') }}">Nouveau</a>
+    <a class="btnBackEnr buttonStyleC text-white btn  " href="{{ path('product_new') }}">Nouveau</a>
     </div>
 {% endblock %}

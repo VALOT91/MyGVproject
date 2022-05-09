@@ -3,29 +3,30 @@
 {% block title %}Conditionnement{% endblock %}
 
 {% block body %}
-    <div class="container my-2">
-        <h1>Conditionnement</h1>
+    <div class="container-flex mx-2 my-2">
+        <h1 class="ttreT text-center my-4">Conditionnement</h1>
 
         <table class="table">
             <tbody>
                 
                 <tr>
-                    <th>Reference</th>
-                    <td>{{ conditionnement.reference }}</td>
+                    <th class ="textArt">Reference</th>
+                    <td class ="textArt">{{ conditionnement.reference }}</td>
                 </tr>
                 <tr>
-                    <th>Designation</th>
-                    <td>{{ conditionnement.designation }}</td>
+                    <th class ="textArt">Designation</th>
+                    <td class ="textArt">{{ conditionnement.designation }}</td>
                 </tr>
                 <tr>
-                    <th>Poids</th>
-                    <td>{{ conditionnement.poids }}</td>
+                    <th class ="textArt">Poids</th>
+                    <td class ="textArt">{{ conditionnement.poids }}</td>
                 </tr>
             
             </tbody>
         </table>
-        <a class="btn btn-primary" href="{{ path('conditionnement_index') }}">Retour liste</a>
-
+          <div class="text-center col-12 mb-3 my-4">
+             <a class="btn  btn-dark  buttonStyleC" href="{{ path('conditionnement_index') }}">Retour liste</a>
+          </div> 
     </div>
 {% endblock %}
 

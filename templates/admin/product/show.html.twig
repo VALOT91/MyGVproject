@@ -3,72 +3,73 @@
 {% block title %}Product{% endblock %}
 
 {% block body %}
-<div class="container my-2">
-    <h1>Détail du produit </h1>
+  <div class="container-flex mx-2 my-2">
+    <h1  class="ttreT text-center my-4">Détail du produit </h1>
 
-    <table class="table">
+    <table class="table mx-2">
         <tbody>
             <tr>
-                <th>Catégorie</th>
-                <td>{{ product.getCategory().nom }}</td>
+                <th class ="textArt" >Catégorie</th>
+                <td class ="textArt">{{ product.getCategory().nom }}</td>
             </tr>
             <tr>
-                <th>Designation</th>
-                <td>{{ product.designation }}</td>
+                <th class ="textArt">Designation</th>
+                <td class ="textArt">{{ product.designation }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
+                <th class ="textArt">Description</th>
+                <td class ="textArt">{{ product.description }}</td>
             </tr>
             <tr>
-                <th>Accroche</th>
-                <td>{{ product.accroche }}</td>
+                <th class ="textArt">Accroche</th>
+                <td class ="textArt">{{ product.accroche }}</td>
             </tr>
             <tr>
-                <th>Composition</th>
-                <td>{{ product.composition }}</td>
+                <th class ="textArt">Composition</th>
+                <td class ="textArt">{{ product.composition }}</td>
             </tr>
             <tr>
-                <th>Dose recommandée</th>
-                <td>{{ product.recoDose }}</td>
+                <th class ="textArt">Dose recommandée</th>
+                <td class ="textArt">{{ product.recoDose }}</td>
             </tr>
              <tr>
-                <th>Dose recommandée</th>
-                <td>{{ product.recoTemp }}</td>
+                <th class ="textArt">Dose recommandée</th>
+                <td class ="textArt">{{ product.recoTemp }}</td>
             </tr>
             <tr>
-                <th>Usage</th>
-                <td>{{ product.recoUsage }}</td>
+                <th class ="textArt">Usage</th>
+                <td class ="textArt">{{ product.recoUsage }}</td>
             </tr>
             <tr>
-                <th>Durée d'infusion</th>
-                <td>{{ product.recoDuree }}</td>
+                <th class ="textArt">Durée d'infusion</th>
+                <td class ="textArt">{{ product.recoDuree }}</td>
             </tr>
             <tr>
-                <th>Chemin de la vidéo</th>
-                <td>{{ product.videoPath }}</td>
+                <th class ="textArt">Chemin de la vidéo</th>
+                <td class ="textArt">{{ product.videoPath }}</td>
             </tr>
             <tr>
-                <th>BIO</th>
-                <td>{{ product.isBio ? 'Yes' : 'No' }}</td>
+                <th class ="textArt">BIO</th>
+                <td class ="textArt">{{ product.isBio ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>Origine</th>
-                <td>{{ product.origine }}</td>
+                <th class ="textArt">Origine</th>
+                <td class ="textArt">{{ product.origine }}</td>
             </tr>
             <tr>
-                <th>Visibilité</th>
-                <td>{{ product.role }}</td>
+                <th class ="textArt">Visibilité</th>
+                <td class ="textArt">{{ product.role }}</td>
             </tr>
             <tr>
-                <th>Resumé</th>
-                <td>{{ product.resume }}</td>
+                <th class ="textArt">Resumé</th>
+                <td class ="textArt">{{ product.resume }}</td>
             </tr>
          
         </tbody>
     </table>
-
-    <a class="btn btn-primary" href="{{ path('product_index') }}">retour liste</a>
+    <div class="text-center col-12 mb-3 my-4">
+        <a class="btn  btn-dark  buttonStyleC" href="{{ path('product_index') }}">retour liste</a>
+    </div> 
 </div>
   
 {% endblock %}

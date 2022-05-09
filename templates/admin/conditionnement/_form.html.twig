@@ -6,13 +6,13 @@
 
      
      <div style="display:flex;flex-direction:row;align-items:center">
-        <img id="ConditionnementIm"   src=" {{conditionnement.imagePath }}" class="formtemplateImg"  alt="...">   
+        <img id="ConditionnementIm"   src=" {{conditionnement.imagePath }}" class="formtemplateImg mt-1"  alt="...">   
         <span class="w-100">{{ form_row(form.image_path) }}</span>
          <button type="button"  class="formTemplate btn btn-primary" id="opener">...</button>
      </div>
-   
-     <button class="btn btn-danger">{{ button_label|default('Enregistrer') }}</button>
-  
+     <div class="pos-button my-4 ">
+            <button class="btn text-white buttonStyleC btnBackMod">{{ button_label|default('Enregistrer') }}</button>
+     </div>
        {{ form_end(form) }}
  
      <div style="display:none" id="dialog" title="Sélectionnez une image">
@@ -20,7 +20,7 @@
         {% for key,item  in file %}
         <div  onclick="selectImageCond(this)" id= "dvIm{{ key }}"  class="my-2 imChoice " >
               <img id= "idIm{{ key }}"  onclick="selectImageCond(this)"  class="height3" src="/{{ item.pathname}}" >
-              <b><a href="#" onclick="selectImageCond(this)" id= "linkIm{{ key }}" style="height:max;text-decoration:none;font-size:small" >{{item.filename}}</a></b>
+              <b><a href="#" onclick="selectImageCond(this)" id= "linkIm{{ key }}" class="formtemplateA" >{{item.filename}}</a></b>
         </div>
         <hr>
         {% endfor %}

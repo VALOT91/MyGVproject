@@ -3,45 +3,47 @@
 {% block title %}ProduitConditionnement index{% endblock %}
 
 {% block body %}
-<div class="container my-2">
-    <h1>Stock articles</h1>
-            <div class="">
+  <div class="container-flex my-2 mx-3">
+    <h1  class="text-center ttreT my-4">Stock articles</h1>
+             <div class="ms-2">
                 {{form_start(form)}}
-                {{form_widget(form)}}
-                <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
-                <a href={{ path('produit_conditionnement_index') }} class="btn btn-secondary mt-3">Réinitialiser</a>
+                {# {{form_widget(form)}} #}
+                 {{ form_row(form.filterByReference, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                 {{ form_row(form.filterByProduct, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                <button type="submit" class="buttonStyleC btn btn-primary mt-3">Rechercher</button>
+                <a href={{ path('produit_conditionnement_index') }} class="buttonStyleC btn btn-secondary mt-3">Réinitialiser</a>
                 {{form_end(form)}}
             </div>
-    <table class="table">
+    <table class="my-4 mx-2 table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Reference</th>
-                <th>Image_path</th>
-                <th>QuantiteStock</th>
-                <th>actions</th>
+                <th class="textArt">Id</th>
+                <th class="textArt">Reference</th>
+                {# <th class="textArt">Image_path</th> #}
+                <th class="textArt">Stock</th>
+                <th class="textArt"></th>
             </tr>
         </thead>
         <tbody>
         {% for produit_conditionnement in produit_conditionnements %}
             <tr>
-                <td>{{ produit_conditionnement.id }}</td>
-                <td>{{ produit_conditionnement.reference }}</td>
-                <td>{{ produit_conditionnement.imagePath }}</td>
-                <td>{{ produit_conditionnement.quantiteStock }}</td>
+                <td class="textArt">{{ produit_conditionnement.id }}</td>
+                <td class="textArt">{{ produit_conditionnement.reference }}</td>
+                {# <td class="textArt">{{ produit_conditionnement.imagePath }}</td> #}
+                <td class="textArt" >{{ produit_conditionnement.quantiteStock }}</td>
                 <td>
-                    <a  style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('produit_conditionnement_show', {'id': produit_conditionnement.id}) }}">Détail</a>
-                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('produit_conditionnement_edit', {'id': produit_conditionnement.id}) }}">Modifier</a>
+                    <a class= "me-2 maxWidth12 buttonStyleC text-white px-2 mt-2 btn btn-success w-100 " href="{{ path('produit_conditionnement_show', {'id': produit_conditionnement.id}) }}">Détail</a>
+                    <a class= "me-2 maxWidth12 buttonStyleC text-white px-2 mt-2 btn btnBackMod w-100 " href="{{ path('produit_conditionnement_edit', {'id': produit_conditionnement.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td  class="textArt" colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a   class="mt-2 btn btn-danger   "  href="{{ path('produit_conditionnement_new') }}">Nouveau</a>
+    <a  class="btnBackEnr buttonStyleC text-white btn"  href="{{ path('produit_conditionnement_new') }}">Nouveau</a>
     </div>
 {% endblock %}

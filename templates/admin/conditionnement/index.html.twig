@@ -3,29 +3,29 @@
 {% block title %}Conditionnement index{% endblock %}
 
 {% block body %}
-    <div class="container my-2">
-        <h1>Conditionnement</h1>
+    <div class="container-flex my-2 mx-3">
+        <h1 class="text-center ttreT">Conditionnement</h1>
 
         <table class="table">
             <thead>
                 <tr>
                 
-                    <th>Reference</th>
-                    <th>Designation</th>
-                    <th>Poids (gr)</th>
-                    <th>actions</th>
+                    <th class="textArt">Reference</th>
+                    <th class="textArt">Designation</th>
+                    <th class="textArt">Poids(gr)</th>
+                    <th class="textArt" ></th>
                 </tr>
             </thead>
             <tbody>
             {% for conditionnement in conditionnements %}
                 <tr>
                 
-                    <td>{{ conditionnement.reference }}</td>
-                    <td>{{ conditionnement.designation }}</td>
-                    <td>{{ conditionnement.poids }}</td>
-                    <td>
-                        <a   class="maxWidth5 mt-1 btn btn-primary w-100 " href="{{ path('conditionnement_show', {'id': conditionnement.id}) }}">Détail</a>
-                        <a   class="maxWidth5 mt-1 btn btn-warning w-100 " href="{{ path('conditionnement_edit', {'id': conditionnement.id}) }}">Modifier</a>
+                    <td class="textArt">{{ conditionnement.reference }}</td>
+                    <td class="textArt">{{ conditionnement.designation }}</td>
+                    <td class="textArt">{{ conditionnement.poids }}</td>
+                    <td class="text-center" >
+                        <a  class= "ms-2 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-success w-100 " href="{{ path('conditionnement_show', {'id': conditionnement.id}) }}">Détail</a>
+                        <a  class= "ms-2 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btnBackMod w-100 " href="{{ path('conditionnement_edit', {'id': conditionnement.id}) }}">Modifier</a>
                     </td>
                 </tr>
             {% else %}
@@ -36,6 +36,6 @@
             </tbody>
         </table>
 
-        <a class="btn btn-danger" href="{{ path('conditionnement_new') }}">Nouveau</a>
+        <a class="btnBackEnr buttonStyleC text-white btn  " href="{{ path('conditionnement_new') }}">Nouveau</a>
     </div>
 {% endblock %}

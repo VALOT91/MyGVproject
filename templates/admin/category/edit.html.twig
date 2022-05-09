@@ -1,17 +1,17 @@
 {% extends 'admin/base_admin.html.twig' %}
  
 {% block body %}
-<div class="container py-5">
+<div class="container-flex py-5 mx-2">
     <div class="row">
     
-        <div class="col-12 mb-3">
-            <a href="{{ path('category_index') }}" class="btn btn-secondary">Retour à la liste</a>
+        <div class="col-12 mb-4 pos-button">
+            <a href="{{ path('category_index') }}" class="buttonStyleC btn btn-dark   ">Retour à la liste</a>
         </div>
         
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Modifier la catégorie</h3>
+                    <h3 class =" text-center ttreT">Modifier la catégorie</h3>
                 </div>
                 <div class="card-body">
                     {{ include('admin/category/_form.html.twig', {'button_label': 'Modifier'}) }}
@@ -23,8 +23,7 @@
             {{ include('admin/category/_delete_form.html.twig') }}
         </div>
     </div>
-</div>
-
-   
+</div>   
 {% endblock %}
+
 

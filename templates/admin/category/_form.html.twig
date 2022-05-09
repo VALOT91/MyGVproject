@@ -1,6 +1,7 @@
 {{ form_start(form) }}
    
-     {{ form_row(form.gamme) }}
+     {# {{ form_row(form.gamme) }} #}
+     {{ form_row(form.gamme, {'attr': {'class': 'textArt'} }) }}
       {{ form_row(form.nom) }}
       {{ form_row(form.description) }}
       
@@ -22,9 +23,9 @@
       </div>
   
 
- 
-     <button class="btn btn-warning">{{ button_label|default('Enregistrer') }}</button>
-
+     <div class="pos-button my-4 ">
+          <button class="btn text-white buttonStyleC btnBackMod">{{ button_label|default('Enregistrer') }}</button>
+     </div>
 {{ form_end(form) }}
  <div style="display:none" id="dialog1" title="Sélectionnez une image">
     
