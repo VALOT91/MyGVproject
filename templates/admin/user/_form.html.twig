@@ -1,4 +1,18 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-warning">{{ button_label|default('Enregistrer') }}</button>
+     {{ form_row(form.email, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.nom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.prenom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.adresse, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }} 
+     {{ form_row(form.complement, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.roles, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.plainPassword, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }} 
+     {{ form_row(form.code_postal, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.ville, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.telephone, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle2'} }) }}
+     {{ form_row(form.points_fidelite, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.pays, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.rang_fidelite, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.kbis, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+ 
+    <button class="btn text-white buttonStyleC btnBackMod btn ">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

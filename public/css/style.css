@@ -1,41 +1,54 @@
 body {background-color:white!important;}
 
+ /* Couleur de la pagination bootstrap */
 .page-item.active .page-link {
   background-color:#769643;  
 }
+/* Couleur de la pagination bootstrap */
 .page-link {
   color:darkgreen!important;
 }
 
+/* style des images dans les pages vitrines (arondi) */
 .card1 img {
   border-radius:7px;
 }
+
+/* Page gamme style des drapeaux */
 .gif {width:35px;}
 
+/* Page liste des produits d'une catégorie style image */
 .detailImgSm {
  width:2rem!important;
 }
 
+ /* image de la recette dans la page de visualisation  (show) */
 .imRecetteSM {
    width:4rem;object-fit:cover;
 }
+ /* Taille de la police du titre dans la fiche produit  */
 .receTitre {
    font-size:medium; 
 
 }
+/* A supprimer */
 .rectext {
   font-size:small;line-height:12px;
 }
+ /* image du logo bio page produit */
 .BioSM {
   width:3rem; 
  }
+
+ /* Image des logos de recommandation page produit */
  .imRecoSM {
   width:3rem;object-fit:cover;
 }
-
+ /* font size Libellé sous le logo de recommandation page produit */
 .textReco {
   font-size:medium;
 }
+
 /* Image de fond la fiche gamme (fiche produit) */
 .fnd{
   
@@ -48,28 +61,33 @@ body {background-color:white!important;}
     opacity:0.7!important;
     background-color: white!important;
 }
- 
+
+ /* couleur de fond des CGV */
 .fondcgv {
   background-color:rgb(238, 247, 237);
 }
 
-#box:hover {
-
+/* Page de visu des commandes hover sur le bt de statut livraison */
+ #box:hover {
   background-color:aqua!important;  
   border-radius:60%!important;  ;
   }
+
+  /* Page de visu des commandes hover sur le bt affichage de la commande */
   #eye:hover {
     background-color:aqua!important;  
     border-radius:50%!important;  ;
-    
     }
- 
+
+ /* A enlever */
   #imcart:hover {
       
     background-color:cadetblue!important;  
     border-radius:7px!important;
       
   }
+
+  /* style de l'image en survol pour divers usages (conditionnement, dialog box)   */
   .imChoice:hover
   {
     color:rgb(14, 17, 10)!important; 
@@ -77,13 +95,12 @@ body {background-color:white!important;}
     font-size:medium;
   }
 
- 
-
+  /* couleur du titre de la dialog box */
   .ui-dialog-titlebar {
      color:red;
   }
 
-  
+/* style des liens de la page de confidentialité */
 .politiqueLien a {
   text-decoration: none;
   color:darkslategray;
@@ -99,29 +116,30 @@ body {background-color:white!important;}
 }
 
   /* ------------------------------------------ */
-
+  /* A enlever */
   #fondInfos {
     background-image: url("/images/fond.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 40rem;
   }
-  
+   /* A enlever */
   .titreSurImage {
     color: white;
   }
-  
+  /* image de fond de la page home */
   #fond {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
+   /* style de l'Image loupe pour les pages avec filtres  */
   .searchImg { 
     height:1.3rem;
-    margin-top:1.rem
-    
+    margin-top:1.rem;
    }
+
+    /* style du bouton de recherche pour les pages avec filtres  */
   .searchButton {
 
     background-color:white!important;
@@ -130,7 +148,9 @@ body {background-color:white!important;}
     margin-left:-2.3rem ;
   }
 
-
+  /* ********************************************************* */
+           /* Média query pour les devices > 768 */
+  /* ********************************************************* */
   @media only screen and (min-width: 769px) {
 
      /* formulaires  */
@@ -139,6 +159,7 @@ body {background-color:white!important;}
        flex-direction:row;
        justify-content:center;
      }
+
      .formSize {
       width:50%;
 
@@ -151,8 +172,11 @@ body {background-color:white!important;}
       background-size: cover;
       height: 55rem;
     }
+
+     /* a enlever */
     .imgServices {width:4.5rem;}
 
+    /* image de fond page metier */
     #fndO{
       display: flex;
       flex-direction: column;
@@ -162,6 +186,8 @@ body {background-color:white!important;}
       background-size: cover ;
       height: 55rem;
     }
+
+     /* image de fond page offres pro */
     #fndM{
       display: flex;
       flex-direction: column;
@@ -170,29 +196,26 @@ body {background-color:white!important;}
       background-repeat: no-repeat;
       background-size: cover ;
       height: 55rem;
-     
     }
-
+     /* style du champ de recherche de la page articles */
     .SearchField {
-      min-width:35rem!important;
-    
+      min-width:35rem!important; 
     }
-
+    /* page A propos style image*/
     #fondA {
       background-image: url("/images/business/tea-etalage.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       height: 8rem;
-     
     }
 
+       /* page A propos style font */  
     #fondA h1, #fndM h1 {
       font-size: 5rem;
       font-weight: bold;
       color: white;
-      
     }
-
+      /* page A propos style couleurs */    
     #fondA div h2  {
       font-size: 2.1rem;
       font-weight: lighter;
@@ -202,7 +225,7 @@ body {background-color:white!important;}
       border-radius:7px;
     }
 
-
+    /* A enlever */ 
     .cont2 {
       opacity:0.9!important;
       background-color: white!important;
@@ -210,11 +233,14 @@ body {background-color:white!important;}
       margin:5rem 10rem 5rem 10rem!important;
     }
 
+    /* titres bandeau noir */
     #fond h1, #fndM h1,#fndO h1 {
       font-size: 5rem;
       font-weight: bold;
       color: white;
     }
+
+     /* titres slogan souligné */
     #fond h3, #fndM h3, #fndO h3 {
       font-size: 3.1rem;
       font-weight: lighter;
@@ -223,6 +249,7 @@ body {background-color:white!important;}
       text-decoration: underline;
     }
   
+     /* Bandeau noir home  */
     .titre2 {
       color: white;
       font-size: 2.7rem;
@@ -232,6 +259,8 @@ body {background-color:white!important;}
       padding-top: 0.6rem;
       padding-bottom: 0.8rem;
     }
+
+    /* Bandeau noir  offre pro*/
     .titre3 {
       color: white;
       font-size: 2.7rem;
@@ -242,33 +271,35 @@ body {background-color:white!important;}
       padding-bottom: 0.8rem;
     }
 
+     /* image conditions de vente */
     .imgEng1 {
-
       width:30rem!important;
       height:10rem!important;
       margin-top:2rem;
-
     }
 
-
+    /* logo du site sur fond noir */
     #fond .logoFond,#fndM .logoFond {
       width: 30rem !important;
     }
 
+   /* logo du site sur fond noir */
     #fond .logoFond,#fndO .logoFond {
       width: 30rem !important;
     }
-  
+    
     #fondInfos .logoFond2 {
       width: 50rem !important;
     }
     
+     /* page produit bloc droite */
     .detailGammeSepDroite {
       border-right-style:solid; 
       border-right-color:light-gray;
       border-right-width:thin
    }
 
+    /* page produit font des prix */
    .LprixHT { font-size:small;}
    .LprixTTC { font-size:x-small;}
    .prixHT {
@@ -283,6 +314,11 @@ body {background-color:white!important;}
    }
 
   }
+
+   /* ********************************************************* */
+           /* Média query pour les résolutions < 769 */
+  /* ********************************************************* */
+
   @media only screen and (max-width: 768px) {
     
     /* Pages presentation */
@@ -297,8 +333,10 @@ body {background-color:white!important;}
       min-width:20rem;
 
     }
+      /* a enlever */
     .imgServices {width:6.5rem;}
    
+      /* image conditions de vente */
     .imgEng1 {
 
       width:30rem!important;
@@ -341,6 +379,7 @@ body {background-color:white!important;}
       text-align:center;
     }
       
+     /* page A propos style image*/
     #fondA {
       background-image: url("/images/business/tea-etalage.jpg");
       background-repeat: no-repeat;
@@ -349,25 +388,28 @@ body {background-color:white!important;}
      
     }
 
-   
+    /* page A propos style font */
     #fondA h1, #fndM h1 {
       font-size: 5rem;
       font-weight: bold;
       color: white;
       
     }
-
+     /* style du champ de recherche de la page articles */
     .SearchField { 
       height:1.8rem;
       margin-top:0rem;
       width:35rem!important;
      }
 
+     /* style de l'Image loupe pour les pages avec filtres  */
     .searchImg { 
       height:1.3rem;
       margin-top:1.rem
       
      }
+
+      /* style du bouton de recherche pour les pages avec filtres  */
     .searchButton {
   
       background-color:white!important;
@@ -376,9 +418,7 @@ body {background-color:white!important;}
       margin-left:-2.3rem ;
     }
   
-  
-
-
+    /* page A propos style titre h2 */ 
     #fondA div h2  {
       font-size: 2.1rem;
       font-weight: lighter;
@@ -388,7 +428,7 @@ body {background-color:white!important;}
       border-radius:7px;
      
     }
-
+     /* style du champ de recherche de la page articles */
     .SearchField {
       min-width:25rem!important;
     
@@ -649,7 +689,10 @@ body {background-color:white!important;}
   color:white;
 
 }
-
+/* ********************************************************* */
+           /* Média query pour les devices  769 */
+  /* ********************************************************* */
+  
 @media only screen and (max-device-width: 768px) {
 
      /* formulaires  */
@@ -659,11 +702,31 @@ body {background-color:white!important;}
       justify-content:center;
     }
 
+    .formSize {
+      width:100%;
+     }
+
+     /* masque le bloc infos de la page article des laptops */
+     .artLaptop
+    {
+      display:none !important;
+    }
+    
+    /* affiche le bloc infos de la page article pour les smartphones */
+    .artSmart
+    {
+      display:flex !important;
+      flex-direction:column;
+    }
+   
+
     .imgEng {
 
       width:10rem!important;
       height:10rem!important;
     }
+
+     /* image conditions de vente */
     .imgEng1 {
 
       width:22rem!important;
@@ -688,10 +751,9 @@ body {background-color:white!important;}
     .accroche2 {font-size:1.6em!important;}
     .textArt1 {font-size:1.5em!important;}
 
-    .formSize {
-     width:100%;
+   
 
-    }
+
     .inputStyle {
        height:4rem;
        font-size:2.5rem;
@@ -720,7 +782,14 @@ body {background-color:white!important;}
       font-size:2.5rem;
       padding:0.1rem;
     }
-
+    .buttonStyleAr
+    {
+      height:4.5rem;
+      width : 19rem;
+      font-size:2.5rem;
+      padding:0.1rem;
+          
+    }
     .buttonStyleC
     {
       height:4.5rem;
@@ -734,6 +803,7 @@ body {background-color:white!important;}
       text-align:center!important;
       
     }
+  
     
     .formTemplate {
       width:4rem!important;
@@ -824,18 +894,21 @@ body {background-color:white!important;}
       height:30rem;
       margin-bottom:2rem
     }
-
+     /* style du champ de recherche de la page articles */
     .SearchField { 
       height:2.5rem;
       margin-top:0rem;
       width:60rem!important;
      }
 
+    /* style de l'Image loupe pour les pages avec filtres  */
     .searchImg { 
       height:2.2rem;
       margin-top:0.8rem
       
      }
+
+      /* style du bouton de recherche pour les pages avec filtres  */
     .searchButton {
   
       background-color:white!important;
@@ -932,10 +1005,9 @@ body {background-color:white!important;}
     font-size:xx-large;
   }
 
+   /* image de la recette dans la page de visualisation  (show) */
   .imRecetteSM {
-
     width:7rem!important;
-    
   }
 
   .imABSM {
@@ -943,6 +1015,8 @@ body {background-color:white!important;}
     width:4rem!important;
     
   }
+
+  /* Taille de la police du titre dans la fiche produit  */
   .receTitre {
    font-size:2rem;
    font-weight: bolder;
@@ -951,6 +1025,7 @@ body {background-color:white!important;}
     font-size:x-large; 
     max-width: 35rem;
   }
+  /* image du logo bio page produit */
   .BioSM {
     height:7rem!important; 
     width:7rem!important; 
@@ -959,11 +1034,14 @@ body {background-color:white!important;}
     font-size:2rem;
     font-weight: bolder;
   }
+
+  /* Image des logos de recommandation page produit */
   .imRecoSM {
     width:6rem;
     height:6rem; 
     object-fit:cover;
   }
+ /* font size Libellé sous le logo de recommandation page produit */
   .textReco {
     font-size:x-large;
   }
@@ -997,6 +1075,18 @@ body {background-color:white!important;}
     height:3rem!important;
     padding:0.5em!important;
     width:75%!important;
+  }
+
+  .artLaptop
+  {
+    display:flex!important;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+  }
+  .artSmart
+  {
+    display:none !important;
   }
   
 }

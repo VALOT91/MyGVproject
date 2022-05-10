@@ -3,43 +3,37 @@
 {% block title %}News{% endblock %}
 
 {% block body %}
-  <div class="container my-2">
-    <h1>News & Articles</h1>
+ <div class="container-flex my-2 mx-3">
+    <h1  class="text-center ttreT my-4">News & Articles</h1>
 
-    <table class="table">
+    <table class="my-4 mx-2 table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                {# <th>Contenu</th> #}
-                <th>DateCreation</th>
-                <th>DateFin</th>
-                <th>Categorie</th>
-                <th>actions</th>
+                <th class="textArt">Titre</th>
+                <th class="textArt">Création&nbsp</th>
+                <th class="textArt">Categorie</th>
+                <th class="textArt"> </th>
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.titre }}</td>
-                {# <td>{{ article.contenu }}</td> #}
-                <td>{{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }}</td>
-                <td>{{ article.dateFin ? article.dateFin|date('d-m-Y') : '' }}</td>
-                <td>{{ article.categorie }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{ path('articles_show', {'id': article.id}) }}">Détail</a>
-                    <a class="btn btn-warning" href="{{ path('articles_edit', {'id': article.id}) }}">Modifier</a>
+                <td class="textArt">{{ article.titre }}</td>
+                <td  class="textArt  ">{{ article.dateCreation ? article.dateCreation|date('d-m-y') : '' }}</td>
+                <td class="textArt">{{ article.categorie }}</td>
+                <td class="textArt">
+                    <a class= " maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-success w-100 "  href="{{ path('articles_show', {'id': article.id}) }}">Détail</a>
+                    <a class= " maxWidth12 buttonStyleC text-white px-4 mt-2 btn btnBackMod w-100 " href="{{ path('articles_edit', {'id': article.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td class="textArt" colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a class="btn btn-danger"  href="{{ path('articles_new') }}">Nouveau</a>
+    <a class="btnBackEnr buttonStyleC text-white btn  " href="{{ path('articles_new') }}">Nouveau</a>
  </div>
 {% endblock %}

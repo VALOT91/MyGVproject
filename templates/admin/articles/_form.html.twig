@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-danger">{{ button_label|default('Enregistrer') }}</button>
+    
+    {{ form_row(form.titre, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    {{ form_row(form.description, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    {{ form_row(form.contenu, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    {{ form_row(form.dateFin, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    {{ form_row(form.img, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    {{ form_row(form.categorie, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+  
+    <button class="btn text-white buttonStyleC btnBackMod btn ">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

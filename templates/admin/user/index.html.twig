@@ -3,15 +3,15 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1 class ="ms-4">Liste des utilisateurs</h1>
+ <div class="container-flex text-center mx-2" >
+    <h1 class ="ms-4 text-center ttreT">Liste des utilisateurs</h1>
 
     <table class="table">
         <thead>
             <tr>
               
-                <th>Client</th>
-                <th>Statut</th>  
+                <th class="textArt">Client</th>
+                <th class="textArt">Statut</th>  
  
                
             </tr>
@@ -20,9 +20,9 @@
         {% for user in users %}
             <tr>
                 
-                <td><strong>{{ user.email }}</strong><br> {{ user.prenom }} {{ user.nom }} {{ user.codePostal }} {{ user.ville }}</td>
+                <td class="textArt"><strong>{{ user.email }}</strong><br> {{ user.prenom }} {{ user.nom }} {{ user.codePostal }} {{ user.ville }}</td>
                 
-                <td> 
+                <td class="textArt"> 
 
 
                         {% if  user.roles[0] ==   "ROLE_TRANSIT"    %}
@@ -31,30 +31,31 @@
                             Validé
                         {% endif   %}
                 </td>
-                 <td> 
+                 <td class="textArt"> 
                         {% if  user.roles[0] ==   "ROLE_TRANSIT"    %}
-                            <a style="max-width:5rem" class="mt-2 btn btn-success w-100 " href="{{ path('user_valid', {'id': user.id}) }}">Valider</a>
+                            <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-success w-100 " href="{{ path('user_valid', {'id': user.id}) }}">Valider</a>
                             {# <a style="max-width:5rem" class="mt-2 btn btn-danger w-100 " href="{{ path('user_refute', {'id': user.id}) }}">Refuser</a> #}
                         {% elseif    user.roles[0] == "ROLE_CLIENT"  %}
                             
                              {# <a style="max-width:5rem" class="mt-2 btn btn-danger w-100 " href="{{ path('user_show', {'id': user.id}) }}">Bloquer</a> #}
-                             <a style="max-width:5rem" class="mt-2 btn btn-warning w-100 " href="{{ path('user_decline', {'id': user.id}) }}">Attente</a>
+                             <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-warning w-100 " href="{{ path('user_decline', {'id': user.id}) }}">Attente</a>
                         {% endif   %}
                 </td>
                 
-                <td>
-                    <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('user_show', {'id': user.id}) }}">Détail</a>
-                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('user_edit', {'id': user.id}) }}">modifier</a>
+                <td class="textArt">
+                    <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-success w-100 "  href="{{ path('user_show', {'id': user.id}) }}">Détail</a>
+                    <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btnBackMod w-100 " href="{{ path('user_edit', {'id': user.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="16">no records found</td>
+                <td  class="textArt" colspan="16">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a  class="ms-2 btn btn-danger" href="{{ path('user_new') }}">Nouveau</a>
+  
     </div>
+      <a  class=" ms-2 btnBackEnr buttonStyleC text-white btn  " href="{{ path('user_new') }}">Nouveau</a>
 {% endblock %}
