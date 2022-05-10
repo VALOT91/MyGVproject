@@ -1,13 +1,14 @@
 {{ form_start(form) }}
-      {{ form_row(form.nom) }}
-      {{ form_row(form.description) }}
+      {{ form_row(form.nom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+      {{ form_row(form.description, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
       <div style="display:flex;flex-direction:row;align-items:center">
         <img id="RecetteIm" style="margin-top:-1rem;margin-right:2rem; width:3rem; height:3rem;objective-fit:cover" src=" \{{recette.imagePath }}" class="   "  alt="...">   
         <span class="w-100">{{ form_row(form.image_path) }}</span>
-         <button type="button" style="width:3rem;margin-top:1rem;margin-left:1rem;" class="btn btn-primary" id="opener">...</button>
+         <button type="button" style="width:3rem;margin-top:1rem;margin-left:1rem;" class="formTemplate btn btn-primary" id="opener">...</button>
       </div>
-        {{ form_row(form.product) }}
-      <button class="btn btn-danger">{{ button_label|default('Enregistrer') }}</button>
+        {{ form_row(form.product, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+       <button class="btn text-white buttonStyleC btnBackMod btn ">{{ button_label|default('Enregistrer') }}</button> 
+      
 {{ form_end(form) }}
 
  <div style="display:none" id="dialog" title="Sélectionnez une image">
@@ -20,6 +21,6 @@
         <hr>
         {% endfor %}
 
-    </div>
+ </div>
 
     

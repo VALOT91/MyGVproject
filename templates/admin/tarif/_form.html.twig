@@ -1,4 +1,8 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-danger">{{ button_label|default('Enregistrer') }}</button>
+     
+      {{ form_row(form.prix_unitaire, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+      {{ form_row(form.type_prix, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+      {{ form_row(form.produit_conditionnement, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    
+    <button class="btn text-white buttonStyleC btnBackMod btn ">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

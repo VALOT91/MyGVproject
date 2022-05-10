@@ -7,14 +7,14 @@
 {% block body %}
 
      
-<div class="container my-2">
+<div class="container-flex mx-2 my-2">
     <div>
-            <h1 style="margin-bottom:2rem"> Détail de la recette </h1>
+            <h1  class="ttreT text-center my-4" style="margin-bottom:2rem"> Détail de la recette </h1>
     </div>
     <div class="row align-items-center">
                 <div class="col-2 col-lg-2">
                      
-                                <img class="ms-2" style="display:flex;width:3rem" src="\{{ recette.imagePath }}" alt=""  >
+                                <img class="ms-2 formRecetteImg"  src="\{{ recette.imagePath }}" alt=""  >
                      
                 </div>
                 <div class="col-10 col-lg-10">
@@ -22,16 +22,16 @@
                         <tbody>
                            
                             <tr>
-                                <th>Nom</th>
-                                <td>{{ recette.nom }}</td>
+                                <th class ="textArt">Nom</th>
+                                <td class ="textArt">{{ recette.nom }}</td>
                             </tr>
                             <tr>
-                                <th>Recette</th>
-                                <td>{{ recette.description }}</td>
+                                <th class ="textArt">Recette</th>
+                                <td class ="textArt">{{ recette.description }}</td>
                             </tr>
                              <tr>
-                                <th>Produit</th>
-                                <td>{{ recette.getProduct().designation }}</td>
+                                <th class ="textArt">Produit</th>
+                                <td class ="textArt">{{ recette.getProduct().designation }}</td>
                             </tr>
                                 
                         </tbody>
@@ -39,8 +39,9 @@
                 </div> 
     </div>
 
-    <a class="mt-2 btn btn-secondary" href="{{ path('recette_index') }}">retour à la liste</a>
-
+    <div class="text-center col-12 mb-3 my-4">
+        <a class="btn  btn-dark  buttonStyleC" href="{{ path('recette_index') }}">retour liste</a>
+    </div>
     
 </div>
 {% endblock %}

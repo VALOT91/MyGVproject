@@ -9,10 +9,10 @@
 
     
      {{ form_row(form.quantiteStock) }}
-     {{ form_row(form.produit) }}
-     {{ form_row(form.conditionnement) }}
+     {{ form_row(form.produit, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.conditionnement, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
 
-    <button class="btn btn-danger">{{ button_label|default('Enregistrer') }}</button>
+    <button class="btn text-white buttonStyleC btnBackMod" btn ">{{ button_label|default('Enregistrer') }}</button>
 
 {{ form_end(form) }}
  <div style="display:none" id="dialog" title="Sélectionnez une image">

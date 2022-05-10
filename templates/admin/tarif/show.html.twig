@@ -2,31 +2,32 @@
 
 {% block title %}Tarif{% endblock %}
 
-{% block body %}<div class="container my-2">
-    <h1>Détail du tarif </h1>
+{% block body %}
+<div class="container-flex mx-2 my-2">
+    <h1  class="ttreT text-center my-4">Détail du tarif </h1>
 
-    <table class="table">
+     <table class="table mx-2">
         <tbody>
             <tr>
-                <th>Référence produit</th>
-                <td>{{ tarif.getProduitConditionnement().reference }}</td>
+                <th class ="textArt" >Référence produit</th>
+                <td class ="textArt" >{{ tarif.getProduitConditionnement().reference }}</td>
             </tr>
             <tr>
-                <th>Désignation produit</th>
-                <td>{{ tarif.getProduitConditionnement().getProduit().designation }}</td>
+                <th class ="textArt" >Désignation produit</th>
+                <td class ="textArt" >{{ tarif.getProduitConditionnement().getProduit().designation }}</td>
             </tr>
             <tr>
-                <th>Prix unitaire</th>
-                <td>{{ tarif.prixUnitaire }}</td>
+                <th class ="textArt" >Prix unitaire</th>
+                <td class ="textArt" >{{ tarif.prixUnitaire }}</td>
             </tr>
             <tr>
-                <th>Type prix</th>
-                <td>{{ tarif.typePrix }}</td>
+                <th class ="textArt" >Type prix</th>
+                <td class ="textArt" >{{ tarif.typePrix }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a class="btn btn-primary" href="{{ path('tarif_index') }}">retour à la liste</a>
- 
+    <div class="text-center col-12 mb-3 my-4">
+        <a class="btn  btn-dark  buttonStyleC"  href="{{ path('tarif_index') }}">retour à la liste</a>
+    </div> 
 </div>
 {% endblock %}

@@ -3,47 +3,50 @@
 {% block title %}Tarif index{% endblock %}
 
 {% block body %}
-  <div class="container my-2">
-    <h1>Tarifs</h1>
+<div class="container-flex my-2 mx-3">
+    <h1 class="text-center ttreT my-4" >Tarifs</h1>
             <div class="">
                 {{form_start(form)}}
-                {{form_widget(form)}}
-                <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
-                <a href={{ path('tarif_index') }} class="btn btn-secondary mt-3">Réinitialiser</a>
+                {# {{form_widget(form)}} #}
+                   {{ form_row(form.filterByReference, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                   {{ form_row(form.filterByTarifType, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                   {{ form_row(form.filterByProduct, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                <button type="submit" class="buttonStyleC btn btn-primary mt-3">Rechercher</button>
+                <a href={{ path('tarif_index') }} class="buttonStyleC btn btn-secondary mt-3">Réinitialiser</a>
                 {{form_end(form)}}
             </div>
-    <table class="table">
+      <table class="my-4 mx-2 table">
         <thead>
             <tr>
-                <th>Référence produit</th>
-                <th>Désignation produit</th>  
-                <th>Poids</th>
-                 <th>Prix_unitaire</th>
-                <th>Type de prix</th>
-                <th>actions</th>
+                <th class="textArt">Réf.</th>
+                {# <th class="textArt">Produit</th>   #}
+                <th class="textArt">Poids</th>
+                 <th class="textArt">Prix.U</th>
+                <th class="textArt">Type</th>
+                <th class="textArt"></th>
             </tr>
         </thead>
         <tbody>
         {% for tarif in tarifs %}
             <tr>
-                <td>{{ tarif.getProduitConditionnement().reference }}</td>
-                <td>{{ tarif.getProduitConditionnement().getProduit().designation }}</td>
-                <td>{{ tarif.getProduitConditionnement().getConditionnement().poids }}g</td>
-                <td>{{ tarif.prixUnitaire }}</td>
-                <td>{{ tarif.typePrix }}</td>
+                <td class="textArt">{{ tarif.getProduitConditionnement().reference }} <br> {{ tarif.getProduitConditionnement().getProduit().designation}}</td>
+                {# <td class="textArt">{{ tarif.getProduitConditionnement().getProduit().designation }}</td> #}
+                <td class="textArt">{{ tarif.getProduitConditionnement().getConditionnement().poids }}g</td>
+                <td class="textArt">{{ tarif.prixUnitaire }}</td>
+                <td class="textArt">{{ tarif.typePrix }}</td>
                 
-                <td>
-                    <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('tarif_show', {'id': tarif.id}) }}">Detail</a>
-                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('tarif_edit', {'id': tarif.id}) }}">Modifier</a>
+                <td class="text-center">
+                    <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-success w-100 " href="{{ path('tarif_show', {'id': tarif.id}) }}">Detail</a>
+                    <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btnBackMod w-100 "href="{{ path('tarif_edit', {'id': tarif.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td  class="textArt" colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a  class="ms-2 btn btn-danger" href="{{ path('tarif_new') }}">Nouveau</a>
+    <a class="btnBackEnr buttonStyleC text-white btn  " href="{{ path('tarif_new') }}">Nouveau</a>
 {% endblock %}

@@ -3,44 +3,44 @@
 {% block title %}ProduitConditionnement{% endblock %}
 
 {% block body %}
-<div class="container my-2">
-    <h1>Détail de l'article en stock</h1>
+  <div class="container-flex mx-2 my-2">
+    <h1  class="ttreT text-center my-4">Détail de l'article en stock</h1>
 
-    <table class="table">
+    <table class="table mx-2">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ produit_conditionnement.id }}</td>
+                <th class ="textArt" >Id</th>
+                <td class ="textArt" >{{ produit_conditionnement.id }}</td>
             </tr>
             <tr>
-                <th>Reference</th>
-                <td>{{ produit_conditionnement.reference }}</td>
+                <th class ="textArt" >Reference</th>
+                <td class ="textArt" >{{ produit_conditionnement.reference }}</td>
             </tr>
              <tr>
-                <th>Produit</th>
-                <td>{{ produit_conditionnement.getProduit().designation }}</td>
+                <th class ="textArt" >Produit</th>
+                <td class ="textArt" >{{ produit_conditionnement.getProduit().designation }}</td>
             </tr>
              <tr>
-                <th>Conditionnement</th>
-                <td>{{ produit_conditionnement.getConditionnement().designation }}</td>
+                <th class ="textArt" >Conditionnement</th>
+                <td class ="textArt" >{{ produit_conditionnement.getConditionnement().designation }}</td>
             </tr>
              <tr>
-                <th>Poids</th>
-                <td>{{ produit_conditionnement.getConditionnement().poids }}g</td>
+                <th class ="textArt" >Poids</th>
+                <td class ="textArt" >{{ produit_conditionnement.getConditionnement().poids }}g</td>
             </tr>
             <tr>
-                <th>Image_path</th>
-                <td>{{ produit_conditionnement.imagePath }}</td>
+                <th class ="textArt" >Image</th>
+                <td class ="textArt" >{{ produit_conditionnement.imagePath }}</td>
             </tr>
             <tr>
-                <th>QuantiteStock</th>
-                <td>{{ produit_conditionnement.quantiteStock }}</td>
+                <th class ="textArt" >Quantite</th>
+                <td class ="textArt" >{{ produit_conditionnement.quantiteStock }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a class="btn btn-primary" href="{{ path('produit_conditionnement_index') }}">retour a la liste</a>
-
+ <div class="text-center col-12 mb-3 my-4">
+    <a class="btn btn-dark  buttonStyleC" href="{{ path('produit_conditionnement_index') }}">retour a la liste</a>
+ </div> 
  
     </div>
 {% endblock %}

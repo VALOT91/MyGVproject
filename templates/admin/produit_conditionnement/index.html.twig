@@ -17,7 +17,7 @@
     <table class="my-4 mx-2 table">
         <thead>
             <tr>
-                <th class="textArt">Id</th>
+                {# <th class="textArt">désignation</th> #}
                 <th class="textArt">Reference</th>
                 {# <th class="textArt">Image_path</th> #}
                 <th class="textArt">Stock</th>
@@ -27,7 +27,7 @@
         <tbody>
         {% for produit_conditionnement in produit_conditionnements %}
             <tr>
-                <td class="textArt">{{ produit_conditionnement.id }}</td>
+                {# <td class="textArt">{{ produit_conditionnement.getProduit().designation }}</td> #}
                 <td class="textArt">{{ produit_conditionnement.reference }}</td>
                 {# <td class="textArt">{{ produit_conditionnement.imagePath }}</td> #}
                 <td class="textArt" >{{ produit_conditionnement.quantiteStock }}</td>

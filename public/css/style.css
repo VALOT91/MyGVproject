@@ -752,6 +752,14 @@ body {background-color:white!important;}
       object-fit:cover;
     }
 
+    .formRecetteImg {
+      margin-top:-1rem;
+      margin-right:2rem;
+      width:6rem!important;
+      height:6rem!important;
+      object-fit:cover;
+    }
+
     .formtemplateA{
      height:max;
      text-decoration:none;
@@ -1006,6 +1014,15 @@ body {background-color:white!important;}
   height:3rem;
   object-fit:cover;
 }
+
+.formRecetteImg {
+  margin-top:-1rem;
+  margin-right:2rem;
+  width:3rem;
+  height:3rem;
+  object-fit:cover;
+}
+
 .formtemplateA{
  height:max;
  text-decoration:none;

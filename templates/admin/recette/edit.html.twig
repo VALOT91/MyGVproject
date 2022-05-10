@@ -4,17 +4,17 @@
 {% block title %} Editer Recette {% endblock %}
  
 {% block body %}
-<div class="container py-5">
+<div class="container-flex py-5 mx-2">
     <div class="row">
     
         <div class="col-12 mb-3">
-            <a href="{{ path('recette_index') }}" class="btn btn-secondary">Retour à la liste</a>
+            <a href="{{ path('recette_index') }}"  class="buttonStyleC btn btn-dark   ">Retour à la liste</a>
         </div>
         
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Modifier la recette</h3>
+                    <h3  class =" text-center ttreT">Modifier la recette</h3>
                 </div>
                 <div class="card-body">
                     {{ include('admin/recette/_form.html.twig', {'button_label': 'Modifier'}) }}

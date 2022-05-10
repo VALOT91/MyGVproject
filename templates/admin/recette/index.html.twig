@@ -3,48 +3,50 @@
 {% block title %}Recette index{% endblock %}
 
 {% block body %}
-    <div class="container my-2">
-        <h1>Recettes</h1>
+     <div class="container-flex my-2 mx-3">
+        <h1  class="text-center ttreT my-4">Recettes</h1>
             <div class="">
                 {{form_start(form)}}
-                {{form_widget(form)}}
-                <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
-                <a href={{ path('recette_index') }} class="btn btn-secondary mt-3">Réinitialiser</a>
+                {# {{form_widget(form)}} #}
+                 {{ form_row(form.filterByNom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                 {{ form_row(form.filterByProduct, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                <button type="submit" class="buttonStyleC btn btn-primary mt-3">Rechercher</button>
+                <a href={{ path('recette_index') }} class="buttonStyleC btn btn-secondary mt-3">Réinitialiser</a>
                 {{form_end(form)}}
             </div>
-        <table class="table">
+        <table class="my-4 mx-2 table">
             <thead>
                 <tr>
                     
-                    <th>Nom</th>
-                    <th>Description</th>
-                    <th>Icône</th>
-                    <th>produit</th>
+                    <th class="textArt">Nom</th>
+                    <th class="textArt">Description</th>
+                    {# <th class="textArt">Icône</th> #}
+                    <th class="textArt">produit</th>
                     <th> </th>
                 </tr>
             </thead>
             <tbody>
-            {% for recette in recettes %}
+            {% for recette in recettes %}    
                 <tr>
                
-                    <td>{{ recette.nom }}</td>
-                    <td>{{ recette.description }}</td>
-                    <td><img style="border-radius:7px;display:flex;width:2rem" src="\{{ recette.imagepath}}" alt=""  ></td>
+                    <td class="textArt">{{ recette.nom }}</td>
+                    <td class="textArt">{{ recette.description }}</td>
+                    {# <td class="textArt "><img style="border-radius:7px;display:flex;width:2rem" src="\{{ recette.imagepath}}" alt=""  ></td> #}
              
-                    <td>{{ recette.getProduct().designation }}</td>
-                       <td>
-                    <a style="max-width:5rem" class="mt-2 btn btn-primary w-100 " href="{{ path('recette_show', {'id': recette.id}) }}">Détail</a>
-                    <a style="max-width:5rem" class="mt-2 btn btn-warning w-100" href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
-                </td>
+                    <td class="textArt">{{ recette.getProduct().designation }}</td>
+                    <td>
+                        <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btn-success w-100 " href="{{ path('recette_show', {'id': recette.id}) }}">Détail</a>
+                        <a class= "me-4 maxWidth12 buttonStyleC text-white px-4 mt-2 btn btnBackMod w-100 " href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
+                   </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5">no records found</td>
+                    <td class="textArt" colspan="5">no records found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
 
-          <a class="btn btn-danger" href="{{ path('recette_new') }}">Nouveau</a>
+          <a class="btnBackEnr buttonStyleC text-white btn " href="{{ path('recette_new') }}">Nouveau</a>
      </div>    
 {% endblock %}
