@@ -13,6 +13,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class AccountController extends AbstractController
 {
 
+    // edition du mot de passe 
     #[Route('encours/modifiermotdepasse', name: 'edit_password_T')]
     #[Route('admin/modifiermotdepasse', name: 'edit_password_A')]
     #[Route('client/modifiermotdepasse', name: 'edit_password_C')]
@@ -26,7 +27,7 @@ class AccountController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // encode le plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
@@ -38,8 +39,7 @@ class AccountController extends AbstractController
             // do anything else you need here, like send an email
 
             $this->addFlash("success","Votre mot de passe a bien été modifié.");
-
-            // return $this->redirectToRoute($request->get('_route'));
+           
             return $this->redirectToRoute("home");
         }
 
@@ -48,7 +48,7 @@ class AccountController extends AbstractController
         ]);
     }
 
-
+    // affiche le compte du user
     #[Route('encours/account', name: 'show_account_roleT', methods: ['GET'])]
     #[Route('admin/account', name: 'show_account_roleA', methods: ['GET'])]
     #[Route('client/account', name: 'show_account_roleC', methods: ['GET'])]

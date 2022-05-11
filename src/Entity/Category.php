@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+// Entité category
+
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;

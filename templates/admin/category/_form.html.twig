@@ -1,7 +1,6 @@
 {{ form_start(form) }}
    
-     {# {{ form_row(form.gamme) }} #}
-     {{ form_row(form.gamme, {'attr': {'class': 'textArt'} }) }}
+      {{ form_row(form.gamme, {'attr': {'class': 'textArt'} }) }}
       {{ form_row(form.nom) }}
       {{ form_row(form.description) }}
       
@@ -27,8 +26,8 @@
           <button class="btn text-white buttonStyleC btnBackMod">{{ button_label|default('Enregistrer') }}</button>
      </div>
 {{ form_end(form) }}
- <div style="display:none" id="dialog1" title="Sélectionnez une image">
-    
+ <div style="display:none" id="dialog1" title="Sélectionnez une image">   
+        {# boite dialog des images #}
         {% for key,item  in file %}
         <div  onclick="selectImageCat(this,1)" id= "dvIm{{ key }}"  class="my-2 imChoice " >
               <img id= "idIm{{ key }}"  onclick="selectImageCat(this,1)"  class="height3" src="/{{ item.pathname}}" >
@@ -39,7 +38,7 @@
 
   </div>
   <div style="display:none" id="dialog2" title="Sélectionnez une image">
-    
+        {# boite dialog des images #}
         {% for key,item  in file %}
           <div  onclick="selectImageCat(this,2)" id= "dvIm{{ key }}"  class="my-2 imChoice " >
                 <img id= "idIm{{ key }}"  onclick="selectImageCat(this,2)" class="height3" src="/{{ item.pathname}}" >
@@ -50,7 +49,7 @@
 
   </div>
   <div style="display:none" id="dialog3" title="Sélectionnez une image">
-    
+        {# boite dialog des images #}
         {% for key,item  in file %}
           <div  onclick="selectImageCat(this,3)" id= "dvIm{{ key }}"  class="my-2 imChoice " >
                 <img id= "idIm{{ key }}"  onclick="selectImageCat(this,3)" class="height3" src="/{{ item.pathname}}" >

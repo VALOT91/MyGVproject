@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EncoursController extends AbstractController
 {
+    // affichage de la page de statut (encours)
     #[Route('/encours', name: 'encours')]
     public function index(): Response
     {

@@ -13,7 +13,7 @@
 
  <div style="display:none" id="dialog" title="Sélectionnez une image">
     
-        {% for key,item  in file %}
+        {% for key,item  in file %}  {# dialog box #}
         <div  onclick="selectImageRec(this)" id= "dvIm{{ key }}"  class="my-2 imChoice " >
               <img id= "idIm{{ key }}"  onclick="selectImageRec(this)" style="height:3rem;" src="/{{ item.pathname}}" >
               <b><a href="#" onclick="selectImageRec(this)" id= "linkIm{{ key }}" style="height:max;text-decoration:none;font-size:small" >{{item.filename}}</a></b>

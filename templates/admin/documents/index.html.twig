@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-         {% for file in files %}
+         {% for file in files %}    {# parcours les fichiers #}
             <tr>
                 <td  style="vertical-align:middle">{{ file.getFileName }}</td>
                 <td class="Width8" ><img class="condImg"  src=" \uploads\{{ file.getRelativePathName }}" alt="fichier image"  ></td>

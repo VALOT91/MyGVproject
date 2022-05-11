@@ -11,7 +11,7 @@
         </div>
         {% include "_messages_flash.html.twig" %}
         <div class="my-4 d-flex justify-content-center">
-           {{ knp_pagination_render(commandShop,'@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
+           {{ knp_pagination_render(commandShop,'@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}    {# paginateur #}
         </div>                       
         <div class="col-12 mt-3">
             <div class="card">
@@ -31,7 +31,7 @@
                                 </thead>
                                 <tbody>  
                                        
-                                    {% for item in commandShop %}
+                                    {% for item in commandShop %}   {# parcours les commandes #}
                                         <tr>
                                             <td class ="textArt text-center" >
                                              <a title="Voir le détail de la commande" href="{{ path('command_shop_detail',{'id': item.id }) }}" class="textArt btn btn-link">
@@ -54,16 +54,7 @@
                                                 </a> 
                                             </td>
                                             <td class ="textArt text-center" >{{ item.totalPrice | euroPrice }}</td>
-                                           
-                                            {# <td class ="text-center" >
-                                               
-                                                    <a class="d-flex justify-content-center" href="{{ path('command_shop_detail',{'id': item.id }) }}" class="btn btn-link">
-                                                        <div style="height:2rem;width:2rem " id="eye" >
-                                                             <img title="Voir le détail de la commande" src="/images/eye.svg" /> 
-                                                        </div>
-                                                    </a>
-                                                   
-                                            </td> #}
+                                         
                                         </tr>
                                     {% endfor %}
                                 </tbody>

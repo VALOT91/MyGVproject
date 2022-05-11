@@ -11,12 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StripeController extends AbstractController
 {
+    // creation de la session stripe
     #[Route('/stripe/checkout', name: 'stripe_checkout')]
     public function createSession(CartService $cartService)
     {
         Stripe::setApiKey('sk_test_51IBjOmJxItuCvN48kVDdR9Tg52Npf4IJydX0TFxyioJFxo5vdlObzoYYTmiVZ2BD2XqGQkvsWaj8UNNzEz3ekgMo00jPcW004c');
 
-        $domain = 'https://localhost:8000';
+        $domain = 'https://localhost:8000';  // domaine https
 
         /** @var CartRealProduct[] $detailCart */
         $Cart = $cartService->detail();
@@ -26,7 +27,7 @@ class StripeController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
-        foreach($Cart["detailCart"] as $item)
+        foreach($Cart["detailCart"] as $item)  // parcours la commande
          {
             $productForStripe[] = [
                 'price_data' => [
@@ -52,8 +53,8 @@ class StripeController extends AbstractController
                 $productForStripe
             ],
             'mode' => 'payment',
-              'success_url' => $domain.'/customer/paiement',  
-              'cancel_url' =>   $domain.'/customer/echec',
+              'success_url' => $domain.'/customer/paiement',    // url OK
+              'cancel_url' =>   $domain.'/customer/echec',      // url KO
           ]);
             return $this->redirect($checkout_session->url);
               

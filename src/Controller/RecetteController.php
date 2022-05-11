@@ -18,11 +18,11 @@ use App\Services\ImageFinder;
 #[Route('admin/recette')]
 class RecetteController extends AbstractController
 {
-    
+    // affiche la liste des recettes
     #[Route('admin/recette/', name: 'recette_index', methods: ['GET'])]
     public function index(Request $request,RecetteRepository $recetteRepository): Response
     {
-        $search = new SearchRecette();
+        $search = new SearchRecette();    // filtre de recherche
 
         $form = $this->createForm(SearchRecetteType::class,$search);
 
@@ -36,15 +36,16 @@ class RecetteController extends AbstractController
         
     }
 
+    // affiche le formulaire de nouvelle recette
     #[Route('/new', name: 'recette_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager,ProductRepository $productRepository): Response
     {  
 
         $finder = new ImageFinder();
-        $filesTab = $finder->GetUploadDirectory();
+        $filesTab = $finder->GetUploadDirectory();  // charge le répertoire uploads
 
         $recette = new Recette();
-        $form = $this->createForm(RecetteType::class, $recette,['prod' => $productRepository->findAll()]);
+        $form = $this->createForm(RecetteType::class, $recette,['prod' => $productRepository->findAll()]);  // données pour le combo products chargé
         
         $form->handleRequest($request);
         $oldImage = $recette->getImagePath();
@@ -63,6 +64,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
+    // affiche le detail d'une recette
     #[Route('/{id}', name: 'recette_show', methods: ['GET'])]
     public function show(Recette $recette): Response
     {
@@ -71,13 +73,14 @@ class RecetteController extends AbstractController
         ]);
     }
 
+    // affiche le formulaire d'edition d'une recette
     #[Route('/{id}/edit', name: 'recette_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Recette $recette, EntityManagerInterface $entityManager,ProductRepository $productRepository): Response
     {
         $finder = new ImageFinder();
-        $filesTab = $finder->GetUploadDirectory();
+        $filesTab = $finder->GetUploadDirectory();  // charge le répertoire uploads
 
-        $form = $this->createForm(RecetteType::class, $recette,['prod' => $productRepository->findAll()]);
+        $form = $this->createForm(RecetteType::class, $recette,['prod' => $productRepository->findAll()]); // données pour le combo products chargé
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -92,6 +95,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
+    // suppression d'une recette
     #[Route('/{id}', name: 'recette_delete', methods: ['POST'])]
     public function delete(Request $request, Recette $recette, EntityManagerInterface $entityManager): Response
     {

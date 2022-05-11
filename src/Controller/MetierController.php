@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MetierController extends AbstractController
 {
+    // affichage de la page metiers
     #[Route('/metier', name: 'metier')]
     public function index(): Response
     {

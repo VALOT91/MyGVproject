@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AproposController extends AbstractController
 {
+    // affiche la page apropos
     #[Route('/apropos', name: 'Apropos')]
     public function index(): Response
     {

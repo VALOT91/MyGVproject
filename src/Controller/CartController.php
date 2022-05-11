@@ -18,6 +18,7 @@ class CartController extends AbstractController
         $this->cartService = $cartService;
     }
 
+    // ajoute un à la quantité de l'article d  ns le pnier
     #[Route('/panier/ajouter/{id}', name: 'cart_add')]
     public function add(int $id,ProduitConditionnementRepository $produitConditionnementRepository,Request $request)
     {   
@@ -29,6 +30,7 @@ class CartController extends AbstractController
             return $this->redirectToRoute("home");
         } 
                 
+        // increment de la qté
         $this->cartService->add($id);
 
         $this->addFlash("success","Le produit a bien été ajouté au panier");
@@ -37,6 +39,7 @@ class CartController extends AbstractController
        
     }
 
+    // supprime l' rticle du panier
     #[Route('/panier/supprimer/{id}', name: 'cart_remove')]
     public function delete(int $id,ProduitConditionnementRepository $produitConditionnementRepository)
     {
@@ -48,17 +51,21 @@ class CartController extends AbstractController
             return $this->redirectToRoute("cart_detail");
         } 
 
+        // suppression par id
         $this->cartService->remove($id);
 
         $this->addFlash("success","Le produit a bien été supprimé du panier");
         return $this->redirectToRoute("cart_detail");
     }
 
+    // renvoie le détail du panier
     #[Route('/panier/detail', name: 'cart_detail')]
     public function detail()
     {
+        // renvoie un tableau de tous les produits
         $cart = $this->cartService->detail();
  
+        // renvoie le total des montants
         $totalCart = $this->cartService->getTotal();
         
         return $this->render("customer/panier/detail.html.twig",[
@@ -67,6 +74,7 @@ class CartController extends AbstractController
         ]);
     }
 
+    // décremente la qté du panier
     #[Route('/panier/decrementer/{id}', name: 'cart_decrement')]
     public function decrementProduct(int $id,ProduitConditionnementRepository $produitConditionnementRepository)
     {
@@ -79,6 +87,7 @@ class CartController extends AbstractController
              return $this->redirectToRoute("cart_detail");
         }
 
+        // decrement 
         $this->cartService->decrement($id);
 
         $this->addFlash("success","La quantité du produit a bien été décrémentée.");

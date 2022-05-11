@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ArticlesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+// Entité articles  (articles sur le thé et news )
+
 #[ORM\Entity(repositoryClass: ArticlesRepository::class)]
 class Articles
 {

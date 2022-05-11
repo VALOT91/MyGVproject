@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('admin/product')]
 class ProductController extends AbstractController
 {
+    // afficahge de la liste des produits
     #[Route('admin/product', name: 'product_index', methods: ['GET'])]
     public function index(Request $request,ProductRepository $productRepository): Response
     {
@@ -26,7 +27,7 @@ class ProductController extends AbstractController
 
         $form->handleRequest($request);
 
-        $products = $productRepository->findByFilter($search);
+        $products = $productRepository->findByFilter($search);    //filtre 
          
         return $this->render('admin/product/index.html.twig', [
             'products' => $products,'form' => $form->createView()
@@ -34,6 +35,7 @@ class ProductController extends AbstractController
         ]);
     }
 
+    // affichage de la page formulaire du nouveau produit
     #[Route('admin/product/new', name: 'product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager,CategoryRepository $categoryRepository): Response
     {
@@ -41,7 +43,7 @@ class ProductController extends AbstractController
 
 
       
-        $form = $this->createForm(ProductType::class, $product,['categ' => $categoryRepository->findAll()] );
+        $form = $this->createForm(ProductType::class, $product,['categ' => $categoryRepository->findAll()] );  // renvoi toutes les categories pour le compo
         $form->handleRequest($request);
 
         
@@ -61,7 +63,8 @@ class ProductController extends AbstractController
            
         ]);
     }
-
+    
+    // affiche le detail d'un produit
     #[Route('/{id}', name: 'product_show', methods: ['GET'])]
     public function show(Product $product): Response
     {
@@ -70,10 +73,11 @@ class ProductController extends AbstractController
         ]);
     }
 
+    // affiche le formulaire d'edition
     #[Route('/{id}/edit', name: 'product_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Product $product,CategoryRepository $categoryRepository, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(ProductType::class, $product,['categ' => $categoryRepository->findAll()] );
+        $form = $this->createForm(ProductType::class, $product,['categ' => $categoryRepository->findAll()] );  // categ contient les categories pour le combo
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -88,6 +92,7 @@ class ProductController extends AbstractController
         ]);
     }
 
+    // supprime le produit
     #[Route('/{id}', name: 'product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {

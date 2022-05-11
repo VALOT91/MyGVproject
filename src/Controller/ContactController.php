@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
+    // affiche la page formulaire de contact
+
     #[Route('/contact', name: 'contact')]
     public function contact(Request $request,MailerService $mailerService)
     {

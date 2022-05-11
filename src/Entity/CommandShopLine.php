@@ -1,5 +1,7 @@
 <?php
 
+// Entité  commandeShopLine () ligne détail )
+
 namespace App\Entity;
 
 use App\Repository\CommandShopLineRepository;
@@ -15,11 +17,6 @@ class CommandShopLine
 
     #[ORM\Column(type: 'integer', nullable: true)]
     private $quantity;
-
-    // #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'commandShopLines')]
-    // #[ORM\OneToOne(targetEntity: Product::class, inversedBy: 'commandShopLines')]
-    // #[ORM\JoinColumn(nullable: false)]
-    // private $produit_id;
 
     #[ORM\ManyToOne(targetEntity: CommandShop::class, inversedBy: 'commandShopLines')]
     private $commandShop;

@@ -15,6 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 #[Route('admin/user')]
 class UserController extends AbstractController
 {
+    // affichage des users
     #[Route('/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
@@ -22,7 +23,7 @@ class UserController extends AbstractController
             'users' => $userRepository->findAll(),
         ]);
     }
-
+    // affichage du formulaire de creation d'un user
     #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
     public function new(Request $request,UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
@@ -34,7 +35,7 @@ class UserController extends AbstractController
             
            
             $user->setPassword(
-                $userPasswordHasher->hashPassword(
+                $userPasswordHasher->hashPassword(                 // hashage du plai passeword
                       $user,
                         $form->get('plainPassword')->getData()
                     )
@@ -52,6 +53,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    // affichage du detail d'un user
     #[Route('{id}/show', name: 'user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -60,6 +62,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    // affichage du formulaire de creation du user
     #[Route('{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -78,6 +81,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    // validation du role client
     #[Route('/{id}/valider', name: 'user_valid', methods: ['GET', 'POST'])]
     public function validate(int $id,UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
@@ -89,7 +93,7 @@ class UserController extends AbstractController
             'users' => $userRepository->findAll(),
         ]);
     }
-
+    // invalidation d'un client
     #[Route('/{id}/refute', name: 'user_refute', methods: ['GET', 'POST'])]
     public function refute(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -102,6 +106,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    // passage au role transit
     #[Route('/{id}/decline', name: 'user_decline', methods: ['GET', 'POST'])]
     public function decline(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
@@ -114,6 +119,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    // suppression d'un user
     #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {

@@ -7,10 +7,9 @@
  <div class="container-flex my-2 mx-3">
     <h1  class="text-center ttreT my-4">Liste des produits</h1>
             <div class="ms-2">
-                {{form_start(form) }}
-                {# {{form_widget(form, {'attr': {'class': 'textArt'} })}} #}
+                {{form_start(form) }}         
                 {{ form_row(form.filterByName, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
-               {{ form_row(form.filterByCategory, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+                {{ form_row(form.filterByCategory, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
                 <button type="submit" class="buttonStyleC btn btn-primary mt-3">Rechercher</button>
                 <a href={{ path('product_index') }} class="buttonStyleC btn btn-secondary mt-3">Réinitialiser</a>
                 {{form_end(form)}}
@@ -26,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for product in products %}
+        {% for product in products %}   {# parcours les produits #}
             <tr>
              
                 <td class="textArt">{{ product.designation }}</td>

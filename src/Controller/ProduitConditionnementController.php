@@ -26,6 +26,7 @@ use App\Services\ImageFinder;
 #[Route('admin/produit/conditionnement')]
 class ProduitConditionnementController extends AbstractController
 {
+    // affiche les produits en stock  (un produit est la table relation entre produit et conditionnements)
     #[Route('admin/produit/conditionnement', name: 'produit_conditionnement_index', methods: ['GET'])]
     public function index(Request $request,ProduitConditionnementRepository $produitConditionnementRepository): Response
     {
@@ -36,7 +37,7 @@ class ProduitConditionnementController extends AbstractController
 
         $form->handleRequest($request);
 
-        $produitConditionnement = $produitConditionnementRepository->findByFilter($search);
+        $produitConditionnement = $produitConditionnementRepository->findByFilter($search);  //filtre 
 
         return $this->render('admin/produit_conditionnement/index.html.twig', [
             'produit_conditionnements' => $produitConditionnement,'form' => $form->createView()
@@ -44,13 +45,15 @@ class ProduitConditionnementController extends AbstractController
         ]);
     }
 
+    // affiche le formulaire d'un nouveau produit conditionnement
     #[Route('/new', name: 'produit_conditionnement_new', methods: ['GET', 'POST'])]
     public function new( HandleImage $handleImage,Request $request, EntityManagerInterface $entityManager,ProductRepository $productRepository,ConditionnementRepository $conditionnementRepository): Response
     {
         $finder = new ImageFinder();
-        $filesTab = $finder->GetUploadDirectory();
+        $filesTab = $finder->GetUploadDirectory();   // charge les fichiers du répertoire uploads
  
         $produitConditionnement = new ProduitConditionnement();
+        // charge les produits pour le combo produits et aussi les conditionnements pour le combo conditionnement
         $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll() ] );
         $form->handleRequest($request);
 
@@ -70,6 +73,7 @@ class ProduitConditionnementController extends AbstractController
         ]);
     }
 
+    // affiche le detail d'un produit conditionnement
     #[Route('/{id}', name: 'produit_conditionnement_show', methods: ['GET'])]
     public function show(ProduitConditionnement $produitConditionnement): Response
     {
@@ -77,15 +81,16 @@ class ProduitConditionnementController extends AbstractController
             'produit_conditionnement' => $produitConditionnement,
         ]);
     }
-
+    // affiche le formulaire d'edition d'un produit conditionnement
     #[Route('/{id}/edit', name: 'produit_conditionnement_edit', methods: ['GET', 'POST'])]
     public function edit(HandleImage $handleImage,Request $request, ProduitConditionnement $produitConditionnement, EntityManagerInterface $entityManager,ProductRepository $productRepository,ConditionnementRepository $conditionnementRepository): Response
     {
 
-     $finder = new ImageFinder();
-     $filesTab = $finder->GetUploadDirectory();
+     $finder = new ImageFinder();   
+     $filesTab = $finder->GetUploadDirectory();   // charge les fichiers du répertoire uploads
      $oldImage = $produitConditionnement->getImagePath();
-
+         
+         // charge les produits pour le combo produits et aussi les conditionnements pour le combo conditionnement
          $form = $this->createForm(ProduitConditionnementType::class, $produitConditionnement,['product' => $productRepository->findAll(),'conditionnement' => $conditionnementRepository->findAll() ]);
          $form->handleRequest($request);
 
@@ -100,16 +105,13 @@ class ProduitConditionnementController extends AbstractController
             //Verifier que il y a bien un fichier
             if($file)
             {
-               
-                $produitConditionnement->setImagepath($file);
-                // $handleImage->edit($file,(string)$oldImage);
-    
+                // charge l'image sélectionnée
+                $produitConditionnement->setImagepath($file);  
             }
             else
             {
-               
+                // Charge l'ancienne
                 $produitConditionnement->setImagepath($oldImage);
-
             }
 
             $entityManager->flush();
@@ -122,7 +124,7 @@ class ProduitConditionnementController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    // supprime le produit conditionnement
     #[Route('/{id}', name: 'produit_conditionnement_delete', methods: ['POST'])]
     public function delete(int $id,Request $request,RecetteRepository $recetteRepository,ProduitConditionnementRepository $productConditionnementRepository, ProduitConditionnement $produitConditionnement, EntityManagerInterface $entityManager): Response
     {

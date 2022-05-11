@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
 {
+
+    // affiche la page admin
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {

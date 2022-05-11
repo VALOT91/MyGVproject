@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for article in articles %}
+        {% for article in articles %}   {# boucle des articles  #}
             <tr>
                 <td class="textArt">{{ article.titre }}</td>
                 <td  class="textArt  ">{{ article.dateCreation ? article.dateCreation|date('d-m-y') : '' }}</td>

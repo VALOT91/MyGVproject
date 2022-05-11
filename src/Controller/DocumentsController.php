@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('admin/documents')]
 class DocumentsController extends AbstractController
 {
-
+    // suppression d'un fichier sur serveur
     #[Route('/{id}','admin/delete/documents', name: 'documents_delete',  methods: ['GET', 'POST'])]
     public function delete($id,Request $request ): Response
     {
@@ -25,22 +25,25 @@ class DocumentsController extends AbstractController
          if ($this->isCsrfTokenValid('delete'.$id, $request->request->get('_token'))) {
           
             $file_path = $id;
-            if(file_exists($file_path)) unlink($file_path);           
+            if(file_exists($file_path)) unlink($file_path);       // suppression    
         }
         return $this->redirectToRoute('documents_index', [], Response::HTTP_SEE_OTHER);
     }
     
+    // affichage/ajout de fichiers sur le serveur
     #[Route('admin/liste/documents', name: 'documents_index',  methods: ['GET', 'POST'])] 
     public function index(CommandShopRepository $commandShopRepository, PaginatorInterface $paginator, HandleImage $handleImage,Request $request ): Response
     {
         $finder = new ImageFinder();
-        $filesTab = $finder->GetUploadDirectory();
+        $filesTab = $finder->GetUploadDirectory();   // chargement du répertoire uploads dans filesTab
         
-        $files =  $paginator->paginate($filesTab,$request->query->getInt('page', 1),6);
+        $files =  $paginator->paginate($filesTab,$request->query->getInt('page', 1),6); // initialisation de la pagination
 
         $form = $this->createForm(DocumentType::class );
         $form->handleRequest($request);
 
+
+        // Le formulaire contient un seul champs du path de l'image
         if ($form->isSubmitted() && $form->isValid()) {
 
                //Recuperer le fichier 

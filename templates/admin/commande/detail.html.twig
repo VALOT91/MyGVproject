@@ -69,7 +69,7 @@
                 <div class="card-body lineh" >
                     <p class ="textArt"><b>{{ commandShop.getDeliveryAddress().getRaisonSoc() | upper }}</b></p>
                     <p class ="textArt">{{ commandShop.deliveryAddress.street }}
-                        {% if commandShop.deliveryAddress.complement is not null     %}
+                        {% if commandShop.deliveryAddress.complement is not null     %}   {# champ non requis #}
                             - {{ commandShop.deliveryAddress.complement }}
                         {% endif %}
                      </p>  

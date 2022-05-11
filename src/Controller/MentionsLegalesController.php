@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MentionsLegalesController extends AbstractController
 {
+    // affichage de la page mentions
     #[Route('/mentionslegales', name: 'MentionsLegales')]
     public function index(): Response
     {

@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
  
-
+// affichage de la page de paiement reussi
 #[Route('customer/paiement')]
 class PaiementReussiController extends AbstractController
 {
@@ -20,11 +20,11 @@ class PaiementReussiController extends AbstractController
         $this->session = $session;   
     }  
 
-    #[Route('/', name: 'paiementReussi', methods: ['GET'])]
-    public function index(): Response
-    {
-         $this->session->set('cart',[]);
-        return $this->render('customer/paiement/paiementReussi.html.twig') ;
-    }
+#[Route('/', name: 'paiementReussi', methods: ['GET'])]
+public function index(): Response
+{
+        $this->session->set('cart',[]);
+    return $this->render('customer/paiement/paiementReussi.html.twig') ;
+}
 
 }

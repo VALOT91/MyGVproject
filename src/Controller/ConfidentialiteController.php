@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ConfidentialiteController extends AbstractController
 {
+    // affiche la page de la politique de confidentialité
     #[Route('/confidentialite', name: 'Confidentialite')]
     public function index(): Response
     {

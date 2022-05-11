@@ -17,14 +17,14 @@
             </tr>
         </thead>
         <tbody>
-        {% for user in users %}
+        {% for user in users %} {# parcours les users #}
             <tr>
                 
                 <td class="textArt"><strong>{{ user.email }}</strong><br> {{ user.prenom }} {{ user.nom }} {{ user.codePostal }} {{ user.ville }}</td>
                 
                 <td class="textArt"> 
 
-
+                        {# gestion des rôles #}
                         {% if  user.roles[0] ==   "ROLE_TRANSIT"    %}
                             En attente de validation
                         {% elseif    user.roles[0] == "ROLE_CLIENT"  %}

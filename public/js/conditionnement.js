@@ -10,6 +10,7 @@ function choice(m)
     prDisplay.innerHTML ="";
     proDisplay.innerHTML ="";
    
+  //  initialise le lien 
    try{
       btPan.setAttribute("href", "/panier/ajouter/" + m.id );
    }
@@ -19,12 +20,12 @@ function choice(m)
 
     }
   
-  
+  // selecteur dynamique
   let prChoice  =  document.getElementById("PP_" + m.id);
   let proChoice  =  document.getElementById("PR_" + m.id);
   let imChoice  =  document.getElementById("IM_" + m.id);
    
- 
+//  affiche n.c si le prix n'est pas disponible
   if(prChoice!==null)
        prDisplay.innerHTML = prChoice.innerHTML;
   else
@@ -36,6 +37,7 @@ function choice(m)
  
  }
 
+//  clic automatiquement sur un conditionnement
  document.addEventListener("DOMContentLoaded", function(){
         
   var cond = document.querySelectorAll('.condit');

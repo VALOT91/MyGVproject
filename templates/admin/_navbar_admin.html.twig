@@ -1,5 +1,5 @@
  <div class="container-flex">
- {% if app.user %} 
+ {% if app.user %}  {# affiché seulement si un user est connecté #}
   <div id="accBar"  class="text-black px-2">
             
             <div id="divDeconnect" class="DeconnectButtonSM" style= "margin-left:2rem;width:2.6rem;height:2rem;display:flex;align-items:center;margin-right:2rem;text-align:center">
@@ -86,7 +86,7 @@
        
         <ul id="connectPanel" style="list-style:none;margin-top:1rem; display:flex;flex-direction:row;align-items:center;justify-content:space-between">
                     <li>
-                      {% if not app.user %} 
+                      {% if not app.user %}   {# bt connexion affiché si aucun user connecté #}
                       <div class="d-flex flex-row ">
                         <div class="d-flex flex-column text-center">
                               <a title="Connexion" style="color:#769643" href="{{ path('app_login') }}" >
@@ -111,7 +111,7 @@
     </div>
   
   </nav>
-    {% if  not app.user %} 
+    {% if  not app.user %}    {# bt connexion affiché si aucun user connecté #}
       <div class="pt-4 bg-white" style="font-size:x-large;height:8rem;background-color:white; display:none;flex-direction:row;justify-content:space-around;align-items:center" id="barAcc">
                             
                                <a style="text-align: center;color:#769643;text-decoration:none" href="{{ path('app_login') }}" >
@@ -119,10 +119,7 @@
                                       <p>Se connecter</p>
                                </a>
                         
-                               {# <a style="text-align: center;color:#769643;text-decoration:none" href="{{ path('app_register') }}" >
-                                      <img   width="50" src="/images/menu/reg.svg   " alt="logo connexion" >
-                                      <p>S'inscrire</p>
-                               </a> #}
+                            
                           
           
       </div>

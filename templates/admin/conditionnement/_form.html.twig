@@ -17,7 +17,7 @@
  
      <div style="display:none" id="dialog" title="Sélectionnez une image">
     
-        {% for key,item  in file %}
+        {% for key,item  in file %}   {# boite dialog des images #}
         <div  onclick="selectImageCond(this)" id= "dvIm{{ key }}"  class="my-2 imChoice " >
               <img id= "idIm{{ key }}"  onclick="selectImageCond(this)"  class="height3" src="/{{ item.pathname}}" >
               <b><a href="#" onclick="selectImageCond(this)" id= "linkIm{{ key }}" class="formtemplateA" >{{item.filename}}</a></b>

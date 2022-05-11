@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EngagementController extends AbstractController
 {
+    // affichage de la page engagements
     #[Route('/engagement', name: 'engagement')]
     public function index(): Response
     {

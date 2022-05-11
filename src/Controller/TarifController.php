@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('admin/tarif')]
 class TarifController extends AbstractController
 {
+    // affichage de la liste de tarifs
     #[Route('/', name: 'tarif_index', methods: ['GET'])]
     public function index(Request $request,TarifRepository $tarifRepository): Response
     {
@@ -34,6 +35,7 @@ class TarifController extends AbstractController
         ]);
     }
 
+    // affichage du formulaire de creation d'un tarif
     #[Route('admin/tarif/new', name: 'tarif_new', methods: ['GET', 'POST'])]
     public function new(Request $request,ProduitConditionnementRepository $produitConditionnementRepository,  EntityManagerInterface $entityManager): Response
     {
@@ -53,7 +55,8 @@ class TarifController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    
+    // affichage d'un detail tarif
     #[Route('admin/tarif/{id}', name: 'tarif_show', methods: ['GET'])]
     public function show(Tarif $tarif): Response
     {
@@ -62,10 +65,12 @@ class TarifController extends AbstractController
         ]);
     }
 
+    // affichage du formulaire d'edition d'un tarif
     #[Route('admin/tarif/{id}/edit', name: 'tarif_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tarif $tarif,ProduitConditionnementRepository $produitConditionnementRepository, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(TarifType::class, $tarif,['stock' => $produitConditionnementRepository->findAll()] );
+        // chargement dans le formulaire des produits pour le combo
+        $form = $this->createForm(TarifType::class, $tarif,['stock' => $produitConditionnementRepository->findAll()] ); 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -80,6 +85,7 @@ class TarifController extends AbstractController
         ]);
     }
 
+    // suppression d'un tarif
     #[Route('/{id}', name: 'tarif_delete', methods: ['POST'])]
     public function delete(Request $request, Tarif $tarif, EntityManagerInterface $entityManager): Response
     {

@@ -15,12 +15,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommandShopController extends AbstractController
 {
+    // liste les commandes
     #[Route('/admin/commande/liste', name: 'command_shop_list')]
     public function commandShopList(CommandShopRepository $commandShopRepository,  PaginatorInterface $paginator,  Request $request)
     {
         /** @var User $user */
         $user = $this->getUser();
 
+        // initialise le paginator avec le findby 
         $commandShop = $paginator->paginate($commandShopRepository->findBy( array(),
         [
             'id' => 'desc'
@@ -31,6 +33,7 @@ class CommandShopController extends AbstractController
         ]);
     } 
 
+    // validation de la livraison
     #[Route('/{id}/Exp', name: 'command_livraison', methods: ['GET', 'POST'])]
     public function validate(int $id,CommandShopRepository $commandShopRepository, EntityManagerInterface $entityManager): Response
     {
@@ -41,6 +44,7 @@ class CommandShopController extends AbstractController
         return $this->redirectToRoute("command_shop_list");
     }
 
+    // affiche le détail d'une commande
     #[Route('admin/commande/detail/{id}', name: 'command_shop_detail')]
     public function commandShopDetail($id,CommandShopRepository $commandShopRepository,ProductRepository $productRepository)
     {
@@ -49,18 +53,18 @@ class CommandShopController extends AbstractController
 
         $products = [];
        
-        $commandShop = $commandShopRepository->find($id);
-        foreach ($commandShop->getCommandShopLines() as $item)
+        $commandShop = $commandShopRepository->find($id);        // renvoie la commande qui a une relation avec commandeShopLIne contenant
+        foreach ($commandShop->getCommandShopLines() as $item)   // la liste des produits de la commande
         {
-            $product = $productRepository->Find($item->getProduitId());
+            $product = $productRepository->Find($item->getProduitId());  //  La boucle foreach retourne chaque détail de produits
             
             $commandService = new CommandService();
-            $commandService->setProduct( $product);
-            $commandService->setQte($item->getQuantity());
-            $commandService->setUnitPrice($item->getUnitPrice());
-            $commandService->setConditionnement($item->getConditionnement());
+            $commandService->setProduct( $product);                             // produit 
+            $commandService->setQte($item->getQuantity());                      // quantité 
+            $commandService->setUnitPrice($item->getUnitPrice());               // prix unitaire
+            $commandService->setConditionnement($item->getConditionnement());   // conditionnement 
            
-              $products [] =  $commandService;
+              $products [] =  $commandService;  // ajout dans le tableau
         }
           
         if(!$commandShop)
@@ -68,12 +72,7 @@ class CommandShopController extends AbstractController
             $this->addFlash("danger","Commande introuvable");
             return $this->redirectToRoute("command_shop_list");
         }
-          //  dd($commandShop->getCommandShopLines()[0]->getProduct());
-        // if($commandShop->getUser() !== $user)
-        // {
-        //     $this->addFlash("danger","Cette commande ne vous appartient pas. Impossible de la consulter.");
-        //     return $this->redirectToRoute("command_shop_list");
-        // }
+      
 
         return $this->render("admin/commande/detail.html.twig",[
             'commandShop' => $commandShop,'products'=>$products

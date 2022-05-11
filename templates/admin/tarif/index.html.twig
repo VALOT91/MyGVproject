@@ -6,8 +6,7 @@
 <div class="container-flex my-2 mx-3">
     <h1 class="text-center ttreT my-4" >Tarifs</h1>
             <div class="">
-                {{form_start(form)}}
-                {# {{form_widget(form)}} #}
+                {{form_start(form)}}   
                    {{ form_row(form.filterByReference, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
                    {{ form_row(form.filterByTarifType, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
                    {{ form_row(form.filterByProduct, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
@@ -19,7 +18,6 @@
         <thead>
             <tr>
                 <th class="textArt">Réf.</th>
-                {# <th class="textArt">Produit</th>   #}
                 <th class="textArt">Poids</th>
                  <th class="textArt">Prix.U</th>
                 <th class="textArt">Type</th>
@@ -27,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for tarif in tarifs %}
+        {% for tarif in tarifs %} {# parcours les tarifs#}
             <tr>
                 <td class="textArt">{{ tarif.getProduitConditionnement().reference }} <br> {{ tarif.getProduitConditionnement().getProduit().designation}}</td>
                 {# <td class="textArt">{{ tarif.getProduitConditionnement().getProduit().designation }}</td> #}

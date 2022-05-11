@@ -1,6 +1,10 @@
 
 a {text-decoration:none}
 
+/* **************************************************/
+     /* device < 771  */
+/* **************************************************/
+
 @media only screen and (max-device-width: 770px) {
   
   /* barre grise largeur */
@@ -12,6 +16,7 @@ a {text-decoration:none}
     background-color: #769643!important;
   }
 
+  /* partie visible quand connecté */
   #ConnectedBar {
     list-style:none!important;
     display:flex!important;
@@ -20,12 +25,14 @@ a {text-decoration:none}
     align-items:center!important;
 
   }
+
+  /* font deconnexion */
   #divDeconnect {
    font-size:x-large;
 
   }
    
-
+ /* partie visible quand connecté */
   #ConnectedBar li{
     list-style:none;
     margin-top:1.8rem;
@@ -36,6 +43,7 @@ a {text-decoration:none}
     
   }
   
+  /* icone login utilisateur  */
   #shAccount {
     text-decoration: none!important;
     Color:black!important;
@@ -45,15 +53,17 @@ a {text-decoration:none}
     justify-content:left;
   }
  
-
+  /* barre connexion et inscription */
   #connectPanel {
     display:none!important;
   }
+
+   /* Bt de déconnexion  */
   .DeconnectButtonSM
   {
     display:flex!important;
   }
-
+     /* options du menu */
     .MenuSm{
       background-color:white!important;
       font-size:5rem!important;
@@ -62,24 +72,32 @@ a {text-decoration:none}
       color:#769643!important;
       border-radius:7px;
     }
+
+    /* image logo noir de la navbar */
     #imgNav {
       object-fit:cover!important;
       min-height:6.2rem!important;
       min-width:4.7rem!important;
     }
   
+    /* toggler */
     .navbar-toggler .navbar-toggler-icon{
       width:8rem!important;
       height:8.5rem!important;
     }
+
+    /* commutateur bar user */
     #barAcc, #barAccu {
         display:flex!important;
     }
+
+    /* logo cart */
     #imcrt {
       height: 7.2rem;
       width:7.2rem; 
     }
 
+    /* bloc panier */
     #divCart {
 
       width:3.5rem;
@@ -93,12 +111,18 @@ a {text-decoration:none}
 
     }
 }
+
+/* **************************************************/
+     /* device > 770  */
+/* **************************************************/
+
 @media only screen and (min-device-width: 771px)  {
 
+  /* image logo noir de la navbar */
   #imgNav {
        max-height: 2.5rem;
      }
-
+    /* barre grise largeur */
      #accBar{
            
       height:3.5rem!important;
@@ -109,7 +133,7 @@ a {text-decoration:none}
      
 
     }
-
+      /* barre grise largeur */
     #accBar ul { 
       list-style:none;  
       display:flex!important;
@@ -118,11 +142,12 @@ a {text-decoration:none}
       margin-top:1rem;
     }
 
+    /* commutateur bar user */
     #barAcc,#barAccu {
       display:none!important;
   }
  
-
+   /* bt compte user */
   .clCompte
   {
    text-decoration: none!important;
@@ -130,22 +155,27 @@ a {text-decoration:none}
    font-size:small;
    
   }
+   /* survol bt compte user */
   .clCompte:hover{
     color:white!important;
   }
 
+   /* Bt de déconnexion  */
   .DeconnectButtonSM
   {
     display:none!important;
   }
-  /* #divDeconnect { background-color:red;display:none!important;} */
-
+  
+  
+    /* logo cart */
   #imcrt {
 
     height:2.2rem;
     width:2.2rem; 
 
   }
+
+  /* bloc panier */
   #divCart {
 
     width:2.6rem;

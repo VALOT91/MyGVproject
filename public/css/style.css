@@ -344,7 +344,7 @@ body {background-color:white!important;}
       margin-top:2rem;
 
     }
-
+    /* logo info 'en savoir plus' dans page gamme */
     .detailSm {
 
       margin-top:2rem!important;
@@ -353,6 +353,7 @@ body {background-color:white!important;}
       align-items:center;
       margin-bottom:2rem!important;
     }
+     /* logo info 'en savoir plus' dans page gamme */
     .detailImgSm {
       width:2rem!important;
      }
@@ -362,7 +363,7 @@ body {background-color:white!important;}
        margin-top:2rem;
      }
      
-
+/* image de fond gerant page offres pro */
     #fndM {
       background-image: url(/images/business/gerant.jpg)!important;  
       background-repeat: no-repeat;
@@ -371,6 +372,7 @@ body {background-color:white!important;}
       text-align:center;
     }
 
+    /* image de fond page metier */
     #fndO {
       background-image: url(/images/pousse.jpg)!important;  
       background-repeat: no-repeat;
@@ -433,14 +435,14 @@ body {background-color:white!important;}
       min-width:25rem!important;
     
     }
-
+     /* a enlever */
     .cont2 {
       opacity:0.9!important;
       background-color: white!important;
       border-radius:7px;
           
     }
-
+    /* titre h1 page metier, offres pros */  
     #fndM h1, #fndO h1  {
       font-size: 2rem;
       font-weight: bold;
@@ -449,6 +451,8 @@ body {background-color:white!important;}
       padding-top:1rem;
       
     }
+
+    /* titre h3 page metier, offres pros */ 
     #fndM h3,#fndO h3 {
       font-weight: lighter;
       color: white;
@@ -457,14 +461,15 @@ body {background-color:white!important;}
       text-decoration: underline;
       text-align:center;
     }
-
+    
+    /* page home titre h1 : PLF DISTRIBUTION ... */
     #fond h1  {
       font-size: 2rem;
       font-weight: bold;
       color: white;
       margin-top: 1rem;
     }
-  
+  /* page home titre h3 : votre grossiste ... */
     #fond h3 {
       font-weight: lighter;
       color: white;
@@ -472,6 +477,7 @@ body {background-color:white!important;}
       margin-top: -1rem;
       text-decoration: underline;
     }
+    /* page home titre  : votre réussite est notre ... */
     .titre2 {
       color: white;
       font-size: 1.4rem;
@@ -481,6 +487,8 @@ body {background-color:white!important;}
       padding-top: 0.2rem;
       padding-bottom: 0.4rem;
     }
+
+    /* page metier titre */
     .titre3 {
       color: white;
       font-size: 1rem;
@@ -491,25 +499,30 @@ body {background-color:white!important;}
       padding-bottom: 0.8rem;
       margin:0.5rem;
     }
+
+    /* style des textes d'accroche des pages vitrine */
     .accroche {
       font-size: 1.2rem;
       font-weight: lighter;
       color:rgb(3, 51, 51)!important;
     }
   
+    /* style taille des logos des pages vitrine */
     #fond .logoFond {
       width: 17rem !important;
     }
-
+    /* style taille des logos des pages vitrine */
     #fndM .logoFond,#fndO .logoFond {
       width: 17rem !important;
       }
 
+    /* a enlever */
     .blkInfo img {
       width: 5rem !important;
       object-fit: cover;
     }
   
+     /* texte des pages d'info */
     .infos p {
       font-size: small !important;
       color: black !important;
@@ -524,12 +537,13 @@ body {background-color:white!important;}
       color: black !important;
     }
 
+    /* page gamme titre 'description' */
     .detailGammeSepDescr {
       border-top-style:solid; 
       border-top-color:light-gray;
       border-top-width:thin;  
    }
-    
+    /* page produit prix */
     .LprixHT { font-size:small;}
     .LprixTTC { font-size:x-small;}
     .prixHT {
@@ -547,41 +561,51 @@ body {background-color:white!important;}
 
   /* ------------Liste des categories---------------------------- */
 
+   /* block categorie dans page gamme de thés */
   .categoryBlock {
 
     display:flex;
     justify-content:center;
     flex-direction:column;
   }
+  /* texte du bloc cat"gorie */
   .categoryText {
     width:90%;
     display:flex; 
     justify-content:start;
     flex-direction:column;  
   }
+
+  /* image du bloc catégorie */
   .categoryImage{
     object-fit:cover;
     border-radius:60%;
     height:12rem;
     width:12rem;
   }
+
+  /* Hover sur l'image */
   .categoryImage:hover{
       border-color:chartreuse;
       border-style:solid;
       border-width:thick;
   }
+
+  /* disposition de la Description de la catégorie */
   .categoryDescription {
     display:flex;
     flex-direction:row;
     justify-content:center;
   }
 
+   /* arondi de l'image catégorie */
   .categoryMainImage
   {
    border-radius:8px;
     
   }
- 
+
+   /* style de l'image dans la liste des articles et news */
   .articlesImage{
     object-fit:cover;
     border-radius:7px;
@@ -591,38 +615,41 @@ body {background-color:white!important;}
 
  /* ------------Liste gamme---------------------------- */ 
 
+  /* lien en savoir plus */
  .gammeDetail {
       text-decoration:none!important;
       color:dodgerblue!important;
       font-size:larger;
-      margin-top:2rem;
-      
+      margin-top:2rem; 
  }
+
  .gammeDetail:hover {
-   
    font-weight: bolder;
  }
 
  /* -------------- detail produit de gamme -------------------- */
 
+  /* a enlever */
  .detailColor
  {
    background-color:ghostwhite;
  }  
   
-
+  /* separateur bas du block catégorie */
  .detailGammeSepBasse {
    border-bottom-style:solid; 
    border-bottom-color:light-gray; 
    border-bottom-width:thin;
  }
 
+/* separateur haut du block catégorie */
  .detailGammeSepHaute {
    border-top-style:solid; 
    border-top-color:light-gray;
    border-top-width:thin;
 }
 
+/* block des recommandations dans fiche produit */
 .detailGammeReco { 
   display:flex;
   flex-direction:row;
@@ -640,7 +667,9 @@ body {background-color:white!important;}
   width:20rem;
   object-fit:cover;
 }
+
 /* ----------------- panier --------------- */
+/* bouton ajouter au panier */
 .btPanier
 {
   width:8.3rem;
@@ -652,28 +681,27 @@ body {background-color:white!important;}
   text-decoration:none;
 
 }
-
+ /* couleur de survol du bt panier */
 .btPanier:hover {
 
   background-color:darkcyan;
   color:white;
 
 }
+
+ /* a enlever */
 .btPanierFinal
 {
-  
   width:5.3rem;
   height:2.3rem;
-  /* border-style:solid;
-  border-color:green; */
   border-radius:7px;
   border-width:thin;
   background-color: red;
   text-decoration:none;
   color:white;
-
 }
 
+/* bouton ajouter au panier */
 .btPanier {
    
   color:white!important;
@@ -683,6 +711,7 @@ body {background-color:white!important;}
    
 }
 
+/* a enlever */
 .btPanierFinal:hover {
 
   background-color:darkcyan;
@@ -690,7 +719,7 @@ body {background-color:white!important;}
 
 }
 /* ********************************************************* */
-           /* Média query pour les devices  769 */
+           /* Média query pour les devices < 769 */
   /* ********************************************************* */
   
 @media only screen and (max-device-width: 768px) {
@@ -718,8 +747,8 @@ body {background-color:white!important;}
       display:flex !important;
       flex-direction:column;
     }
-   
-
+    
+     /* images de la page engagement */
     .imgEng {
 
       width:10rem!important;
@@ -733,6 +762,7 @@ body {background-color:white!important;}
       height:7rem!important;
 
     }
+     /* images catégories de la page gamme */
     .listeImg{
 
       border-radius:7px;
@@ -740,7 +770,7 @@ body {background-color:white!important;}
       width:3rem!important;
 
     }
-
+      /* images mode paiement de la page cgv */
     .imgEng2 {
 
       width:10rem!important;
@@ -748,33 +778,37 @@ body {background-color:white!important;}
       margin-top:2rem;
     }
 
+    /* texte accroche  et ligne de texte pages cgv */
     .accroche2 {font-size:1.6em!important;}
     .textArt1 {font-size:1.5em!important;}
 
-   
-
-
+     /* Style des champs formulaire */
     .inputStyle {
        height:4rem;
        font-size:2.5rem;
     }
+
+     /* a enlever */
     .form-label{
       height:4rem;
       font-size:2rem;
     }
+
+     /* champs du formulaire llgin */
     .form-control{
       height:4rem;
       font-size:2rem;
     }
-   
+
+     /* Style des champs formulaire */
     .inputStyle2 {
       height:4rem;
       width:4rem;
       font-size:2.5rem;
-      margin-left:-1.2rem!important;
-     
-      
+      margin-left:-1.2rem!important; 
    }
+
+     /* lien dans formulaire edition */
     .buttonStyle
     {
       height:4.5rem;
@@ -782,6 +816,8 @@ body {background-color:white!important;}
       font-size:2.5rem;
       padding:0.1rem;
     }
+
+      /* lien dans formulaire edition page articled*/
     .buttonStyleAr
     {
       height:4.5rem;
@@ -790,6 +826,8 @@ body {background-color:white!important;}
       padding:0.1rem;
           
     }
+
+    /* lien dans formulaire edition */
     .buttonStyleC
     {
       height:4.5rem;
@@ -798,13 +836,14 @@ body {background-color:white!important;}
       padding:0.1rem;
       width:100%!important;
     }
+
+     /* position du bouton dans le formulaire */
     .pos-button
     {
       text-align:center!important;
-      
     }
   
-    
+    /* bt de sélection image dans les formulaire */
     .formTemplate {
       width:4rem!important;
       height:4rem!important;
@@ -814,6 +853,7 @@ body {background-color:white!important;}
       
      }
 
+      /* image dans les formulaires avec selection */
      .formtemplateImg {
       margin-top:-1rem;
       margin-right:2rem;
@@ -822,6 +862,7 @@ body {background-color:white!important;}
       object-fit:cover;
     }
 
+    /* image recette dans les formulaires avec selection */
     .formRecetteImg {
       margin-top:-1rem;
       margin-right:2rem;
@@ -830,34 +871,36 @@ body {background-color:white!important;}
       object-fit:cover;
     }
 
+     /* lien dans les formulaires avec selection */
     .formtemplateA{
      height:max;
      text-decoration:none;
      font-size:x-large!important;
     }
 
+     /* page commande espacement du texte */
     .lineh {
       line-height: 15px !important;;
      }
 
-
+     /* lien mot de passe oublié */
     .formLink {
       font-size:1.8rem;
     }
 
+     /* a enlever */
     .page-link {
        font-size:3rem;
     } 
-
- 
-
     .page-link:hover {
       background-color:aquamarine;
     }
 
 
-     /* ******************* */
-    .textArt {
+     /* ******************* style du texte des pages vitrine*/
+     /* adaptable en responsive */
+ 
+     .textArt {
       font-size:xx-large!important;
     }
     .textArt2 {
@@ -881,14 +924,19 @@ body {background-color:white!important;}
       font-size:2rem!important;
     }
 
+    /* **************************************************** */
+
+    /* image drapeaux page gamme */
     .gif {width:65px!important;}
 
+    /* image du bloc catégorie */
     .categoryImage {
 
       width:25rem!important;  
       height:25rem!important;  
     }
 
+      /* style de l'image dans la liste des articles et news */
     .articlesImage {
       width:50rem;
       height:30rem;
@@ -910,29 +958,28 @@ body {background-color:white!important;}
 
       /* style du bouton de recherche pour les pages avec filtres  */
     .searchButton {
-  
       background-color:white!important;
       border:none;
       height:3.6rem;
       margin-left:-3.4rem ;
     }
 
+    /* page articles titre */
     .artTitre {display:none;}
+
+     /* page articles description */
     .ArticleDescription {
-     
       margin-top:4rem;
       width:85!important;
-     
       text-align:center;
+   }
 
-    }
-
+     /* block image de la page articles et news */
     .divImgCat{
       height: 26rem!important;
       width:26rem!important;
       display:flex!important; 
-      justify-content:center!important;
-    
+      justify-content:center!important; 
   }
 
   /* image de la liste des thé par categorie */
@@ -949,17 +996,20 @@ body {background-color:white!important;}
     margin-bottom:2rem!important;
   }
 
+  /* logo info 'en savoir plus' dans page gamme */
   .detailImgSm {
     width:6rem!important;
     margin-top:2.5rem;
   }
-
+   
+  /* lien en savoir plus */
   .gammeDetail {
     text-decoration:none!important;
     color:dodgerblue!important;
     font-size:3rem!important;
   } 
 
+   /*style des conditionnement disponible  */
   .conditTxtSM {
     font-size:2.5rem;
   }
@@ -967,10 +1017,14 @@ body {background-color:white!important;}
   {
      min-width:8rem;
   }
+
+  /* texte sous le prix (prix public ...) */
   .stextArt {
     font-size:1.2rem!important;
 
   }
+
+  /* prix dans page produit ou liste */
   .LprixHT { 
     font-size:x-large;
      
@@ -991,11 +1045,15 @@ body {background-color:white!important;}
     font-size:5rem!important;
     
   }
+
+   /* texte connectez-vous .... dans page produit */
   .connectNotif {
     font-size:xx-large;
     padding-bottom:1rem;
 
   }
+
+  /* bouton ajouter au panier */
   .btPanier {
    
     color:white!important;
@@ -1010,10 +1068,9 @@ body {background-color:white!important;}
     width:7rem!important;
   }
 
+   /* a enlever */
   .imABSM {
-
-    width:4rem!important;
-    
+    width:4rem!important;    
   }
 
   /* Taille de la police du titre dans la fiche produit  */
@@ -1047,11 +1104,19 @@ body {background-color:white!important;}
   }
 }
 
-@media only screen and (min-device-width: 769px) {     
+/* ********************************************************* */
+           /* Média query pour les devices > 768 */
+  /* ********************************************************* */
+ 
+
+@media only screen and (min-device-width: 769px) {  
+  
+   /* titre des pages vitrines */
   .ttre {
     font-size:5rem!important; 
   }  
 
+   /* prix dans la page produit ou liste */
   .LprixHT { font-size:small;}
   .LprixTTC { font-size:x-small;}
   .prixHT {
@@ -1065,11 +1130,13 @@ body {background-color:white!important;}
     font-size:2rem;
   }
 
-
+   /* images de la page engagement */
   .imgEng {
     width:5rem!important;
     height:5rem!important;
   }
+
+  /* bouton ajouter au panier */
   .btPanier {
     color:white!important;
     height:3rem!important;
@@ -1077,6 +1144,7 @@ body {background-color:white!important;}
     width:75%!important;
   }
 
+   /* affiche le bloc infos de la page article des laptops */
   .artLaptop
   {
     display:flex!important;
@@ -1084,6 +1152,8 @@ body {background-color:white!important;}
     justify-content:space-around;
     align-items:center;
   }
+
+   /* masque le bloc infos de la page article des smartphones */
   .artSmart
   {
     display:none !important;
@@ -1091,12 +1161,16 @@ body {background-color:white!important;}
   
 }
 
+/* bt de sélection image dans les formulaire */
 .formTemplate {
   width:3rem;
   margin-top:1rem;
   margin-left:1rem;
   background-color:#AD5359;
  }
+
+ 
+/* image dans les formulaires avec selection */
 .formtemplateImg {
   margin-top:-1rem;
   margin-right:2rem;
@@ -1105,6 +1179,7 @@ body {background-color:white!important;}
   object-fit:cover;
 }
 
+/* pour la recette */
 .formRecetteImg {
   margin-top:-1rem;
   margin-right:2rem;
@@ -1113,11 +1188,15 @@ body {background-color:white!important;}
   object-fit:cover;
 }
 
+ /* lien dans les formulaires avec selection */
 .formtemplateA{
  height:max;
  text-decoration:none;
  font-size:small;
 }
+
+/* classes courantes de formattage */
+
 .margin2 {
   margin: 2rem 0 1rem 0;
 }
@@ -1136,6 +1215,10 @@ body {background-color:white!important;}
 .maxWidth12 {
   max-width:12rem;
 }
+
+/* ******************************************************** */
+
+ /* images catégories de la page gamme */
 .listeImg
 {
   border-radius:7px;
@@ -1144,12 +1227,14 @@ body {background-color:white!important;}
  
 }
 
+ /* image de la liste des documents dans admin */
 .condImg {
   border-radius:8px;
   display:flex;
   width:5rem!;
 
 }
+ /* formatage du bloc reference dans stock */
 .formRef {
  
   display:flex;
@@ -1157,13 +1242,16 @@ body {background-color:white!important;}
   align-items:center;
 }
 
+  /* page commande espacement du texte */
 .lineh {
    line-height:8px;
 }
 
+ /* bt de retour dans les formulaires */
 .btnBackMod {
   background-color: #AD5359!important ;
 }
+ /* bt d'enregistrement dans les formulaires */
 .btnBackEnr {
   background-color:peru!important ;
 }

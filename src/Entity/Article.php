@@ -2,7 +2,8 @@
 
 namespace App\Entity;
 
- 
+// classe permettant de regrouper les données  produit conditionnement et tarif pour la gestion du panier 
+
 class Article  
 {
 

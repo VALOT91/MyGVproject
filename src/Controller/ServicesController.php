@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ServicesController extends AbstractController
 {
+    // affiche la page de services grossiste
     #[Route('/client/services', name: 'services')]
     public function index(CategoryRepository $categoryRepository): Response
     {

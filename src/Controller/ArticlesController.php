@@ -14,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('admin/articles')]
 class ArticlesController extends AbstractController
 {
+
+    // affiche la liste des articles et news
     #[Route('admin/articles', name: 'articles_index', methods: ['GET'])]
     public function index(ArticlesRepository $articlesRepository): Response
     {
@@ -22,6 +24,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // affiche le formulaire de création d'un article
     #[Route('admin/articles/new', name: 'articles_new', methods: ['GET', 'POST'])]
     public function new( Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -45,6 +48,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // affiche le détail d'un article
     #[Route('/{id}', name: 'articles_show', methods: ['GET'])]
     public function show(Articles $article): Response
     {
@@ -53,6 +57,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // affiche le formulaire d'édition d'un article
     #[Route('/{id}/edit', name: 'articles_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Articles $article, EntityManagerInterface $entityManager): Response
     {
@@ -71,6 +76,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    // supprime un article
     #[Route('/{id}', name: 'articles_delete', methods: ['POST'])]
     public function delete(Request $request, Articles $article, EntityManagerInterface $entityManager): Response
     {

@@ -1,5 +1,7 @@
 <?php
 
+// Entité commandeShop (entete )
+
 namespace App\Entity;
 
 use App\Repository\CommandShopRepository;
@@ -27,12 +29,6 @@ class CommandShop
 
     #[ORM\Column(type: 'integer')]
     private $totalPrice;
-
-    // #[ORM\OneToOne(targetEntity: DeliveryAddress::class, cascade: ['persist', 'remove'])]
-    // #[ORM\JoinColumn(nullable: false)]
-    // private $deliveryAddress;
-
-    // private $deliveryAdressId;
 
     #[ORM\OneToOne(mappedBy: 'commandShop', targetEntity: DeliveryAddress::class, cascade: ['persist', 'remove'])]
     private $deliveryAddress;

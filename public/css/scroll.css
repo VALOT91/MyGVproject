@@ -1,4 +1,5 @@
  
+ /* scroll bloc conditionnement  */
  .scroll {
     width:500px;
     -ms-overflow-style: scroll!important;
@@ -6,13 +7,17 @@
     overflow:auto!important;
     scrollbar-width:none!important;
     overflow-y:hidden!important;  
- }
+    }
  .scoll-pane::-webkit-scrollbar { 
     display:none!important; 
     }
    
-
+ /* ********************************************************* */
+           /* Média query pour les devices < 769 */
+  /* ********************************************************* */
   @media only screen and (max-device-width: 769px) {
+    
+    /* style des boutons */
     .slideBt {
         height:240px!important;
         width:6rem!important;   
@@ -22,17 +27,14 @@
         font-weight: bolder;
       
     }
-
+  /* panel des conditionnements */
+    /* selon nombre de conditionnements  */
     .scoll-pane {
-     
         padding-left:395px!important;
         width:900px;
         font-size:x-large;
-        
     }
-    
     .scoll-pane-d {
-      
         width: 100%!important;
         height: auto;
         width:800px!important; 
@@ -41,8 +43,13 @@
 
 }
 
+/* ********************************************************* */
+           /* Média query pour les devices > 768 */
+  /* ********************************************************* */
+  
 
 @media only screen and (min-device-width: 769px) and (max-device-width:972px) {
+    /* style des boutons */
     .slideBt {
         height:60px!important;
         width:3rem!important;   
@@ -51,6 +58,8 @@
         font-size:large;
     }
 
+ /* panel des conditionnements */
+    /* selon nombre de conditionnements  */
     .scoll-pane {    
          width:800px;     
         font-size:0.9rem!important;
@@ -64,7 +73,12 @@
   
 }
 
+/* ********************************************************* */
+           /* Média query pour les devices > 973 */
+  /* ********************************************************* */
+ 
 @media only screen and (min-device-width: 973px)  {
+     /* style des boutons */
     .slideBt {
         height:60px!important;
         width:3rem!important;   
@@ -72,7 +86,8 @@
         border:none;
         font-size:large;
     }
-
+    /* panel des conditionnements */
+    /* selon nombre de conditionnements  */
     .scoll-pane {
         padding-left:150px!important;
         width:400px!important;
@@ -91,11 +106,18 @@
         scrollbar-width: none;
         font-size:x-small!important;  
   }
+
   .condTitre {
     font-size:x-small;
   }
 }
+
+
+/* ********************************************************* */
+           /* Média query pour les devices > 1410 */
+  /* ********************************************************* */
 @media only screen and (min-device-width:1410px)  {
+     /* style des boutons */
     .slideBt {
         height:60px!important;
         width:3rem!important;   
@@ -104,8 +126,10 @@
         font-size:large;
     }
 
-    .scoll-pane {
-     
+
+     /* panel des conditionnements */
+    /* selon nombre de conditionnements  */
+    .scoll-pane { 
         padding-left:150px!important;
           padding-right:15px!important;    
         width:400px!important;
@@ -122,7 +146,6 @@
         scrollbar-width: none; 
         font-size:x-small!important;    
   }
-   
 }
 
 

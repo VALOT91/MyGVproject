@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+// Entité Conditionnement
+
 use App\Repository\ConditionnementRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;

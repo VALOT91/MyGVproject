@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+// entité DeliveryAdress
+
 use App\Repository\DeliveryAddressRepository;
 use Doctrine\ORM\Mapping as ORM;
 

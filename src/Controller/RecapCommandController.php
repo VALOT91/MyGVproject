@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RecapCommandController extends AbstractController
 {
+    // affiche le panier
     #[Route('/commande/recapitulatif', name: 'command_recap')]
     public function recap(CartItem $cartitem, Request $request, EntityManagerInterface $em,CartService $cartService)
     {
@@ -26,9 +27,9 @@ class RecapCommandController extends AbstractController
 
         $form->handleRequest($request);
 
-        $cart = $cartService->detail();
+        $cart = $cartService->detail();  //charge le panier
 
-        $totalCart = $cart["sousTotal"]; //$cartService->getTotal();
+        $totalCart = $cart["sousTotal"]; // charge le sous total
         
         /** @var User $user */
         $user = $this->getUser();

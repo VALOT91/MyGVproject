@@ -1,15 +1,21 @@
- 
+ /* ********************************************************* */
+           /* Média query pour les devices < 769 */
+  /* ********************************************************* */
+
  @media only screen and (max-device-width: 768px) {
+
+   /* image du produit dans panier */
   .imageDetailPanier {
     height: 10rem !important;
     object-fit: cover!important; 
   }
+
+ /* image du produit dans recap panier */
   .imageRecapPanier {
     height: 10rem!important;
     object-fit: cover !important;
-   
-    
   }
+  /* designation du détail panier */
   .panierDesi {
     width: 30rem;
     font-weight: bold;
@@ -17,7 +23,7 @@
     font-size: xx-large;
     margin-top:1rem;
   }
-
+/* designation du récap panier */
   .recapDesi {
     width: 30rem;
     font-weight: bold;
@@ -27,7 +33,7 @@
     
   }
 
-
+   /* données du panier */
   .panierPrice, .panierTot, #panierQte {
     width: 12rem;
     font-size: 2.8rem;
@@ -87,10 +93,10 @@
   align-items: center;
   justify-content:start;
   margin-left:2rem;
-
   flex-wrap: wrap;
    }
 
+    /* bouton incrément décrément qté dans panier */
    .btRg {
     border-radius:7px;
     margin-top:1rem!important;
@@ -100,30 +106,38 @@
     height:5rem;
     padding:0.1rem;
     font-size:3rem;
-
   }
    
+  /* poubelle panier */
   .trash {
     width:3.4rem!important;
      margin-top:-1.2rem;
    
    }
+
+    /* bt paiement commande ou retour  */
    .buttonStyleRecap
-{
-  height:5.5rem;
-  width : 18rem;
-  font-size:2.5rem;
-  padding:0.1rem;
-}
+   {
+    height:5.5rem;
+    width : 18rem;
+    font-size:2.5rem;
+    padding:0.1rem;
+  }
 
 }
+ /* ********************************************************* */
+           /* Média query pour les devices > 768 */
+  /* ********************************************************* */
 
 @media only screen and (min-device-width: 769px) {
+
+   /* image du produit dans panier */
   .imageDetailPanier {
     height: 3rem !important;
     object-fit: cover !important; 
     width:3rem;
   }
+  /* image du produit dans recap panier */
   .imageRecapPanier {
     height: 4rem !important;
     object-fit: contain !important;
@@ -134,88 +148,79 @@
     margin-left: 5rem !important;
     font-size: medium;
     margin-top:1rem;
-   
-   
-     
   }
+
+  /* données du panier */
   .panierPrice {
     width: 6rem;
     font-size: medium;
     font-weight: bold;
-    
-   
-  
   }
+
   .recapQte{
     width: 5rem!important;
     font-size: x-large;
-     
-     
     color:darkgreen;
     font-weight:normal;
     /* margin-left:3rem; */
     display:flex;
     flex-direction:row;
     }
+
   .recapPrice{
     width:10rem;
     font-size: 1.2rem;
     color:darkgreen;
     margin-top:0.2rem;
-  
     margin-left:5rem;
-    /* margin-top: .3rem; */
     }
+
     .recapTot {
       font-size: x-large;
       font-weight: bold;
        margin-left: 2rem;
      
     }
+
   .recap {
     display: flex;
     align-items: center;
     justify-content:center;
     flex-wrap: wrap;
 }
+
   .panier {
   display: flex;
   align-items: center;
   justify-content:center;
   flex-wrap: wrap;
-  
    }
     
+/* bloc droit du panier recap */
   .panierDroit
   {
     width:27rem;
     display:flex;
     flex-direction: row;
     justify-content:start;
-  
-     
   }
-  
- 
-
- 
-
 }
 
+/* bt incrément et decrement */
 .inc:hover {
   background-color: rgb(238, 230, 225) !important;
 }
 
+/* image de la poubelle */
 .panierTrashImg {
   height: 1rem !important;
 }
 
-#panierQte {
- 
+/* quantité */
+#panierQte { 
   width: 4rem;
   text-align: center;
   padding: 0.5rem;
-
   background-color: whitesmoke;
 }
 
@@ -224,16 +229,21 @@
   font-weight: bold;
 }
 
+ /* non utilisé */
 .pointRelay {
   background-color: darkcyan !important;
   color: white;
   height: 2rem !important;
   padding: 0.2rem;
 }
+
+ /* non utilisé */
 .pointRelay:hover {
   background-color: black !important;
   color: white;
 }
+
+/* bouton ajouter au panier */
 .btPanier
 {
   width:10.3rem;
@@ -247,18 +257,19 @@
 
 }
 
+/* survol bouton ajouter au panier */
 .btPanier:hover {
 
   background-color:darkcyan;
   color:white;
 
 }
+
+/* a enlever */
 .btPanierFinal
 {
-  
   width:10rem;
   height:2.3rem;
-  
   border-radius:7px;
   border-width:thin;
   text-decoration:none;
@@ -267,17 +278,20 @@
 
 }
 
+/* a enlever */
 .btPanierFinal:hover {
   background-color:darkcyan;
   color:white;
 }   
 
+ /* page detail du panier  */
 .ctIm {
   width:92%;
   opacity:90%;
   border-radius:7px
 }
 
+ /* bouton incrément décrément qté dans panier */
 .btRg {
   border-radius:7px;
   margin-top:-1rem!important;
@@ -285,6 +299,7 @@
   margin-right:1rem!important;
 }
 
+ /* poubelle panier */
 .trash {
  width:1.4rem;
   margin-top:-1.2rem;

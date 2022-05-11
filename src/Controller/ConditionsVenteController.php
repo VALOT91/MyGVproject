@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+    
     class ConditionsVenteController extends AbstractController
     {
+        // affiche la page des CGV
         #[Route('/CGV', name: 'ConditionsVente')]
         public function index(): Response
         {

@@ -17,19 +17,22 @@ use App\Services\ImageFinder;
 #[Route('admin/conditionnement')]
 class ConditionnementController extends AbstractController
 {
+    // affiche la liste des conditionnements
     #[Route('admin/conditionnement/', name: 'conditionnement_index', methods: ['GET'])]
     public function index(ConditionnementRepository $conditionnementRepository): Response
     {
+        // renvoie les conditionnements 
         return $this->render('admin/conditionnement/index.html.twig', [
             'conditionnements' => $conditionnementRepository->findAll(),
         ]);
     }
 
+    // affiche le formulaire de création d'un nouveau conditonnement
     #[Route('/new', name: 'conditionnement_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $finder = new ImageFinder();
-        $filesTab = $finder->GetUploadDirectory();
+        $filesTab = $finder->GetUploadDirectory();   // charge les fichiers du répertoire uploads
 
         $conditionnement = new Conditionnement();
         $form = $this->createForm(ConditionnementType::class, $conditionnement);
@@ -51,6 +54,7 @@ class ConditionnementController extends AbstractController
         ]);
     }
 
+    // affiche le detail d'un conditionnement
     #[Route('/{id}', name: 'conditionnement_show', methods: ['GET'])]
     public function show(Conditionnement $conditionnement): Response
     {
@@ -59,11 +63,12 @@ class ConditionnementController extends AbstractController
         ]);
     }
 
+    // affiche le formulaire d'édition d'un conditonnement
     #[Route('/{id}/edit', name: 'conditionnement_edit', methods: ['GET', 'POST'])]
     public function edit( Request $request, Conditionnement $conditionnement, EntityManagerInterface $entityManager): Response
     {
         $finder = new ImageFinder();
-        $filesTab = $finder->GetUploadDirectory();
+        $filesTab = $finder->GetUploadDirectory(); // charge les fichiers du répertoire uploads
 
         $oldImage = $conditionnement->getImagePath();
         $form = $this->createForm(ConditionnementType::class, $conditionnement);
@@ -81,7 +86,7 @@ class ConditionnementController extends AbstractController
               // $handleImage->edit($file,(string)$oldImage);
             }
             else
-            {
+            {    // si aucune image n'a été sélectionnée, je met l'ancienne
                 $conditionnement->setImagepath($oldImage);
             }
 
@@ -97,6 +102,7 @@ class ConditionnementController extends AbstractController
         ]);
     }
 
+    // supprime un conditionnement
     #[Route('/{id}', name: 'conditionnement_delete', methods: ['POST'])]
     public function delete(Request $request, Conditionnement $conditionnement, EntityManagerInterface $entityManager): Response
     {

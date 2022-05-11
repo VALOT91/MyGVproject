@@ -16,11 +16,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('customer/Infosnews')]
 class InfosNewsController extends AbstractController
 {
+    // affiche la liste des infos 
     #[Route('customer/Infosnews', name: 'infosNews_liste', methods: ['GET'])]
     public function index(Request $request,ArticlesRepository $articlesRepository): Response
     {
 
-        $search = new SearchArticles();
+        $search = new SearchArticles();     // champ de recherche
 
         $form = $this->createForm(SearchArticlesType::class,$search);
 
@@ -33,6 +34,7 @@ class InfosNewsController extends AbstractController
         ]);
     }
 
+    // affiche le detail d'un article
     #[Route('/{id}', name: 'infosNews_show', methods: ['GET'])]
     public function show(Articles $article): Response
     {
@@ -40,10 +42,5 @@ class InfosNewsController extends AbstractController
             'article' => $article,
         ]);
     }
-
-
-
-
-
 
 }

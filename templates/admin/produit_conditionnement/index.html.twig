@@ -25,11 +25,10 @@
             </tr>
         </thead>
         <tbody>
-        {% for produit_conditionnement in produit_conditionnements %}
+        {% for produit_conditionnement in produit_conditionnements %} {# parcours les produit conditionnements#}
             <tr>
-                {# <td class="textArt">{{ produit_conditionnement.getProduit().designation }}</td> #}
-                <td class="textArt">{{ produit_conditionnement.reference }}</td>
-                {# <td class="textArt">{{ produit_conditionnement.imagePath }}</td> #}
+               
+                <td class="textArt">{{ produit_conditionnement.reference }}</td>              
                 <td class="textArt" >{{ produit_conditionnement.quantiteStock }}</td>
                 <td>
                     <a class= "me-2 maxWidth12 buttonStyleC text-white px-2 mt-2 btn btn-success w-100 " href="{{ path('produit_conditionnement_show', {'id': produit_conditionnement.id}) }}">Détail</a>

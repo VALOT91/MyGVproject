@@ -15,7 +15,7 @@
     <button class="btn text-white buttonStyleC btnBackMod" btn ">{{ button_label|default('Enregistrer') }}</button>
 
 {{ form_end(form) }}
- <div style="display:none" id="dialog" title="Sélectionnez une image">
+ <div style="display:none" id="dialog" title="Sélectionnez une image">    {# boite dialog #}
     
         {% for key,item  in file %}
         <div  onclick="selectImage(this)" id= "dvIm{{ key }}"  class="my-2 imChoice " >

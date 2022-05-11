@@ -18,17 +18,16 @@ use App\Services\ImageFinder;
 #[Route('admin/category')]
 class CategoryController extends AbstractController
 {
+    // affichage de la liste des catégories
     #[Route('admin/category', name: 'category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository ): Response
     {
-        
-       
-
         return $this->render('admin/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
 
+    // affichage du formulaire d'ajout d(une nouvelle catégorie)
     #[Route('admin/category/new', name: 'category_new', methods: ['GET', 'POST'])]
     public function new( Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -79,6 +78,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    // affichage du détail de la catégorie
     #[Route('/{id}', name: 'category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {     
@@ -87,15 +87,16 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    // affichage du formulaire d'édition
     #[Route('/{id}/edit', name: 'category_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, EntityManagerInterface $entityManager,HandleImage $handleImage): Response
     {
-        $oldImage1 = $category->getImagePath1();
+        $oldImage1 = $category->getImagePath1(); //  récupére le path actuel
         $oldImage2 = $category->getImagePath2();
         $oldImage3 = $category->getImagePath3();
         
         $finder = new ImageFinder();
-        $filesTab = $finder->GetUploadDirectory();
+        $filesTab = $finder->GetUploadDirectory();   // récupére les fichiers du répertoire uploads
 
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -110,11 +111,11 @@ class CategoryController extends AbstractController
             if($file)
             {
                 $category->setImagepath1( $file);
-                // $handleImage->edit($file,(string)$oldImage1);
+                
             }
             else
             {
-               
+                // si aucune image n'a été sélectionnée, je met l'ancienne
                 $category->setImagepath1($oldImage1);
 
             }
@@ -130,9 +131,8 @@ class CategoryController extends AbstractController
             }
             else
             {
-               
+                // si aucune image n'a été sélectionnée, je met l'ancienne
                 $category->setImagepath2($oldImage2);
-
             }
 
             //Recuperer le fichier 
@@ -146,9 +146,8 @@ class CategoryController extends AbstractController
             }
             else
             {
-               
+                // si aucune image n'a été sélectionnée, je met l'ancienne
                 $category->setImagepath3($oldImage3);
-
             }
 
             $entityManager->flush();
@@ -161,7 +160,7 @@ class CategoryController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    // supprime la catégorie
     #[Route('/{id}', name: 'category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {

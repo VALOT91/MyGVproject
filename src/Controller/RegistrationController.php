@@ -15,6 +15,7 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
+    // affiche la page formulaire de registration
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, CustomAuthentificator $authenticator, EntityManagerInterface $entityManager): Response
     {
@@ -25,7 +26,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
         
-            $user->setRoles(["ROLE_TRANSIT"]);
+            $user->setRoles(["ROLE_TRANSIT"]);   // c'est le role à l'inscription
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
@@ -35,13 +36,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
-            // return $userAuthenticator->authenticateUser(
-            //     $user,
-            //     $authenticator,
-            //     $request
-            // );
+          
 
             return $this->redirectToRoute('app_login');
         }

@@ -12,14 +12,16 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class ModificationPasswordLostController extends AbstractController
 {
+    // Page du formulaire de modification du mot de passe
     #[Route('/modification/motdepasse/{token}', name: 'app_password_lost_modification')]
     public function modificationMotDePasse(string $token,Request $request,
     EntityManagerInterface $em, UserRepository $userRepository,UserPasswordHasherInterface $userPasswordHasher)
     {
+        // recherche du user par token
         $user = $userRepository->findOneBy([
             'tokenPasswordLost' => $token
         ]);
-
+        // si pas trouvé retour au login
         if(!$user)
         {
             return $this->redirectToRoute('app_login');
