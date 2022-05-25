@@ -22,7 +22,7 @@
      <div class="col-sm-12 col-md-12 col-lg-6 mt-3">
         <div class="card">
             <div class="card-body">       
-                {% for item in cart["detailCart"] %}
+                {% for item in cart["detailCart"] %}  {#  parcours du panier  #}
                     <div class="mt-1 " >
                     
                         <div  class="recap " >
@@ -51,7 +51,7 @@
                 </div>
              </div>
         </div>
-            {# --------- #}
+            
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 mt-3">
             <div class="card me-2 ">
@@ -69,7 +69,7 @@
                     {{ form_row(form.commentary, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
                     {{ form_row(form.CGV, {'label_attr': {'class': 'textArt2'},'attr': {'class': 'inputStyle2'} }) }}
 
-                     {# {{ form_widget(form) }} #}
+                     
                     <button type="submit" class="btn buttonStyleRecap btn-success mt-3 w-100" id="buttonSubmit">Payer la commande</button>
                     <button class="btn btn-success  mt-3 w-100" type="button" disabled id="buttonSpinner" style="display:none;">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

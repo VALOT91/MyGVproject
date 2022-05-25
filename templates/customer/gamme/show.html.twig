@@ -10,7 +10,7 @@
 
 {% block body %}
 <div class="container-flex d-flex  fnd justify-content-center">
-    {# <div class="container-flex bg-white pt-2 pb-4" > #}
+    
        <div class="bg-white mx-4 mt-4 mb-4  categoryMainImage" style="opacity:.90">
            {# bloc principal contenant les deux parties gauche et droite #}
         <div class=" mx-4 my-4  pt-4 row d-flex flex-wrap justify-content-around" >
@@ -29,7 +29,7 @@
                 </div>
                 <div class=" d-flex flex-row justify-content-center "  > 
                     <div class="text-start w-100 "  > 
-                            {% for item in product.getRecette() %}   
+                            {% for item in product.getRecette() %}    {#  parcours les recettes #}
                                 <div class="row w-100 d-flex align-items-center my-2">
                                     <div class="col-2"> 
                                         <img src=" \{{item.imagePath }}" class="imRecetteSM"  alt="image de la recette">
@@ -40,10 +40,10 @@
                                     </div>
                                 </div>
                             {% endfor %}
-                             {% if product.isBio  %} 
+                             {% if product.isBio  %}   {# affichage du logo bio #}
                                     <div class="row w-100 d-flex align-items-center my-4">
                                         <div class="col-2"> 
-                                            <img src="/images/bio.png" class="BioSM ms-2"  alt="label bio">
+                                            <img src="/images/bio.png" class="BioSM ms-2"  alt="logo label bio">
                                         </div>
                                         <div class="col-10 mt-3" style="line-height:3px;"> 
                                             <strong><p class="BioTitre ms-2 text-dark"> Certifié AB.</p></strong>
@@ -63,13 +63,8 @@
                
                 <h3 class="my-2 conditTxtSM">Conditionnement disponibles </h3>
                 <aside class="container   mt-2 d-flex flex-row justify-content-center w-100" >
-                 {# {% if conditionnements |length < 4  %}
-                   <div  class="  scoll-pane d-flex flex-row justify-content-between ">
-                {% else %}  
-                        <button onclick="sdb()"  class="  slideBt" type="button"><</button> 
-                        <div id="containerSC" class="  scoll-pane d-flex flex-row justify-content-between ">
-                {% endif  %} #}
-                    {% if conditionnements |length < 4  %} 
+                 
+                    {% if conditionnements |length < 4  %}    {# affichage sans défilement des conditionnements #}
                         <div  id="containerSC" style=" width:800px;" class="d-flex flex-row justify-content-center">
                             <div class=" scoll-pane-d d-flex flex-row justify-content-around "  >      
                     {% else %}    
@@ -88,22 +83,22 @@
                             </label>
                             <p class="mt-1 condTitre"  >{{conditionnement.getConditionnement().designation}}</p>
                             <h4 style="display:none" id="IM_{{ conditionnement.id }}"> {{ conditionnement.imagePath  }} </h4>
-                                {% for tarif in conditionnement.tarifs %}
+                                {% for tarif in conditionnement.tarifs %}  {# parcours les tarifs #}
 
-                                    {% if tarif.typePrix is same as "PRIX_PUBLIC" %} 
+                                    {% if tarif.typePrix is same as "PRIX_PUBLIC" %}  {# ne sélectionne que les tarifs publics #}
                                     <h4 style="display:none" id="PP_{{ conditionnement.id }}">
                                         {{  (tarif.prixUnitaire/100)|number_format(2, '.', ',') }}€
                                     </h4>
                                     {% endif %} 
-                                {% if tarif.typePrix is same as "PRIX_PRO" %} 
-                                    <h4 style="display:none" id="PR_{{ conditionnement.id }}">
-                                        {% if app.user %}
+                                    {% if tarif.typePrix is same as "PRIX_PRO" %} 
+                                        <h4 style="display:none" id="PR_{{ conditionnement.id }}">
+                                        {% if app.user %} {# ne sélectionne que les tarifs pro si connexion #}
                                             {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
                                                     {{  (tarif.prixUnitaire/100)|number_format(2, '.', ',') }}€
                                             {% endif %}  
                                         {% endif %} 
-                                    </h4>
-                                {% endif %} 
+                                        </h4>
+                                    {% endif %}   
                             {% else %}
                                     <h4 style="display:none" id="PP_{{ conditionnement.id }}">
                                         N.C
@@ -132,10 +127,10 @@
             <section class="pt-2 detailGammeSepHaute text-center">       
                 {% if app.user %} 
                     {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
-                           {% if product.getCategory().Gamme is same as "TH" %}  
+                           {% if product.getCategory().Gamme is same as "TH" %}  {# pour la gamme thé seulement public et pro #}
                              <h3 class="conditTxtSM">Tarif pro et public</h3>
                              <p class="stextArt"> (Prix public TTC à titre indicatif dont tva 5.5%)</p>
-                            {% else %}
+                            {% else %}    {# sinon tarif pro #}
                              <h3 class="conditTxtSM">Tarif pro </h3>
                             {% endif  %} 
                             <div class="mt-1" style="display:flex;flex-direction:row;justify-content:space-around;align-items:center ">
@@ -183,7 +178,7 @@
                         </div>
                 {% endif %}                 
             </section>   
-            {# Composition    #}
+            {# Composition #}
             <section 
               {% if product.getCategory().Gamme is same as "TH" %}
                    class="detailGammeSepHaute w-100 my-3 d-flex flex-column align-items-center"  >
@@ -204,7 +199,7 @@
             
                             <div class="text-center">
                                 <div> 
-                                    <img   src="/images/recomandations/balance.png" class="imRecoSM"  alt="image de la recette">
+                                    <img   src="/images/recomandations/balance.png" class="imRecoSM"  alt="logo balance">
                                 </div>
                                 <div class=" mt-3 detailGammeinterligneReco"> 
                                     <strong><p  class="textReco text-dark">{{ product.RecoDose }} </p></strong>
@@ -212,7 +207,7 @@
                             </div>
                             <div class="text-center">
                                 <div> 
-                                    <img src="/images/recomandations/chrono.png" class="imRecoSM"  alt="image de la recette">
+                                    <img src="/images/recomandations/chrono.png" class="imRecoSM"  alt="logo chrono">
                                 </div>
                                 <div class=" mt-3 detailGammeinterligneReco"> 
                                     <strong><p  class="textReco text-dark">{{ product.RecoDuree }} </p></strong>
@@ -230,7 +225,7 @@
                             </div>
                             <div  class="text-center">
                                 <div> 
-                                    <img   src="/images/recomandations/calendar.png" class="imRecoSM"  alt="image de la recette">
+                                    <img   src="/images/recomandations/calendar.png" class="imRecoSM"  alt="logo calendrier">
                                 </div>
                                 <div class=" mt-3 detailGammeinterligneReco"> 
                                     <strong><p  class="textReco text-dark">{{ product.RecoUsage }} </p></strong>

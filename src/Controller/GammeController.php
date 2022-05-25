@@ -61,7 +61,7 @@ class GammeController extends AbstractController
         }
  
         //  prepare la pagination
-         $articles = $paginator->paginate($articles, $request->query->getInt('page', 1), 3);
+         $articles = $paginator->paginate($articles, $request->query->getInt('page', 1), 4);
             // dd($articles);
             return $this->render("customer/gamme/liste.html.twig",[
                 'articles' => $articles,'category'=> $CategoryRepository->find($id)

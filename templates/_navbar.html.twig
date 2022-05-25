@@ -1,11 +1,11 @@
  <div class="container-flex">
- {% if app.user %} 
+ {% if app.user %}   {# conecté seulement #}
   <div id="accBar"  class="text-black px-2">
             
-            <div id="divDeconnect" class="DeconnectButtonSM" style= "margin-left:2rem;width:2.6rem;height:2rem;display:flex;align-items:center;margin-right:2rem;text-align:center">
-                  <div style="line-height:25px;display:flex;flex-direction:column;align-items:center;text-align:center">
-                        <a class="DeconnectButtonSM" style="color:#000" href="{{ path('app_logout') }}" >
-                                        <img  style= " margin-top:1rem;min-height:5.2rem!important;min-width:5.2rem!important;object-fit:cover!important " src="/images/menu/deconnexion.png   " alt="logo déconnexion" >
+            <div id="divDeconnect" class="DeconnectButtonSM connected " >
+                  <div class="connectedDiv" >
+                        <a class="DeconnectButtonSM" href="{{ path('app_logout') }}" >
+                              <img class="connectedImg" src="/images/menu/deconnexion.png   " alt="logo déconnexion" >
                         </a>
                         Déconnexion
                   </div>
@@ -20,6 +20,7 @@
                   </a>    
                  
                 <li>
+                 {# lien selon rôle #}
                   {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
                          <a class="text-black" href="{{ path('show_account_roleA') }}"><b>Bienvenue  {{app.user.prenom}} {{app.user.nom}}</b></a>
                   {% elseif app.user.roles[0] is same as "ROLE_CLIENT" %}
@@ -58,7 +59,7 @@
       <div class="collapse navbar-collapse  " id="navbarSupportedContent"   >
         <ul  class="text-white navbar-nav me-auto mb-2 mb-lg-0 " >
   
-          {% if app.user %} 
+          {% if app.user %}   {#connecté seulement #}
 
               {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
 
@@ -90,7 +91,7 @@
             <a class="nav-link MenuSm" href="{{ path('infosNews_liste') }}">Infos News</a>
           </li>
      
-      {% if app.user %} 
+      {% if app.user %}  {#connecté seulement #}
               {% if app.user.roles[0] is same as "ROLE_CLIENT" %}
 
                   <li class="nav-item">
@@ -119,26 +120,26 @@
         
         </ul>
        
-        <ul id="connectPanel" style="list-style:none;margin-top:1rem; display:flex;flex-direction:row;align-items:center;justify-content:space-between">
+        <ul id="connectPanel" class="connectedPanel">
                     <li>
-                      {% if not app.user %} 
+                      {% if not app.user %}  {# non connecté seulement #}
                       <div class="d-flex flex-row ">
                         <div class="d-flex flex-column text-center">
-                              <a title="Connexion" style="color:#769643" href="{{ path('app_login') }}" >
+                              <a title="Connexion"   href="{{ path('app_login') }}" >
                                   <img width="25" id="imgNav" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
                               </a>
-                              <p style="color:#769643;font-size:x-small" class=" "> Connexion</p> 
+                              <p  class="logoTxt"> Connexion</p> 
                         </div>
                        <div class="d-flex flex-column text-center ms-4">
                               <a class="" title="Inscription"   href="{{ path('app_register') }}" >
                                             <img   width="25" src="/images/menu/reg.svg   " alt="logo connexion" >
                              </a>
-                              <p style="color:#769643;font-size:x-small" class=" "> Inscription</p> 
+                              <p  class="logoTxt"> Inscription</p> 
                         </div>
                       </div>  
-                      {% else %}
+                      {% else %}   {# connecté seulement #}
                      
-                            <a title="déconnexion" style="color:#769643" href="{{ path('app_logout') }}" >
+                            <a title="déconnexion"  href="{{ path('app_logout') }}" >
                                 <img width="25" id="imgNav" src="/images/menu/deconnexion_b.png   " alt="logo déconnexion" >
                             </a>
                       
@@ -151,16 +152,16 @@
     </div>
   
   </nav>
-    {% if  not app.user %} 
-      <div class="pt-4 bg-white" style="font-size:x-large;height:8rem;background-color:white; display:none;flex-direction:row;justify-content:space-around;align-items:center" id="barAcc">
+    {% if  not app.user %}  {# non connecté seulement #}
+      <div class="Nonconnected pt-4 bg-white" id="barAcc">
                             
-                               <a style="text-align: center;color:#769643;text-decoration:none" href="{{ path('app_login') }}" >
+                               <a   href="{{ path('app_login') }}" >
                                       <img width="50" src="/images/menu/utilisateur-vert.png   " alt="logo connexion" >
                                       <p>Se connecter</p>
                                </a>
                         
-                               <a style="text-align: center;color:#769643;text-decoration:none" href="{{ path('app_register') }}" >
-                                      <img   width="50" src="/images/menu/reg.svg   " alt="logo connexion" >
+                               <a  href="{{ path('app_register') }}" >
+                                      <img   width="50" src="/images/menu/reg.svg   " alt="logo registration" >
                                       <p>S'inscrire</p>
                                </a>
                           

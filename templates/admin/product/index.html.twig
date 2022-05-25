@@ -14,7 +14,10 @@
                 <a href={{ path('product_index') }} class="buttonStyleC btn btn-secondary mt-3">Réinitialiser</a>
                 {{form_end(form)}}
             </div>
-    <table class="my-4 mx-2 table">
+
+   <div style="margin-top:0rem;display:flex;justify-content:center"> {{ knp_pagination_render(products, '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }} </div>
+
+    <table class="mb-4 mx-2 table">
         <thead>
             <tr>
                 <th class="textArt">Designation</th>

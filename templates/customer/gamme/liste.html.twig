@@ -19,8 +19,8 @@
             
         {#  parrcours les articles de la catégorie choisie #}
        
-        {% for product in articles %}
-            <div class="col-12 col-lg-4 col-md-12 " >
+        {% for product in articles %}  {#  parcours des produits de la catégorie choisie  #}
+            <div class="col-12 col-lg-5 col-md-12 " >
                
                 <div class="card text-center my-4 mx-4 px-2  justify-content-around  "    >
                        <div class="mt-2" style="height:6rem!important;">
@@ -32,7 +32,7 @@
                             {# test la présence d'une image #}
                             {% if product.getProduct().getProduitConditionnement() is not null  %} 
                                 <a href="#"> 
-                                <img id="img_{{ product.getProduct().id  }}" style="width:15rem;objective-fit:cover" src="{{product.getProduct().getProduitConditionnement().imagePath }}" class="imgsm mt-4 "  alt="...">
+                                <img id="img_{{ product.getProduct().id  }}" style="width:15rem;objective-fit:cover" src="{{product.getProduct().getProduitConditionnement().imagePath }}" class="imgsm mt-4 "  alt="image du produit ">
                                 </a>
                             {% endif %} 
                         </div>
@@ -47,7 +47,7 @@
                         <h4 class="conditTxtSM">Conditionnements disponibles</h4>
                         <div class="mt-2"> 
                             <aside class=" container mt-2 d-flex flex-row justify-content-center w-100" >
-                               {% if product.conditionnements |length < 4  %} 
+                               {% if product.conditionnements |length < 4  %}   {#  conditionnement avec défilement si nbre>3  #}
                                   <div  id="containerSC{{product.getProduct().id}}" style=" width:800px;" class="d-flex flex-row justify-content-center">
                                       <div class=" scoll-pane-d d-flex flex-row justify-content-around "  >      
                                 {% else %}    
@@ -66,16 +66,16 @@
                                         </label>
                                         <div class="mt-1" condTitre>{{conditionnement.getConditionnement().designation}}</div>
                                         <h4 style="display:none;" id="IM_{{ conditionnement.id }}"> {{ conditionnement.imagePath  }} </h4>
-                                        {% for tarif in conditionnement.tarifs %}
+                                        {% for tarif in conditionnement.tarifs %}    {# Boucle sur les tarifs disponibles #}
 
-                                        {% if tarif.typePrix is same as "PRIX_PUBLIC" %} 
+                                        {% if tarif.typePrix is same as "PRIX_PUBLIC" %}      {# stock les tarifs en caché #}
                                         <h4 style="display:none" id="PP_{{ conditionnement.id }}">
                                             {{  (tarif.prixUnitaire/100)|number_format(2, '.', ',') }}€
                                         </h4>
                                         {% endif %} 
                                         {% if tarif.typePrix is same as "PRIX_PRO" %} 
                                             <h4 style="display:none" id="PR_{{ conditionnement.id }}">
-                                                {% if app.user %}
+                                                {% if app.user %}    {# stocke les prix pro pour les roles admin et client #}
                                                     {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
                                                             {{  (tarif.prixUnitaire/100)|number_format(2, '.', ',') }}€
                                                     {% endif %}  
@@ -99,7 +99,7 @@
                             </div>  
                          
                         </div>
-                     {# **************************************************************************** #}
+                     {# ************ défilement des conditionnements  **************************************************************** #}
                            {% if product.conditionnements |length > 3  %}
                                 <button id="btr_{{product.getProduct().id}}"   onclick="sdfl(this)"  class="slideBt" type="button">></button> 
                             {% endif  %} 
@@ -112,13 +112,13 @@
                         <hr>
                             
                 {% if app.user %} 
-                            
+                              {# les roles client et admin et la gamme thé affichent les tarifs pro et public #}
                             {% if app.user.roles[0] is same as "ROLE_CLIENT" or app.user.roles[0] is same as "ROLE_ADMIN" %}
                                    
                                    {% if product.Getproduct().getCategory().Gamme is same as "TH" %}
                                         <h3 class="conditTxtSM">Tarif pro et public</h3>
                                         <p class="stextArt"> (Prix public TTC à titre indicatif dont tva 5.5%)</p>
-                                    {% else %}
+                                    {% else %}    {# la gamme service n'affiche que les tarifs pro #}
                                      <h3 class="conditTxtSM">Tarif pro </h3>
                                         
                                      {% endif  %} 
@@ -144,7 +144,7 @@
                                     </div>
                                      <p class="mt-4 mb-0" style="font-size:small">* Frais de port gratuits à partir de 200€ H.T en colissimo ou Mondial relay <a href="#"> (Voir Conditions) </a></p>
                                     <hr>
-                            {% elseif  app.user.roles[0] is same as "ROLE_TRANSIT" %}
+                            {% elseif  app.user.roles[0] is same as "ROLE_TRANSIT" %}    {# role transit = prix ttc seulement #}
                                 <h4>Tarif public T.T.C (Tva 5.5%)</h4>
                                 <div class="mt-1" style="display:flex;flex-direction:row;justify-content:space-around;align-items:center ">
                                     <div class="m-2 text-dark">
@@ -158,7 +158,7 @@
                                 </div>
                                 <hr>
                             {% else %}  
-                                    <div style="display:none;flex-direction:row">
+                                    <div style="display:none;flex-direction:row">    {# autres roles  = prix pro #}
                                         <h4 class="LprixHT"> Prix PRO HT : </H4>  
                                         <h4 class="prixHT" id="selp_{{ product.getProduct().id  }}"></H4>
                                     </div>  
@@ -169,7 +169,7 @@
                                      class="  btPanier  ">Ajouter au panier
                                  </a>
                                 </div>
-                            {% else %}   
+                            {% else %}    {# si non connecté aucun prix #}
                                     <div class="text-center">
                                         <a class="nav-link connectNotif" href="{{ path('app_login') }}">Connectez-vous pour voir les tarifs</a>
                                     </div>

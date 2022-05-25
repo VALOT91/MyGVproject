@@ -730,6 +730,36 @@ body {background-color:white!important;}
       flex-direction:row;
       justify-content:center;
     }
+    /* rgpd */
+    
+    #cc-nb-text,.cc-pc-head-title-text,.cc-cp-body-content-entry-text {
+      font-size: 1.5rem!important;
+    }
+    .cc-cp-body-tabs-item-link {
+      font-size: 1.1rem!important;
+    }
+
+    #cc-nb-title,.cc-pc-head-title-headline {
+       font-size:2rem!important;
+   }
+   .cc-nb-okagree,.cc-cp-foot-save {
+     background-color: #769643!important;
+     height:4rem!important;
+     width:25rem!important;
+     font-size: 1.5rem!important;
+     margin-bottom:5rem!important;;
+    
+ }
+     .cc-nb-changep {
+      width:25rem!important;
+      height:4rem!important;
+      font-size: 1.5rem!important;  
+   }
+   .cc-pc-head-lang
+   {
+     display:none!important;
+   }
+  
 
     .formSize {
       width:100%;
@@ -1255,3 +1285,6 @@ body {background-color:white!important;}
 .btnBackEnr {
   background-color:peru!important ;
 }
+
+
+  

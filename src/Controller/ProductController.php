@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
-use App\Form\SearchProductType;
 use App\Search\SearchProduct;
+use App\Form\SearchProductType;
 use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,7 @@ class ProductController extends AbstractController
 {
     // afficahge de la liste des produits
     #[Route('admin/product', name: 'product_index', methods: ['GET'])]
-    public function index(Request $request,ProductRepository $productRepository): Response
+    public function index(Request $request,ProductRepository $productRepository,PaginatorInterface $paginator ): Response
     {
         $search = new SearchProduct();
 
@@ -27,8 +28,11 @@ class ProductController extends AbstractController
 
         $form->handleRequest($request);
 
-        $products = $productRepository->findByFilter($search);    //filtre 
+        // $products = $productRepository->findByFilter($search);    //filtre 
          
+        $products = $paginator->paginate($productRepository->findByFilter($search), $request->query->getInt('page', 1), 5);
+
+
         return $this->render('admin/product/index.html.twig', [
             'products' => $products,'form' => $form->createView()
            
