@@ -31,7 +31,7 @@
                         <div style="height:20rem!important;display:flex;justify-content:center">
                             {# test la présence d'une image #}
                             {% if product.getProduct().getProduitConditionnement() is not null  %} 
-                                <a href="#"> 
+                                <a href="{{ path('gamme_show', {'id': product.getProduct().id}) }}"> 
                                 <img id="img_{{ product.getProduct().id  }}" style="width:15rem;objective-fit:cover" src="{{product.getProduct().getProduitConditionnement().imagePath }}" class="imgsm mt-4 "  alt="image du produit ">
                                 </a>
                             {% endif %} 

@@ -12,11 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('admin/user')]
+// #[Route('admin/user')]
 class UserController extends AbstractController
 {
     // affichage des users
-    #[Route('/', name: 'user_index', methods: ['GET'])]
+    #[Route('admin/user/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('admin/user/index.html.twig', [
@@ -24,7 +24,7 @@ class UserController extends AbstractController
         ]);
     }
     // affichage du formulaire de creation d'un user
-    #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
+    #[Route('admin/user/new', name: 'user_new', methods: ['GET', 'POST'])]
     public function new(Request $request,UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -35,7 +35,7 @@ class UserController extends AbstractController
             
            
             $user->setPassword(
-                $userPasswordHasher->hashPassword(                 // hashage du plai passeword
+                $userPasswordHasher->hashPassword(                 // hashage du plain passeword
                       $user,
                         $form->get('plainPassword')->getData()
                     )
@@ -54,35 +54,51 @@ class UserController extends AbstractController
     }
 
     // affichage du detail d'un user
-    #[Route('{id}/show', name: 'user_show', methods: ['GET'])]
+    #[Route('admin/user/{id}/show', name: 'user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
-        return $this->render('admin/user/show.html.twig', [
+          return $this->render('admin/user/show.html.twig', [
+          //  return $this->render('/show.html.twig', [
             'user' => $user,
         ]);
     }
 
-    // affichage du formulaire de creation du user
-    #[Route('{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
+    // affichage du formulaire de modification du user
+    #[Route('admin/user/{id}/edit', name: 'user_edit', methods: ['GET', 'POST'])]
+    #[Route('client/user/{id}/edit', name: 'user_editC', methods: ['GET', 'POST'])]
+    #[Route('transit/user/{id}/edit', name: 'user_editT', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+        $role = $this->getUser()->getRoles()[0]; 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            if($role=="ROLE_ADMIN")
+                return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            else
+                return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER); 
         }
 
-        return $this->renderForm('admin/user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
+         
+        if($role!="ROLE_ADMIN")
+            return $this->renderForm('customer/user/edit.html.twig', [
+                'user' => $user,
+                'form' => $form,
+            ]);
+        else
+            return $this->renderForm('admin/user/edit.html.twig', [
+                'user' => $user,
+                'form' => $form,
+            ]);
     }
 
+
+    
+
     // validation du role client
-    #[Route('/{id}/valider', name: 'user_valid', methods: ['GET', 'POST'])]
+    #[Route('admin/user/{id}/valider', name: 'user_valid', methods: ['GET', 'POST'])]
     public function validate(int $id,UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
         $entity =  $userRepository->find($id);
@@ -94,7 +110,7 @@ class UserController extends AbstractController
         ]);
     }
     // invalidation d'un client
-    #[Route('/{id}/refute', name: 'user_refute', methods: ['GET', 'POST'])]
+    #[Route('admin/user/{id}/refute', name: 'user_refute', methods: ['GET', 'POST'])]
     public function refute(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $entity =  $userRepository->find($id);
@@ -107,7 +123,7 @@ class UserController extends AbstractController
     }
 
     // passage au role transit
-    #[Route('/{id}/decline', name: 'user_decline', methods: ['GET', 'POST'])]
+    #[Route('admin/user/{id}/decline', name: 'user_decline', methods: ['GET', 'POST'])]
     public function decline(int $id,UserRepository $userRepository,Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $entity =  $userRepository->find($id);
@@ -120,7 +136,7 @@ class UserController extends AbstractController
     }
 
     // suppression d'un user
-    #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
+    #[Route('admin/user/{id}', name: 'user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {

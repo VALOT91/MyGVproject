@@ -88,17 +88,17 @@ class UserType extends AbstractType
                 
             ])
                 
-            ->add('plainPassword', PasswordType::class, [
-                'label' => 'Mot de passe',
-                'required'=> false,
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Entrez votre mot de passe'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Le champs mot de passe est requis',
-                    ]),
-                ],
-            ])
+            // ->add('plainPassword', PasswordType::class, [
+            //     'label' => 'Mot de passe',
+            //     'required'=> false,
+            //     'mapped' => false,
+            //     'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Entrez votre mot de passe'],
+            //     'constraints' => [
+            //         new NotBlank([
+            //             'message' => 'Le champs mot de passe est requis',
+            //         ]),
+            //     ],
+            // ])
             ->add('code_postal',TextType::class,[
                 'required' => false,
                 'label' => 'Code postal',

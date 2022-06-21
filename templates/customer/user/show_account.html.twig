@@ -86,8 +86,18 @@
                 {% elseif app.user.roles[0] is same as "ROLE_CLIENT" %} 
                         href="{{ path('edit_password_C') }}"> 
                 {% endif %} 
-                Mot de passe 
+                Mot de passe
              </a> 
+             <a class="buttonStyle  btn btn-info ms-4 mt-4"
+                {% if app.user.roles[0] is same as "ROLE_ADMIN" %}  
+                    href="{{ path('user_edit', {'id': app.user.id}) }}">
+                {% elseif app.user.roles[0] is same as "ROLE_TRANSIT" %}
+                        href="{{ path('user_editT', {'id': app.user.id}) }}">
+                {% elseif app.user.roles[0] is same as "ROLE_CLIENT" %} 
+                         href="{{ path('user_editC', {'id': app.user.id}) }}">
+                {% endif %} 
+                Modifier 
+            </a>
              <a class="buttonStyle  btn btn-dark ms-4 mt-4" href="{{ path('home') }}">Retour</a>
      </div>
     </div>
