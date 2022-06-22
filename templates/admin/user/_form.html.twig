@@ -1,18 +1,37 @@
 {{ form_start(form) }}
-     {{ form_row(form.email, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {% if app.user.roles[0] is same as "ROLE_ADMIN" %}   {# l'email n'est pas modifiable quand on est pas admin  #}
+       {{ form_row(form.email, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {% else %}
+       {{ form_row(form.email, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle','readonly':'readonly'} }) }}
+     {% endif %}
      {{ form_row(form.nom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
      {{ form_row(form.prenom, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
      {{ form_row(form.adresse, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }} 
-     {{ form_row(form.complement, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
-     {{ form_row(form.roles, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.complement, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}   
+      {# le role n'est pas affiché quand on est pas admin et l'admin ne peut pas changer son propre rôle #} 
+     {% if app.user.roles[0] is same as "ROLE_ADMIN" and form.email.vars.value != app.user.username %}  
+        {{ form_row(form.roles, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {% else %}
+      {{ form_row(form.roles, {'label_attr': {'class': 'textArt','style':'display:none'},'attr': {'class': 'inputStyle','style':'display:none'} }) }}
+     {% endif %}
      {# {{ form_row(form.plainPassword, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}  #}
      {{ form_row(form.code_postal, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
      {{ form_row(form.ville, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
-     {{ form_row(form.telephone, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle2'} }) }}
-     {{ form_row(form.points_fidelite, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {{ form_row(form.telephone, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
      {{ form_row(form.pays, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
-     {{ form_row(form.rang_fidelite, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
-     {{ form_row(form.kbis, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+     {% if app.user.roles[0] is same as "ROLE_ADMIN"  and form.email.vars.value != app.user.username %}   {# les points fidélités ne sont pas modifiables quand on est pas admin  #}
+        {{ form_row(form.points_fidelite, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+        {{ form_row(form.rang_fidelite, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }}
+    {% else %}
+        {{ form_row(form.points_fidelite, {'label_attr': {'class': 'textArt','style':'display:none'},'attr': {'class': 'inputStyle','style':'display:none'} }) }}
+        {{ form_row(form.rang_fidelite, {'label_attr': {'class': 'textArt','style':'display:none'},'attr': {'class': 'inputStyle','style':'display:none'} }) }}
+    {% endif %}
+     {# l'admin ne voit pas le champ kbis pour lui meme #}
+    {% if app.user.roles[0] is same as "ROLE_ADMIN" and form.email.vars.value == app.user.username %}  
+          {{ form_row(form.kbis, {'label_attr': {'class': 'textArt','style':'display:none'},'attr': {'class': 'inputStyle','style':'display:none'} }) }}
+     {% else %}
+         {{ form_row(form.kbis, {'label_attr': {'class': 'textArt'},'attr': {'class': 'inputStyle'} }) }} 
+     {% endif %}
  
     <button class="btn text-white buttonStyleC btnBackMod btn ">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

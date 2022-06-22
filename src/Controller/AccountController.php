@@ -52,7 +52,7 @@ class AccountController extends AbstractController
     #[Route('encours/account', name: 'show_account_roleT', methods: ['GET'])]
     #[Route('admin/account', name: 'show_account_roleA', methods: ['GET'])]
     #[Route('client/account', name: 'show_account_roleC', methods: ['GET'])]
-    // #[Route('{id}/show', name: 'user_show', methods: ['GET'])]
+   
     public function show(): Response
     {
         $user = $this->getUser();
