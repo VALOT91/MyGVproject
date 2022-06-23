@@ -40,6 +40,9 @@ class CommandShop
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $is_shipped;
 
+    #[ORM\Column(type: 'integer')]
+    private $user_id;
+
     public function __construct()
     {
         $this->commandShopLines = new ArrayCollection();
@@ -48,6 +51,11 @@ class CommandShop
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUserId(): ?int
+    {
+        return $this->user_id;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

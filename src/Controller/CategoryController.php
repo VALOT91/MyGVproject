@@ -5,14 +5,15 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Services\HandleImage;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Services\ImageFinder;
+use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Services\ImageFinder;
  
 
 #[Route('admin/category')]
@@ -162,13 +163,22 @@ class CategoryController extends AbstractController
     }
     // supprime la catégorie
     #[Route('/{id}', name: 'category_delete', methods: ['POST'])]
-    public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Category $category, EntityManagerInterface $entityManager,ProductRepository $ProductRepository): Response
     {
+        $products = $ProductRepository->findBy(array('category_id' => $category->getId() ));
+
+        if(count($products) > 0)  
+        {
+          $this->addFlash("warning","Suppression impossible car contient des produits.");
+        
+        }
+        else
+        {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $entityManager->remove($category);
             $entityManager->flush();
         }
-
+    }
         return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
     }
 }

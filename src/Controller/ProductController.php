@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CommandShopLineRepository;
 
 #[Route('admin/product')]
 class ProductController extends AbstractController
@@ -98,13 +99,22 @@ class ProductController extends AbstractController
 
     // supprime le produit
     #[Route('/{id}', name: 'product_delete', methods: ['POST'])]
-    public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Product $product, EntityManagerInterface $entityManager,CommandShopLineRepository  $CommandShopLineRepository): Response
     {
+        $commandes = $CommandShopLineRepository->findBy(array('produit_id' => $product->getId() ));
+
+        if(count($commandes) > 0)  
+        {
+          $this->addFlash("warning","Suppression impossible avec des commandes.");
+        
+        }
+        else
+        {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
             $entityManager->remove($product);
             $entityManager->flush();
         }
-
+    }
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
 }

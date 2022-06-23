@@ -21,7 +21,7 @@ class Category
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-
+ 
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
@@ -29,6 +29,7 @@ class Category
     {
         return $this->id;
     }
+   
 
     public function getNom(): ?string
     {

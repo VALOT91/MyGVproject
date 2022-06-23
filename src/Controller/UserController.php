@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+ 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\CommandShopRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -137,13 +139,24 @@ class UserController extends AbstractController
 
     // suppression d'un user
     #[Route('admin/user/{id}', name: 'user_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
-    {
+    public function delete(Request $request, User $user, EntityManagerInterface $entityManager,UserRepository $userRepository,CommandShopRepository $CommandShopRepository): Response
+    {  
+       $commandes = $CommandShopRepository->findBy(array('user_id' => $user->getId() ));
+
+      if(count($commandes) > 0)  
+      {
+        $this->addFlash("warning","Suppression impossible avec des commandes.");
+      
+      }
+      else
+      {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
-        }
 
+        } 
+       
+      } 
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
     
