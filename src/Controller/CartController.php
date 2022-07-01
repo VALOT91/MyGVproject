@@ -18,10 +18,10 @@ class CartController extends AbstractController
         $this->cartService = $cartService;
     }
 
-    // ajoute un à la quantité de l'article d  ns le pnier
-    #[Route('/panier/ajouter/{id}', name: 'cart_add')]
-    public function add(int $id,ProduitConditionnementRepository $produitConditionnementRepository,Request $request)
-    {   
+    // ajoute un à la quantité de l'article dans le panier
+    #[Route('/panier/plus/{id}', name: 'cart_plus')]
+    public function plus(int $id ,ProduitConditionnementRepository $produitConditionnementRepository,Request $request)
+    {  
         $produitConditionnementRepository = $produitConditionnementRepository->find($id);
         
         if(!$produitConditionnementRepository)
@@ -34,12 +34,36 @@ class CartController extends AbstractController
         $this->cartService->add($id);
 
         $this->addFlash("success","Le produit a bien été ajouté au panier");
-       
-            return $this->redirectToRoute("cart_detail");
+        
+              return $this->redirectToRoute("cart_detail");  
        
     }
 
-    // supprime l' rticle du panier
+ // ajoute un à la quantité de l'article dans le panier
+ #[Route('/panier/ajouter/{id}', name: 'cart_add')]
+ public function add(int $id ,ProduitConditionnementRepository $produitConditionnementRepository,Request $request)
+ { 
+     $produitConditionnementRepository = $produitConditionnementRepository->find($id);
+     
+     if(!$produitConditionnementRepository)
+     {
+         $this->addFlash("danger","Produit introuvable");
+         return $this->redirectToRoute("home");
+     } 
+                
+     // increment de la qté
+     $this->cartService->add($id);
+ 
+     $this->addFlash("success","Le produit a bien été ajouté au panier");
+           
+           
+          $route = $request->headers->get('referer');  // referrer permet de connaitre la page d'ou je viens
+
+          return $this->redirect($route);   // retour à la page précédente aprés l'ajout
+    
+ }
+
+    // supprimer l' article du panier
     #[Route('/panier/supprimer/{id}', name: 'cart_remove')]
     public function delete(int $id,ProduitConditionnementRepository $produitConditionnementRepository)
     {

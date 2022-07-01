@@ -17,6 +17,7 @@ class GammeController extends AbstractController
 {
     // affichage de la liste des catégories (gamme)
     #[Route('/gamme', name: 'gamme_index')]
+     
     public function index(CategoryRepository $categoryRepository): Response
     {
         // TH permet de filtrer les catégories de la gamme thé (il y a deux gammes : thé et services)

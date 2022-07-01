@@ -159,6 +159,14 @@ body {background-color:white!important;}
        flex-direction:row;
        justify-content:center;
      }
+     .qtePanier {
+        text-align:center;
+        color:black;
+        position:relative;
+        top:-1rem;
+        font-size: xx-small;
+        font-weight: bolder;
+     }
 
      .formSize {
       width:50%;
@@ -363,6 +371,14 @@ body {background-color:white!important;}
        margin-top:2rem;
      }
      
+     .qtePanier {
+      text-align:center;
+      color:black;
+      position:relative;
+      font-size: xx-small;
+      top:-2rem;
+   }
+
 /* image de fond gerant page offres pro */
     #fndM {
       background-image: url(/images/business/gerant.jpg)!important;  
@@ -723,6 +739,15 @@ body {background-color:white!important;}
   /* ********************************************************* */
   
 @media only screen and (max-device-width: 768px) {
+
+  .qtePanier {
+    text-align:center;
+    color:black;
+    position:relative;
+    top:-3.4rem;
+    left:-0.2rem;
+    font-size:xx-large;
+ }
 
      /* formulaires  */
      .formStyle {
@@ -1141,6 +1166,15 @@ body {background-color:white!important;}
 
 @media only screen and (min-device-width: 769px) {  
   
+  .qtePanier {
+    text-align:center;
+    color:black;
+    position:relative;
+    top:-1rem;
+    font-size: xx-small;
+    font-weight: bolder;
+  }
+
    /* titre des pages vitrines */
   .ttre {
     font-size:5rem!important; 

@@ -68,7 +68,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Code postal',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Le champs complément est requis',
+                        'message' => 'Le champs code postal est requis',
                     ]),
                 ],
             ])

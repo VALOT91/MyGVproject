@@ -13,9 +13,11 @@
 <div class="container-flex" > 
  <div class="fnd d-flex flex-column align-items-center m" >
  
+ 
    <div class="my-4 bg-white ctIm   d-flex flex-column justify-content-center">
  
      <h1 class="ttreT text-center mt-2">Mon panier</h1>
+     <div class="text-center"> {% include "_messages_flash.html.twig" %} </div>
     {# <div class="block"> #}
          {% for item in cart["detailCart"] %}    {# parcours le panier #}
             <div class="mt-1 " >
@@ -36,7 +38,7 @@
                                
                                     <a class="btRg btn btn-success" href="{{ path('cart_decrement',{'id': item.product.id}) }}?returnToCart=true"><strong>-</strong></a>
                                     <p id= "panierQte">{{ item.qty }} </p>
-                                    <a class="btRg btn btn-success " href="{{ path('cart_add',{'id': item.product.id}) }}?returnToCart=true"><strong>+</strong></a>
+                                    <a class="btRg btn btn-success " href="{{ path('cart_plus',{'id': item.product.id }) }}?returnToCart=true"><strong>+</strong></a>
                                     <a class="btn btn-link text-danger btn-sm" href="{{ path('cart_remove',{'id' : item.product.id }) }}"></i> 
                                        <img class="trash" src="/images/trash.png"  alt="poubelle"  />
                                     </a>  

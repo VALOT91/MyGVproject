@@ -37,7 +37,18 @@
                   <div style="line-height:2px">
                         <a  href="{{ path('cart_detail') }}">
                             <img id=imcrt src="/images/cart.svg" />
-                        </a> 
+                           
+                            <div class="qtePanier"> 
+                                  
+                                  {% set nbPanier = 0 %}
+                                  {%  for item in app.session.get('cart',[] )  %}
+                                  {% set nbPanier = nbPanier + item.qty  %}
+                                  {% endfor %}
+                                  {{ nbPanier  }}  
+
+                            </div> 
+                          
+                        </a>  
                        panier  
                  </div>
             </div>
