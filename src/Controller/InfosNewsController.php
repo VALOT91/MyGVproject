@@ -37,7 +37,7 @@ class InfosNewsController extends AbstractController
     // affiche le detail d'un article
     #[Route('/{id}', name: 'infosNews_show', methods: ['GET'])]
     public function show(Articles $article): Response
-    {
+    {   
         return $this->render('customer/articles/show.html.twig', [
             'article' => $article,
         ]);

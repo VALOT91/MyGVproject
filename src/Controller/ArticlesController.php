@@ -51,7 +51,7 @@ class ArticlesController extends AbstractController
     // affiche le détail d'un article
     #[Route('/{id}', name: 'articles_show', methods: ['GET'])]
     public function show(Articles $article): Response
-    {
+    {      dd($article);
         return $this->render('admin/articles/show.html.twig', [
             'article' => $article,
         ]);

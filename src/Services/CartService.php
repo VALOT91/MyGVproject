@@ -82,7 +82,7 @@ class CartService extends AbstractController
         {
              $typePrice="PRIX_PUBLIC";
         }
-   //  dd($cart);
+   
         //Je boucle sur mon panier
         foreach($cart as $item)
         {

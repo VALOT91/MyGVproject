@@ -127,7 +127,7 @@ class UserType extends AbstractType
                 'required' => false,
                 'label' => 'Téléphone',
                 'attr' => [
-                    'placeholder' => 'Entrez votre Téléphone'
+                    'placeholder' => 'Entrez votre téléphone'
                 ],
                 'constraints' => [
                     new NotBlank([
