@@ -19,9 +19,10 @@ class AccountController extends AbstractController
     #[Route('client/modifiermotdepasse', name: 'edit_password_C')]
       public function editPassword(Request $request, EntityManagerInterface $em,UserPasswordHasherInterface $userPasswordHasher)
     {
+        // cette annotation générée n'est pas utilisée par le code mais pour la docu
         /** @var User $user */
-        $user = $this->getUser();
-
+        $user = $this->getUser();  // fournit les données du connect
+           
         $form = $this->createForm(EditPasswordType::class);
 
         $form->handleRequest($request);

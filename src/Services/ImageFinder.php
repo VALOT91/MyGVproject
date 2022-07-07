@@ -6,12 +6,8 @@ use Symfony\Component\Finder\Finder;
 
 class ImageFinder
 {
-
-    private $ImageFinder;
-
     public function GetUploadDirectory()
     {
-
         $finder = new Finder();
             
         $filesRep = $finder
@@ -25,11 +21,7 @@ class ImageFinder
         {
             $filesTab[] = $item;
         }
-        
+       
         return  $filesTab;
-
     }
-
-
-
 }

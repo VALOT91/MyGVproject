@@ -24,9 +24,9 @@ class ProduitConditionnementRepository extends ServiceEntityRepository
    
     public function findByFilter(SearchProductConditionnement $search)
     {
-        $query = $this->findAllQuery();
+        $query = $this->findAllQuery();  // cree la requete avec l'alias p
 
-        if($search->getFilterByReference())
+        if($search->getFilterByReference())   // y at-il du texte dans le filtre ???
         {
             $query = $query->andWhere('p.reference LIKE :reference');
             $query->setParameter('reference','%' . $search->getFilterByreference() . '%');
